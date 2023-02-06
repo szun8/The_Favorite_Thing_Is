@@ -1,0 +1,11 @@
+
+PrismGame/Assembly-CSharp-Editor.csproj
+PrismGame/Assets/Photon/*
+PrismGame/Assets/URP/*
+PrismGame/Library/*
+PrismGame/Logs/*
+PrismGame/Temp/*
+PrismGame/UserSettings/*
+PrismGame/ProjectSettings/*
+PrismGame/Packages/*
+*.csproj
