@@ -8,4 +8,5 @@ PrismGame/Temp/*
 PrismGame/UserSettings/*
 PrismGame/ProjectSettings/*
 PrismGame/Packages/*
+PrismGame/.vs/*
 *.csproj
