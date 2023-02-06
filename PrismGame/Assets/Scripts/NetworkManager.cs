@@ -6,6 +6,7 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public Transform[] spawnPoints;
 
     private void Awake()
     {
@@ -24,6 +25,18 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.Instantiate("Player", new Vector3(0, 0f, 0), Quaternion.identity);
+        CreatePlayer();
+    }
+
+    private void CreatePlayer()
+    {
+        spawnPoints = GameObject.Find("SpawnPointGroup").GetComponentsInChildren<Transform>();
+
+        Vector3 pos = spawnPoints[PhotonNetwork.CurrentRoom.PlayerCount].position;
+        Quaternion rot = spawnPoints[PhotonNetwork.CurrentRoom.PlayerCount].rotation;
+
+        PhotonNetwork.Instantiate("Player", pos, rot, 0);
+
+
     }
 }
