@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     public PhotonView PV;
 
     private Vector3 dir = Vector3.zero;// 캐릭터가 나아갈, 바라볼 방향 
-    public int JumpForce; //점프력
+    public int JumpForce = 5; //점프력
     public float rotSpeed = 8f; //방향키 반대이동시 몸의 회전 속도 
     public float speed = 8f; //캐릭터 속도
 
@@ -28,6 +28,18 @@ public class PlayerMove : MonoBehaviour
             dir.x = Input.GetAxisRaw("Horizontal");
             dir.z = Input.GetAxisRaw("Vertical");
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
+
+
+            //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
+            Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
+
+            //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
+            bool isGround = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
+
+            if (Input.GetKeyDown("space") && isGround)
+            {
+                rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+            }
         }
     }
 
