@@ -3,21 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody rigid;
-
+    
     public PhotonView PV;
+    public Text text;
 
     private Vector3 dir = Vector3.zero;// 캐릭터가 나아갈, 바라볼 방향 
     public int JumpForce = 5; //점프력
     public float rotSpeed = 8f; //방향키 반대이동시 몸의 회전 속도 
     public float speed = 8f; //캐릭터 속도
 
-    private void Start()
+    private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+
+        if (PV.IsMine)
+        {
+            Camera.main.GetComponent<CameraMove>().player = PV.gameObject;
+        }
+        
     }
 
 
@@ -31,15 +39,18 @@ public class PlayerMove : MonoBehaviour
 
 
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-            Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
+            Debug.DrawRay(transform.position, Vector2.down * 0.52f, Color.blue);
 
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            bool isGround = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
+            bool isGround = Physics.Raycast(transform.position, Vector2.down, 0.52f, LayerMask.GetMask("Ground"));
 
-            if (Input.GetKeyDown("space") && isGround)
+            bool isOnPlayer = Physics.Raycast(transform.position, Vector2.down, 0.52f, LayerMask.GetMask("Player"));
+
+            if (Input.GetKeyDown("space")&&isGround)
             {
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             }
+
         }
     }
 

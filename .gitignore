@@ -9,4 +9,6 @@ PrismGame/UserSettings/*
 PrismGame/ProjectSettings/*
 PrismGame/Packages/*
 PrismGame/.vs/*
+PrismGame/Build/*
+PrismGame/obj/*
 *.csproj

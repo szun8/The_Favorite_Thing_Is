@@ -201,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PV: {fileID: 3668886546769228549}
+  text: {fileID: 0}
   JumpForce: 5
   rotSpeed: 8
   speed: 8
