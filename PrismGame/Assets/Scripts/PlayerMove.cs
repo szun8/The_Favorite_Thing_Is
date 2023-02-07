@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody rigid;
     
+    int collisionCnt = 0;
+
     public PhotonView PV;
     public Text text;
 
@@ -37,7 +39,6 @@ public class PlayerMove : MonoBehaviour
             dir.z = Input.GetAxisRaw("Vertical");
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
 
-
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
             Debug.DrawRay(transform.position, Vector2.down * 0.52f, Color.blue);
 
@@ -50,7 +51,6 @@ public class PlayerMove : MonoBehaviour
             {
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             }
-
         }
     }
 
@@ -69,6 +69,22 @@ public class PlayerMove : MonoBehaviour
                 transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
             }
             rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Door 1"))
+        {
+            if (collisionCnt >= 3)
+            {
+                GameObject.FindGameObjectWithTag("Door 1").GetComponent<ControlDoor>().isOpen = true;
+            }
+            else
+            {
+                ++collisionCnt;
+                Debug.Log("꽈~당! - "+collisionCnt);
+            }
         }
     }
 }
