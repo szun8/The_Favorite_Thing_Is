@@ -38,12 +38,12 @@ public class move : MonoBehaviour
         dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
 
         //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-        Debug.DrawRay(transform.position, Vector2.down * 0.51f, Color.white);
+        Debug.DrawRay(transform.position, Vector2.down * 1.3f, Color.blue);
         //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-        bool badak = Physics.Raycast(transform.position, Vector2.down, 0.51f, LayerMask.GetMask("Ground"));
+        bool badak = Physics.Raycast(transform.position, Vector2.down, 1.3f, LayerMask.GetMask("Ground"));
 
         //내 앞으로 광선을 쏴서 물체를 검출해보자 
-        Debug.DrawRay(transform.position, transform.forward * 1f, Color.white);
+        Debug.DrawRay(transform.position, transform.forward * 1f, Color.red);
 
         if (Input.GetKeyDown("space"))
         {

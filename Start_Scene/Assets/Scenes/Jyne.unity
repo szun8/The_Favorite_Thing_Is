@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,7 +153,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &147422520
@@ -214,7 +214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147422518}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.1068335, y: 1.65, z: 190.88179}
+  m_LocalPosition: {x: 0, y: -4.29, z: 0}
   m_LocalScale: {x: 3.4156, y: 1, z: 8.4625}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -298,8 +298,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 609767115}
-  m_LocalRotation: {x: -0, y: -0.70710665, z: 0, w: 0.70710695}
-  m_LocalPosition: {x: 25.343943, y: 6.6942143, z: 184.08873}
+  m_LocalRotation: {x: 0.2156274, y: -0.23751889, z: 0.053772677, w: 0.94562054}
+  m_LocalPosition: {x: 5.542288, y: 9.183187, z: -16.189722}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -520,17 +520,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 0eb433040046c0d4b88a6783f5fdf636,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.9532977
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0eb433040046c0d4b88a6783f5fdf636,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0eb433040046c0d4b88a6783f5fdf636,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 177.13043
+      value: 0.2875678
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0eb433040046c0d4b88a6783f5fdf636,
         type: 3}
