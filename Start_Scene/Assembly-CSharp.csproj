@@ -57,33 +57,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Photon/PhotonRealtime/Demos/DemoLoadBalancing/ConnectAndJoinRandomLb.cs" />
-    <Compile Include="Assets/Scripts/Wall.cs" />
+    <Compile Include="Assets/Scripts/1_Tutorial/Wall.cs" />
     <Compile Include="Assets/Photon/PhotonLibs/WebSocket/SocketWebTcp.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/AppSettingsExtensions.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/ChannelSelector.cs" />
-    <Compile Include="Assets/Scripts/SimpleCameraController.cs" />
+    <Compile Include="Assets/Scripts/1_Tutorial/SimpleCameraController.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/Common/EventSystemSpawner.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/Player_scripts/CavePlayerMove.cs" />
+    <Compile Include="Assets/Scripts/4_Square/Player_scripts/CavePlayerMove.cs" />
     <Compile Include="Assets/Photon/PhotonLibs/WebSocket/WebSocket.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/Common/TextButtonTransition.cs" />
-    <Compile Include="Assets/Scripts/CameraMove.cs" />
+    <Compile Include="Assets/Scripts/1_Tutorial/CameraMove.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/NamePickGui.cs" />
     <Compile Include="Assets/URP/TutorialInfo/Scripts/Readme.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/Switch.cs" />
-    <Compile Include="Assets/Scripts/PlayerMove.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/Player_scripts/ShowBridge.cs" />
+    <Compile Include="Assets/Scripts/4_Square/Switch.cs" />
+    <Compile Include="Assets/Scripts/1_Tutorial/PlayerMove.cs" />
+    <Compile Include="Assets/Scripts/4_Square/Player_scripts/ShowBridge.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/FriendItem.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/NetworkManager.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/CaveTalkManager.cs" />
+    <Compile Include="Assets/Scripts/4_Square/NetworkManager.cs" />
+    <Compile Include="Assets/Scripts/4_Square/CaveTalkManager.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/DemoChat/ChatGui.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/Common/TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/WaitingWall.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/R_Switch.cs" />
+    <Compile Include="Assets/Scripts/4_Square/WaitingWall.cs" />
+    <Compile Include="Assets/Scripts/4_Square/R_Switch.cs" />
     <Compile Include="Assets/Photon/PhotonChat/Demos/Common/OnStartDelete.cs" />
-    <Compile Include="Assets/Scripts/MultiCave/Lamp.cs" />
-    <Compile Include="Assets/Scripts/HelpTalk.cs" />
+    <Compile Include="Assets/Scripts/4_Square/Lamp.cs" />
+    <Compile Include="Assets/Scripts/1_Tutorial/HelpTalk.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />

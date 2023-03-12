@@ -1,13 +1,9 @@
 ﻿<Properties StartupConfiguration="{C0B0CE7C-50C8-1531-4B6C-4C113E5CBACC}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MultiCave/R_Switch.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/1_Tutorial/HelpTalk.cs">
     <Files>
-      <File FileName="Assets/Scripts/MultiCave/NetworkManager.cs" Line="33" Column="1" />
-      <File FileName="Assets/Scripts/MultiCave/CavePlayerMove.cs" Line="104" Column="1" />
-      <File FileName="Assets/Scripts/MultiCave/Lamp.cs" Line="38" Column="1" />
-      <File FileName="Assets/Scripts/MultiCave/WaitingWall.cs" Line="47" Column="105" />
-      <File FileName="Assets/Scripts/MultiCave/CaveTalkManager.cs" Line="28" Column="70" />
-      <File FileName="Assets/Scripts/MultiCave/R_Switch.cs" Line="28" Column="1" />
-      <File FileName="Assets/Scripts/MultiCave/Player_scripts/ShowBridge.cs" Line="14" Column="5" />
+      <File FileName="Assets/URP/TutorialInfo/Scripts/Editor/ReadmeEditor.cs" Line="59" Column="1" />
+      <File FileName="Assets/Scripts/1_Tutorial/Wall.cs" Line="17" Column="1" />
+      <File FileName="Assets/Scripts/1_Tutorial/HelpTalk.cs" Line="31" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -25,9 +21,8 @@
                 </Node>
               </Node>
               <Node name="Scripts" expanded="True">
-                <Node name="MultiCave" expanded="True">
-                  <Node name="Player_scripts" expanded="True" />
-                  <Node name="R_Switch.cs" selected="True" />
+                <Node name="1_Tutorial" expanded="True">
+                  <Node name="HelpTalk.cs" selected="True" />
                 </Node>
               </Node>
               <Node name="URP" expanded="True">

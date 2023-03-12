@@ -3,6 +3,7 @@
 */Logs/
 */Build/
 */obj/
+*/.vs/
 
 # Gradle cache directory
 .gradle/
