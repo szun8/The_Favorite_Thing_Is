@@ -14,6 +14,9 @@ TagManager:
   - G_item
   - B_item
   - Bridge
+  - Enemy
+  - Start
+  - Sea
   layers:
   - Default
   - TransparentFX
@@ -28,7 +31,7 @@ TagManager:
   - MirrorJump
   - Item
   - Bridge
-  - 
+  - Wall
   - 
   - 
   - 
