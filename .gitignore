@@ -1,6 +1,8 @@
 */Library/
 */Temp/
 */Logs/
+*/Build/
+*/obj/
 
 # Gradle cache directory
 .gradle/
