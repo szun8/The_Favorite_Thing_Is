@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1537775199031017431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1537775199031017433}
+  - component: {fileID: 1537775199031017430}
+  m_Layer: 0
+  m_Name: Track
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1537775199031017433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537775199031017431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 7.07, z: 25.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1537775199031017430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1537775199031017431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d37e5385efd7064cb1d54c94960acae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Resolution: 20
+  m_Appearance:
+    pathColor: {r: 1, g: 1, b: 1, a: 1}
+    inactivePathColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    width: 2
+  m_Looped: 0
+  m_Waypoints:
+  - position: {x: 0, y: 0, z: 0}
+    tangent: {x: 0.21, y: 0, z: -1.4041882}
+    roll: 0
+  - position: {x: 3.8117447, y: -6.282271, z: -7.83}
+    tangent: {x: 5.4999995, y: -5.1434326, z: 1.8495903}
+    roll: 0
+  - position: {x: 19.714188, y: -4.4740405, z: -16.855467}
+    tangent: {x: -9.405791, y: 0, z: -15.488808}
+    roll: 0
+  - position: {x: -2.0670023, y: -11.182728, z: -9.402546}
+    tangent: {x: -9.405791, y: 0, z: 0.6303272}
+    roll: 16.25
+  - position: {x: -15.183014, y: -4.4740405, z: -18.534258}
+    tangent: {x: -1.7640476, y: 0.7317877, z: -3.6080246}
+    roll: 0
+  - position: {x: -15.545885, y: -6.048866, z: -30.980892}
+    tangent: {x: 7.810667, y: -2.3125348, z: -6.518223}
+    roll: 0
+  - position: {x: 4.995972, y: -8.928267, z: -31.031162}
+    tangent: {x: 6.1033626, y: -7.7544694, z: 2.377571}
+    roll: -25
+  - position: {x: 20.444866, y: -16.167576, z: -28.653591}
+    tangent: {x: 6.103363, y: -7.75447, z: -12.384235}
+    roll: 0
+  - position: {x: 11.019295, y: -7.9314203, z: -41.037827}
+    tangent: {x: -6.2322416, y: -7.754471, z: 1.5552368}
+    roll: 0
+  - position: {x: -8.664814, y: -5.220347, z: -39.48259}
+    tangent: {x: -6.2322416, y: -7.754471, z: 1.5552368}
+    roll: 0
+  - position: {x: -21.521593, y: -13.957767, z: -37.927353}
+    tangent: {x: -2.227766, y: -7.7544694, z: 12.860409}
+    roll: 0
+  - position: {x: -16.754646, y: -8.960955, z: -25.066944}
+    tangent: {x: 4.1926136, y: -7.754469, z: 7.032568}
+    roll: 0
+  - position: {x: -5.411749, y: -11.62349, z: -19.587828}
+    tangent: {x: 10.329079, y: -5.141015, z: 1.2093754}
+    roll: 0
+  - position: {x: 1.3314853, y: -12.415493, z: -32.88743}
+    tangent: {x: -0.002151966, y: -2.8711243, z: -6.0864906}
+    roll: 0
+  - position: {x: 0.018594027, y: -18.561783, z: -48.011414}
+    tangent: {x: 0, y: -0.9987011, z: -7.3917656}
+    roll: 0
