@@ -7,10 +7,11 @@ using TMPro; //textmeshpro 쓸 때
 public class HelpTalk : MonoBehaviour
 {
     
-    public Transform Player;    //플레이어의 위치 
-    public Transform startPos;  // 플레이어의 시작 위치
+    public Transform Player;    //플레이어의 위치
+    public GameObject startPos;
 
-    private int count;
+    public int count = 0;
+    private bool Showjump = false;
 
     Animator animator;
     TMP_Text tmp;
@@ -20,36 +21,39 @@ public class HelpTalk : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         tmp = GetComponent<TMP_Text>();
-        
-        count = 0;
 
-        animator.SetBool("isMove", true);//처음 시작 시 나오는 이동 문구 
+        ChangeTalk();
+        animator.SetTrigger("isMove");
+        
 
     }
 
     void Update()
     {
-        if (startPos.position != Player.transform.position) animator.SetBool("isMove", false);
-
-        Debug.DrawRay(Player.transform.position, Player.transform.forward * 2f, Color.yellow);
         
-        bool talkJump = Physics.Raycast(Player.transform.position, Player.transform.forward, 2f, LayerMask.GetMask("Ground"));
 
-        if (talkJump)
+        Debug.DrawRay(Player.transform.position + new Vector3(0,-1f,0), Player.transform.forward * 2f, Color.yellow);
+        
+        bool talkJump = Physics.Raycast(Player.transform.position + new Vector3(0, -1f, 0), Player.transform.forward, 2f, LayerMask.GetMask("Ground"));
+
+        if (talkJump && !Showjump)
         {
             count = 1;
             ChangeTalk();
-            animator.SetBool("isJump", true);
+            animator.SetTrigger("isJump");
+            Showjump = true;    //한번만 보여줄거지롱 ~ 
         }
     }
-
     
+    
+
     // 점프 false 만들고 발광하세요랑 빛이 부족합니다만 만들면 댐 ~ 
     void ChangeTalk()
     {
-        if (count == 0) tmp.text="화살표를 눌러 이동해보자";
+        if (count == 0) tmp.text= "←  →를 눌러 이동해보자";
         else if (count == 1) tmp.text= "Space로 점프해보자";
         else if (count == 2) tmp.text= "L 버튼으로 빛을 내보자";
-        
     }
+
+    
 }

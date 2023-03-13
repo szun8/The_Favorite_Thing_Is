@@ -5,13 +5,10 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     public GameObject player;
-    public float dist = 7f;
+    public float dist = 13f;
     public float height = 5f;
 
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()

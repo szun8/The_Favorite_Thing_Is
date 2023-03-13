@@ -9,7 +9,32 @@ ModelImporter:
   - first:
       74: -3133721326369511890
     second: moon|Sphere.002Action
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rock_M
+    second: {fileID: 2100000, guid: 89e95249459e143a490882b38347689f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black.001
+    second: {fileID: 2100000, guid: c0a18cee77e03420f8e3231be306a71c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: black.002
+    second: {fileID: 2100000, guid: a319edf64030f4ab89c159623b9eaf07, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: 0de07f937e2474895b1351d65f79987b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moon
+    second: {fileID: 2100000, guid: 329b4eac9265a4b96bf801b6cc776030, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
