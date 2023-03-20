@@ -4,11 +4,10 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-
-
 public class CavePlayerMove : MonoBehaviourPunCallbacks
 {
     NetworkManager networkManager;
+    ReverseGravity reverseGravity;
     WaitingWall wall;   //벽에 플레이어 collision 수를 넘기기 위해서 불러옴 
 
     MeshRenderer mesh;
@@ -44,8 +43,8 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
     public bool getBlue = false;
 
     
-    private Material defaultMaterial;
-    private Material lastMaterial;
+    private Material defaultMaterial; //원래 발광 머테리얼 
+    private Material lastMaterial; 
 
     
     /*
@@ -59,20 +58,23 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
         mesh = GetComponent<MeshRenderer>();
         rigid = GetComponent<Rigidbody>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        reverseGravity = GetComponent<ReverseGravity>();
         wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
 
         defaultMaterial = material[0];
         lastMaterial = defaultMaterial;
         
+
         if (PV.IsMine)
         {
             PV.RPC("StartLight", RpcTarget.AllBuffered);
             Camera.main.GetComponent<CameraMove>().player = gameObject;
+
             
         }
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         
@@ -83,17 +85,17 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
 
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-            Debug.DrawRay(transform.position, Vector2.down * 0.51f, Color.white);
+            Debug.DrawRay(transform.position, -transform.up * 0.51f, Color.blue);
 
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            isGround = Physics.Raycast(transform.position, Vector2.down, 0.51f, LayerMask.GetMask("Ground"));
-            isBridge = Physics.Raycast(transform.position, Vector2.down, 0.51f, LayerMask.GetMask("Bridge"));
+            isGround = Physics.Raycast(transform.position, -transform.up, 0.51f, LayerMask.GetMask("Ground"));
+            isBridge = Physics.Raycast(transform.position, -transform.up, 0.51f, LayerMask.GetMask("Bridge"));
 
-            isMirrorJump = Physics.Raycast(transform.position, Vector2.down, 0.51f, LayerMask.GetMask("MirrorJump"));
+            isMirrorJump = Physics.Raycast(transform.position, -transform.up, 0.51f, LayerMask.GetMask("MirrorJump"));
             isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem,1.1f, LayerMask.GetMask("Item"));
 
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
-            Debug.DrawRay(transform.position, transform.forward * 1f, Color.white);
+            Debug.DrawRay(transform.position, transform.forward * 1f, Color.red);
 
             if (Input.GetKeyDown("space")) //space로 아이템 상호작용할 때는 점프 불가능 
             {
@@ -104,9 +106,21 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
 
                 else
                 {
+                    //땅이거나 다리를 밟으면
                     if (isGround || isBridge)
                     {
-                        rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                        //1P일 경우 
+                        if(networkManager.p1_id == PV.ViewID)
+                        {
+                            Debug.Log("jump");
+                            rigid.AddForce(Vector2.down * JumpForce, ForceMode.Impulse);
+                        }
+
+                        else
+                        {
+                            rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                        }
+                            
                     }
 
                     else if (isMirrorJump)
@@ -118,7 +132,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                             rotSpeed = 11;
                             speed = 11;
                         }
-                        rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                        rigid.AddForce(transform.up * JumpForce, ForceMode.Impulse);
                     }
                 }
             }
@@ -154,12 +168,28 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
                 {
-                    transform.Rotate(0, 1, 0);
+                    //1P경우
+                    if (PV.ViewID == networkManager.p1_id)
+                    {
+                        transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 180f);
+                        Debug.Log("180");
+                        
+                    }
+
+                    //2P경우 
+                    else
+                    {
+                        transform.Rotate(0, 1, 0);
+                        Debug.Log("no 180");
+                    }
                 }
+                
 
                 transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
             }
             rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+
+            
         }
     }
 
@@ -316,4 +346,6 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             pLight2.intensity = 0;
         }
     }
+
+    
 }
