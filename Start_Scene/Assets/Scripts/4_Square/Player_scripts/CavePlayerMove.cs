@@ -47,10 +47,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
     private Material lastMaterial; 
 
     
-    /*
-    public AudioSource bgm;
-    public AudioClip jump;
-    AudioSource soundEffect;*/
+    
 
   
     void Awake()
@@ -71,6 +68,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             Camera.main.GetComponent<CameraMove>().player = gameObject;
 
             
+
         }
     }
 
@@ -158,6 +156,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
 
         }
     }
+
     void FixedUpdate()
     {
         if (PV.IsMine)
@@ -165,33 +164,28 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             //키 입력이 들어왔으면 ~
             if (dir != Vector3.zero)
             {
+
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
                 {
-                    //1P경우
-                    if (PV.ViewID == networkManager.p1_id)
-                    {
-                        transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, 180f);
-                        Debug.Log("180");
-                        
-                    }
 
-                    //2P경우 
-                    else
-                    {
-                        transform.Rotate(0, 1, 0);
-                        Debug.Log("no 180");
-                    }
+                    transform.Rotate(0, 1, 0);
+
                 }
-                
 
                 transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
             }
             rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
 
-            
         }
     }
+
+
+
+
+
+
+
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -228,17 +222,6 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             Destroy(item.collider.gameObject);
         }
     }
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "Red_item" && Input.GetKeyDown("g"))
-        {
-            getRed = !getRed;
-            if (PV.IsMine) Destroy(other.gameObject);
-        }
-        if (other.gameObject.name == "Green_item") getGreen = !getGreen;
-        if (other.gameObject.name == "Blue_item") getBlue = !getBlue;
-    }*/
     
     [PunRPC]
     void StartLight()
@@ -276,7 +259,6 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
         }
     }
     
-
 
     //Photon은 Color를 몰라 ,,즉 포톤은 칼라를 직렬화 하지 못해 Vector로 color를 변환하기  
     [PunRPC]

@@ -1,17 +1,16 @@
 using UnityEngine;
 using Photon.Pun;
 
-public class ReverseGravity : MonoBehaviourPun
+public class ReverseGravity : MonoBehaviourPunCallbacks
 {
     NetworkManager networkManager;
-
-
-    public Vector3 gravityDirection = Vector3.down;
     private const float GravityForce = 9.81f;
-    private const float GravityScale = 1.0f;
+    //private const float GravityScale = 1.0f;
     Rigidbody rigidbody;
     PhotonView PV;
-    public int player_ID; //1p의 뷰아이디 
+    public int P1_ID; //1p의 뷰아이디는 네트워크 매니저에서 받아오자
+
+    public bool isReversed = false;
 
    
 
@@ -21,39 +20,31 @@ public class ReverseGravity : MonoBehaviourPun
         PV = GetComponent<PhotonView>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
 
-        //1p의 뷰 아이디를 가져오자 RPC함수로 다른 놈들한테도 전달함 player_ID 
-        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+        if (PV.IsMine && PV.ViewID == 1001)
         {
-            PV.RPC("SetID", RpcTarget.AllBuffered);
-            
+            Debug.Log("i am 1P");
+            PV.RPC("Sync1pViewID", RpcTarget.AllBuffered, PV.ViewID);
+            transform.eulerAngles = new Vector3(0, 0, -180f);
+            isReversed = true;
         }
+        
+
+       
+
+    }
+    private void Update()
+    {
+        if (PV.ViewID == P1_ID) //1p는 중력위로 2p는 중력 아래로
+            rigidbody.AddForce(Vector3.up * GravityForce * 2f);
         
     }
 
-    
-
-    private void FixedUpdate()
-    {
-        PV.RPC("SetGravity", RpcTarget.AllBuffered);
-    }
-
+    //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게
     [PunRPC]
-    void SetGravity() //1p는 중력위로 2p는 중력 아래로 
+    void Sync1pViewID(int viewID)
     {
-        if (PV.ViewID == player_ID) {
-            rigidbody.AddForce(gravityDirection * GravityForce * 2);
-            
-        }
-    }
-
-    [PunRPC]
-    void SetID() // 1p의 뷰 아이디를 동기화 
-    {
-        player_ID = PV.ViewID;
-        networkManager.p1_id = player_ID;
-        gravityDirection = Vector3.up;
-        transform.eulerAngles = new Vector3(0, 0, -180f);
-
+        networkManager.p1_id = viewID;
+        P1_ID = networkManager.p1_id;
     }
 
 }

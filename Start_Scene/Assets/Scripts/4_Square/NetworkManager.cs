@@ -7,10 +7,11 @@ using Photon.Realtime;
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
+    
     private Transform[] spawnPoints;
     public int playerLightCount = 0;
 
-    public int p1_id = 0; //ReverseGravity에서 1P의 뷰 아이디를 넘겨준다. 
+    public int p1_id = 0; 
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         CreatePlayer();
+
     }
 
     void CreatePlayer()
@@ -36,8 +38,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
         GameObject player = PhotonNetwork.Instantiate("CavePlayer", pos, rot, 0);
 
-        
-
     }
 
+    
 }
