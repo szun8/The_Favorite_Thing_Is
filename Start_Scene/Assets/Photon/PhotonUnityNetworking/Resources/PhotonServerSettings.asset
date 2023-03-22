@@ -63,6 +63,14 @@ MonoBehaviour:
   - SendisOpenTrue
   - SyncIsPressed
   - SyncSwitchPosition
+  - ReverseGravity
+  - SyncGravity
+  - ApplyGravity
+  - SetGravity
+  - SetID
+  - Sync1pViewID
+  - DownGravity
+  - UpGravity
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
