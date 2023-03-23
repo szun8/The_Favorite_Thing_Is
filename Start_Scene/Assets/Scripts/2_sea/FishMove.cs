@@ -34,15 +34,14 @@ public class FishMove : MonoBehaviour
 
         fishName = gameObject.name;
         fishNum = int.Parse(fishName.Substring(fishName.Length - 1)); // 물고기 번호 추출
-        fishType = fishName.Substring(0, 6);
+        fishType = fishName.Substring(0, 5);
         Debug.Log(fishType);
 
-        if (fishType.Equals("enemyA"))
+        if (fishType.Equals("enemy"))
             infoFish = GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().FishA[fishNum];
 
-        else
-            infoFish = GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().FishB[fishNum];
-        Debug.Log(fishName + " : " + fishType.Equals("enemyA"));   // 추출한 정보가 맞는지 확인
+
+        Debug.Log(fishName + " : " + fishType.Equals("enemy"));   // 추출한 정보가 맞는지 확인
 
         if (transform.rotation == Quaternion.Euler(0, 90, 0))
         {

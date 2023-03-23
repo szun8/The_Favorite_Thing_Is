@@ -19,17 +19,20 @@ public class S_PlayerMove : MonoBehaviour
     GameObject playerLight, playerPointLight;  // 플레이어 따라다니는 spotLight & pointLight
     Rigidbody rigid;
 
+    bool isJelly = false, isBooster = false;
+    float dashSpeed;
+
     [SerializeField] private string jumpSound;
     [SerializeField] private GameObject player;
 
     void Awake()
     {
         sideView = new Vector3(0f, 5f, 15f);
-        sideAngle = new Vector3(5f, 180f, 0f);
+        sideAngle = new Vector3(4f, -180f, 0f);
         backView = new Vector3(12f, 5f, 0f);
         backAngle = new Vector3(20f, -90f, 0f);
-        Camera.main.transform.eulerAngles = backAngle;
-        camSpot = backView;
+        Camera.main.transform.eulerAngles = sideAngle;
+        camSpot = sideView;
 
         rigid = GetComponent<Rigidbody>();
 
@@ -47,12 +50,34 @@ public class S_PlayerMove : MonoBehaviour
         if (isDied) return;
         Camera.main.transform.position = transform.position + camSpot;
 
-        dir.x = Input.GetAxisRaw("Vertical")*-1; 
-        dir.z = Input.GetAxisRaw("Horizontal");
+        dir.x = Input.GetAxisRaw("Horizontal")*-1;
+        dir.z =  Input.GetAxisRaw("Vertical")*-1;
         dir.Normalize(); // 대각선 빨라지는거 방지위한 정규화
-
-        if (!isDied && Input.GetKeyDown("l"))
-            LightHandle();
+        if (Input.GetKeyUp("l"))
+        {
+            Debug.Log("KeyUp");
+            speed = 8f;
+            dashSpeed = 8f;
+            isBooster = false;
+            isJelly = false;
+        }
+        if (!isDied && Input.GetKey("l"))
+        {
+            //LightHandle();
+            //if ()
+            if (isJelly)
+            {
+                isJelly = false;
+                speed = dashSpeed;
+                isBooster = true;
+                StartCoroutine(Dash());
+            }
+            else if (isBooster)
+            {   // 그냥 else로 뺄수있을까?
+                StartCoroutine(Dash());
+            }
+        }
+        
     }
 
     private void FixedUpdate()
@@ -115,5 +140,42 @@ public class S_PlayerMove : MonoBehaviour
     {
         isDied = false;
         UIManager.instnace.PlayerRelive();
+    }
+
+    void SpeedUP()
+    {
+        dashSpeed = speed + 3f; // default : 3 -> total 6
+                                // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
+        Debug.Log("DashSpeed : " + dashSpeed);
+    }
+
+    IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        float duration = 3f;
+        float startSpeed = dashSpeed;
+
+        while (speed > 3f)
+        {
+            float t = (Time.time - startTime) / duration; // 보간 시간 계산
+            speed = Mathf.Lerp(startSpeed, 8f, t);
+            if (isJelly)
+            {
+                yield break; // 새해파리를 먹었으면 코루틴을 중단합니다.
+            }
+            yield return null;
+        }
+        isBooster = false;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Item"))
+        {
+            isJelly = true; // 속도 증가 on
+            Debug.Log("isJelly : " + isJelly);
+            SpeedUP();
+            // 해파리 destroy() 진행 -> 뭐 따로 정적변수로 둬서 처리하면 될듯
+        }
     }
 }
