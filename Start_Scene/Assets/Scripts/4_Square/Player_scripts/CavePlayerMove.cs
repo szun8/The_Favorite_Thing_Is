@@ -77,7 +77,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
     {
         
         if (PV.IsMine)
-        {
+        { 
             dir.x = Input.GetAxisRaw("Horizontal");
             dir.z = Input.GetAxisRaw("Vertical");
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
@@ -164,27 +164,20 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
             //키 입력이 들어왔으면 ~
             if (dir != Vector3.zero)
             {
-
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
                 {
-
                     transform.Rotate(0, 1, 0);
-
                 }
-
-                transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
+                if (PV.ViewID != networkManager.p1_id)
+                    transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime *rotSpeed);
+                else
+                    transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);
             }
             rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
 
         }
     }
-
-
-
-
-
-
 
 
     private void OnCollisionEnter(Collision collision)

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    private Vector3 dir = Vector3.zero;// 캐릭터가 나아갈, 바라볼 방향 
-    public int JumpForce; //점프력
-    public float rotSpeed; //방향키 반대이동시 몸의 회전 속도 
-    public float speed; //캐릭터 속도
+    private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
+    public Vector3 startPos;                // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
+    public int JumpForce;                   // 점프력
+    public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
+    public float speed;                     // 캐릭터 속도
 
     private bool lightOn = false;
     private bool badak = false;
@@ -15,13 +16,12 @@ public class PlayerMove : MonoBehaviour
     // 플레이어 따라다니는 전등
     public Light pLight1;  //point light
     public Light pLight2;  //spot light
+    public GameObject maskLight;
 
-
-    
-    MeshRenderer mesh;
-    Material mat;
+    //MeshRenderer mesh;
+    //Material mat;
     Rigidbody rigid;
-
+    Animator animator;
     
     void Awake()
     {
@@ -30,11 +30,14 @@ public class PlayerMove : MonoBehaviour
         pLight1.intensity = 0;
         pLight2.intensity = 0;
 
-        mesh = GetComponent<MeshRenderer>();
-        mat = mesh.material;
+        //mesh = GetComponentInChildren<MeshRenderer>();
+        //mat = mesh.material;
+        // 재인이가 준 에셋 애니메이션 테스트를 위해 위 주석 처리함
 
+        animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
-         
+
+        maskLight.SetActive(false);
     }
 
    
@@ -54,16 +57,19 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            if (badak != false)
+            //if (badak != false)
             {
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                
+                animator.Play("jump", -1, 0.3f);   // 1. 어떤 애니매이션 2. layer 3. 얼마나 시간를 두고 해당 애니메이션을 플레이할 것인가
+                
             }
         }
 
         
         if (Input.GetKeyDown("l"))
         {
-            LightHandle(); 
+            LightHandle();
         }
     }
 
@@ -80,11 +86,14 @@ public class PlayerMove : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
         }
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+        
     }
 
     void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
     {
         lightOn = !lightOn;
+        maskLight.SetActive(lightOn);
+        Debug.Log("maskLight : " + lightOn);
         //playerLight.SetActive(lightOn);
         if (lightOn) ResetLight();
 
@@ -125,7 +134,6 @@ public class PlayerMove : MonoBehaviour
         }
 
         
-
     }
 
     private void OnCollisionExit(Collision collision)

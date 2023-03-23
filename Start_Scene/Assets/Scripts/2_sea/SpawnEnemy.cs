@@ -12,9 +12,9 @@ public class InfoFish
 
 enum TypeFish
 {
-    enemyA,
-    enemyB,
-    boss
+    enemy,
+    boss,
+    jelly
 }
 
 public class SpawnEnemy : MonoBehaviour
@@ -25,7 +25,7 @@ public class SpawnEnemy : MonoBehaviour
     Quaternion[] rotation;
 
     public InfoFish[] FishA;    // 5마리
-    public InfoFish[] FishB;
+    public InfoFish[] Jelly;
     public InfoFish Boss;
 
     private void Awake()
@@ -48,10 +48,10 @@ public class SpawnEnemy : MonoBehaviour
     void InstantiateFish()
     {
         for (int i = 0; i < FishA.Length; i++)
-            InstantiateFish(FishA[i], i, TypeFish.enemyA);
+            InstantiateFish(FishA[i], i, TypeFish.enemy);
 
-        for (int i = 0; i < FishB.Length; i++)
-            InstantiateFish(FishB[i], i, TypeFish.enemyB);
+        for (int i = 0; i < Jelly.Length; i++)
+            InstantiateFish(Jelly[i], i, TypeFish.jelly);
 
         InstantiateFish(Boss, 0, TypeFish.boss);
     }
@@ -62,27 +62,21 @@ public class SpawnEnemy : MonoBehaviour
         _gameObject.name = _type + "_" + i;
         switch (_type)
         {
-            case TypeFish.enemyA:
-                _gameObject.speed = Random.Range(3f, 10f);
-                _gameObject.spawnSpot = new Vector3(Random.Range(-30f, 15f), Random.Range(-20f, -8f), Random.Range(-5, 25));
-                break;
-            case TypeFish.enemyB:   // 일정한 것이 좋을까?
-                _gameObject.speed = Random.Range(7f, 14f);
-                if (i % 2 == 0)
-                    _gameObject.spawnSpot = new Vector3(Random.Range(-85f, -35f), Random.Range(-20f, -8f), Random.Range(20f, 28f));
-                else
-                    _gameObject.spawnSpot = new Vector3(Random.Range(-85f, -35f), Random.Range(-20f, -8f), Random.Range(0f, 8f));
-                break;
+            //case TypeFish.enemy:
+            //    _gameObject.speed = Random.Range(3f, 10f);
+            //    _gameObject.spawnSpot = new Vector3(Random.Range(-30f, 15f), Random.Range(-20f, -8f), Random.Range(-5, 25));
+            //    break;
+            
             case TypeFish.boss:
                 _gameObject.speed = 20f;
                 _gameObject.spawnSpot = new Vector3(-75f, -5f, 10f);
                 break;
-        }
-        if (i % 2 == 0)
-            rotation[(int)_type] = Quaternion.Euler(0, -90, 0);
-        else
-            rotation[(int)_type] = Quaternion.Euler(0, 90, 0);
 
+            case TypeFish.jelly:
+                _gameObject.speed = 0f;
+                _gameObject.spawnSpot = new Vector3(Random.Range(-30f, 15f), Random.Range(-20f, -8f), Random.Range(-5, 25));
+                break;
+        }
 
         clone = Instantiate(enemy[(int)_type], _gameObject.spawnSpot, rotation[(int)_type]);
         clone.name = _gameObject.name;
