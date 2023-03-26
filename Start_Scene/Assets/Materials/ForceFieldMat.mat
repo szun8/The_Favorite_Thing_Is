@@ -54,14 +54,14 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Fill: 0.005
-    - _Fresnel_Power: 5.87
+    - _Fill: 0
+    - _Fresnel_Power: 17
     - _Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scroll_Speed: 0.05
     m_Colors:
-    - _Emission: {r: 3.4415908, g: 3.333478, b: 1.3153723, a: 0}
+    - _Emission: {r: 1367.1202, g: 1302.701, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &9099517858499090836
 MonoBehaviour:

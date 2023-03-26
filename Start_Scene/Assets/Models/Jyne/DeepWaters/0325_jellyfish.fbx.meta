@@ -3,7 +3,17 @@ guid: 78411414ef9981a4babdad7d778ed5f5
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jelly_body_M
+    second: {fileID: 2100000, guid: 090becea825cb493f9815abadf5ae0a9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jelly_hat_M
+    second: {fileID: 2100000, guid: 7c346ee2b1fae4100990b8598be11829, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
