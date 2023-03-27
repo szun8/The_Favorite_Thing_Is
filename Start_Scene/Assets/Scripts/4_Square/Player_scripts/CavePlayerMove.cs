@@ -108,7 +108,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                     if (isGround || isBridge)
                     {
                         //1P일 경우 
-                        if(networkManager.p1_id == PV.ViewID)
+                        if (networkManager.p1_id == PV.ViewID)
                         {
                             Debug.Log("jump");
                             rigid.AddForce(Vector2.down * JumpForce, ForceMode.Impulse);
@@ -118,7 +118,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                         {
                             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
                         }
-                            
+
                     }
 
                     else if (isMirrorJump)
@@ -132,6 +132,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                         }
                         rigid.AddForce(transform.up * JumpForce, ForceMode.Impulse);
                     }
+                    else rigid.AddForce(Vector3.down * 2f);
                 }
             }
 

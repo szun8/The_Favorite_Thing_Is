@@ -20,11 +20,11 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
 
-        if (PV.IsMine && PV.ViewID == 1001)
+        if (PV.IsMine && PV.ViewID == 2001) //귀찮으면 2001로 바꿔서 테스트 해보자 + 대신 스폰 포인트 1, 2 바꿔야함 
         {
             Debug.Log("i am 1P");
             PV.RPC("Sync1pViewID", RpcTarget.AllBuffered, PV.ViewID);
-            transform.eulerAngles = new Vector3(0, 0, -180f);
+            transform.rotation= Quaternion.Euler(0, 0, -179f);
             isReversed = true;
         }
         
@@ -36,7 +36,11 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     {
         if (PV.ViewID == P1_ID) //1p는 중력위로 2p는 중력 아래로
             rigidbody.AddForce(Vector3.up * GravityForce * 2f);
-        
+
+        else
+        {
+            rigidbody.AddForce(Vector3.down * 1.3f);
+        }
     }
 
     //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게

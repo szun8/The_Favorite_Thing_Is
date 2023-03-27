@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingStone2 : MonoBehaviour
+public class MovingStone_Beside : MonoBehaviour
 {
     public float speed = 2.5f;
     Vector3 pos;
@@ -21,7 +21,7 @@ public class MovingStone2 : MonoBehaviour
         }
         else
         {
-            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, 55), speed * Time.deltaTime);
+            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, 57), speed * Time.deltaTime);
         }
         // Update position of the object
         transform.localPosition = pos;
@@ -31,7 +31,7 @@ public class MovingStone2 : MonoBehaviour
         {
             far = false;
         }
-        else if (transform.localPosition.z == 55 && !far)
+        else if (transform.localPosition.z == 57 && !far)
         {
             far = true;
         }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
-    public Vector3 startPos;                // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
+    public GameObject startPos;                // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
     public int JumpForce;                   // 점프력
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
@@ -13,31 +13,34 @@ public class PlayerMove : MonoBehaviour
     private bool lightOn = false;
     private bool badak = false;
 
-    // 플레이어 따라다니는 전등
-    public Light pLight1;  //point light
-    public Light pLight2;  //spot light
-    public GameObject maskLight;
+    private bool isStone = false;
 
-    //MeshRenderer mesh;
-    //Material mat;
+    // 플레이어 따라다니는 전등
+    
+    public Light spotLight;  //spot light
+    public GameObject maskLight; // 발광 구 
+
+    MeshRenderer mesh;
+    Material[] materials; //현재 eyes, body material 
     Rigidbody rigid;
     Animator animator;
     
     void Awake()
     {
-        
+        mesh = GetComponent<MeshRenderer>();
         Camera.main.GetComponent<CameraMove>().player = gameObject;
-        pLight1.intensity = 0;
-        pLight2.intensity = 0;
+        spotLight.intensity = 0;
+       
 
-        //mesh = GetComponentInChildren<MeshRenderer>();
-        //mat = mesh.material;
+        materials = mesh.sharedMaterials;
         // 재인이가 준 에셋 애니메이션 테스트를 위해 위 주석 처리함
 
         animator = GetComponent<Animator>();
         rigid = GetComponent<Rigidbody>();
 
         maskLight.SetActive(false);
+        //materials[1].EnableKeyword("_EMISSION"); //emission 속성 활성화
+        //materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f)); //디폴트 색상
     }
 
    
@@ -57,7 +60,7 @@ public class PlayerMove : MonoBehaviour
 
         if (Input.GetKeyDown("space"))
         {
-            //if (badak != false)
+            if (badak != false || isStone)
             {
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
                 
@@ -66,9 +69,16 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        
-        if (Input.GetKeyDown("l"))
+        if (Input.GetKey("l"))
         {
+            lightOn = true;
+            LightHandle();
+        }
+
+
+        if (Input.GetKeyUp("l"))
+        {
+            lightOn = false;
             LightHandle();
         }
     }
@@ -91,63 +101,46 @@ public class PlayerMove : MonoBehaviour
 
     void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
     {
-        lightOn = !lightOn;
         maskLight.SetActive(lightOn);
-        Debug.Log("maskLight : " + lightOn);
-        //playerLight.SetActive(lightOn);
-        if (lightOn) ResetLight();
-
-        else
-        {
-            pLight1.intensity = 0;
-            pLight1.range = 2.5f;
-            pLight2.intensity = 0;
-        }
+        ResetLight();
+     
     }
 
     void ResetLight()   //발광 디폴트로 바꾸기 
     {
         if (lightOn)
         {
-            pLight1.intensity = 2;
-            pLight1.range = 2.5f;
-            pLight2.intensity = 5;
+            //emission color의 밝기 1.5배 증가 시키기 
+            materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f)*1.5f);
+            spotLight.intensity = 50f;
+        }
+
+        else
+        {
+            materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f));
+            spotLight.intensity = 0;
         }
         
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //불켜져있고, 돌이나 벽에 닿았을 때 -> 첫 씬에서만 사용 
-        if (lightOn)
-        {
-            if (collision.gameObject.CompareTag("Stone") || collision.gameObject.CompareTag("Wall"))
-            {
-                CancelInvoke(nameof(ResetLight));
-                if (pLight1.intensity <= 13 && pLight2.intensity <= 16)
-                {
-                    pLight1.intensity++;
-                    pLight1.range += 0.05f;
-                    pLight2.intensity++;
-                }
-            }
-        }
-
+        if (collision.gameObject.CompareTag("Ground")) isStone = true;
+        
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) isStone = false;
         
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        //돌에 박고 떨어지면 2초후 빛 세기 돌아옴 
-        if (collision.gameObject.CompareTag("Stone"))
+        if (other.gameObject.CompareTag("Dead"))
         {
-            Invoke(nameof(ResetLight), 2f);
-        }
-
-        //벽에 박고 떨어지면 4초후 빛 세기 돌아옴 
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            Invoke(nameof(ResetLight), 3.5f);
+            transform.position = startPos.transform.position;
         }
     }
+    
+    
 }

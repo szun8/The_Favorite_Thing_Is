@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingStone : MonoBehaviour
+public class MovingStone_TopDown : MonoBehaviour
 {
 
     public float speed = 2.5f;
@@ -20,8 +20,6 @@ public class MovingStone : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, 6, transform.position.z), speed * Time.deltaTime);
             Moving();
         }
-
-
     }
 
     bool Moving()
