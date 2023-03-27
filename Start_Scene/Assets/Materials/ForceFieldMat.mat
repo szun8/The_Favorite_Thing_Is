@@ -61,7 +61,7 @@ Material:
     - _QueueOffset: 0
     - _Scroll_Speed: 0.05
     m_Colors:
-    - _Emission: {r: 1367.1202, g: 1302.701, b: 0, a: 0}
+    - _Emission: {r: 95.87451, g: 91.356865, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &9099517858499090836
 MonoBehaviour:

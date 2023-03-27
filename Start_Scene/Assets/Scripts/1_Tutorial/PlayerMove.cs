@@ -11,7 +11,7 @@ public class PlayerMove : MonoBehaviour
     public float speed;                     // 캐릭터 속도
 
     private bool lightOn = false;
-    private bool badak = false;
+    public static bool badak = false;
 
     private bool isStone = false;
 
@@ -20,14 +20,14 @@ public class PlayerMove : MonoBehaviour
     public Light spotLight;  //spot light
     public GameObject maskLight; // 발광 구 
 
-    MeshRenderer mesh;
+    SkinnedMeshRenderer mesh;
     Material[] materials; //현재 eyes, body material 
     Rigidbody rigid;
     Animator animator;
     
     void Awake()
     {
-        mesh = GetComponent<MeshRenderer>();
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         Camera.main.GetComponent<CameraMove>().player = gameObject;
         spotLight.intensity = 0;
        
@@ -64,7 +64,7 @@ public class PlayerMove : MonoBehaviour
             {
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
                 
-                animator.Play("jump", -1, 0.3f);   // 1. 어떤 애니매이션 2. layer 3. 얼마나 시간를 두고 해당 애니메이션을 플레이할 것인가
+                animator.Play("jump");   // 1. 어떤 애니매이션 2. layer 3. 얼마나 시간를 두고 해당 애니메이션을 플레이할 것인가
                 
             }
         }
@@ -88,6 +88,8 @@ public class PlayerMove : MonoBehaviour
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
         {
+            Move();
+
             //바라보는 방향 부호 != 가고자할 방향 부호
             if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) )//|| Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
             {
@@ -95,8 +97,11 @@ public class PlayerMove : MonoBehaviour
             }
             transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
         }
+        else
+        {
+            animator.SetBool("isWalk", false);
+        }
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
-        
     }
 
     void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
@@ -111,7 +116,7 @@ public class PlayerMove : MonoBehaviour
         if (lightOn)
         {
             //emission color의 밝기 1.5배 증가 시키기 
-            materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f)*1.5f);
+            materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f)*1.8f);
             spotLight.intensity = 50f;
         }
 
@@ -121,6 +126,11 @@ public class PlayerMove : MonoBehaviour
             spotLight.intensity = 0;
         }
         
+    }
+
+    void Move()
+    {
+        animator.SetBool("isWalk",true);
     }
 
     private void OnCollisionEnter(Collision collision)

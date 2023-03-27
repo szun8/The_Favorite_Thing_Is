@@ -6,7 +6,17 @@ ModelImporter:
   - first:
       74: 817362653064943742
     second: char|charAction
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 467724a5bcf3d4a3d9c630f11dba3fdb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: eb457e505d9ba4bdc8ce6863dea78eee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
