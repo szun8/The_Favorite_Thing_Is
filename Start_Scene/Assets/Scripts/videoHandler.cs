@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Video;
+
+public class videoHandler : MonoBehaviour
+{
+    [SerializeField] VideoClip[] clip;
+    VideoPlayer videoPlayer;
+
+    public bool isChanged, isStop;
+
+    #region Singleton
+    static public videoHandler instance;
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+            Destroy(gameObject);
+    }
+    #endregion Singleton
+
+    private void Start()
+    {
+        videoPlayer = GetComponent<VideoPlayer>();
+        videoPlayer.loopPointReached += CheckOver;
+    }
+    private void Update()
+    {
+        if(videoPlayer.targetCamera == null)
+        {
+            videoPlayer.targetCamera = FindObjectOfType<Camera>();
+        }
+       
+            
+    }
+
+    public void SetVideo(int SceneNum)
+    {
+        Debug.Log("clipSet");
+        videoPlayer.clip = clip[SceneNum];
+        videoPlayer.Play();
+        isStop = false;
+    }
+    void CheckOver(VideoPlayer vp)
+    {   // 영상 종료 후 실행기능 정의
+        videoPlayer.Stop();
+        Debug.Log("isStop : " + isStop);
+        isStop = true;
+        StartCoroutine(Fade());
+    }
+
+    public IEnumerator Fade()
+    {
+        StartCoroutine(FadeOut());
+        yield return new WaitUntil(() => isChanged);
+        isChanged = false;
+        yield return null;
+    }
+
+    public IEnumerator FadeOut()
+    {
+        
+        while (videoPlayer.targetCameraAlpha > 0.01f)
+        {
+            Debug.Log("333");
+            videoPlayer.targetCameraAlpha -= 0.025f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        isChanged = true;
+    }
+}

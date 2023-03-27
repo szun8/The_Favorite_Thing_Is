@@ -18,7 +18,17 @@ ModelImporter:
   - first:
       74: 885944232402757753
     second: Armature|Action
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: e248862a68aa447a88bd8b2424eecb3d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: 46ef6f6a4d3274111a0679bd316885a1, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

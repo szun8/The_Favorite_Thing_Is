@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
-    public GameObject videoPlayer;
-
-    public bool tutorial = false;   // true -> 심해씬으로 전환
-    public bool sea = false;        // true -> 광장씬으로 전환
-    public bool square = false;     // true -> 프리즘탑씬으로 전환
+    public int SceneNum = 0;
+    public bool[] Scene;
+    // 0. ture -> 심해씬으로 전환
+    // 1. true-> 광장씬으로 전환
+    // 2. true -> 프리즘탑씬으로 전환
 
     #region Singleton
     static public ScenesManager instance;
@@ -24,21 +24,27 @@ public class ScenesManager : MonoBehaviour
             Destroy(gameObject);
     }
     #endregion Singleton
-
-    // Update is called once per frame
     void Update()
     {
-        if (tutorial)   // playerMove 스크립트에서 player.pos가 특정 위치 내부일 경우 true 작동
+        if (Scene[SceneNum] && Scene.Length >= SceneNum + 1)   // playerMove 스크립트에서 player.pos가 특정 위치 내부일 경우 true 작동
         {
-            videoPlayer.SetActive(true);
-            Invoke("SceneOn", 2f);  // fade in out 줄거..
-            
+            Scene[SceneNum] = false;
+            UIManager.instnace.stopOut = false;
+            Invoke("SceneLoad", 2f);
         }
-        else if (sea) SceneManager.LoadSceneAsync("4_Square");
+        //else if (sea) SceneManager.LoadSceneAsync("4_Square");
     }
 
-    void SceneOn()
+    void SceneLoad()
     {
-        SceneManager.LoadScene("2_sea");
+        SceneManager.LoadSceneAsync(SceneNum + 1);
+        SceneNum++;
+        Invoke("PlayVideo", 1f);
     }
+
+    void PlayVideo()
+    {
+        videoHandler.instance.SetVideo(SceneNum);
+    }
+    
 }

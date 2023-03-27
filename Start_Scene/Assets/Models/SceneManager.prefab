@@ -44,8 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12ad3e2edea7e4ac696826f41f905d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  videoPlayer: {fileID: 8956855066542040174, guid: c4f9a395260f84a1684a6acf0275c97c,
-    type: 3}
-  tutorial: 0
-  sea: 0
-  square: 0
+  Scene: 000000
