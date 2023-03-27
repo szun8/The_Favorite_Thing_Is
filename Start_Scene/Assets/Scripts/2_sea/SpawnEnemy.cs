@@ -96,12 +96,12 @@ public class SpawnEnemy : MonoBehaviour
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
         float range_X = rangeCollider.bounds.size.x;    // 세로
         float range_Y = rangeCollider.bounds.size.y;    // 높이
-        float range_Z = rangeCollider.bounds.size.z;    // 가로
+        //float range_Z = rangeCollider.bounds.size.z;    // 가로
 
         range_X = Random.Range((range_X / 2) * -1, range_X / 2);
         range_Y = Random.Range(5f , range_Y-5f);
-        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPos = new Vector3(range_X, range_Y, range_Z);
+        //range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+        Vector3 RandomPos = new Vector3(range_X, range_Y, 0f);
 
         Vector3 respawnPos = originPos + RandomPos;
         return respawnPos;

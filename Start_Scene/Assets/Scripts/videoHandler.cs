@@ -67,7 +67,7 @@ public class videoHandler : MonoBehaviour
         
         while (videoPlayer.targetCameraAlpha > 0.01f)
         {
-            Debug.Log("333");
+            //Debug.Log("333");
             videoPlayer.targetCameraAlpha -= 0.025f;
             yield return new WaitForSeconds(0.1f);
         }

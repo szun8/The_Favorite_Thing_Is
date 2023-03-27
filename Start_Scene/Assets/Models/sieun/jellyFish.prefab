@@ -167,6 +167,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4060e6835bf854f72be9ee50469294bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skinMat:
+  - {fileID: 0}
+  - {fileID: 0}
+  animTime: 1
+  stopIn: 1
+  stopOut: 1
 --- !u!1 &8472385482903006996
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,6 +184,7 @@ GameObject:
   - component: {fileID: 8395616523935268991}
   - component: {fileID: 5834632912467459778}
   - component: {fileID: 5834632912467459779}
+  - component: {fileID: 5369774978366834951}
   m_Layer: 11
   m_Name: jelly_hat
   m_TagString: Untagged
@@ -267,3 +274,15 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2461611315403393313, guid: 79a181155034f3e498f8fc66b1af923d, type: 3}
+--- !u!114 &5369774978366834951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8472385482903006996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60308292014b4c759740e04b3268215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

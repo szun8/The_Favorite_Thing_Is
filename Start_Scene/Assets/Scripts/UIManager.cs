@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour
     public bool stopOut = true;
 
     // 흰색->투명
-    void PlayFadeIn()
+    public void PlayFadeIn()
     {
         // 경과 시간 계산.  
         // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
@@ -110,7 +110,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 투명->흰색
-    void PlayFadeOut()
+    public void PlayFadeOut()
     {
         // 경과 시간 계산.  
         // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
