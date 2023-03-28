@@ -35,8 +35,6 @@ public class videoHandler : MonoBehaviour
         {
             videoPlayer.targetCamera = FindObjectOfType<Camera>();
         }
-       
-            
     }
 
     public void SetVideo(int SceneNum)
@@ -48,7 +46,7 @@ public class videoHandler : MonoBehaviour
     }
     void CheckOver(VideoPlayer vp)
     {   // 영상 종료 후 실행기능 정의
-        videoPlayer.Stop();
+        //videoPlayer.Stop();
         Debug.Log("isStop : " + isStop);
         isStop = true;
         StartCoroutine(Fade());
@@ -64,11 +62,10 @@ public class videoHandler : MonoBehaviour
 
     public IEnumerator FadeOut()
     {
-        
         while (videoPlayer.targetCameraAlpha > 0.01f)
         {
             //Debug.Log("333");
-            videoPlayer.targetCameraAlpha -= 0.025f;
+            videoPlayer.targetCameraAlpha -= 0.05f;
             yield return new WaitForSeconds(0.1f);
         }
         isChanged = true;

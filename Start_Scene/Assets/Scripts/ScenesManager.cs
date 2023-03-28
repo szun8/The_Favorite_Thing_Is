@@ -39,7 +39,8 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(SceneNum + 1);
         SceneNum++;
-        Invoke("PlayVideo", 1f);
+        PlayVideo();
+        //Invoke("PlayVideo", 1f);
     }
 
     void PlayVideo()

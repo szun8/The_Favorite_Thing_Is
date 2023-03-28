@@ -82,7 +82,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clip:
   - {fileID: 32900000, guid: a2377523aaecc47069d6e4162eb9d8dc, type: 3}
-  - {fileID: 32900000, guid: eb93ba603479a4ae78c5bbc1ac6e653f, type: 3}
+  - {fileID: 32900000, guid: a2377523aaecc47069d6e4162eb9d8dc, type: 3}
   - {fileID: 32900000, guid: a2377523aaecc47069d6e4162eb9d8dc, type: 3}
   isChanged: 0
   isStop: 0
