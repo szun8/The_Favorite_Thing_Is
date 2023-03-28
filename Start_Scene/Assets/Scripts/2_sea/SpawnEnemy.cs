@@ -29,6 +29,7 @@ public class SpawnEnemy : MonoBehaviour
     public InfoFish Boss;
 
     public GameObject rangeJelly;  // 해파리가 랜덤 소환될 구역 오브젝트
+    public Transform bossSpawn;
     BoxCollider rangeCollider;
 
     private void Awake()
@@ -72,8 +73,8 @@ public class SpawnEnemy : MonoBehaviour
             //    break;
             
             case TypeFish.boss:
-                _gameObject.speed = 20f;
-                _gameObject.spawnSpot = new Vector3(160f, 40f, 0f);
+                _gameObject.speed = 80f;
+                _gameObject.spawnSpot = bossSpawn.position;
                 break;
 
             case TypeFish.jelly:

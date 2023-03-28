@@ -6,7 +6,7 @@ public class FractureObject : MonoBehaviour
 {
     public GameObject originalObject;
     public GameObject fracturedObject;
-    public GameObject explosionVFX;
+    //public GameObject explosionVFX;
     public float explosionMinForce = 5;
     public float explosionMaxForce = 100;
     public float explosionForceRadius = 10;
@@ -14,17 +14,7 @@ public class FractureObject : MonoBehaviour
 
     private GameObject fractObj;
 
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Enemy")) Explode();
-    //}
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space)) Explode();
-    }
-
-    void Explode()
+    public void Explode()
     {
         if(originalObject != null)
         {

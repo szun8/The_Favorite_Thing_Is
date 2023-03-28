@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2900331682000801400}
   m_Layer: 0
   m_Name: cave_door_cell.018
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2786458320560407941}
   m_Layer: 0
   m_Name: cave_door_cell.016
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 591402482934085742}
   m_Layer: 0
   m_Name: cave_door_cell
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 3801811020109995909}
   m_Layer: 0
   m_Name: cave_door_cell.009
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 3823079282595663757}
   m_Layer: 0
   m_Name: cave_door_cell.027
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 3666282309332303973}
   m_Layer: 0
   m_Name: cave_door_cell.010
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 3381327666634595319}
   m_Layer: 0
   m_Name: cave_door_cell.020
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 3491410562587518089}
   m_Layer: 0
   m_Name: cave_door_cell.003
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 3493337258941685303}
   m_Layer: 0
   m_Name: cave_door_cell.008
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -896,7 +896,7 @@ GameObject:
   - component: {fileID: 3495498850570157275}
   m_Layer: 0
   m_Name: cave_door_cell.036
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 3869136379223619145}
   m_Layer: 0
   m_Name: cave_door_cell.004
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 4013251513037169288}
   m_Layer: 0
   m_Name: cave_door_cell.021
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,7 +1190,7 @@ GameObject:
   - component: {fileID: 4086033685053638430}
   m_Layer: 0
   m_Name: cave_door_cell.017
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 3836622464119064142}
   m_Layer: 0
   m_Name: cave_door_cell.030
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 1217965681103265561}
   m_Layer: 0
   m_Name: cave_door_cell.013
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 2373656434367487549}
   m_Layer: 0
   m_Name: cave_door_cell.029
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1580,7 +1580,7 @@ GameObject:
   - component: {fileID: 6391529184294923262}
   m_Layer: 0
   m_Name: fractured_noRigid
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1641,10 +1641,10 @@ MonoBehaviour:
   fracturedObject: {fileID: 2333524615980651875, guid: 34fcbbc297dc940d2a07ee0c73ba76fa,
     type: 3}
   explosionVFX: {fileID: 0}
-  explosionMinForce: 5
-  explosionMaxForce: 100
-  explosionForceRadius: 10
-  fragScaleFactor: 1
+  explosionMinForce: 800
+  explosionMaxForce: 1000
+  explosionForceRadius: 1
+  fragScaleFactor: 4
 --- !u!1 &5719847590097064242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,7 +1659,7 @@ GameObject:
   - component: {fileID: 2074242638786359840}
   m_Layer: 0
   m_Name: cave_door_cell.022
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 2848509326821800544}
   m_Layer: 0
   m_Name: cave_door_cell.031
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1855,7 +1855,7 @@ GameObject:
   - component: {fileID: 3359237761801142343}
   m_Layer: 0
   m_Name: cave_door_cell.032
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1953,7 +1953,7 @@ GameObject:
   - component: {fileID: 3641478442756107794}
   m_Layer: 0
   m_Name: cave_door_cell.019
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2051,7 +2051,7 @@ GameObject:
   - component: {fileID: 3182415575695229664}
   m_Layer: 0
   m_Name: cave_door_cell.024
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2149,7 +2149,7 @@ GameObject:
   - component: {fileID: 3255727862895202591}
   m_Layer: 0
   m_Name: cave_door_cell.002
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2247,7 +2247,7 @@ GameObject:
   - component: {fileID: 1973961397711614530}
   m_Layer: 0
   m_Name: cave_door_cell.012
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2345,7 +2345,7 @@ GameObject:
   - component: {fileID: 4406802524345644694}
   m_Layer: 0
   m_Name: cave_door_cell.023
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2443,7 +2443,7 @@ GameObject:
   - component: {fileID: 278161862201451526}
   m_Layer: 0
   m_Name: cave_door_cell.034
-  m_TagString: Untagged
+  m_TagString: Stone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
