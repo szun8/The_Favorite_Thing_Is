@@ -5,7 +5,7 @@ using UnityEngine;
 public class JellyMove : MonoBehaviour
 {
     public SkinnedMeshRenderer[] skinMat;
-    public static bool isColl = false;
+    public bool isColl = false;
 
     void Awake()
     {

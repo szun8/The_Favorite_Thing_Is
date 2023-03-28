@@ -44,7 +44,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player_mesh"))
         {
             GetWater(other);
         }
@@ -52,7 +52,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.transform.CompareTag("Player"))
+        if (other.transform.CompareTag("Player_mesh"))
         {
             GetOutWater(other);
         }
@@ -62,7 +62,7 @@ public class Water : MonoBehaviour
     {
         SoundManager.instnace.PlaySE(sound_WaterIn);
         isWater = true;
-        _player.transform.GetComponent<Rigidbody>().drag = waterDrag;
+        _player.transform.GetComponentInParent<Rigidbody>().drag = waterDrag;
 
         RenderSettings.fogDensity = waterFogDensity;
     }
@@ -73,7 +73,7 @@ public class Water : MonoBehaviour
         {   // 물에 들어가 있을때만 빠져나올수 있기때문에
             SoundManager.instnace.PlaySE(sound_WaterOut);
             isWater = false;
-            _player.transform.GetComponent<Rigidbody>().drag = originDrag;
+            _player.transform.GetComponentInParent<Rigidbody>().drag = originDrag;
 
             RenderSettings.fogDensity = originFogDensity;
         }
