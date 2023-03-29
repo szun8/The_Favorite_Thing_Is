@@ -86,7 +86,7 @@ public class SwimMove : MonoBehaviour
             LightHandle();
             StopCoroutine(Dash());
             speed = 5f;
-            dashSpeed = 0f;
+            dashSpeed = speed;
             isBooster = false;
         }
     }
@@ -203,5 +203,20 @@ public class SwimMove : MonoBehaviour
             return false;
         }
         else return true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {   // 보스와 충돌시
+            SetDeadState();
+            //wall.SetActive(true);
+        }
+        if (collision.gameObject.CompareTag("Wall"))
+        {   // 물고기 떼와 충돌(변경예정_0328.ver)
+            isBoss = true;
+            //wall.SetActive(false);
+            GameObject.FindGameObjectWithTag("Enemy").SetActive(true);
+        }
     }
 }

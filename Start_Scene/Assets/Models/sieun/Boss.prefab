@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 1938417531262173786}
   - component: {fileID: 2406953614885384082}
   - component: {fileID: 2406953614933869465}
-  - component: {fileID: 2406953614933869466}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Enemy
@@ -149,20 +148,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &2406953614933869466
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273802731617114339}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.77
-  m_Height: 7
-  m_Direction: 0
-  m_Center: {x: -0.89, y: 0, z: 0}
 --- !u!1 &1775575640710712539
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4146449244702092171}
   - component: {fileID: 3058900866380168782}
+  - component: {fileID: 5841098574844967236}
   m_Layer: 0
   m_Name: down_jaw
   m_TagString: Untagged
@@ -351,6 +337,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00955664, y: 0.0019574277, z: -0.00502084}
     m_Extent: {x: 0.035656087, y: 0.04247145, z: 0.038892634}
   m_DirtyAABB: 0
+--- !u!64 &5841098574844967236
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5982713047068035023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 9220400574040992068, guid: d3c6e3614da986543ae82820fe1ca6b2, type: 3}
 --- !u!1 &6141328754230994493
 GameObject:
   m_ObjectHideFlags: 0
