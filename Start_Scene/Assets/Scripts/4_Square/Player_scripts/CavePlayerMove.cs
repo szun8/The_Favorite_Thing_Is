@@ -34,7 +34,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
     private bool isItem = false;
 
     //빛 관련 변수
-    private bool lightOn = false; //awake에서 false로 바꿔줄 거라서 true
+    public bool lightOn = false; //awake에서 false로 바꿔줄 거라서 true
     private bool colorLightOn = false; //RGB 발광 위한 bool
 
     //플레이어가 발광 가로등과 상호작용 해서 능력얻으면 true 
@@ -107,11 +107,11 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                     //땅이거나 다리를 밟으면
                     if (isGround || isBridge)
                     {
-                        //1P일 경우 
-                        if (networkManager.p1_id == PV.ViewID)
+                        //뒤집힌 중력인 경우 
+                        if (reverseGravity.isReversed)
                         {
                             Debug.Log("jump");
-                            rigid.AddForce(Vector2.down * JumpForce, ForceMode.Impulse);
+                            rigid.AddForce(Vector2.down * (JumpForce+3), ForceMode.Impulse);
                         }
 
                         else
@@ -132,7 +132,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                         }
                         rigid.AddForce(transform.up * JumpForce, ForceMode.Impulse);
                     }
-                    else rigid.AddForce(Vector3.down * 2f);
+                    //else rigid.AddForce(Vector3.down * 2f);
                 }
             }
 
@@ -170,7 +170,7 @@ public class CavePlayerMove : MonoBehaviourPunCallbacks
                 {
                     transform.Rotate(0, 1, 0);
                 }
-                if (PV.ViewID != networkManager.p1_id)
+                if (PV.ViewID != networkManager.p1_id && !reverseGravity.isReversed)
                     transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime *rotSpeed);
                 else
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);

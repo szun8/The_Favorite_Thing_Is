@@ -13,7 +13,7 @@ public class PlayerMove : MonoBehaviour
     private bool lightOn = false;
     public static bool badak = false;
 
-    private bool isStone = false;
+    private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함 
 
     // 플레이어 따라다니는 전등
     
@@ -117,7 +117,7 @@ public class PlayerMove : MonoBehaviour
         {
             //emission color의 밝기 1.5배 증가 시키기 
             materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f)*1.8f);
-            spotLight.intensity = 50f;
+            spotLight.intensity = 25f;
         }
 
         else

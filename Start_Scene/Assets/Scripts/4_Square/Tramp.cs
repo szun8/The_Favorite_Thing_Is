@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Tramp : MonoBehaviour
 {
+    
     public int jumpforce = 12;
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,8 @@ public class Tramp : MonoBehaviour
         if(collision.relativeVelocity.y <= 0f)
         {
             Rigidbody rigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            if(rigidbody != null)
+            bool LightOn = collision.gameObject.GetComponent<MultiPlayerMove>().lightOn;
+            if(rigidbody != null && LightOn)
             {
                 Vector3 velocity = rigidbody.velocity;
                 velocity.y = jumpforce;

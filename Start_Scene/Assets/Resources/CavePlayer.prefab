@@ -294,6 +294,7 @@ MonoBehaviour:
   speed: 8
   pLight1: {fileID: 1957294870399220832}
   pLight2: {fileID: 1957294869470357153}
+  lightOn: 0
   getRed: 0
   getGreen: 0
   getBlue: 0
@@ -733,7 +734,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7126026562944225487}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

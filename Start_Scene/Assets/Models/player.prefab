@@ -252,7 +252,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3188582633415128071}
   - component: {fileID: 2813570740517891769}
-  - component: {fileID: 2813570740517891768}
   - component: {fileID: 2813570740517891775}
   - component: {fileID: 2813570740517891774}
   m_Layer: 6
@@ -301,20 +300,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!64 &2813570740517891768
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2813570740517891773}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6176259285222025426, guid: 0bd6d33045054464f9e2d65af07bc300, type: 3}
 --- !u!54 &2813570740517891775
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -423,6 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3773928680734820286}
   - component: {fileID: 6900617518786792374}
+  - component: {fileID: 3999593292764888427}
   m_Layer: 6
   m_Name: player_mesh
   m_TagString: Untagged
@@ -502,6 +488,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0003363993, y: 0.009862976, z: 0.00033898}
     m_Extent: {x: 0.012612734, y: 0.010041935, z: 0.012651842}
   m_DirtyAABB: 0
+--- !u!64 &3999593292764888427
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477241296218609457}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6176259285222025426, guid: 0bd6d33045054464f9e2d65af07bc300, type: 3}
 --- !u!1001 &8418592717080592105
 PrefabInstance:
   m_ObjectHideFlags: 0

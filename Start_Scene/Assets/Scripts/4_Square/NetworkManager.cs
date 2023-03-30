@@ -36,7 +36,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Quaternion rot = spawnPoints[PhotonNetwork.CurrentRoom.PlayerCount].rotation; 
         
 
-        GameObject player = PhotonNetwork.Instantiate("CavePlayer", pos, rot, 0);
+        GameObject player = PhotonNetwork.Instantiate("MultiPlayer", pos, rot, 0);
 
     }
 

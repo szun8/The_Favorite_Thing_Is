@@ -71,6 +71,12 @@ MonoBehaviour:
   - Sync1pViewID
   - DownGravity
   - UpGravity
+  - ChangeGravity
+  - GravityControl
+  - SyncisReversed
+  - LightOff
+  - LightOn
+  - SyncAnimation
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
