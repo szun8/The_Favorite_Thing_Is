@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class SwimMove : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
 
-    public GameObject[] startPos;             // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
+    public GameObject[] pos;                // [0] 시작 장소, [1] 재시작 장소, [2] 엔딩 장소
     public int JumpForce;                   // 점프력
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
@@ -15,6 +16,7 @@ public class SwimMove : MonoBehaviour
     
     public static bool isBoss = false;      // 물고기 벽이 무너지면 true하고 보스 setActive시킬 예정
     public static bool isDied = false;      // 플레이어의 죽음여부
+    public static bool isEnd = false;       // 자동이동 여부
 
     // 플레이어 따라다니는 전등
     public Light spotLight;  //spot light
@@ -24,21 +26,18 @@ public class SwimMove : MonoBehaviour
     Material[] materials; //현재 eyes, body material 
     Rigidbody rigid;
     Animator animator;
+    CinemachineDollyCart dolly;
 
     void Awake()
     {
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         Camera.main.GetComponent<CameraMove>().player = gameObject;
         spotLight.intensity = 0;
-
         materials = mesh.sharedMaterials;
-        // 재인이가 준 에셋 애니메이션 테스트를 위해 위 주석 처리함
 
-        //animator = GetComponent<Animator>();
         animator = GetComponent<Animator>();
-
         rigid = GetComponent<Rigidbody>();
-        //rigid = GetComponent<Rigidbody>();
+        dolly = GetComponent<CinemachineDollyCart>();
 
         maskLight.SetActive(false);
         
@@ -46,7 +45,7 @@ public class SwimMove : MonoBehaviour
 
     void Start()
     {
-        transform.position = startPos[0].transform.position;
+        transform.position = pos[0].transform.position;
         dashSpeed = 5f;
     }
 
@@ -54,7 +53,7 @@ public class SwimMove : MonoBehaviour
     void Update()
     {
         if (isDied && Dead()) return;
-       
+
         if (Water.isWater && !isBoss)
         {   // 보스 만나기 전에는 z축이동가능
             dir.x = Input.GetAxisRaw("Vertical");
@@ -63,8 +62,38 @@ public class SwimMove : MonoBehaviour
         }
         else
         {
-            dir.x = Input.GetAxisRaw("Horizontal");
+            dir.x = Input.GetAxisRaw("Vertical");
         }
+
+        if(isEnd && dolly.m_Position == dolly.m_Path.PathLength)
+        {
+            Debug.Log("isEnd : " + isEnd);
+            GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 180f;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if ((isDied && Dead()) || isEnd) return;
+
+        //키 입력이 들어왔으면 ~
+        if (dir != Vector3.zero)
+        {
+            Move();
+
+            //바라보는 방향 부호 != 가고자할 방향 부호
+            if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))//|| Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
+            {
+                transform.Rotate(0, 1, 0);
+            }
+            transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
+        }
+        else if (Water.isWater)
+        {
+            animator.SetBool("isSwim", false);
+        }
+        Jump();
+        rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
 
         if (Input.GetKey("l"))
         {
@@ -89,30 +118,6 @@ public class SwimMove : MonoBehaviour
             dashSpeed = speed;
             isBooster = false;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        if (isDied && Dead()) return;
-        
-        //키 입력이 들어왔으면 ~
-        if (dir != Vector3.zero)
-        {
-            Move();
-
-            //바라보는 방향 부호 != 가고자할 방향 부호
-            if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))//|| Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
-            {
-                transform.Rotate(0, 1, 0);
-            }
-            transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
-        }
-        else if (Water.isWater)
-        {
-            animator.SetBool("isSwim", false);
-        }
-        Jump();
-        rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
 
     void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
@@ -192,7 +197,7 @@ public class SwimMove : MonoBehaviour
     }
     void SetPos()
     {   // 죽었을 경우 다시 시작되는 장소 설정
-        transform.position = startPos[1].transform.position;   // 바꿔야함 리스폰 pos로
+        transform.position = pos[1].transform.position;   // 바꿔야함 리스폰 pos로
     }
 
     bool Dead()
@@ -215,8 +220,21 @@ public class SwimMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Wall"))
         {   // 물고기 떼와 충돌(변경예정_0328.ver)
             isBoss = true;
-            //wall.SetActive(false);
-            GameObject.FindGameObjectWithTag("Enemy").SetActive(true);
+            ControlVCam.instance.SwitchingBackToSide();
+            GameObject.Find("mileStone").SetActive(false);
+            // 물고기가 촤악 사라지는 무빙 이후 보스 활성화 시키는 것이 좋을듯함 -> 아래줄 invoke 함수화
+            GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("End"))
+        {
+            // 블랙바 On
+            isEnd = true;
+            ControlVCam.instance.SwitchingSideToBoss();
+            dolly.enabled = true;
         }
     }
 }

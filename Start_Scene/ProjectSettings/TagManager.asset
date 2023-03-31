@@ -19,6 +19,7 @@ TagManager:
   - Sea
   - Dead
   - Player_mesh
+  - End
   layers:
   - Default
   - TransparentFX

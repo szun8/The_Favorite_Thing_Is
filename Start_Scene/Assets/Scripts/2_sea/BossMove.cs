@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class BossMove : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class BossMove : MonoBehaviour
     InfoFish boss;
     Transform respawnSpot;
     SkinnedMeshRenderer skin;
-    Material[] mat;
-    //Animator anim;
+
+    //Material[] mat;
 
     bool isStop;
 
@@ -17,32 +18,32 @@ public class BossMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         skin = GetComponentInChildren<SkinnedMeshRenderer>();
-        //anim = GetComponent<Animator>();
+        
     }
 
     private void Start()
     {
         boss = GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss;
         respawnSpot = GameObject.Find("BossSpawn").transform;
-        mat = skin.materials;
+        //mat = skin.materials;
     }
 
     private void Update()
     {
-        //if(!isStop)
-          // rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
+        if (!isStop)
+            rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Stone"))
         {
-            Debug.Log(collision.gameObject.name);
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
-            //anim.speed = 0.5f;
+            isStop = true;
             boss.speed = 15f;
             rigid.useGravity = true;
-            Invoke("BossDestroy", 4f);
+            Invoke("BossDestroy", 3f);
         }
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -58,8 +59,18 @@ public class BossMove : MonoBehaviour
 
     void BossDestroy()
     {
-        isStop = true;
+        SwimMove.isEnd = false;
         SwimMove.isBoss = false;
+        GameObject.Find("player").GetComponent<CinemachineDollyCart>().enabled = false;
+        // 여기서 SwithcingBossToCave Cam turn ON
         Destroy(this.gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("End"))
+        {
+            boss.speed = 10f;
+        }
     }
 }
