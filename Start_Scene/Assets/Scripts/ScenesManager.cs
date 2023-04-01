@@ -7,9 +7,9 @@ public class ScenesManager : MonoBehaviour
 {
     public int SceneNum = 0;
     public bool[] Scene;
-    // 0. ture -> 심해씬으로 전환
-    // 1. true-> 광장씬으로 전환
-    // 2. true -> 프리즘탑씬으로 전환
+    // 0. true -> 심해씬으로 전환
+    // 1. true-> 동굴씬으로 전환
+    // 2. true -> 광장씬으로 전환
 
     #region Singleton
     static public ScenesManager instance;
@@ -32,7 +32,6 @@ public class ScenesManager : MonoBehaviour
             UIManager.instnace.stopOut = false;
             Invoke("SceneLoad", 2f);
         }
-        //else if (sea) SceneManager.LoadSceneAsync("4_Square");
     }
 
     void SceneLoad()

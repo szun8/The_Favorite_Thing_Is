@@ -5,16 +5,17 @@ using Cinemachine;
 
 public class ControlVCam : MonoBehaviour
 {
-    CinemachineBrain liveCam;
-
     GameObject backCam;
     CinemachineVirtualCameraBase vBack;
     GameObject sideCam;
     CinemachineVirtualCameraBase vSide;
     GameObject bossCam;
     CinemachineVirtualCameraBase vBoss;
-    //GameObject caveCam;
-    //CinemachineVirtualCameraBase vCave;
+    GameObject caveCam;
+    CinemachineVirtualCameraBase vCave;
+
+    public Vector3 followOffset, trackedOffset;
+    public bool isLerp = false;
 
     #region Singleton
     static public ControlVCam instance;
@@ -31,8 +32,6 @@ public class ControlVCam : MonoBehaviour
 
     private void Start()
     {
-        liveCam = GetComponent<CinemachineBrain>();
-
         backCam = GameObject.Find("BackCam");
         vBack = backCam.GetComponent<CinemachineVirtualCameraBase>();
 
@@ -42,17 +41,23 @@ public class ControlVCam : MonoBehaviour
         bossCam = GameObject.Find("BossCam");
         vBoss = bossCam.GetComponent<CinemachineVirtualCameraBase>();
 
-        //caveCam = GameObject.Find("CaveCam");
-        //vCave = cAveCam.GetComponent<CinemachineVirtualCameraBase>();
-
+        caveCam = GameObject.Find("CaveCam");
+        vCave = caveCam.GetComponent<CinemachineVirtualCameraBase>();
     }
 
+    private void Update()
+    {
+        if (isLerp)
+        {
+            caveCam.transform.position = Vector3.Lerp(caveCam.transform.position, new Vector3(425f, caveCam.transform.position.y, 0f), Time.deltaTime * 0.3f) ;
+        }
+    }
+
+    // 현재 진행 중인 캠의 우선순위를 원상복귀시키고 바뀔 캠의 우선순위화
     public void SwitchingSideToBack()
     {   // Side -> Back
         vBack.Priority = 11;
         vSide.Priority = 10;
-        //backCam.SetActive(true);
-        //sideCam.SetActive(false);
     }
 
     public void SwitchingBackToSide()
@@ -60,21 +65,29 @@ public class ControlVCam : MonoBehaviour
 
         vSide.Priority = 11;
         vBack.Priority = 10;
-        //sideCam.SetActive(true);
-        //backCam.SetActive(false);
     }
     
     public void SwitchingSideToBoss()
     {   // Side -> BossDolly
         vBoss.Priority = 11;
         vSide.Priority = 10;
-        //bossCam.SetActive(true);
-        //sideCam.SetActive(false);
     }
 
-    //public void SwitchingBossToCave()
-    //{   // Boss -> Cave(Ending - LookAt : Player)
-    //    caveCam.SetActive(true);
-    //    bossCam.SetActive(false);
+    public void SwitchingBossToCave()
+    {   // Boss -> Cave(Ending - LookAt : Player)
+        vCave.Priority = 11;
+        vBoss.Priority = 10;
+        isLerp = true;
+    }
+
+    public void ControlDollyView()
+    {
+        bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = followOffset;
+        bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset = trackedOffset;
+    }
+
+    //public void ControlEndingView()
+    //{
+    //    caveCam.transform.position = new Vector3(caveCam.transform.position.x, caveCam.transform.position.y, 0f);
     //}
 }

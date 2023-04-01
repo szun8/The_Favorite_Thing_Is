@@ -36,7 +36,6 @@ public class BossMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Stone"))
         {
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
@@ -61,6 +60,7 @@ public class BossMove : MonoBehaviour
     {
         SwimMove.isEnd = false;
         SwimMove.isBoss = false;
+        CinematicBar.instance.HideBars();
         GameObject.Find("player").GetComponent<CinemachineDollyCart>().enabled = false;
         // 여기서 SwithcingBossToCave Cam turn ON
         Destroy(this.gameObject);
@@ -70,7 +70,7 @@ public class BossMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("End"))
         {
-            boss.speed = 10f;
+            boss.speed = 0f;
         }
     }
 }

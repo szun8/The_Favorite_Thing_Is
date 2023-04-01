@@ -12,9 +12,8 @@ public class InfoFish
 
 enum TypeFish
 {
-    enemy,
-    boss,
-    jelly
+    jelly,
+    boss
 }
 
 public class SpawnEnemy : MonoBehaviour
@@ -23,8 +22,7 @@ public class SpawnEnemy : MonoBehaviour
     private GameObject[] enemy;
 
     Quaternion[] rotation;
-
-    public InfoFish[] FishA;    
+ 
     public InfoFish[] Jelly;
     public InfoFish Boss;
 
@@ -34,7 +32,7 @@ public class SpawnEnemy : MonoBehaviour
 
     private void Awake()
     {
-        rotation = new Quaternion[3];
+        rotation = new Quaternion[2];
 
         rangeCollider = rangeJelly.GetComponent<BoxCollider>();
     }
@@ -53,8 +51,8 @@ public class SpawnEnemy : MonoBehaviour
 
     void InstantiateFish()
     {
-        for (int i = 0; i < FishA.Length; i++)
-            InstantiateFish(FishA[i], i, TypeFish.enemy);
+        //for (int i = 0; i < FishA.Length; i++)
+        //    InstantiateFish(FishA[i], i, TypeFish.enemy);
 
         for (int i = 0; i < Jelly.Length; i++)
             InstantiateFish(Jelly[i], i, TypeFish.jelly);
@@ -67,13 +65,9 @@ public class SpawnEnemy : MonoBehaviour
         GameObject clone;
         _gameObject.name = _type + "_" + i;
         switch (_type)
-        {
-            //case TypeFish.enemy:
-            //    
-            //    break;
-            
+        {   
             case TypeFish.boss:
-                _gameObject.speed = 80f;
+                _gameObject.speed = 50f;
                 _gameObject.spawnSpot = bossSpawn.position;
                 break;
 
@@ -97,12 +91,10 @@ public class SpawnEnemy : MonoBehaviour
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
         float range_X = rangeCollider.bounds.size.x;    // 세로
         float range_Y = rangeCollider.bounds.size.y;    // 높이
-        //float range_Z = rangeCollider.bounds.size.z;    // 가로
 
         range_X = Random.Range((range_X / 2) * -1, range_X / 2);
-        range_Y = Random.Range(5f , range_Y-5f);
-        //range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPos = new Vector3(range_X, range_Y, 0f);
+        range_Y = Random.Range((range_Y / 2) * -1, range_Y / 2);
+        Vector3 RandomPos = new Vector3((int)range_X, range_Y + rangeCollider.center.y, 0f);
 
         Vector3 respawnPos = originPos + RandomPos;
         return respawnPos;
