@@ -6,19 +6,19 @@ using Photon.Pun;
 public class ShowBridge : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
-    MeshRenderer MeshRenderer;
+    SkinnedMeshRenderer MeshRenderer;
     MeshRenderer[] bridgeMesh;  //다리 하나하나의 mesh가져오기 
-    CavePlayerMove cavePlayerMove;
+    MultiPlayerMove MultiPlayerMove;
 
     GameObject Bridge;
     
     void Awake()
     {
         PV = GetComponent<PhotonView>();
-        MeshRenderer = GetComponent<MeshRenderer>();
+        MeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
         Bridge = GameObject.FindGameObjectWithTag("Bridge");
         bridgeMesh = Bridge.GetComponentsInChildren<MeshRenderer>();
-        cavePlayerMove = GetComponent<CavePlayerMove>();
+        MultiPlayerMove = GetComponent<MultiPlayerMove>();
 
     }
 
@@ -27,7 +27,7 @@ public class ShowBridge : MonoBehaviourPunCallbacks
     {
         if (PV.IsMine)
         {       //플레이어의 색에 따른 다리의 색 보이고 안보이고
-            if (MeshRenderer.sharedMaterial == cavePlayerMove.material[1])
+            if (MeshRenderer.sharedMaterial == MultiPlayerMove.GetComponentInChildren<SkinnedMeshRenderer>().materials[1])
             {
                 SetBridgeVisible(true);
             }

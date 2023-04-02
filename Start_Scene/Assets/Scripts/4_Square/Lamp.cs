@@ -10,7 +10,7 @@ public class Lamp : MonoBehaviourPunCallbacks
     PhotonView PV;
     Rigidbody rigidbody; //전구가 검출할 플레이어의 rigidbody 접근
 
-    CavePlayerMove cavePlayerMove;
+    MultiPlayerMove multiPlayerMove;
 
     private RaycastHit hit;  //전구에 검출된 플레이어
     private bool isColor = false;  //전구 불 켜져 있는지 여부 
@@ -32,7 +32,7 @@ public class Lamp : MonoBehaviourPunCallbacks
 
         if (hit.collider != null && isPlayer && rigidbody == null)
         {
-            PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetPhotonView().ViewID);
+            PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetComponentInParent<PhotonView>().ViewID);
 
             if(CheckGetColor()) PV.RPC("FreezePlayer", RpcTarget.AllBuffered);
         }
@@ -44,7 +44,7 @@ public class Lamp : MonoBehaviourPunCallbacks
     void SetStopPlayer(int viewID)
     {
         stopPlayer = PhotonView.Find(viewID).gameObject;
-        cavePlayerMove = stopPlayer.GetComponent<CavePlayerMove>();
+        multiPlayerMove = stopPlayer.GetComponent<MultiPlayerMove>();
     }
 
     //플레이어 공중 딸깍 동안 멈추게 하기 
@@ -54,7 +54,7 @@ public class Lamp : MonoBehaviourPunCallbacks
         if (!isColor && stopPlayer != null)
         {
             //키 입력을 아예 못받게 해버리자
-            stopPlayer.GetComponent<CavePlayerMove>().enabled = false;
+            stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
 
             //이거 하면 공중부양
             rigidbody = stopPlayer.GetComponent<Rigidbody>();
@@ -86,7 +86,7 @@ public class Lamp : MonoBehaviourPunCallbacks
     {
         if (!isColor && stopPlayer != null)
         {
-            stopPlayer.GetComponent<CavePlayerMove>().enabled = true;
+            stopPlayer.GetComponent<MultiPlayerMove>().enabled = true;
             rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             isColor = true;
         }
@@ -98,22 +98,23 @@ public class Lamp : MonoBehaviourPunCallbacks
     {
         if(stopPlayer != null)
         {
-            if (gameObject.CompareTag("R_item")) stopPlayer.GetComponent<CavePlayerMove>().getRed = true;
+            //이 가로등이 무슨 색을 갖는 태그 인지
+            if (gameObject.CompareTag("R_item")) stopPlayer.GetComponent<MultiPlayerMove>().getRed = true;
 
-            if (gameObject.CompareTag("G_item")) stopPlayer.GetComponent<CavePlayerMove>().getGreen = true;
+            if (gameObject.CompareTag("G_item")) stopPlayer.GetComponent<MultiPlayerMove>().getGreen = true;
 
-            if (gameObject.CompareTag("B_item")) stopPlayer.GetComponent<CavePlayerMove>().getBlue = true;
+            if (gameObject.CompareTag("B_item")) stopPlayer.GetComponent<MultiPlayerMove>().getBlue = true;
 
         }
     }
 
     // 그 색을 먹은 플레이어라면 못먹게해 
-    [PunRPC]
+    //[PunRPC]
     bool CheckGetColor()
     {
-        if ((gameObject.CompareTag("R_item") && !cavePlayerMove.getRed) ||
-            (gameObject.CompareTag("G_item") && !cavePlayerMove.getGreen) ||
-            (gameObject.CompareTag("B_item") && !cavePlayerMove.getBlue))
+        if ((gameObject.CompareTag("R_item") && !multiPlayerMove.getRed) ||
+            (gameObject.CompareTag("G_item") && !multiPlayerMove.getGreen) ||
+            (gameObject.CompareTag("B_item") && !multiPlayerMove.getBlue))
             return true;
         else return false;
     }

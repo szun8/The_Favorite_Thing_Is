@@ -94,7 +94,7 @@ Transform:
   m_Children:
   - {fileID: 1772495615227420095}
   m_Father: {fileID: 3808132531102364815}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1772495615227420094
 GameObject:
@@ -274,15 +274,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4580975493910064693}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5217949096271995921}
+  - {fileID: 3226437145885181750}
   - {fileID: 6300313391131558225}
   - {fileID: 1772495614638674993}
-  - {fileID: 3226437145885181750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -334,18 +334,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aa37705daa534ed3b40ed31067f6f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materials:
-  - {fileID: 2100000, guid: 467724a5bcf3d4a3d9c630f11dba3fdb, type: 2}
+  LightMaterials:
+  - {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
   - {fileID: 2100000, guid: 3dd236c7279ad4da89df5118958a66ef, type: 2}
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
   PV: {fileID: 4291155922799687852}
-  JumpForce: 9
+  JumpForce: 7
   rotSpeed: 10
   speed: 10
   spotLight: {fileID: 1772495615227420081}
   maskLight: {fileID: 6300313391131558221}
   lightOn: 0
+  getRed: 0
+  getGreen: 1
+  getBlue: 1
 --- !u!114 &4291155922799687852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -548,7 +551,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3808132531102364815}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6300313391131558226
 MeshFilter:
@@ -632,7 +635,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3808132531102364815}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &5141633358158678846
 SkinnedMeshRenderer:
@@ -654,8 +657,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eb457e505d9ba4bdc8ce6863dea78eee, type: 2}
-  - {fileID: 2100000, guid: 467724a5bcf3d4a3d9c630f11dba3fdb, type: 2}
+  - {fileID: 2100000, guid: 6d0d3ec88a3f047de85dc19ad5e77a67, type: 2}
+  - {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

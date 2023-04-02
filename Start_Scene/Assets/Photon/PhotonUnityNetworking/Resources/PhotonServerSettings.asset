@@ -77,6 +77,10 @@ MonoBehaviour:
   - LightOff
   - LightOn
   - SyncAnimation
+  - RGB_ON_OFF
+  - RGB_ON
+  - SyncRGBPressed
+  - SyncLightPressed
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
