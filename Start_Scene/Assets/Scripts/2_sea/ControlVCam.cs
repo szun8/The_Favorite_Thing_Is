@@ -85,9 +85,4 @@ public class ControlVCam : MonoBehaviour
         bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = followOffset;
         bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset = trackedOffset;
     }
-
-    //public void ControlEndingView()
-    //{
-    //    caveCam.transform.position = new Vector3(caveCam.transform.position.x, caveCam.transform.position.y, 0f);
-    //}
 }
