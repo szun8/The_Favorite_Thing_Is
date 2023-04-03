@@ -54,10 +54,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool getBlue = true;
 
     //플레이어의 lrgb 눌려져있는 것 확인
-    private bool l_pressed = false;
-    private bool r_pressed = false;
-    private bool g_pressed = false;
-    private bool b_pressed = false;
+    public bool l_pressed = false;
+    public bool r_pressed = false;
+    public bool g_pressed = false;
+    public bool b_pressed = false;
 
 
 
@@ -74,7 +74,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         reverseGravity = GetComponent<ReverseGravity>();
-        wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
+        //wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
 
         
 
@@ -299,7 +299,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         lightOn = false;
         rgb_lightOn = true;
-        gameObject.transform.GetChild(1).gameObject.layer = 9;
+        gameObject.transform.GetChild(1).gameObject.layer = 6;//9; //오브젝트 [1]번째 자식 옵젝트 접근
 
         PlayerMaterials[1] = LightMaterials[matIdx]; //색깔을 배정 
         mesh.materials = PlayerMaterials;         //배정된 색을 불러옴 

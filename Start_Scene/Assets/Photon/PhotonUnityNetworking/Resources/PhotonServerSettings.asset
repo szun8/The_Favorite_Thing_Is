@@ -81,6 +81,9 @@ MonoBehaviour:
   - RGB_ON
   - SyncRGBPressed
   - SyncLightPressed
+  - CheckPlayerLight
+  - SyncAnim
+  - ShowStap
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

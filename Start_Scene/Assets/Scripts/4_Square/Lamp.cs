@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+//백색광 코드!!!!!! 
 public class Lamp : MonoBehaviourPunCallbacks
 {
     Animator animator;
@@ -87,6 +88,7 @@ public class Lamp : MonoBehaviourPunCallbacks
         if (!isColor && stopPlayer != null)
         {
             stopPlayer.GetComponent<MultiPlayerMove>().enabled = true;
+            stopPlayer.GetComponent<MultiPlayerMove>().l_pressed = false;
             rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             isColor = true;
         }

@@ -349,6 +349,10 @@ MonoBehaviour:
   getRed: 0
   getGreen: 1
   getBlue: 1
+  l_pressed: 0
+  r_pressed: 0
+  g_pressed: 0
+  b_pressed: 0
 --- !u!114 &4291155922799687852
 MonoBehaviour:
   m_ObjectHideFlags: 0
