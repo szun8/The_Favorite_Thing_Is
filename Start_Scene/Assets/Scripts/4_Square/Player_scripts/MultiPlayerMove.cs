@@ -88,7 +88,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         {
             Camera.main.GetComponent<CameraMove>().player = gameObject;
             Camera.main.GetComponent<CameraMove>().dist = 10;//18;
-            Camera.main.GetComponent<CameraMove>().height = 0.8f; //재인이의 희망은 0.2였다
+            Camera.main.GetComponent<CameraMove>().height = 0.1f; //재인이의 희망은 0.2였다
             
         }
 
@@ -122,7 +122,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                     if (reverseGravity.isReversed)
                     {
                         Debug.Log("jump");
-                        rigid.AddForce(Vector2.down * JumpForce/1.2f, ForceMode.Impulse);
+                        rigid.AddForce(Vector2.down * JumpForce * 1.5f, ForceMode.Impulse);
                     }
                     else //제대로 된 중력 
                     {

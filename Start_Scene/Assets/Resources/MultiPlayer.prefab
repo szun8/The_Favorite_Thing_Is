@@ -342,7 +342,7 @@ MonoBehaviour:
   PV: {fileID: 4291155922799687852}
   JumpForce: 7
   rotSpeed: 10
-  speed: 10
+  speed: 8
   spotLight: {fileID: 1772495615227420081}
   maskLight: {fileID: 6300313391131558221}
   lightOn: 0
