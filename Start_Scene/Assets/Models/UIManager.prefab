@@ -355,7 +355,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UsePanel: {fileID: 5357889921041754373}
-  Player: {fileID: 8336977627715577628, guid: 84500aeff1c774f80a98818f2742f4df, type: 3}
   Image: {fileID: 5357889921041754373}
   animTime: 1.5
   stopIn: 1

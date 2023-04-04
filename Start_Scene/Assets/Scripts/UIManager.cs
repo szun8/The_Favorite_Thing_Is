@@ -17,13 +17,15 @@ public class UIManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         else
+        {
             Destroy(gameObject);
+        }
+            
 
     }
     #endregion Singleton
 
     [SerializeField] Image UsePanel;
-    [SerializeField] GameObject Player;    //플레이어의 위치
 
     Animator animator;
     TMP_Text tmp;
@@ -33,16 +35,9 @@ public class UIManager : MonoBehaviour
     {
         Image = GetComponentInChildren<Image>();
 
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            animator = GetComponentInChildren<Animator>();
-            tmp = GetComponentInChildren<TMP_Text>();
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            
-        }
-        
+        animator = GetComponentInChildren<Animator>();
+        tmp = GetComponentInChildren<TMP_Text>();
+        Debug.Log(tmp.name);
     }
 
     bool talkGround = false, talkJump = false, talkLight = false;
@@ -54,10 +49,6 @@ public class UIManager : MonoBehaviour
         {
             if (cnt == 0) talkGround = PlayerMove.badak;
             Control_Subtitle();
-        }
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-
         }
 
         // FadeIn 재생.  
@@ -124,13 +115,17 @@ public class UIManager : MonoBehaviour
         Image.color = color;
     }
 
+    public void LightSubtitle()
+    {
+        RunAnims("isLight", "press L", ref talkLight, ref talkLight);
+    }
 
     void ChangeTalk(string _str)
     {   // 현재 출력해줄 자막의 텍스트를 바꿔주는 함수
         tmp.text = _str;
     }
 
-    void RunAnims(string runTriggerName, string runTxt, ref bool setTrue, ref bool setFalse)
+    public void RunAnims(string runTriggerName, string runTxt, ref bool setTrue, ref bool setFalse)
     {   // 원하는 애니메이션 실행
         Debug.Log(runTriggerName);
         ChangeTalk(runTxt);
