@@ -20,6 +20,7 @@ TagManager:
   - Dead
   - Player_mesh
   - End
+  - R_Enemy
   layers:
   - Default
   - TransparentFX
