@@ -50,7 +50,7 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     void GravityControl()
     {
         if (isReversed) //1p는 중력위로 2p는 중력 아래로
-            rigidbody.AddForce(Vector3.up * GravityForce * 2f);
+            rigidbody.AddForce(Vector3.up * GravityForce * 1f);
 
         else rigidbody.AddForce(Vector3.down * 1.3f);
     }

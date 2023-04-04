@@ -59,7 +59,7 @@ public class KungKung : MonoBehaviourPunCallbacks
         if (isDrop)
         {
             kung.transform.position = pos;
-            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 2, pos.z), speed * 2.5f * Time.deltaTime);
+            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 2, pos.z), speed * 4f * Time.deltaTime);
             if (pos.y == 2 && !isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
         }
 

@@ -102,16 +102,16 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             dir.x = Input.GetAxisRaw("Horizontal");
 
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 1.3f, Color.blue);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            isGround = Physics.Raycast(transform.position+new Vector3(0,0.5f,0), Vector2.down, 1.3f, LayerMask.GetMask("Ground"));
-            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 1.3f, LayerMask.GetMask("Bridge"));
+            isGround = Physics.Raycast(transform.position+ new Vector3(0,0.5f,0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
+            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
 
             //아이템이랑 스프링은 잘 모르겠다 나중에
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
 
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
-            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 1.5f, Color.red);
+            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
 
             if (Input.GetKeyDown("space"))
             {
@@ -119,15 +119,11 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 if (isGround || isBridge || isStone)
                 {
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed)
-                    {
-                        Debug.Log("jump");
-                        rigid.AddForce(Vector2.down * JumpForce * 1.5f, ForceMode.Impulse);
-                    }
-                    else //제대로 된 중력 
-                    {
-                        rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-                    }
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 3f, ForceMode.Impulse);
+                   
+                   //제대로 된 중력 
+                    else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                    
 
                 }
  
