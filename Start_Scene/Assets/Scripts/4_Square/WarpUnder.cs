@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Warp : MonoBehaviourPunCallbacks
+public class WarpUnder : MonoBehaviourPunCallbacks
 {
     ReverseGravity reverseGravity;
     PhotonView PV;
@@ -25,7 +25,7 @@ public class Warp : MonoBehaviourPunCallbacks
 
             Player = other.transform.parent.gameObject;
             PV.RPC("ChangeGravity", RpcTarget.AllBuffered, PhotonNetwork.LocalPlayer.ActorNumber);//이 번호는 RPC 호출 시 해당 RPC 함수를 호출한 클라이언트의 ID를 식별하는 데 사용될 수 있습니다);
-            Player.transform.position = (Player.transform.position - new Vector3(0, 3, 0));
+            Player.transform.position = (Player.transform.position + new Vector3(0, 3, 0));
 
             /*if (PlayerPos != null)
             {
@@ -46,7 +46,7 @@ public class Warp : MonoBehaviourPunCallbacks
             if (reverseGravity != null)
             {
 
-                Player.transform.rotation = Quaternion.Euler(0, 0, -179f); //뒤집기 플레이어
+                Player.transform.rotation = Quaternion.Euler(0, 0, 1f); //뒤집기 플레이어
 
                 //PlayerPos = Player.transform.position;
 

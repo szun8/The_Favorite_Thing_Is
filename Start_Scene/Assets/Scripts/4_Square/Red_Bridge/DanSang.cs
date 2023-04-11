@@ -26,7 +26,7 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         isPlayer = Physics.Raycast(transform.position, transform.up, out player, 0.5f);
 
-        if (PhotonNetwork.InRoom)
+        if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 
         {
             if (isPlayer) PV.RPC("CheckPlayerLight", RpcTarget.AllBuffered);  //플레이어가 위에 있다면 빛내는지 검출하자 
 

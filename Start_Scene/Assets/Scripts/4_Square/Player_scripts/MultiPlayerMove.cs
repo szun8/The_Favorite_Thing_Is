@@ -119,7 +119,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 if (isGround || isBridge || isStone)
                 {
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 3f, ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce*1.3f), ForceMode.Impulse);
                    
                    //제대로 된 중력 
                     else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
@@ -194,7 +194,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 {
                     transform.Rotate(0, 1, 0);
                 }
-                if (PV.ViewID != networkManager.p1_id && !reverseGravity.isReversed)
+                if (!reverseGravity.isReversed) //PV.ViewID != networkManager.p1_id &&
                     transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
                 else
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);
@@ -283,10 +283,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void SyncAnimation(string animation, bool value)
-    {
-        animator.SetBool(animation, value);
-    }
+    void SyncAnimation(string animation, bool value) => animator.SetBool(animation, value);
 
     //Photon은 Color를 몰라 ,,즉 포톤은 칼라를 직렬화 하지 못해 Vector로 color를 변환하기  
     [PunRPC]

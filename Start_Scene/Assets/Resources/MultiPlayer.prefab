@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 1503791759791341126}
   - component: {fileID: 1021605177089658100}
   - component: {fileID: 204298170497104511}
+  - component: {fileID: 5054539507603478133}
   m_Layer: 6
   m_Name: MultiPlayer
   m_TagString: Player
@@ -340,7 +341,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
   PV: {fileID: 4291155922799687852}
-  JumpForce: 8
+  JumpForce: 7
   rotSpeed: 10
   speed: 7
   spotLight: {fileID: 1772495615227420081}
@@ -428,6 +429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P1_ID: 0
   isReversed: 0
+  myID: 0
 --- !u!114 &1021605177089658100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +462,18 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &5054539507603478133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580975493910064693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bef55987aa5140828bf6796dd7192ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4789121166296683984
 GameObject:
   m_ObjectHideFlags: 0

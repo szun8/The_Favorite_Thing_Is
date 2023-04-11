@@ -11,18 +11,21 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
 
     public bool isReversed = false;
 
+    public int myID;
+
 
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
+        myID = PV.ViewID;
 
         //일단 2P 놈이 뒤집힌 채로 시작. 
-        if (PV.IsMine && PV.ViewID == 2001) //귀찮으면 2001로 바꿔서 테스트 해보자 + 대신 스폰 포인트 1, 2 바꿔야함 
+        if (PV.IsMine && myID == 2001) //귀찮으면 2001로 바꿔서 테스트 해보자 + 대신 스폰 포인트 1, 2 바꿔야함 
         {
+            
             PV.RPC("SyncisReversed", RpcTarget.AllBuffered);
-            Debug.Log("i am Reverse");
             PV.RPC("Sync1pViewID", RpcTarget.AllBuffered, PV.ViewID);
             transform.rotation= Quaternion.Euler(0, 0, -179f);
             
@@ -31,7 +34,9 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     }
     private void Update()
     {
-        PV.RPC("GravityControl", RpcTarget.AllBuffered);
+        if (PV.IsMine) PV.RPC("GravityControl", RpcTarget.AllBuffered);
+       
+
     }
 
     //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게
@@ -43,14 +48,15 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void SyncisReversed() => isReversed = true;
-
+    void SyncisReversed() => isReversed = !isReversed;
+   
+    
 
     [PunRPC]
     void GravityControl()
     {
         if (isReversed) //1p는 중력위로 2p는 중력 아래로
-            rigidbody.AddForce(Vector3.up * GravityForce * 1f);
+            rigidbody.AddForce(Vector3.up * GravityForce * 2.5f);
 
         else rigidbody.AddForce(Vector3.down * 1.3f);
     }
