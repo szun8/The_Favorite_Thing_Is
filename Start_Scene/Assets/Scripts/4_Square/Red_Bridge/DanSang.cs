@@ -80,7 +80,11 @@ public class DanSang : MonoBehaviourPunCallbacks
             }
             else if (light_G)
             {
-
+                if (player.collider.GetComponentInParent<MultiPlayerMove>().g_pressed)
+                {
+                    //발판 녀석의 메시콜라이더 컴포넌트의 트리거를 False
+                    // rpc SyncAnim해주기
+                }
             }
 
             else if (light_B)

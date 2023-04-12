@@ -255,7 +255,6 @@ GameObject:
   - component: {fileID: 4580975493910064695}
   - component: {fileID: 4904673351218812022}
   - component: {fileID: 4291155922799687852}
-  - component: {fileID: 2255173375986462348}
   - component: {fileID: 2255173375986462339}
   - component: {fileID: 1503791759791341126}
   - component: {fileID: 1021605177089658100}
@@ -349,7 +348,7 @@ MonoBehaviour:
   maskLight: {fileID: 6300313391131558221}
   isGround: 0
   lightOn: 0
-  getRed: 0
+  getRed: 1
   getGreen: 1
   getBlue: 1
   l_pressed: 0
@@ -381,18 +380,6 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &2255173375986462348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580975493910064693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91c85334858c14393a74ff7c2ba2c829, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2255173375986462339
 MonoBehaviour:
   m_ObjectHideFlags: 0

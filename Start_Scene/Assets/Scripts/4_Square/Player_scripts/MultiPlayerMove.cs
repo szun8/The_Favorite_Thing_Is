@@ -101,17 +101,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         {
             dir.x = Input.GetAxisRaw("Horizontal");
 
-            //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
-            //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            isGround = Physics.Raycast(transform.position+ new Vector3(0, 0.5f,0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
-            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
-
-            //아이템이랑 스프링은 잘 모르겠다 나중에
-            //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
-
-            //내 앞으로 광선을 쏴서 물체를 검출해보자 
-            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
+            //플레이어 중력에 따른 레이 검출
+            PlayerLay(); 
 
             if (Input.GetKeyDown("space"))
             {
@@ -226,6 +217,37 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (collision.gameObject.name == "WaitWall") wall.collisionCount--;
 
         if (collision.gameObject.CompareTag("Ground")) isStone = false;
+    }
+
+    void PlayerLay()
+    {
+        if (!reverseGravity.isReversed)
+        {
+            //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
+            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
+            //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
+            isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
+            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
+
+            //아이템이랑 스프링은 잘 모르겠다 나중에
+            //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
+
+            //내 앞으로 광선을 쏴서 물체를 검출해보자 
+            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector2.down * 1f, Color.blue);
+           
+            isGround = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Ground"));
+            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Bridge"));
+
+            //아이템이랑 스프링은 잘 모르겠다 나중에
+            //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
+
+            //내 앞으로 광선을 쏴서 물체를 검출해보자 
+            Debug.DrawRay(transform.position - new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
+        }
     }
 
 
