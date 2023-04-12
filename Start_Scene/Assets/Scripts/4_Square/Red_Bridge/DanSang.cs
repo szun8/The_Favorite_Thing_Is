@@ -8,20 +8,29 @@ public class DanSang : MonoBehaviourPunCallbacks
     Animator animator;
     PhotonView PV;
 
-    GameObject bridge;
+    GameObject bridge; //해당 단상과 연결이 되는 발판 
     
 
     RaycastHit player;
     bool isPlayer = false;
 
+    //L,R,G,B 단상 중 무슨 단상인지
+    bool light_L = false;
+    bool light_R = false;
+    bool light_G = false;
+    bool light_B = false;
+
+
     void Awake()
     {
         PV = GetComponent<PhotonView>();
         animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기 
-        bridge = gameObject.transform.GetChild(0).gameObject; //자식 불러오기 (발판) 
+        bridge = gameObject.transform.GetChild(0).gameObject; //자식 불러오기 (발판)
+        CheckPlateColor();
+        
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         isPlayer = Physics.Raycast(transform.position, transform.up, out player, 0.5f);
@@ -36,28 +45,53 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     }
 
+    void CheckPlateColor()
+    {
+        if (gameObject.CompareTag("L_Plate")) light_L = true;
+        else if (gameObject.CompareTag("R_Plate")) light_R = true;
+        else if (gameObject.CompareTag("G_Plate")) light_G = true;
+        else if (gameObject.CompareTag("B_Plate")) light_B = true;
+    }
+
     [PunRPC]
     void CheckPlayerLight() //플레이어 빨강이 눌렸는지에 따른 처리 
     {
         if(player.collider != null) //플레이어가 위에서 검출이되면 
         {
-            if (player.collider.GetComponentInParent<MultiPlayerMove>().r_pressed) // r을 누른 상태면 
+            if (light_R)
             {
-                bridge.GetComponent<BoxCollider>().isTrigger = false;
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                if (player.collider.GetComponentInParent<MultiPlayerMove>().r_pressed)
+                {
+                    bridge.GetComponent<BoxCollider>().isTrigger = false;
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                }
+                else
+                {
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+
+                    AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
+
+                    if (curAnim.IsName("R_Off") && curAnim.normalizedTime >= 0.99f) //애니메이션 이름이 R_Off이고, 99%이상 완료된 경우 
+                    {
+                        bridge.GetComponent<BoxCollider>().isTrigger = true;
+                    }
+
+                }
+            }
+            else if (light_G)
+            {
+
+            }
+
+            else if (light_B)
+            {
+
             }
             else
             {
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
 
-                AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0);
-
-                if(curAnim.IsName("R_Off") && curAnim.normalizedTime >= 0.99f)
-                {
-                    bridge.GetComponent<BoxCollider>().isTrigger = true;
-                }
-                
             }
+           
 
         }
     }

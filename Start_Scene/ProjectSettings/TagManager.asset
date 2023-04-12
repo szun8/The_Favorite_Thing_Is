@@ -20,7 +20,11 @@ TagManager:
   - Dead
   - Player_mesh
   - End
-  - R_Enemy
+  - L_Plate
+  - R_Plate
+  - G_Plate
+  - B_Plate
+  - KungKung
   layers:
   - Default
   - TransparentFX

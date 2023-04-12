@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 1021605177089658100}
   - component: {fileID: 204298170497104511}
   - component: {fileID: 5054539507603478133}
+  - component: {fileID: 5305202978474868266}
   m_Layer: 6
   m_Name: MultiPlayer
   m_TagString: Player
@@ -341,11 +342,12 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
   PV: {fileID: 4291155922799687852}
-  JumpForce: 7
+  JumpForce: 6
   rotSpeed: 10
   speed: 7
   spotLight: {fileID: 1772495615227420081}
   maskLight: {fileID: 6300313391131558221}
+  isGround: 0
   lightOn: 0
   getRed: 0
   getGreen: 1
@@ -474,6 +476,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bef55987aa5140828bf6796dd7192ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5305202978474868266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580975493910064693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fb2920f700943228ed27a76bf54810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicMaterial: {fileID: 13400000, guid: 523ebb0f6490947ec8a92bc5a3fc56da, type: 2}
 --- !u!1 &4789121166296683984
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
 {
     NetworkManager networkManager;
     private const float GravityForce = 9.81f;
-    Rigidbody rigidbody;
+    Rigidbody rigid;
     PhotonView PV;
     public int P1_ID; //1p의 뷰아이디는 네트워크 매니저에서 받아오자
 
@@ -16,7 +16,7 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigid = GetComponent<Rigidbody>();
         PV = GetComponent<PhotonView>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         myID = PV.ViewID;
@@ -56,8 +56,8 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     void GravityControl()
     {
         if (isReversed) //1p는 중력위로 2p는 중력 아래로
-            rigidbody.AddForce(Vector3.up * GravityForce * 2.5f);
+            rigid.AddForce(Vector3.up * GravityForce * 2.5f);
 
-        else rigidbody.AddForce(Vector3.down * 1.3f);
+        else rigid.AddForce(Vector3.down * 1.3f);
     }
 }

@@ -35,7 +35,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public GameObject maskLight; // 발광 구
     
 
-    private bool isGround = false;
+    public bool isGround = false; //벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     private bool isBridge = false;
     private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함 
     //private bool isMirrorJump = false;
@@ -104,7 +104,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            isGround = Physics.Raycast(transform.position+ new Vector3(0,0.5f,0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
+            isGround = Physics.Raycast(transform.position+ new Vector3(0, 0.5f,0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
             isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
 
             //아이템이랑 스프링은 잘 모르겠다 나중에
@@ -205,7 +205,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
             }
             
-            rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+            rigid.MovePosition(transform.position + dir/1.3f * Time.deltaTime * speed);
             
             
         }

@@ -86,6 +86,7 @@ MonoBehaviour:
   - ShowStap
   - SyncIsDrop
   - SetPlayerPos
+  - DestroyWarp
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

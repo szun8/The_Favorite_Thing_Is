@@ -9,7 +9,7 @@ public class Lamp : MonoBehaviourPunCallbacks
     Animator animator;
     GameObject stopPlayer;
     PhotonView PV;
-    Rigidbody rigidbody; //전구가 검출할 플레이어의 rigidbody 접근
+    Rigidbody rigid; //전구가 검출할 플레이어의 rigidbody 접근
 
     MultiPlayerMove multiPlayerMove;
 
@@ -31,7 +31,7 @@ public class Lamp : MonoBehaviourPunCallbacks
         isPlayer = Physics.Raycast(transform.position, -transform.up, out hit, 1f, LayerMask.GetMask("LightPlayer"));
 
 
-        if (hit.collider != null && isPlayer && rigidbody == null)
+        if (hit.collider != null && isPlayer && GetComponent<Rigidbody>() == null)
         {
             PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetComponentInParent<PhotonView>().ViewID);
 
@@ -58,8 +58,8 @@ public class Lamp : MonoBehaviourPunCallbacks
             stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
 
             //이거 하면 공중부양
-            rigidbody = stopPlayer.GetComponent<Rigidbody>();
-            rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+            rigid = stopPlayer.GetComponent<Rigidbody>();
+            rigid.constraints = RigidbodyConstraints.FreezePosition;
 
             StartCoroutine(LampManager());
         }
@@ -89,7 +89,7 @@ public class Lamp : MonoBehaviourPunCallbacks
         {
             stopPlayer.GetComponent<MultiPlayerMove>().enabled = true;
             stopPlayer.GetComponent<MultiPlayerMove>().l_pressed = false;
-            rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
             isColor = true;
         }
     }
