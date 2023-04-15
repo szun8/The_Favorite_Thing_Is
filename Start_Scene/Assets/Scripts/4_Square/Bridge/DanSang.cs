@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class DanSang : MonoBehaviourPunCallbacks
 {
+    public int up;
     Animator animator;
     PhotonView PV;
 
@@ -33,7 +34,8 @@ public class DanSang : MonoBehaviourPunCallbacks
     
     void Update()
     {
-        isPlayer = Physics.Raycast(transform.position, transform.up, out player, 0.5f);
+
+        UpDownLay();
 
         if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 
         {
@@ -44,9 +46,24 @@ public class DanSang : MonoBehaviourPunCallbacks
         }
 
     }
+    void UpDownLay()
+    {
+        if (up == 1)
+        {
+            Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1.7f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("LightPlayer"));
+        }
+
+        else if(up == 0)
+        {
+            Debug.DrawRay(transform.position, Vector3.down * 2.5f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position, Vector3.down, out player, 2.5f, LayerMask.GetMask("LightPlayer"));
+        }
+    }
 
     void CheckPlateColor()
     {
+        //각 단상의 태그를 통해 변수 값 조정 해주기 
         if (gameObject.CompareTag("L_Plate")) light_L = true;
         else if (gameObject.CompareTag("R_Plate")) light_R = true;
         else if (gameObject.CompareTag("G_Plate")) light_G = true;
@@ -56,13 +73,13 @@ public class DanSang : MonoBehaviourPunCallbacks
     [PunRPC]
     void CheckPlayerLight() //플레이어 빨강이 눌렸는지에 따른 처리 
     {
-        if(player.collider != null) //플레이어가 위에서 검출이되면 
+        if (player.collider != null) //플레이어가 위에서 검출이되면 
         {
             if (light_R)
             {
                 if (player.collider.GetComponentInParent<MultiPlayerMove>().r_pressed)
                 {
-                    bridge.GetComponent<BoxCollider>().isTrigger = false;
+                    bridge.GetComponent<MeshCollider>().isTrigger = false;
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 }
                 else
@@ -73,12 +90,35 @@ public class DanSang : MonoBehaviourPunCallbacks
 
                     if (curAnim.IsName("R_Off") && curAnim.normalizedTime >= 0.99f) //애니메이션 이름이 R_Off이고, 99%이상 완료된 경우 
                     {
-                        bridge.GetComponent<BoxCollider>().isTrigger = true;
+                        bridge.GetComponent<MeshCollider>().isTrigger = true;
+
+
                     }
 
                 }
             }
-            else if (light_G)
+            else if (light_L) //else가 light_L
+            {
+                if (player.collider.GetComponentInParent<MultiPlayerMove>().l_pressed)
+                {
+                    bridge.GetComponent<MeshCollider>().isTrigger = false;
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                }
+                
+
+                else
+                {
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+
+                    AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
+
+                    if (curAnim.IsName("L_Off") && curAnim.normalizedTime >= 0.99f) //애니메이션 이름이 R_Off이고, 99%이상 완료된 경우 
+                    {
+                        bridge.GetComponent<MeshCollider>().isTrigger = true;
+                    }
+                }
+            }
+            /*else if (light_G)
             {
                 if (player.collider.GetComponentInParent<MultiPlayerMove>().g_pressed)
                 {
@@ -89,15 +129,12 @@ public class DanSang : MonoBehaviourPunCallbacks
 
             else if (light_B)
             {
+                
+            }*/
 
-            }
-            else
-            {
-
-            }
-           
 
         }
+        
     }
 
     [PunRPC]

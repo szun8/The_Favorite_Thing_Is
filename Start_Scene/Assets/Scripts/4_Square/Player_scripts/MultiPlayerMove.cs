@@ -37,7 +37,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     public bool isGround = false; //벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     private bool isBridge = false;
-    private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함 
+    private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함
+
+    private bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
+
     //private bool isMirrorJump = false;
 
     //상호작용 
@@ -87,8 +90,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             Camera.main.GetComponent<CameraMove>().player = gameObject;
-            Camera.main.GetComponent<CameraMove>().dist = 10;//18;
-            Camera.main.GetComponent<CameraMove>().height = 0.1f; //재인이의 희망은 0.2였다
+            Camera.main.GetComponent<CameraMove>().dist = 20;//18;
+            Camera.main.GetComponent<CameraMove>().height = 0.15f; //재인이의 희망은 0.2였다
             
         }
 
@@ -106,8 +109,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
             if (Input.GetKeyDown("space"))
             {
-                //땅이거나 다리를 밟으면 + 바닥과 충돌해 있는 경우 
-                if (isGround || isBridge || isStone)
+                //땅이거나 다리를 밟으면 + 바닥과 충돌해 있는 경우 + 단상에 있을 경우 (발판은 ground로 하자 )
+                if (isGround || isBridge || isStone || canJump)
                 {
                     //뒤집힌 중력인 경우 
                     if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce*1.3f), ForceMode.Impulse);
@@ -211,12 +214,20 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (collision.gameObject.CompareTag("Ground")) isStone = true;
 
+        if (collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = true;
+
+
+
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.name == "WaitWall") wall.collisionCount--;
 
         if (collision.gameObject.CompareTag("Ground")) isStone = false;
+
+        if (collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = false;
     }
 
     void PlayerLay()
@@ -298,7 +309,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         else        //L,R,G,B 가 다 꺼진 경우에는 기본 밝기 
         {
-            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color / 1.5f);
+            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color);
             spotLight.intensity = 0;
         }
 
