@@ -14,6 +14,7 @@ public class InitFunc : MonoBehaviour
 
     [SerializeField] Transform startPos, endPos;
     bool isShow = false, isStart=false, isEnd=false;
+    int i = 0;
     private void Start()
     {
         thornCam = GameObject.Find("ThornCam");
@@ -36,18 +37,18 @@ public class InitFunc : MonoBehaviour
                 isEnd = true;
                 break;
             }
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
         }
 
         while (true)
         {
             thornCam.transform.position = Vector3.Slerp(thornCam.transform.position, startPos.position, Time.deltaTime);
-            if (thornCam.transform.position.x < 295)
+            if (thornCam.transform.position.x < 300)
             {
                 isStart = true;
                 break;
             }
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.03f);
         }
         SwithchSideCam();
         CinematicBar.instance.HideBars();
@@ -62,11 +63,15 @@ public class InitFunc : MonoBehaviour
 
     public void SwitchThornCam()
     {
-        vThorn.Priority = 11;
-        vSide.Priority = 10;
-        GameObject.Find("player").GetComponent<CaveMove>().enabled = false;
-        CinematicBar.instance.ShowBars();
-        StartCoroutine(LerpCam());
+        if (i == 0)
+        {
+            ++i;
+            vThorn.Priority = 11;
+            vSide.Priority = 10;
+            GameObject.Find("player").GetComponent<CaveMove>().enabled = false;
+            CinematicBar.instance.ShowBars();
+            StartCoroutine(LerpCam());
+        }
     }
 
     void SwithchSideCam()

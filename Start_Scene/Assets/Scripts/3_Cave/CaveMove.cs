@@ -6,7 +6,7 @@ public class CaveMove : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;
     public Transform[] pos;
-    int curPos = 0;
+    int curPos = 3;
     public float speed, rotSpeed, jumpForce;
 
     public bool lightOn = false;
@@ -45,12 +45,11 @@ public class CaveMove : MonoBehaviour
         if (isDied) return;
         if (isMirror)
         {
+            rigid.constraints = RigidbodyConstraints.FreezeRotation;
             dir.x = Input.GetAxisRaw("Horizontal");
             dir.z = Input.GetAxisRaw("Vertical");
         }
         else dir.x = Input.GetAxisRaw("Horizontal");
-        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
-        badak = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
 
         Jump();
         if (Input.GetKey("l"))
@@ -101,7 +100,10 @@ public class CaveMove : MonoBehaviour
     {
         if (badak && Input.GetKeyDown("space"))
         {
+            badak = false;
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+            animator.SetBool("isWalk", false);
+            animator.SetTrigger("isJump");
             SoundManager.instnace.PlaySE("PlayerJump");
         }
     }
@@ -130,9 +132,13 @@ public class CaveMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (!badak && (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs")))
+        {
+            badak = true;
+        }
         if (collision.gameObject.CompareTag("Dead"))
         {
-            SetCurStance(3);
+            SetCurStance(4);
         }
         if (collision.gameObject.CompareTag("Stone"))
         {
@@ -145,7 +151,7 @@ public class CaveMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Item"))
         {
-            SetCurStance(2);
+            SetCurStance(3);
         }
     }
 

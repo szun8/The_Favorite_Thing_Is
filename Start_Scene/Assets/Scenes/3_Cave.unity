@@ -725,7 +725,6 @@ GameObject:
   - component: {fileID: 45410357}
   - component: {fileID: 45410356}
   - component: {fileID: 45410355}
-  - component: {fileID: 45410354}
   m_Layer: 16
   m_Name: Drop_13 (3)
   m_TagString: Dead
@@ -748,19 +747,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &45410354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 45410352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &45410355
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -811,7 +797,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -854,7 +840,6 @@ GameObject:
   - component: {fileID: 52208304}
   - component: {fileID: 52208303}
   - component: {fileID: 52208302}
-  - component: {fileID: 52208301}
   m_Layer: 16
   m_Name: Drop_16 (2)
   m_TagString: Dead
@@ -877,19 +862,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &52208301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52208299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &52208302
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -940,7 +912,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1125,7 +1097,6 @@ GameObject:
   - component: {fileID: 105683152}
   - component: {fileID: 105683151}
   - component: {fileID: 105683150}
-  - component: {fileID: 105683149}
   m_Layer: 16
   m_Name: Drop_14 (1)
   m_TagString: Dead
@@ -1148,19 +1119,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &105683149
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 105683147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &105683150
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1211,7 +1169,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1254,7 +1212,6 @@ GameObject:
   - component: {fileID: 115939789}
   - component: {fileID: 115939788}
   - component: {fileID: 115939787}
-  - component: {fileID: 115939786}
   m_Layer: 16
   m_Name: Drop_18 (3)
   m_TagString: Dead
@@ -1277,19 +1234,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 71
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &115939786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115939784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &115939787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1340,7 +1284,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1400,6 +1344,7 @@ Transform:
   m_Children:
   - {fileID: 980748786562206771}
   - {fileID: 200322589}
+  - {fileID: 3122329672284892425}
   - {fileID: 1488364012478684439}
   - {fileID: 8449298521037835787}
   - {fileID: 6397359106937732619}
@@ -1423,7 +1368,6 @@ Transform:
   - {fileID: 7037350399927572656}
   - {fileID: 5136015616076735596}
   - {fileID: 1907820467616102668}
-  - {fileID: 3122329672284892425}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1538,7 +1482,6 @@ GameObject:
   - component: {fileID: 147173506}
   - component: {fileID: 147173505}
   - component: {fileID: 147173504}
-  - component: {fileID: 147173503}
   m_Layer: 16
   m_Name: Drop_5 (3)
   m_TagString: Dead
@@ -1561,19 +1504,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: -90, y: -99.61401, z: -20.33899}
---- !u!114 &147173503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147173501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &147173504
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1624,7 +1554,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1667,7 +1597,6 @@ GameObject:
   - component: {fileID: 156349676}
   - component: {fileID: 156349675}
   - component: {fileID: 156349674}
-  - component: {fileID: 156349673}
   m_Layer: 16
   m_Name: Drop_6 (1)
   m_TagString: Dead
@@ -1683,26 +1612,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156349671}
   m_LocalRotation: {x: 0.10949248, y: -0.5157534, z: -0.8202845, w: 0.22168262}
-  m_LocalPosition: {x: -0.6651306, y: 34.382034, z: 7.2606807}
+  m_LocalPosition: {x: 9.4, y: 37.9, z: 7.2606807}
   m_LocalScale: {x: -128.2, y: -127.91223, z: -269.42242}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: -52.9, y: -42.6, z: -127.8}
---- !u!114 &156349673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 156349671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &156349674
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1753,7 +1669,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1913,7 +1829,6 @@ GameObject:
   - component: {fileID: 194715279}
   - component: {fileID: 194715278}
   - component: {fileID: 194715277}
-  - component: {fileID: 194715276}
   m_Layer: 16
   m_Name: Drop_12 (1)
   m_TagString: Dead
@@ -1936,19 +1851,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &194715276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 194715274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &194715277
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1999,7 +1901,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2054,7 +1956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196633152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -13.9, z: -4.4}
+  m_LocalPosition: {x: 2.3, y: -9.9, z: -4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2101,11 +2003,11 @@ Camera:
   m_GameObject: {fileID: 200322586}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.23529412, g: 0.23529412, b: 0.23529412, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -2117,7 +2019,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 100
+  field of view: 35.983395
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2176,7 +2078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200322586}
   m_LocalRotation: {x: -0.021814799, y: 0, z: 0, w: 0.999762}
-  m_LocalPosition: {x: 5, y: -15, z: -30}
+  m_LocalPosition: {x: 5, y: -18.6, z: -43.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2196,7 +2098,6 @@ GameObject:
   - component: {fileID: 210814070}
   - component: {fileID: 210814069}
   - component: {fileID: 210814068}
-  - component: {fileID: 210814067}
   m_Layer: 16
   m_Name: Drop_5 (2)
   m_TagString: Dead
@@ -2219,19 +2120,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: -90, y: -99.61401, z: -20.33899}
---- !u!114 &210814067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210814065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &210814068
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2282,7 +2170,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2427,7 +2315,6 @@ GameObject:
   - component: {fileID: 263238918}
   - component: {fileID: 263238917}
   - component: {fileID: 263238916}
-  - component: {fileID: 263238915}
   m_Layer: 16
   m_Name: Drop_18 (2)
   m_TagString: Dead
@@ -2450,19 +2337,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &263238915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263238913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &263238916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2513,7 +2387,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2556,7 +2430,6 @@ GameObject:
   - component: {fileID: 281201780}
   - component: {fileID: 281201779}
   - component: {fileID: 281201778}
-  - component: {fileID: 281201782}
   m_Layer: 16
   m_Name: Drop_2
   m_TagString: Dead
@@ -2572,7 +2445,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281201776}
   m_LocalRotation: {x: -0.5026459, y: -0.49734, z: 0.68203205, w: -0.18663414}
-  m_LocalPosition: {x: -13.099976, y: 24.4, z: 0.37993765}
+  m_LocalPosition: {x: -0.6, y: 24.4, z: 0.37993765}
   m_LocalScale: {x: -88.000015, y: -88, z: -93.34354}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2629,7 +2502,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2659,19 +2532,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 281201776}
   m_Mesh: {fileID: 6357616769542740209, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &281201782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 281201776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &306873467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2696,14 +2556,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306873467}
-  m_LocalRotation: {x: -0, y: 0.9415125, z: -0, w: 0.33697814}
-  m_LocalPosition: {x: -23.8, y: -13.9, z: 19.3}
+  m_LocalRotation: {x: 0, y: 0.9396927, z: 0, w: 0.34202018}
+  m_LocalPosition: {x: -15.947729, y: -9.9, z: 19.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626907649}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 140.614, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 140, z: 0}
 --- !u!65 &306873469
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2730,7 +2590,6 @@ GameObject:
   - component: {fileID: 343446460}
   - component: {fileID: 343446459}
   - component: {fileID: 343446458}
-  - component: {fileID: 343446457}
   m_Layer: 16
   m_Name: Drop_11 (2)
   m_TagString: Dead
@@ -2753,19 +2612,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: -131.9, y: -130.4, z: 95}
---- !u!114 &343446457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 343446455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &343446458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2816,7 +2662,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2859,7 +2705,6 @@ GameObject:
   - component: {fileID: 364780681}
   - component: {fileID: 364780680}
   - component: {fileID: 364780679}
-  - component: {fileID: 364780678}
   m_Layer: 16
   m_Name: Drop_11 (3)
   m_TagString: Dead
@@ -2882,19 +2727,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: -131.9, y: -130.4, z: 95}
---- !u!114 &364780678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364780676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &364780679
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2945,7 +2777,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2988,7 +2820,6 @@ GameObject:
   - component: {fileID: 371054039}
   - component: {fileID: 371054038}
   - component: {fileID: 371054037}
-  - component: {fileID: 371054036}
   m_Layer: 16
   m_Name: Drop_3 (3)
   m_TagString: Dead
@@ -3011,19 +2842,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &371054036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 371054034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &371054037
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3074,7 +2892,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3325,7 +3143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 398010136}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -24, z: 4.4}
+  m_LocalPosition: {x: 7, y: -24, z: 8.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3927,7 +3745,6 @@ GameObject:
   - component: {fileID: 486218062}
   - component: {fileID: 486218061}
   - component: {fileID: 486218060}
-  - component: {fileID: 486218059}
   m_Layer: 16
   m_Name: Drop_13 (1)
   m_TagString: Dead
@@ -3950,19 +3767,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &486218059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 486218057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &486218060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4013,7 +3817,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4056,7 +3860,6 @@ GameObject:
   - component: {fileID: 502706692}
   - component: {fileID: 502706691}
   - component: {fileID: 502706690}
-  - component: {fileID: 502706689}
   m_Layer: 16
   m_Name: Drop_13 (2)
   m_TagString: Dead
@@ -4079,19 +3882,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &502706689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 502706687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &502706690
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4142,7 +3932,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4510,7 +4300,6 @@ GameObject:
   - component: {fileID: 565086896}
   - component: {fileID: 565086895}
   - component: {fileID: 565086894}
-  - component: {fileID: 565086893}
   m_Layer: 16
   m_Name: Drop_3 (1)
   m_TagString: Dead
@@ -4526,26 +4315,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565086891}
   m_LocalRotation: {x: -0.5026459, y: -0.49734, z: 0.68203205, w: -0.18663414}
-  m_LocalPosition: {x: -3.3199158, y: 27.982033, z: -1.5600648}
+  m_LocalPosition: {x: 6.7452035, y: 31.5, z: -1.5600648}
   m_LocalScale: {x: -63.400017, y: -63.400005, z: -67.24979}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &565086893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 565086891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &565086894
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4596,7 +4372,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4835,7 +4611,6 @@ GameObject:
   - component: {fileID: 626030438}
   - component: {fileID: 626030437}
   - component: {fileID: 626030436}
-  - component: {fileID: 626030435}
   m_Layer: 16
   m_Name: Drop_2 (2)
   m_TagString: Dead
@@ -4858,19 +4633,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &626030435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626030433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &626030436
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4921,7 +4683,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4964,7 +4726,6 @@ GameObject:
   - component: {fileID: 626849018}
   - component: {fileID: 626849017}
   - component: {fileID: 626849016}
-  - component: {fileID: 626849015}
   m_Layer: 16
   m_Name: Drop_2 (1)
   m_TagString: Dead
@@ -4980,26 +4741,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626849013}
   m_LocalRotation: {x: -0.5026459, y: -0.49734, z: 0.68203205, w: -0.18663414}
-  m_LocalPosition: {x: -13.099976, y: 29.282032, z: 0.37993765}
+  m_LocalPosition: {x: -3.0348563, y: 32.8, z: 0.37993765}
   m_LocalScale: {x: -88.000015, y: -88, z: -93.34354}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &626849015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 626849013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &626849016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5050,7 +4798,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5093,7 +4841,6 @@ GameObject:
   - component: {fileID: 629879449}
   - component: {fileID: 629879448}
   - component: {fileID: 629879447}
-  - component: {fileID: 629879446}
   m_Layer: 16
   m_Name: Drop_15 (3)
   m_TagString: Dead
@@ -5116,19 +4863,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 68
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &629879446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 629879444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &629879447
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5179,7 +4913,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5222,7 +4956,6 @@ GameObject:
   - component: {fileID: 635381008}
   - component: {fileID: 635381007}
   - component: {fileID: 635381006}
-  - component: {fileID: 635381010}
   m_Layer: 16
   m_Name: Drop_7
   m_TagString: Dead
@@ -5238,7 +4971,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635381004}
   m_LocalRotation: {x: -0.70856476, y: -0.40912068, z: 0.008946777, w: 0.5748707}
-  m_LocalPosition: {x: -6.9151306, y: 39.209835, z: -3.5193925}
+  m_LocalPosition: {x: 5.584837, y: 39.209835, z: -3.5193925}
   m_LocalScale: {x: -132.40001, y: -132.40002, z: -341.3761}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5295,7 +5028,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5325,19 +5058,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635381004}
   m_Mesh: {fileID: 7108004245302804196, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &635381010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 635381004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &661880545
 GameObject:
   m_ObjectHideFlags: 0
@@ -5546,7 +5266,6 @@ GameObject:
   - component: {fileID: 689268281}
   - component: {fileID: 689268280}
   - component: {fileID: 689268279}
-  - component: {fileID: 689268278}
   m_Layer: 16
   m_Name: Drop_8 (1)
   m_TagString: Dead
@@ -5562,26 +5281,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689268276}
   m_LocalRotation: {x: 0.43739676, y: -0.6795726, z: 0.33798957, w: 0.4823155}
-  m_LocalPosition: {x: 7.350006, y: 32.64977, z: 1.6500001}
+  m_LocalPosition: {x: 17.415125, y: 36.167736, z: 1.6500001}
   m_LocalScale: {x: 111, y: 117.53569, z: 225.06529}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 61.8, y: -130.4, z: -34.617}
---- !u!114 &689268278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689268276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &689268279
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5632,7 +5338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5675,7 +5381,6 @@ GameObject:
   - component: {fileID: 693026614}
   - component: {fileID: 693026613}
   - component: {fileID: 693026612}
-  - component: {fileID: 693026611}
   m_Layer: 16
   m_Name: Drop_4 (3)
   m_TagString: Dead
@@ -5698,19 +5403,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 113.3, y: 0, z: 48.136}
---- !u!114 &693026611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 693026609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &693026612
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5761,7 +5453,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5804,7 +5496,6 @@ GameObject:
   - component: {fileID: 699587550}
   - component: {fileID: 699587549}
   - component: {fileID: 699587548}
-  - component: {fileID: 699587547}
   m_Layer: 16
   m_Name: Drop_7 (3)
   m_TagString: Dead
@@ -5820,26 +5511,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 699587545}
   m_LocalRotation: {x: -0.70856476, y: -0.40912068, z: 0.008946777, w: 0.5748707}
-  m_LocalPosition: {x: -3.6951294, y: 54.3421, z: -3.5193925}
+  m_LocalPosition: {x: -3.6951294, y: 49.9, z: -3.5193925}
   m_LocalScale: {x: -132.40001, y: -132.40002, z: -341.3761}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 306.163, y: 234.949, z: 90.416}
---- !u!114 &699587547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 699587545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &699587548
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5890,7 +5568,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6143,7 +5821,6 @@ GameObject:
   - component: {fileID: 732447471}
   - component: {fileID: 732447470}
   - component: {fileID: 732447469}
-  - component: {fileID: 732447468}
   m_Layer: 16
   m_Name: Drop_17 (3)
   m_TagString: Dead
@@ -6166,19 +5843,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 70
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &732447468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 732447466}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &732447469
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6229,7 +5893,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6370,7 +6034,6 @@ GameObject:
   - component: {fileID: 755085596}
   - component: {fileID: 755085595}
   - component: {fileID: 755085594}
-  - component: {fileID: 755085593}
   m_Layer: 16
   m_Name: Drop_7 (2)
   m_TagString: Dead
@@ -6393,19 +6056,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 306.163, y: 234.949, z: 90.416}
---- !u!114 &755085593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 755085591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &755085594
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6456,7 +6106,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6742,8 +6392,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783558177}
-  m_LocalRotation: {x: -0, y: 0.9354924, z: -0, w: -0.3533469}
-  m_LocalPosition: {x: -25.552277, y: -13.9, z: 4.738159}
+  m_LocalRotation: {x: 0, y: 0.9354934, z: -0, w: -0.35334423}
+  m_LocalPosition: {x: -17.7, y: -9.9, z: 4.738159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6776,7 +6426,6 @@ GameObject:
   - component: {fileID: 795450619}
   - component: {fileID: 795450618}
   - component: {fileID: 795450617}
-  - component: {fileID: 795450616}
   m_Layer: 16
   m_Name: Drop_1 (2)
   m_TagString: Dead
@@ -6799,19 +6448,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &795450616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 795450614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &795450617
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6862,7 +6498,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7186,6 +6822,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833516895}
   m_Mesh: {fileID: 2314011402202377718, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
+--- !u!1 &840490646
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840490647}
+  - component: {fileID: 840490648}
+  m_Layer: 17
+  m_Name: sideWall (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840490647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840490646}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -25.552277, y: -53.3, z: 6.7}
+  m_LocalScale: {x: 6.5, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626907649}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!65 &840490648
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840490646}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 80, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &866655346
 GameObject:
   m_ObjectHideFlags: 0
@@ -7199,7 +6880,6 @@ GameObject:
   - component: {fileID: 866655351}
   - component: {fileID: 866655350}
   - component: {fileID: 866655349}
-  - component: {fileID: 866655348}
   m_Layer: 16
   m_Name: Drop_18 (1)
   m_TagString: Dead
@@ -7222,19 +6902,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &866655348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866655346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &866655349
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7285,7 +6952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7438,7 +7105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 908214905}
   m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 36.3, y: -13.9, z: 17.7}
+  m_LocalPosition: {x: 36.3, y: -9.9, z: 17.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7763,7 +7430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stone:
   - {fileID: 2491211774544757454, guid: f7078d2f2d56240c9bfe6e28aeff4d64, type: 3}
-  - {fileID: 2695230589411308909, guid: 3a885d1096ef54b4598e6a849b950290, type: 3}
+  - {fileID: 6096548915848522569, guid: 4abc7123716984731b261240eba07bbd, type: 3}
   - {fileID: 196053842571002334, guid: 9087ec7ba35034875b46dc23b8c14e8a, type: 3}
   player: {fileID: 2414513944381782594}
   _stone: {fileID: 0}
@@ -7794,7 +7461,6 @@ GameObject:
   - component: {fileID: 965552397}
   - component: {fileID: 965552396}
   - component: {fileID: 965552395}
-  - component: {fileID: 965552394}
   m_Layer: 16
   m_Name: Drop_5 (1)
   m_TagString: Dead
@@ -7810,26 +7476,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965552392}
   m_LocalRotation: {x: -0.35380444, y: -0.61222744, z: -0.61222744, w: 0.35380444}
-  m_LocalPosition: {x: 3.9048767, y: 34.382034, z: -4.60932}
+  m_LocalPosition: {x: 13.9699955, y: 37.9, z: -4.60932}
   m_LocalScale: {x: -128.20001, y: -127.91223, z: -269.42242}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: -90, y: -99.61401, z: -20.33899}
---- !u!114 &965552394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 965552392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &965552395
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7880,7 +7533,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8021,7 +7674,6 @@ GameObject:
   - component: {fileID: 1001118928}
   - component: {fileID: 1001118927}
   - component: {fileID: 1001118926}
-  - component: {fileID: 1001118925}
   m_Layer: 16
   m_Name: Drop_4 (1)
   m_TagString: Dead
@@ -8037,26 +7689,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001118923}
   m_LocalRotation: {x: 0.69784826, y: 0.11405198, z: -0.38078135, w: 0.59582347}
-  m_LocalPosition: {x: 4.2200623, y: 36.726776, z: -0.39005136}
+  m_LocalPosition: {x: 14.285181, y: 40.244743, z: -0.39005136}
   m_LocalScale: {x: -130.40002, y: -130.40001, z: -138.31812}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 113.3, y: 0, z: 48.136}
---- !u!114 &1001118925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001118923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1001118926
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8107,7 +7746,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8232,7 +7871,6 @@ GameObject:
   - component: {fileID: 1021740020}
   - component: {fileID: 1021740019}
   - component: {fileID: 1021740018}
-  - component: {fileID: 1021740022}
   m_Layer: 16
   m_Name: Drop_4
   m_TagString: Dead
@@ -8248,7 +7886,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021740016}
   m_LocalRotation: {x: 0.69784826, y: 0.11405198, z: -0.38078135, w: 0.59582347}
-  m_LocalPosition: {x: 4.2200623, y: 31.844744, z: -0.39005136}
+  m_LocalPosition: {x: 16.72003, y: 31.844744, z: -0.39005136}
   m_LocalScale: {x: -130.40002, y: -130.40001, z: -138.31812}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -8305,7 +7943,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8335,19 +7973,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1021740016}
   m_Mesh: {fileID: 506893626503705964, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &1021740022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021740016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &1045523517
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,7 +8084,6 @@ GameObject:
   - component: {fileID: 1046232955}
   - component: {fileID: 1046232954}
   - component: {fileID: 1046232953}
-  - component: {fileID: 1046232952}
   m_Layer: 16
   m_Name: Drop_10 (1)
   m_TagString: Dead
@@ -8475,26 +8099,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046232950}
   m_LocalRotation: {x: 0.5087076, y: 0.49162614, z: 0.46971974, w: -0.52809435}
-  m_LocalPosition: {x: 6.2700195, y: 35.054024, z: 5.32}
+  m_LocalPosition: {x: 16.335138, y: 38.57199, z: 5.32}
   m_LocalScale: {x: -113.80002, y: -144.13051, z: -473.68835}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &1046232952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046232950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1046232953
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8545,7 +8156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8723,7 +8334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stone:
   - {fileID: 2491211774544757454, guid: f7078d2f2d56240c9bfe6e28aeff4d64, type: 3}
-  - {fileID: 2695230589411308909, guid: 3a885d1096ef54b4598e6a849b950290, type: 3}
+  - {fileID: 6096548915848522569, guid: 4abc7123716984731b261240eba07bbd, type: 3}
   - {fileID: 196053842571002334, guid: 9087ec7ba35034875b46dc23b8c14e8a, type: 3}
   player: {fileID: 2414513944381782594}
   _stone: {fileID: 0}
@@ -9140,7 +8751,6 @@ GameObject:
   - component: {fileID: 1127455918}
   - component: {fileID: 1127455917}
   - component: {fileID: 1127455916}
-  - component: {fileID: 1127455915}
   m_Layer: 16
   m_Name: Drop_6 (3)
   m_TagString: Dead
@@ -9163,19 +8773,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: -52.9, y: -42.6, z: -127.8}
---- !u!114 &1127455915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1127455913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1127455916
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9226,7 +8823,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9383,7 +8980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152011912}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -24, z: 4.4}
+  m_LocalPosition: {x: 7.7, y: -24, z: 4.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9808,7 +9405,6 @@ GameObject:
   - component: {fileID: 1226098033}
   - component: {fileID: 1226098032}
   - component: {fileID: 1226098031}
-  - component: {fileID: 1226098030}
   m_Layer: 16
   m_Name: Drop_2 (3)
   m_TagString: Dead
@@ -9831,19 +9427,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &1226098030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1226098028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1226098031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9894,7 +9477,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9937,7 +9520,6 @@ GameObject:
   - component: {fileID: 1227899312}
   - component: {fileID: 1227899311}
   - component: {fileID: 1227899310}
-  - component: {fileID: 1227899309}
   m_Layer: 16
   m_Name: Drop_9 (3)
   m_TagString: Dead
@@ -9960,19 +9542,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 61.8, y: 90, z: -34.617}
---- !u!114 &1227899309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227899307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1227899310
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10023,7 +9592,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10240,7 +9809,7 @@ Transform:
   m_GameObject: {fileID: 1257526745}
   m_LocalRotation: {x: 0, y: 0, z: -0.043619405, w: 0.9990483}
   m_LocalPosition: {x: 400.3, y: -19.2, z: 3.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.43, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 59524615}
@@ -10275,7 +9844,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1260842590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10321,7 +9890,6 @@ GameObject:
   - component: {fileID: 1275966693}
   - component: {fileID: 1275966692}
   - component: {fileID: 1275966691}
-  - component: {fileID: 1275966690}
   m_Layer: 16
   m_Name: Drop_8 (3)
   m_TagString: Dead
@@ -10344,19 +9912,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 61.8, y: -130.4, z: -34.617}
---- !u!114 &1275966690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275966688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1275966691
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10407,7 +9962,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10450,7 +10005,6 @@ GameObject:
   - component: {fileID: 1279696568}
   - component: {fileID: 1279696567}
   - component: {fileID: 1279696566}
-  - component: {fileID: 1279696570}
   m_Layer: 16
   m_Name: Drop_5
   m_TagString: Dead
@@ -10466,7 +10020,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279696564}
   m_LocalRotation: {x: -0.35380444, y: -0.61222744, z: -0.61222744, w: 0.35380444}
-  m_LocalPosition: {x: 3.9048767, y: 29.5, z: -4.60932}
+  m_LocalPosition: {x: 16.404844, y: 29.5, z: -4.60932}
   m_LocalScale: {x: -128.20001, y: -127.91223, z: -269.42242}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -10523,7 +10077,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10553,19 +10107,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279696564}
   m_Mesh: {fileID: -7133521204521878831, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &1279696570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279696564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &1281757312
 GameObject:
   m_ObjectHideFlags: 3
@@ -10635,7 +10176,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282184603}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: -13.9, z: 25.6}
+  m_LocalPosition: {x: 2.3, y: -9.9, z: 25.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10668,7 +10209,6 @@ GameObject:
   - component: {fileID: 1284815219}
   - component: {fileID: 1284815218}
   - component: {fileID: 1284815217}
-  - component: {fileID: 1284815216}
   m_Layer: 16
   m_Name: Drop_9 (2)
   m_TagString: Dead
@@ -10691,19 +10231,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 61.8, y: 90, z: -34.617}
---- !u!114 &1284815216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284815214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1284815217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10754,7 +10281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11027,7 +10554,6 @@ GameObject:
   - component: {fileID: 1383542446}
   - component: {fileID: 1383542445}
   - component: {fileID: 1383542444}
-  - component: {fileID: 1383542443}
   m_Layer: 16
   m_Name: Drop_16 (3)
   m_TagString: Dead
@@ -11050,19 +10576,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 69
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &1383542443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383542441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1383542444
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11113,7 +10626,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11156,7 +10669,6 @@ GameObject:
   - component: {fileID: 1383856219}
   - component: {fileID: 1383856218}
   - component: {fileID: 1383856217}
-  - component: {fileID: 1383856216}
   m_Layer: 16
   m_Name: Drop_4 (2)
   m_TagString: Dead
@@ -11179,19 +10691,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 113.3, y: 0, z: 48.136}
---- !u!114 &1383856216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1383856214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1383856217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11242,7 +10741,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11481,7 +10980,6 @@ GameObject:
   - component: {fileID: 1453950672}
   - component: {fileID: 1453950671}
   - component: {fileID: 1453950670}
-  - component: {fileID: 1453950669}
   m_Layer: 16
   m_Name: Drop_7 (1)
   m_TagString: Dead
@@ -11497,26 +10995,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453950667}
   m_LocalRotation: {x: -0.70856476, y: -0.40912068, z: 0.008946777, w: 0.5748707}
-  m_LocalPosition: {x: -6.9151306, y: 44.091866, z: -3.5193925}
+  m_LocalPosition: {x: 3.1499887, y: 47.609833, z: -3.5193925}
   m_LocalScale: {x: -132.40001, y: -132.40002, z: -341.3761}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 306.163, y: 234.949, z: 90.416}
---- !u!114 &1453950669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1453950667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1453950670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11567,7 +11052,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11690,7 +11175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1464886718}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.6, y: 0.1, z: 0}
+  m_LocalPosition: {x: -36.6, y: -0.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12424,7 +11909,6 @@ GameObject:
   - component: {fileID: 1555328752}
   - component: {fileID: 1555328751}
   - component: {fileID: 1555328750}
-  - component: {fileID: 1555328749}
   m_Layer: 16
   m_Name: Drop_11 (1)
   m_TagString: Dead
@@ -12447,19 +11931,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: -131.9, y: -130.4, z: 95}
---- !u!114 &1555328749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555328747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1555328750
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12510,7 +11981,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12553,7 +12024,6 @@ GameObject:
   - component: {fileID: 1567994201}
   - component: {fileID: 1567994200}
   - component: {fileID: 1567994199}
-  - component: {fileID: 1567994203}
   m_Layer: 16
   m_Name: Drop_6
   m_TagString: Dead
@@ -12569,7 +12039,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567994197}
   m_LocalRotation: {x: 0.10949248, y: -0.5157534, z: -0.8202845, w: 0.22168262}
-  m_LocalPosition: {x: -0.6651306, y: 29.5, z: 7.2606807}
+  m_LocalPosition: {x: 11.834837, y: 29.5, z: 7.2606807}
   m_LocalScale: {x: -128.2, y: -127.91223, z: -269.42242}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -12626,7 +12096,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12656,19 +12126,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1567994197}
   m_Mesh: {fileID: -7133521204521878831, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &1567994203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1567994197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &1573784342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12737,7 +12194,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13186,8 +12643,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615515383}
   m_LocalRotation: {x: 0.7371662, y: -0.6754586, z: 0.007144767, w: 0.01705178}
-  m_LocalPosition: {x: -64.86, y: -15.64, z: 1.9894562}
-  m_LocalScale: {x: 0.28118482, y: 0.23436181, z: 0.27691433}
+  m_LocalPosition: {x: -67.23, y: -15.82, z: 1.32}
+  m_LocalScale: {x: 0.28118482, y: 0.08, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1079910094}
@@ -13282,7 +12739,6 @@ GameObject:
   - component: {fileID: 1624057385}
   - component: {fileID: 1624057384}
   - component: {fileID: 1624057383}
-  - component: {fileID: 1624057387}
   m_Layer: 16
   m_Name: Drop_3
   m_TagString: Dead
@@ -13298,7 +12754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624057381}
   m_LocalRotation: {x: -0.5026459, y: -0.49734, z: 0.68203205, w: -0.18663414}
-  m_LocalPosition: {x: -3.3199158, y: 23.1, z: -1.5600648}
+  m_LocalPosition: {x: 9.180052, y: 23.1, z: -1.5600648}
   m_LocalScale: {x: -63.400017, y: -63.400005, z: -67.24979}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -13355,7 +12811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13385,19 +12841,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624057381}
   m_Mesh: {fileID: 6357616769542740209, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &1624057387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1624057381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &1626907648
 GameObject:
   m_ObjectHideFlags: 0
@@ -13434,6 +12877,7 @@ Transform:
   - {fileID: 908214906}
   - {fileID: 306873468}
   - {fileID: 783558178}
+  - {fileID: 840490647}
   m_Father: {fileID: 59524615}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13701,7 +13145,6 @@ GameObject:
   - component: {fileID: 1690670405}
   - component: {fileID: 1690670404}
   - component: {fileID: 1690670403}
-  - component: {fileID: 1690670402}
   m_Layer: 16
   m_Name: Drop_10 (2)
   m_TagString: Dead
@@ -13724,19 +13167,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &1690670402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1690670400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1690670403
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13787,7 +13217,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13830,7 +13260,6 @@ GameObject:
   - component: {fileID: 1705401959}
   - component: {fileID: 1705401958}
   - component: {fileID: 1705401957}
-  - component: {fileID: 1705401956}
   m_Layer: 16
   m_Name: Drop_6 (2)
   m_TagString: Dead
@@ -13853,19 +13282,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: -52.9, y: -42.6, z: -127.8}
---- !u!114 &1705401956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705401954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1705401957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13916,7 +13332,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14057,7 +13473,6 @@ GameObject:
   - component: {fileID: 1731070772}
   - component: {fileID: 1731070771}
   - component: {fileID: 1731070770}
-  - component: {fileID: 1731070769}
   m_Layer: 16
   m_Name: Drop_16 (1)
   m_TagString: Dead
@@ -14080,19 +13495,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &1731070769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1731070767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1731070770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14143,7 +13545,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14578,7 +13980,6 @@ GameObject:
   - component: {fileID: 1753830374}
   - component: {fileID: 1753830373}
   - component: {fileID: 1753830372}
-  - component: {fileID: 1753830376}
   m_Layer: 16
   m_Name: Drop_1
   m_TagString: Dead
@@ -14594,7 +13995,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753830370}
   m_LocalRotation: {x: -0.5026459, y: -0.49734, z: 0.68203205, w: -0.18663414}
-  m_LocalPosition: {x: 8.630066, y: 23.1, z: 1.5499511}
+  m_LocalPosition: {x: 21.130033, y: 23.1, z: 1.5499511}
   m_LocalScale: {x: -88.000015, y: -88, z: -93.34354}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -14651,7 +14052,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14681,19 +14082,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753830370}
   m_Mesh: {fileID: 6357616769542740209, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &1753830376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1753830370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!1 &1764425030
 GameObject:
   m_ObjectHideFlags: 0
@@ -14805,7 +14193,6 @@ GameObject:
   - component: {fileID: 1767738542}
   - component: {fileID: 1767738541}
   - component: {fileID: 1767738540}
-  - component: {fileID: 1767738539}
   m_Layer: 16
   m_Name: Drop_12 (3)
   m_TagString: Dead
@@ -14828,19 +14215,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 65
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &1767738539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767738537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1767738540
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14891,7 +14265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14934,7 +14308,6 @@ GameObject:
   - component: {fileID: 1779307628}
   - component: {fileID: 1779307627}
   - component: {fileID: 1779307626}
-  - component: {fileID: 1779307625}
   m_Layer: 16
   m_Name: Drop_17 (1)
   m_TagString: Dead
@@ -14957,19 +14330,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &1779307625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779307623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1779307626
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15020,7 +14380,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15161,7 +14521,6 @@ GameObject:
   - component: {fileID: 1803557802}
   - component: {fileID: 1803557801}
   - component: {fileID: 1803557800}
-  - component: {fileID: 1803557799}
   m_Layer: 16
   m_Name: Drop_17 (2)
   m_TagString: Dead
@@ -15184,19 +14543,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &1803557799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803557797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1803557800
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15247,7 +14593,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15290,7 +14636,6 @@ GameObject:
   - component: {fileID: 1809995961}
   - component: {fileID: 1809995960}
   - component: {fileID: 1809995959}
-  - component: {fileID: 1809995958}
   m_Layer: 16
   m_Name: Drop_14 (3)
   m_TagString: Dead
@@ -15313,19 +14658,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 67
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &1809995958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809995956}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1809995959
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15376,7 +14708,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15586,7 +14918,6 @@ GameObject:
   - component: {fileID: 1818280324}
   - component: {fileID: 1818280323}
   - component: {fileID: 1818280322}
-  - component: {fileID: 1818280321}
   m_Layer: 16
   m_Name: Drop_10 (3)
   m_TagString: Dead
@@ -15609,19 +14940,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &1818280321
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1818280319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1818280322
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15672,7 +14990,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15813,7 +15131,6 @@ GameObject:
   - component: {fileID: 1828180592}
   - component: {fileID: 1828180591}
   - component: {fileID: 1828180590}
-  - component: {fileID: 1828180589}
   m_Layer: 16
   m_Name: Drop_1 (3)
   m_TagString: Dead
@@ -15836,19 +15153,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &1828180589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1828180587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1828180590
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -15899,7 +15203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16362,7 +15666,6 @@ GameObject:
   - component: {fileID: 1918005772}
   - component: {fileID: 1918005771}
   - component: {fileID: 1918005770}
-  - component: {fileID: 1918005769}
   m_Layer: 16
   m_Name: Drop_3 (2)
   m_TagString: Dead
@@ -16385,19 +15688,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &1918005769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918005767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1918005770
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16448,7 +15738,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16600,14 +15890,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938111595}
-  m_LocalRotation: {x: 0, y: -0.3483267, z: 0, w: 0.9373732}
-  m_LocalPosition: {x: 34.9, y: -13.9, z: 3.1}
+  m_LocalRotation: {x: 0, y: -0.3420201, z: 0, w: 0.9396927}
+  m_LocalPosition: {x: 34.9, y: -9.9, z: 3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626907649}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: -40.77, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -40, z: 0}
 --- !u!65 &1938111597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16634,7 +15924,6 @@ GameObject:
   - component: {fileID: 1967742020}
   - component: {fileID: 1967742019}
   - component: {fileID: 1967742018}
-  - component: {fileID: 1967742017}
   m_Layer: 16
   m_Name: Drop_1 (1)
   m_TagString: Dead
@@ -16657,19 +15946,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: -240, y: 0, z: -29.392}
---- !u!114 &1967742017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1967742015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1967742018
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16720,7 +15996,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16763,7 +16039,6 @@ GameObject:
   - component: {fileID: 1970557344}
   - component: {fileID: 1970557343}
   - component: {fileID: 1970557342}
-  - component: {fileID: 1970557341}
   m_Layer: 16
   m_Name: Drop_15 (1)
   m_TagString: Dead
@@ -16786,19 +16061,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &1970557341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970557339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1970557342
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16849,7 +16111,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16892,7 +16154,6 @@ GameObject:
   - component: {fileID: 1983959462}
   - component: {fileID: 1983959461}
   - component: {fileID: 1983959460}
-  - component: {fileID: 1983959459}
   m_Layer: 16
   m_Name: Drop_14 (2)
   m_TagString: Dead
@@ -16915,19 +16176,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: -91.74, y: -88.19101, z: 2.5180054}
---- !u!114 &1983959459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1983959457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &1983959460
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16978,7 +16226,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17172,7 +16420,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026050241}
-  m_LocalRotation: {x: -0.09853763, y: 0.000000029657288, z: 0.0000000029366507, w: 0.99513334}
+  m_LocalRotation: {x: -0.09853763, y: -3.5527137e-15, z: -2.2204468e-16, w: 0.99513334}
   m_LocalPosition: {x: 129.38615, y: -17.844112, z: -3.6754227}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17246,8 +16494,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037168523}
   m_LocalRotation: {x: -0.6719626, y: 0.22015056, z: 0.22038512, w: 0.67188567}
-  m_LocalPosition: {x: 8.5, y: -41.39, z: 423.02}
-  m_LocalScale: {x: -292.13, y: -292.13, z: -309.8687}
+  m_LocalPosition: {x: 9.8, y: -41.39, z: 407.8}
+  m_LocalScale: {x: -233.83, y: -233.83, z: -248.02863}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3809870648787969980}
@@ -17428,7 +16676,6 @@ GameObject:
   - component: {fileID: 2057914538}
   - component: {fileID: 2057914537}
   - component: {fileID: 2057914536}
-  - component: {fileID: 2057914535}
   m_Layer: 16
   m_Name: Drop_9 (1)
   m_TagString: Dead
@@ -17444,26 +16691,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057914533}
   m_LocalRotation: {x: 0.16616859, y: 0.68730485, z: -0.527201, w: 0.47123146}
-  m_LocalPosition: {x: -5.720001, y: 32.64977, z: -5.52}
+  m_LocalPosition: {x: 4.345118, y: 36.167736, z: -5.52}
   m_LocalScale: {x: 111, y: 117.53566, z: 225.0653}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 398010137}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 61.8, y: 90, z: -34.617}
---- !u!114 &2057914535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057914533}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &2057914536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17514,7 +16748,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17557,7 +16791,6 @@ GameObject:
   - component: {fileID: 2073645333}
   - component: {fileID: 2073645332}
   - component: {fileID: 2073645331}
-  - component: {fileID: 2073645330}
   m_Layer: 16
   m_Name: Drop_12 (2)
   m_TagString: Dead
@@ -17580,19 +16813,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: -92.371, y: 88.671, z: -174.346}
---- !u!114 &2073645330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073645328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &2073645331
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17643,7 +16863,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18066,7 +17286,6 @@ GameObject:
   - component: {fileID: 2094164876}
   - component: {fileID: 2094164875}
   - component: {fileID: 2094164874}
-  - component: {fileID: 2094164873}
   m_Layer: 16
   m_Name: Drop_15 (2)
   m_TagString: Dead
@@ -18089,19 +17308,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: -67.266, y: -130.4, z: -34.617}
---- !u!114 &2094164873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094164871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &2094164874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18152,7 +17358,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18195,7 +17401,6 @@ GameObject:
   - component: {fileID: 2108973122}
   - component: {fileID: 2108973121}
   - component: {fileID: 2108973120}
-  - component: {fileID: 2108973119}
   m_Layer: 16
   m_Name: Drop_8 (2)
   m_TagString: Dead
@@ -18218,19 +17423,6 @@ Transform:
   m_Father: {fileID: 398010137}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 61.8, y: -130.4, z: -34.617}
---- !u!114 &2108973119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2108973117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &2108973120
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18281,7 +17473,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18615,7 +17807,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135671769}
   m_LocalRotation: {x: 0.5591929, y: -0, z: -0, w: 0.8290376}
-  m_LocalPosition: {x: 170.7, y: 35.4, z: 2.8}
+  m_LocalPosition: {x: 168.2, y: 33.4, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18661,7 +17853,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18816,7 +18008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196053841467982718}
   m_LocalRotation: {x: 0.5087076, y: 0.49162614, z: 0.46971974, w: -0.52809435}
-  m_LocalPosition: {x: 6.2700195, y: 30.171991, z: 5.32}
+  m_LocalPosition: {x: 18.769987, y: 30.171991, z: 5.32}
   m_LocalScale: {x: -113.80002, y: -144.13051, z: -473.68835}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -18851,7 +18043,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -18900,7 +18092,6 @@ GameObject:
   - component: {fileID: 196053841467982716}
   - component: {fileID: 196053841467982717}
   - component: {fileID: 436185121630233493}
-  - component: {fileID: 7650639388816972519}
   m_Layer: 16
   m_Name: Drop_10
   m_TagString: Dead
@@ -18921,7 +18112,6 @@ GameObject:
   - component: {fileID: 196053841810815759}
   - component: {fileID: 196053841810815758}
   - component: {fileID: 436185121836735462}
-  - component: {fileID: 7650639389696664214}
   m_Layer: 16
   m_Name: Drop_13
   m_TagString: Dead
@@ -18963,7 +18153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19149,7 +18339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19198,7 +18388,6 @@ GameObject:
   - component: {fileID: 196053842095531244}
   - component: {fileID: 196053842095531245}
   - component: {fileID: 436185122055390213}
-  - component: {fileID: 7650639389377478007}
   m_Layer: 16
   m_Name: Drop_18
   m_TagString: Dead
@@ -19422,7 +18611,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -19471,7 +18660,6 @@ GameObject:
   - component: {fileID: 196053842730982984}
   - component: {fileID: 196053842730982985}
   - component: {fileID: 436185122758000289}
-  - component: {fileID: 7650639388737816531}
   m_Layer: 16
   m_Name: Drop_12
   m_TagString: Dead
@@ -19572,7 +18760,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &375569468245657870
 Transform:
@@ -19949,7 +19137,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &640247744733952335
 MeshFilter:
@@ -20166,7 +19354,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &921070065383575438
 MeshRenderer:
@@ -20361,7 +19549,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20674,7 +19862,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1551953326922385992
 GameObject:
@@ -21209,7 +20397,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1909453813672734512
 Transform:
@@ -21339,7 +20527,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!1 &2414513944381782594
 GameObject:
@@ -21408,7 +20596,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2450984332614409451
 MeshFilter:
@@ -21790,7 +20978,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -21854,7 +21042,6 @@ GameObject:
   - component: {fileID: 2491211773476155829}
   - component: {fileID: 2491211773476155834}
   - component: {fileID: 4943244097535062856}
-  - component: {fileID: 4943244097535062857}
   m_Layer: 16
   m_Name: Drop_17
   m_TagString: Dead
@@ -22183,7 +21370,6 @@ GameObject:
   - component: {fileID: 2491211774169525769}
   - component: {fileID: 2491211774169525766}
   - component: {fileID: 4943244096038481140}
-  - component: {fileID: 4943244096038481141}
   m_Layer: 16
   m_Name: Drop_14
   m_TagString: Dead
@@ -22219,7 +21405,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22578,7 +21764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2658827314915642933
 GameObject:
   m_ObjectHideFlags: 0
@@ -22639,7 +21825,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2695230588072272245}
   m_LocalRotation: {x: 0.43739676, y: -0.6795726, z: 0.33798957, w: 0.4823155}
-  m_LocalPosition: {x: 7.350006, y: 27.767736, z: 1.6500001}
+  m_LocalPosition: {x: 19.849974, y: 27.767736, z: 1.6500001}
   m_LocalScale: {x: 111, y: 117.53569, z: 225.06529}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22673,7 +21859,6 @@ GameObject:
   - component: {fileID: 2695230588072272247}
   - component: {fileID: 2695230588072272244}
   - component: {fileID: 1725882622784059986}
-  - component: {fileID: 7766458024295849226}
   m_Layer: 16
   m_Name: Drop_8
   m_TagString: Dead
@@ -22709,7 +21894,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22751,7 +21936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22794,7 +21979,6 @@ GameObject:
   - component: {fileID: 2695230588539934752}
   - component: {fileID: 2695230588539934755}
   - component: {fileID: 1725882622186357509}
-  - component: {fileID: 7766458023693968479}
   m_Layer: 16
   m_Name: Drop_11
   m_TagString: Dead
@@ -22824,7 +22008,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2695230588539934754}
   m_LocalRotation: {x: -0.5315335, y: 0.032471865, z: -0.4340154, w: 0.7266694}
-  m_LocalPosition: {x: -7.73999, y: 34.800003, z: -0.52}
+  m_LocalPosition: {x: 4.7599773, y: 34.800003, z: -0.52}
   m_LocalScale: {x: 84.4, y: 89.36948, z: 171.13072}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22858,7 +22042,6 @@ GameObject:
   - component: {fileID: 2695230588975990883}
   - component: {fileID: 2695230588975990880}
   - component: {fileID: 1725882621481636678}
-  - component: {fileID: 7766458025474012190}
   m_Layer: 16
   m_Name: Drop_16
   m_TagString: Dead
@@ -22894,7 +22077,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22939,7 +22122,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2695230589089643428}
   m_LocalRotation: {x: 0.16616859, y: 0.68730485, z: -0.527201, w: 0.47123146}
-  m_LocalPosition: {x: -5.720001, y: 27.767736, z: -5.52}
+  m_LocalPosition: {x: 6.7799664, y: 27.767736, z: -5.52}
   m_LocalScale: {x: 111, y: 117.53566, z: 225.0653}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -22959,7 +22142,6 @@ GameObject:
   - component: {fileID: 2695230589089643430}
   - component: {fileID: 2695230589089643429}
   - component: {fileID: 1725882621603668099}
-  - component: {fileID: 7766458025325758425}
   m_Layer: 16
   m_Name: Drop_9
   m_TagString: Dead
@@ -23001,7 +22183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23059,7 +22241,6 @@ GameObject:
   - component: {fileID: 2695230589158272150}
   - component: {fileID: 2695230589158272149}
   - component: {fileID: 1725882621663852467}
-  - component: {fileID: 7766458025392066793}
   m_Layer: 16
   m_Name: Drop_15
   m_TagString: Dead
@@ -23101,7 +22282,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a44f7ffa49bc54ea0a6382b786088995, type: 2}
+  - {fileID: 2100000, guid: 97dd862952de2408b9747e6a38b8577b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23429,6 +22610,7 @@ MonoBehaviour:
   pos:
   - {fileID: 1867557983}
   - {fileID: 1015391472}
+  - {fileID: 1615515384}
   - {fileID: 1257526746}
   - {fileID: 528030637}
   speed: 5
@@ -23451,7 +22633,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3122329672284892425
 Transform:
@@ -23466,7 +22648,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 25
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3127895632680496134
 MeshRenderer:
@@ -24084,7 +23266,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4053167453046311023
 MeshRenderer:
@@ -24546,7 +23728,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &4568950220620111634
 MeshRenderer:
@@ -24827,19 +24009,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4943244096038481141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2491211774169525767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!54 &4943244097535062856
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24856,19 +24025,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4943244097535062857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2491211773476155835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!23 &4960106318970730625
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24985,7 +24141,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5156867422770851005
 MeshRenderer:
@@ -25007,7 +24163,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
+  - {fileID: 2100000, guid: 56fc97961af0f4da184e769a8b3a9238, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -25122,7 +24278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5326621398163311640
 MeshFilter:
@@ -25770,7 +24926,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5947016064648337661
 GameObject:
@@ -26156,7 +25312,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &6434015624758157129
 SkinnedMeshRenderer:
@@ -26236,7 +25392,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6528423381176265896
 GameObject:
@@ -27142,7 +26298,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7045244169615514554 stripped
 Transform:
@@ -27543,7 +26699,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7611156108415133193
 MeshFilter:
@@ -27567,58 +26723,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8344823704121574938, guid: 86bbd54bedc3a0d4a97cd5139cdd2737, type: 3}
---- !u!114 &7650639388737816531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196053842730982986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7650639388816972519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196053841467982718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7650639389377478007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196053842095531246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7650639389696664214
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196053841810815757}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!23 &7672092459915036335
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27824,7 +26928,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7731090494404787075
 MeshFilter:
@@ -27834,71 +26938,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555173784746943736}
   m_Mesh: {fileID: -3192407847068387414, guid: 2e2d200f9e9374c7b85b662d453efdbe, type: 3}
---- !u!114 &7766458023693968479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2695230588539934754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7766458024295849226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2695230588072272245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7766458025325758425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2695230589089643428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7766458025392066793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2695230589158272148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
---- !u!114 &7766458025474012190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2695230588975990881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 675fdd54560264ac9afa9ebcf4055543, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cinemachineCollision: {fileID: 0}
 --- !u!4 &7781704292928794221
 Transform:
   m_ObjectHideFlags: 0
@@ -27912,7 +26951,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7835025547553293091
 MeshFilter:
@@ -28146,7 +27185,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8183611223575852234
 MeshFilter:
@@ -28211,7 +27250,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8240748894458046998
 PrefabInstance:
@@ -28332,8 +27371,8 @@ GameObject:
   - component: {fileID: 4568950220620111634}
   - component: {fileID: 8368142932549296961}
   m_Layer: 0
-  m_Name: Plane.001
-  m_TagString: Untagged
+  m_Name: MirrorGround
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 64
@@ -28365,7 +27404,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8449778346098682823
 MeshFilter:
@@ -28510,7 +27549,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8687389983583402982
 MeshFilter:
@@ -28660,7 +27699,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 116765655}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &8781075858731386715
 MeshRenderer:
@@ -29219,8 +28258,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9106491648247463543}
   m_LocalRotation: {x: -0.6719626, y: 0.22015056, z: 0.22038512, w: 0.67188567}
-  m_LocalPosition: {x: 8.5, y: -3.0388184, z: 191.3}
-  m_LocalScale: {x: -317.7, y: -317.7, z: -336.99136}
+  m_LocalPosition: {x: 10.98, y: -3.0388184, z: 191.3}
+  m_LocalScale: {x: -295.4, y: -295.4, z: -313.33725}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3809870648787969980}

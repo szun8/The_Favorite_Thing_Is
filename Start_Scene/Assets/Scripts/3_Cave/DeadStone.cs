@@ -9,11 +9,13 @@ public class DeadStone : MonoBehaviour
     public void SettingCinemachine()
     {
         SoundManager.instnace.PlaySE("CaveCollapse");
-        Invoke("DestroyCine", 2.5f);
+        CinematicBar.instance.ShowBars();
+        Invoke("DestroyCine", 2f);
     }
 
     void DestroyCine()
     {
+        CinematicBar.instance.HideBars();
         Destroy(cinemachineCollision);
     }
 }
