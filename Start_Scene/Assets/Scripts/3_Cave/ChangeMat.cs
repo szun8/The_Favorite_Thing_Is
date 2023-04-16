@@ -13,6 +13,7 @@ public class ChangeMat : MonoBehaviour
     CaveMove cm;
 
     public Vector3 followOffset, originOffset;
+    Color wallAlpha;
 
     bool isChange = false, isL = false;
     private void Awake()
@@ -24,15 +25,16 @@ public class ChangeMat : MonoBehaviour
     {
         ct = sideCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>();
         cm = player.GetComponent<CaveMove>();
+        wallAlpha = wall.materials[1].color;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("l")) isL = true;
         if (isL && isChange)
-        {   
-            wall.material.color = Color.Lerp(wall.material.color, Color.white, Time.deltaTime);            
-            if(wall.material.color.r >= 0.99 && wall.material.color.g >= 0.99 && wall.material.color.b >= 0.99)
+        {
+            MatIn();
+            if (wall.materials[1].color.a >= 0.99)
             {   // 벽화의 색이 일정 수준 다 보이게 되면 원상복귀
                 CinematicBar.instance.HideBars();
                 ct.m_FollowOffset = Vector3.Lerp(ct.m_FollowOffset, originOffset, Time.deltaTime);
@@ -42,25 +44,49 @@ public class ChangeMat : MonoBehaviour
                     cm.animator.enabled = true;
                     isChange = false;
                     isL = false;
+                    CaveMove.isStop = false;
                 }
             }
-            else if (wall.material.color.r >= 0.1 && wall.material.color.g >= 0.1 && wall.material.color.b >= 0.1)
-            {   // 벽화 앞에서 L버튼을 누르면 벽화의 색이 보이고 카메라 줌인, 플레이어 모든 행동 금지
+            else
+            {
                 CinematicBar.instance.ShowBars();
-                ct.m_FollowOffset = Vector3.Lerp(ct.m_FollowOffset, followOffset, Time.deltaTime);
-                if (cm.lightOn)
-                {
-                    cm.lightOn = false;
-                    cm.LightHandle();
-                }
-                cm.animator.enabled = false;
-                cm.enabled = false;
+                CamOnLerp();
             }
         }
+    }
+    public float animTime = 5f;         // Fade 애니메이션 재생 시간 (단위:초).   
+    private float start = 1f;           // Mathf.Lerp 메소드의 첫번째 값.  
+    private float end = 0f;             // Mathf.Lerp 메소드의 두번째 값.  
+    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.
+
+    void CamOnLerp()
+    {
+        ct.m_FollowOffset = Vector3.Lerp(ct.m_FollowOffset, followOffset, Time.deltaTime);
+        if (cm.lightOn)
+        {
+            cm.lightOn = false;
+            cm.LightHandle();
+        }
+        cm.animator.enabled = false;
+        cm.enabled = false;
+    }
+
+    void MatIn()
+    {
+        // 경과 시간 계산.  
+        // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
+        time += Time.deltaTime / animTime;
+
+        Color color = wall.materials[1].color;
+        // 알파 값 계산.  
+        color.a = Mathf.Lerp(end, start, time);
+        // 계산한 알파 값 다시 설정.  
+        wall.materials[1].color = color;
     }
 
     public void ChangeMaterialWall()
     {
         isChange = true;
+        CaveMove.isStop = true;
     }
 }

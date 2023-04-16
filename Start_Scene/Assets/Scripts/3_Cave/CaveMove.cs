@@ -6,10 +6,14 @@ public class CaveMove : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;
     public Transform[] pos;
+    int curPos = 0;
     public float speed, rotSpeed, jumpForce;
-    public  bool lightOn = false;
 
+    public bool lightOn = false;
     public static bool badak = false;
+    public static bool isStop = false;
+    public static bool isDied = false;
+    public static bool isMirror = false;
 
     // 플레이어 따라다니는 전등
     public Light spotLight;  //spot light
@@ -32,16 +36,23 @@ public class CaveMove : MonoBehaviour
         spotLight.intensity = 0;
         maskLight.SetActive(false);
         materials = mesh.sharedMaterials;
-        transform.position = pos[0].position;
+        transform.position = pos[curPos].position;
     }
 
     // 1. 동굴 내부 2. 거울방
     void Update()
     {
-        dir.x = Input.GetAxisRaw("Horizontal");
-        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
-        badak = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
+        if (isDied) return;
+        if (isMirror)
+        {
+            dir.x = Input.GetAxisRaw("Horizontal");
+            dir.z = Input.GetAxisRaw("Vertical");
+        }
+        else dir.x = Input.GetAxisRaw("Horizontal");
+        Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
+        badak = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
 
+        Jump();
         if (Input.GetKey("l"))
         {
             lightOn = true;
@@ -57,6 +68,12 @@ public class CaveMove : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (isDied) return;
+        if (isStop)
+        {
+            animator.SetBool("isWalk", false);
+            return;
+        }
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
         {
@@ -71,7 +88,7 @@ public class CaveMove : MonoBehaviour
         }
         else animator.SetBool("isWalk", false);
 
-        Jump();
+        
     }
 
     void Move()
@@ -82,7 +99,7 @@ public class CaveMove : MonoBehaviour
 
     void Jump()
     {
-        if (badak && Input.GetKey("space"))
+        if (badak && Input.GetKeyDown("space"))
         {
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             SoundManager.instnace.PlaySE("PlayerJump");
@@ -101,7 +118,7 @@ public class CaveMove : MonoBehaviour
         {
             //emission color의 밝기 1.5배 증가 시키기 
             materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f) * 1.8f);
-            spotLight.intensity = 25f;
+            spotLight.intensity = 900f;
         }
 
         else
@@ -109,5 +126,39 @@ public class CaveMove : MonoBehaviour
             materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f));
             spotLight.intensity = 0;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Dead"))
+        {
+            SetCurStance(3);
+        }
+        if (collision.gameObject.CompareTag("Stone"))
+        {
+            if (HiddenPlates.isSafe) return;
+            isDied = true;
+            SetCurStance(1);
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Item"))
+        {
+            SetCurStance(2);
+        }
+    }
+
+    void SetCurStance(int i)
+    {
+        UIManager.instnace.stopOut = false;
+        curPos = i;
+        Invoke("SetPos", 1.5f);
+    }
+
+    void SetPos()
+    {   // 죽었을 경우 다시 시작되는 장소 설정
+        transform.position = pos[curPos].position;
+        isDied = false;
     }
 }

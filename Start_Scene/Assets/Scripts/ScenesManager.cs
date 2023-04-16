@@ -38,8 +38,8 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(SceneNum + 1);
         SceneNum++;
-        PlayVideo();
-        //Invoke("PlayVideo", 1f);
+        if(SceneNum == 1) PlayVideo();
+        if (SceneNum == 2) SoundManager.instnace.PlayBGM();
     }
 
     void PlayVideo()

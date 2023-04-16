@@ -31,13 +31,13 @@ public class SoundManager : MonoBehaviour
     #endregion Singleton
     // 실제 재생되고있는 음악 목록
     public AudioSource[] audioSourceEffects;
-    public AudioSource audioSourceBGM;
+    public AudioSource[] audioSourceBGM;
 
     public string[] playSoundName;
 
     // 재생되고자 하는 음악 목록
     public Sound[] effectSounds;
-    public Sound bgmSound;
+    public Sound[] bgmSound;
 
     public void PlaySE(string _name)
     {
@@ -83,20 +83,26 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    // 0 : tutorial
+    // 1 : Sea
+    // 2 : Cave
+    // 3 : Square
+    int i;
     public void PlayBGM()
     {
-        if (!audioSourceBGM.isPlaying)
+        i = ScenesManager.instance.SceneNum;
+        if (!audioSourceBGM[i].isPlaying)
         {   // 재생중이지 않은 사운드에 대해서
-            playSoundName[audioSourceEffects.Length] = bgmSound.name;
-            audioSourceBGM.clip = bgmSound.clip;
-            audioSourceBGM.PlayOneShot(bgmSound.clip, 0.3f);
-            audioSourceBGM.loop = true;
+            playSoundName[audioSourceEffects.Length] = bgmSound[i].name;
+            audioSourceBGM[i].clip = bgmSound[i].clip;
+            audioSourceBGM[i].PlayOneShot(bgmSound[i].clip, 0.3f);
+            audioSourceBGM[i].loop = true;
             return;
         }   // 재생을 시켜주고 함수 종료
         
     }
     public void StopBGM()
     {
-        audioSourceBGM.Stop();
+        audioSourceBGM[i].Stop();
     }
 }
