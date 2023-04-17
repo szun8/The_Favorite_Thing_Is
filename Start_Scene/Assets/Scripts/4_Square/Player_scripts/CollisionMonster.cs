@@ -19,8 +19,9 @@ public class CollisionMonster : MonoBehaviour
     //쿵쿵이와 충돌해있을 경우에는 떨어지도록 플레이어 마찰력 0으로 
     private void OnCollisionStay(Collision collision)
     {
-        //착몬을 그라운드 태그로 두자 !!! 
-        if (collision.gameObject.CompareTag("KungKung") || (collision.gameObject.CompareTag("Ground") && !PlayerMove.isGround))
+        //착몬을 그라운드 태그로 두자 !!!
+        //땅 (돌)에 붙으면 안되니 ground 도 해주지만 밟고 있을때는 아닌걸로 위해서 
+        if (collision.gameObject.CompareTag("UpKung") || (collision.gameObject.CompareTag("Ground") && !PlayerMove.isGround) || collision.gameObject.CompareTag("DownKung"))
         {
             gameObject.GetComponentInChildren<MeshCollider>().material = physicMaterial;
 
@@ -31,7 +32,7 @@ public class CollisionMonster : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("KungKung") || collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("UpKung") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DownKung"))
         {
             gameObject.GetComponentInChildren<MeshCollider>().material = defaultMaterial;
         }

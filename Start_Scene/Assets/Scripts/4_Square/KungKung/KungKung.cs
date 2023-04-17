@@ -7,11 +7,11 @@ using Photon.Pun;
 public class KungKung : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
-    GameObject kung;
+    public GameObject kung;
     private bool isDrop = false;
     private bool isPlayerIn = false;
 
-    private float speed = 3f;
+    public float speed = 4f;
 
     Vector3 startPos;
     Vector3 pos;
@@ -19,7 +19,7 @@ public class KungKung : MonoBehaviourPunCallbacks
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
-        kung = GameObject.Find("KungKung");
+        //kung = transform.GetChild(0).gameObject;
 
         if (kung != null)
         {
@@ -59,8 +59,17 @@ public class KungKung : MonoBehaviourPunCallbacks
         if (isDrop)
         {
             kung.transform.position = pos;
-            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 2, pos.z), speed * 4f * Time.deltaTime);
-            if (pos.y == 2 && !isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+            if (kung.CompareTag("UpKung"))
+            {
+                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 2.7f, pos.z), speed * 4f * Time.deltaTime);
+                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+            }
+            else if (kung.CompareTag("DownKung"))
+            {
+                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 5.4f, pos.z), speed * 4f * Time.deltaTime);
+                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+            }
+            
         }
 
         else
