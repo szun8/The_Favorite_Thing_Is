@@ -8,6 +8,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     PhotonView PV;
     ReverseGravity reverseGravity;
 
+
     void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -23,6 +24,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, -179f);
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0, -4, 0);
                 reverseGravity.photonView.RPC("SyncisReversed", RpcTarget.AllBuffered);
+
             }
 
             else if (other.CompareTag("WarpDown"))
