@@ -92,6 +92,7 @@ public class CaveMove : MonoBehaviour
 
     void Move()
     {
+        
         animator.SetBool("isWalk", true);
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
@@ -136,10 +137,10 @@ public class CaveMove : MonoBehaviour
         {
             badak = true;
         }
-        if (collision.gameObject.CompareTag("Dead"))
-        {
-            SetCurStance(4);
-        }
+        //if (collision.gameObject.CompareTag("Dead"))
+        //{
+        //    SetCurStance(4);
+        //}
         if (collision.gameObject.CompareTag("Stone"))
         {
             if (HiddenPlates.isSafe) return;

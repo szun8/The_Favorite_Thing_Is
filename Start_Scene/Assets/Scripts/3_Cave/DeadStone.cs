@@ -6,6 +6,17 @@ using Cinemachine;
 public class DeadStone : MonoBehaviour
 {
     [SerializeField] CinemachineCollisionImpulseSource cinemachineCollision;
+
+    public void InvokeNextScene()
+    {
+        Invoke("NextScene", 2f);
+    }
+
+    void NextScene()
+    {
+        ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
+    }
+
     public void SettingCinemachine()
     {
         SoundManager.instnace.PlaySE("CaveCollapse");
