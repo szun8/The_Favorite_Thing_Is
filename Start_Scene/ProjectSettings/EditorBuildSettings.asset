@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/3_Cave.unity
     guid: 4011cd23c78304777a9a77d9436ff2a7
   - enabled: 1
+    path: Assets/Scenes/3-4_Mirror.unity
+    guid: a5598e77df4e944bd82b3a1320738916
+  - enabled: 1
     path: Assets/Scenes/4_Square.unity
     guid: bae207e3dfc6b46c3a191a08dd6b266b
   m_configObjects: {}

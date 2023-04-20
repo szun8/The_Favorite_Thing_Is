@@ -52,7 +52,7 @@ public class SwimMove : MonoBehaviour
     void Update()
     {
         if(isCave)
-        {
+        {   // 다음씬으로 넘어갑니...다
             rigid.useGravity = false;
             isCave = false;
             transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);

@@ -25,6 +25,8 @@ TagManager:
   - G_Plate
   - B_Plate
   - KungKung
+  - WarpUp
+  - WarpDown
   layers:
   - Default
   - TransparentFX
@@ -43,7 +45,7 @@ TagManager:
   - Hidden
   - Mask
   - CaveStone
-  - 
+  - CaveDeadZone
   - 
   - 
   - 

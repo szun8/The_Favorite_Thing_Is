@@ -35,9 +35,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public GameObject maskLight; // 발광 구
     
 
-    public bool isGround = false; //벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
+    public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     private bool isBridge = false;
-    private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함 
+    //private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함
+    private bool isJump = false; // 바닥 충돌, 발판과 단상
+    private bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
+
     //private bool isMirrorJump = false;
 
     //상호작용 
@@ -87,8 +90,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             Camera.main.GetComponent<CameraMove>().player = gameObject;
-            Camera.main.GetComponent<CameraMove>().dist = 10;//18;
-            Camera.main.GetComponent<CameraMove>().height = 0.1f; //재인이의 희망은 0.2였다
+            Camera.main.GetComponent<CameraMove>().dist = 20;//18;
+            Camera.main.GetComponent<CameraMove>().height = 0.15f; //재인이의 희망은 0.2였다
             
         }
 
@@ -102,22 +105,25 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             dir.x = Input.GetAxisRaw("Horizontal");
 
             //플레이어 중력에 따른 레이 검출
-            PlayerLay(); 
+            PlayerLay();
+
+            if (canJump || isGround) isJump = false;
 
             if (Input.GetKeyDown("space"))
             {
-                //땅이거나 다리를 밟으면 + 바닥과 충돌해 있는 경우 
-                if (isGround || isBridge || isStone)
+                if(canJump || isGround)
                 {
-                    //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce*1.3f), ForceMode.Impulse);
-                   
-                   //제대로 된 중력 
-                    else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-                    
+                    //땅, 다리, 발판 충돌해 있는 경우 + 단상에 있을 경우 (발판은 ground로 하자 )
+                    isJump = true;
+                    PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
+                    //뒤집힌 중력인 경우 
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce * 1.3f), ForceMode.Impulse);
+
+                    //제대로 된 중력 
+                    else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
                 }
- 
+                
             }
 
             if (Input.GetKey("l"))
@@ -178,24 +184,24 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //키 입력이 들어왔으면 ~
             if (dir != Vector3.zero)
             {
-                animator.SetBool("isWalk", true);
-                PV.RPC("SyncAnimation", RpcTarget.AllBuffered,"isWalk", true);
+                if(!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
+
+
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))
                 {
                     transform.Rotate(0, 1, 0);
                 }
-                if (!reverseGravity.isReversed) //PV.ViewID != networkManager.p1_id &&
+                if (!reverseGravity.isReversed)   //플레이어가 1P면 
                     transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
-                else
+                else    //2P이면 
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);
             }
             else
             {
-                animator.SetBool("isWalk", false);
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
             }
-            
+
             rigid.MovePosition(transform.position + dir/1.3f * Time.deltaTime * speed);
             
             
@@ -209,14 +215,18 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.name == "WaitWall") wall.collisionCount++;
 
-        if (collision.gameObject.CompareTag("Ground")) isStone = true;
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = true;
+
+
 
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.name == "WaitWall") wall.collisionCount--;
 
-        if (collision.gameObject.CompareTag("Ground")) isStone = false;
+        if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = false;
     }
 
     void PlayerLay()
@@ -227,11 +237,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
-            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
+            //isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
 
-            //아이템이랑 스프링은 잘 모르겠다 나중에
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
-
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
         }
@@ -240,11 +248,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector2.down * 1f, Color.blue);
            
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Ground"));
-            isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Bridge"));
+            //isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Bridge"));
 
             //아이템이랑 스프링은 잘 모르겠다 나중에
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
-
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
             Debug.DrawRay(transform.position - new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
         }
@@ -298,7 +305,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         else        //L,R,G,B 가 다 꺼진 경우에는 기본 밝기 
         {
-            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color / 1.5f);
+            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color);
             spotLight.intensity = 0;
         }
 
@@ -306,6 +313,13 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void SyncAnimation(string animation, bool value) => animator.SetBool(animation, value);
+    [PunRPC]
+    void SyncJump()
+    {
+        animator.SetBool("isWalk", false);
+        animator.SetTrigger("isJump");
+    }
+     
 
     //Photon은 Color를 몰라 ,,즉 포톤은 칼라를 직렬화 하지 못해 Vector로 color를 변환하기  
     [PunRPC]
