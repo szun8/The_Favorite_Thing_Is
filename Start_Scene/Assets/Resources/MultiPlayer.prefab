@@ -341,12 +341,14 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
   PV: {fileID: 4291155922799687852}
-  JumpForce: 7
+  JumpForce: 8
   rotSpeed: 10
   speed: 11
   spotLight: {fileID: 1772495615227420081}
   maskLight: {fileID: 6300313391131558221}
   isGround: 0
+  isJump: 0
+  canJump: 0
   lightOn: 0
   getRed: 1
   getGreen: 1
