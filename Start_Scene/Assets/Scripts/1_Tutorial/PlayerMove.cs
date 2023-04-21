@@ -32,7 +32,6 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        Camera.main.GetComponent<CameraMove>().player = gameObject;
         spotLight.intensity = 0;
        
 
