@@ -34,7 +34,13 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     }
     private void Update()
     {
-        if (PV.IsMine) PV.RPC("GravityControl", RpcTarget.AllBuffered);
+        if (PV.IsMine)
+        {
+            if (isReversed)
+                rigid.AddForce(Vector3.up * GravityForce * 2.5f);
+            else
+                rigid.AddForce(Vector3.down * 1.3f);
+        }
        
 
     }
@@ -52,12 +58,9 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
    
     
 
-    [PunRPC]
-    void GravityControl()
-    {
-        if (isReversed) //1p는 중력위로 2p는 중력 아래로
-            rigid.AddForce(Vector3.up * GravityForce * 2.5f);
-
-        else rigid.AddForce(Vector3.down * 1.3f);
-    }
+    
 }
+
+  
+
+

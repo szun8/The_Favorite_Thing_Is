@@ -92,6 +92,7 @@ MonoBehaviour:
   speed: 10
   spotLight: {fileID: 2784406503120588361}
   maskLight: {fileID: 7589176763722470069}
+  physicMaterial: {fileID: 13400000, guid: 523ebb0f6490947ec8a92bc5a3fc56da, type: 2}
 --- !u!1 &159111010384316376
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4710850567669400641}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.03215184, y: 0.011012778, z: 0.03932695}
+  m_LocalPosition: {x: 0, y: -0.031, z: 0.03932695}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -532,17 +533,17 @@ PrefabInstance:
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.36
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 5.36
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 5.36
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}
@@ -552,7 +553,7 @@ PrefabInstance:
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 4261187551526190896, guid: 9aecc90913b2546eda737174c1fb5f61,
         type: 3}

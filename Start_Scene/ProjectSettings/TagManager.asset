@@ -27,6 +27,9 @@ TagManager:
   - KungKung
   - WarpUp
   - WarpDown
+  - UpKung
+  - DownKung
+  - SavePoint
   layers:
   - Default
   - TransparentFX

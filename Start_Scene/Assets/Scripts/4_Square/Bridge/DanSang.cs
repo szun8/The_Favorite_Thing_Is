@@ -9,7 +9,7 @@ public class DanSang : MonoBehaviourPunCallbacks
     Animator animator;
     PhotonView PV;
 
-    GameObject bridge; //해당 단상과 연결이 되는 발판 
+    public GameObject bridge; //해당 단상과 연결이 되는 발판 
     
 
     RaycastHit player;
@@ -26,7 +26,6 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기 
-        bridge = gameObject.transform.GetChild(0).gameObject; //자식 불러오기 (발판)
         CheckPlateColor();
         
     }
@@ -79,7 +78,6 @@ public class DanSang : MonoBehaviourPunCallbacks
             {
                 if (player.collider.GetComponentInParent<MultiPlayerMove>().r_pressed)
                 {
-                    bridge.GetComponent<MeshCollider>().isTrigger = false;
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 }
                 else
@@ -99,24 +97,10 @@ public class DanSang : MonoBehaviourPunCallbacks
             }
             else if (light_L) //else가 light_L
             {
-                if (player.collider.GetComponentInParent<MultiPlayerMove>().l_pressed)
-                {
-                    bridge.GetComponent<MeshCollider>().isTrigger = false;
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                }
-                
+                if (player.collider.GetComponentInParent<MultiPlayerMove>().l_pressed) PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
 
-                else
-                {
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                else PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
 
-                    AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
-
-                    if (curAnim.IsName("L_Off") && curAnim.normalizedTime >= 0.99f) //애니메이션 이름이 R_Off이고, 99%이상 완료된 경우 
-                    {
-                        bridge.GetComponent<MeshCollider>().isTrigger = true;
-                    }
-                }
             }
             /*else if (light_G)
             {
@@ -141,6 +125,18 @@ public class DanSang : MonoBehaviourPunCallbacks
     void SyncAnim(bool value)  //애니메이션 변수 동기화 
     {
         animator.SetBool("isLight", value);
+
+        if (value) bridge.GetComponent<MeshCollider>().isTrigger = false;
+
+        else
+        {
+            AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
+            if (curAnim.IsName("L_Off") && curAnim.normalizedTime >= 0.9f) //애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
+                bridge.GetComponent<MeshCollider>().isTrigger = true;
+        }
+        
     }
+
+    
 
 }

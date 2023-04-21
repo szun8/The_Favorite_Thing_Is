@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5898384467901351935}
   m_Layer: 0
   m_Name: 0415_koong_sleep
-  m_TagString: Untagged
+  m_TagString: UpKung
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,14 +26,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5358379156896201222}
-  m_LocalRotation: {x: -0.5240931, y: -0.47468564, z: -0.47468576, w: 0.52409303}
+  m_LocalRotation: {x: -0.5240932, y: -0.47468552, z: -0.47468552, w: 0.5240932}
   m_LocalPosition: {x: -236.79, y: 5.33, z: 0}
   m_LocalScale: {x: 281.2236, y: 301.2491, z: 383.48328}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 95.664}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -84.336}
 --- !u!33 &8554801131750485785
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -63,7 +63,6 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: b317764dd6f095642be2453a41375970, type: 2}
-  - {fileID: 2100000, guid: e2513fb71e7068f49a50da6429bbd830, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,6 +95,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8031095397847605935, guid: 9def4ee8974d7964eaffe30bee0a5d16, type: 3}

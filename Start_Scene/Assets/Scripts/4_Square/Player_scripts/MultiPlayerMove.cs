@@ -107,7 +107,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //플레이어 중력에 따른 레이 검출
             PlayerLay();
 
+            //밟을 수 있는 놈들과 충돌해있거나 , 땅레이어를 감지하면 
             if (canJump || isGround) isJump = false;
+            
 
             if (Input.GetKeyDown("space"))
             {
@@ -118,7 +120,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                     PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce * 1.3f), ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce/1.2f), ForceMode.Impulse);
 
                     //제대로 된 중력 
                     else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
@@ -126,27 +128,27 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 
             }
 
-            if (Input.GetKey("l"))
+            if (Input.GetKeyDown("l"))
             {
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
                 PV.RPC("LightOn", RpcTarget.AllBuffered);
             }
 
             //RPC 함수는 최대 인자 2개만 전송가능 Color는 못넘긴다 ~ 벡터로 변환 해줘야 한다 ~ 
-            if (Input.GetKey("r") && getRed)
+            if (Input.GetKeyDown("r") && getRed)
             {
                 PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
             }
 
 
-            if (Input.GetKey("g") && getGreen)
+            if (Input.GetKeyDown("g") && getGreen)
             {
                 PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
             }
 
-            if (Input.GetKey("b") && getBlue)
+            if (Input.GetKeyDown("b") && getBlue)
             {
                 PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
@@ -237,7 +239,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
-            //isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Bridge"));
+            
 
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
@@ -248,7 +250,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector2.down * 1f, Color.blue);
            
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Ground"));
-            //isBridge = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Bridge"));
+            
 
             //아이템이랑 스프링은 잘 모르겠다 나중에
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );

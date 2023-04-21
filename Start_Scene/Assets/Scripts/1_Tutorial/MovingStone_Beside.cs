@@ -17,21 +17,21 @@ public class MovingStone_Beside : MonoBehaviour
     {
         if (far)
         {
-            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, 38), speed * Time.deltaTime);
+            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, -182), speed * Time.deltaTime);
         }
         else
         {
-            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, 57), speed * Time.deltaTime);
+            pos = Vector3.MoveTowards(pos, new Vector3(pos.x, pos.y, -202), speed * Time.deltaTime);
         }
         // Update position of the object
         transform.localPosition = pos;
 
         // Check if the object has reached its target position
-        if (transform.localPosition.z == 38 && far)
+        if (transform.localPosition.z == -182 && far)
         {
             far = false;
         }
-        else if (transform.localPosition.z == 57 && !far)
+        else if (transform.localPosition.z == -202 && !far)
         {
             far = true;
         }
