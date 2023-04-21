@@ -92,6 +92,12 @@ MonoBehaviour:
   - SyncJump
   - KungDie
   - SyncNo
+  - SyncMirrorJump
+  - MirrorLightOff
+  - MirrorLightOn
+  - MirrorLightPower
+  - SyncMirrorAnimation
+  - SyncMirrorLightPressed
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
