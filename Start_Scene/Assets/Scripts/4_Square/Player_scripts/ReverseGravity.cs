@@ -37,9 +37,9 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             if (isReversed)
-                rigid.AddForce(Vector3.up * GravityForce * 2.5f);
+                rigid.AddForce(Vector3.up * GravityForce * 2.2f);
             else
-                rigid.AddForce(Vector3.down * 1.3f);
+                rigid.AddForce(Vector3.down * 1.6f);
         }
        
 

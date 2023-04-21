@@ -13,8 +13,8 @@ public class PlayerMove : MonoBehaviour
     private bool lightOn = false;
     public static bool badak = false; //바닥 레이어 감지하는지 
 
-    private bool isGround = false; // 바닥과 닿아있는지 collision 
-    private bool isJump = false; //점프 중인지 ~ 
+    public bool isGround = false; // 바닥과 닿아있는지 collision 
+    public bool isJump = false; //점프 중인지 ~ 
 
     // 플레이어 따라다니는 전등
     
@@ -54,27 +54,23 @@ public class PlayerMove : MonoBehaviour
     {
         dir.x = Input.GetAxisRaw("Horizontal");
 
-        
+        rigid.AddForce(Vector3.down * 1.8f);//즁력 더 주기 
         //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
         Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
         //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
         badak = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.Log("collision " + isGround);
-        Debug.Log("ray " + badak);
-        Debug.Log("isjump "+isJump);
 
         //내 앞으로 광선을 쏴서 물체를 검출해보자 
         //Debug.DrawRay(transform.position, transform.forward * 1.5f, Color.red);
+        if (isGround && badak) isJump = false; //바닥에 닿아있으면 점프중이 아님
 
-        if (isGround || badak) isJump = false; //바닥에 닿아있으면 점프중이 아님 
+        if (!badak) isJump = true;
 
         if (Input.GetKeyDown("space"))
         {
-
-            if (badak || isGround)
+            if (isJump == false)
             {
                 animator.SetBool("isWalk", false);
-                isJump = true;
                 animator.SetTrigger("isJump");
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             }
@@ -99,8 +95,8 @@ public class PlayerMove : MonoBehaviour
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
         {
-            if(!isJump) animator.SetBool("isWalk", true);
-
+            if (!isJump) animator.SetBool("isWalk", true);
+            else if (isJump) animator.SetBool("isWalk", false);
 
             //바라보는 방향 부호 != 가고자할 방향 부호
             if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) )//|| Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
@@ -137,15 +133,17 @@ public class PlayerMove : MonoBehaviour
         }
         
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Ground")) isGround = true;
+    }
 
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground") && !badak)//안 밟고 있는데 벽과 충돌해있으면 떨어지게 하자 
         {
-            isGround = true;
             gameObject.GetComponentInChildren<MeshCollider>().material = physicMaterial;
-
         }
     }
 
