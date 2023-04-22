@@ -255,14 +255,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         else
         {
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-            Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
+            Debug.DrawRay(transform.position, Vector2.up * 0.3f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
-            isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
+            isGround = Physics.Raycast(transform.position, Vector2.up, 0.3f, LayerMask.GetMask("Ground"));
 
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
             Debug.DrawRay(transform.position - new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
         }
-        
+
     }
 
 
