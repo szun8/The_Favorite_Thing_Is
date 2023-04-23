@@ -36,10 +36,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     
 
     public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
-    private bool isBridge = false;
-    //private bool isStone = false; //바닥에 충돌되어 있을 때도 점프 가능하게 하기 위함
-    private bool isJump = false; // 바닥 충돌, 발판과 단상
-    private bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
+    public bool isJump = false; // 바닥 충돌, 발판과 단상
+    public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
 
     //private bool isMirrorJump = false;
 
@@ -65,7 +63,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
 
     private Material defaultMaterial; //기본 발광 마테리얼
-                                      
+
+
+
 
     void Awake()
     {
@@ -107,26 +107,32 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //플레이어 중력에 따른 레이 검출
             PlayerLay();
 
-            //밟을 수 있는 놈들과 충돌해있거나 , 땅레이어를 감지하면 
-            if (canJump || isGround) isJump = false;
+            //밟을 수 있는 놈들과 충돌, 땅레이어를 감지하면 
+            if (canJump && isGround) isJump = false;
+
+            if (!isGround) isJump = true; 
+            
             
 
             if (Input.GetKeyDown("space"))
             {
-                if(canJump || isGround)
+                if(isJump == false)
                 {
-                    //땅, 다리, 발판 충돌해 있는 경우 + 단상에 있을 경우 (발판은 ground로 하자 )
-                    isJump = true;
+                    //isJump = true;
                     PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce/1.2f), ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * (JumpForce / 1.2f), ForceMode.Impulse);
 
                     //제대로 된 중력 
                     else rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+                    
                 }
                 
             }
+                
+            
+
 
             if (Input.GetKeyDown("l"))
             {
@@ -186,8 +192,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //키 입력이 들어왔으면 ~
             if (dir != Vector3.zero)
             {
-                if(!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
-
+                if (!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
+                else if (isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
 
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))
@@ -235,11 +241,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (!reverseGravity.isReversed)
         {
+
             //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
-            
+
 
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
@@ -247,16 +254,15 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         }
         else
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 0.1f, 0), Vector2.down * 1f, Color.blue);
-           
-            isGround = Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), Vector2.down, 1f, LayerMask.GetMask("Ground"));
-            
+            //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
+            Debug.DrawRay(transform.position, Vector2.up * 0.3f, Color.blue);
+            //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
+            isGround = Physics.Raycast(transform.position, Vector2.up, 0.3f, LayerMask.GetMask("Ground"));
 
-            //아이템이랑 스프링은 잘 모르겠다 나중에
-            //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
             //내 앞으로 광선을 쏴서 물체를 검출해보자 
             Debug.DrawRay(transform.position - new Vector3(0, 0.5f, 0), transform.forward * 1.2f, Color.red);
         }
+
     }
 
 

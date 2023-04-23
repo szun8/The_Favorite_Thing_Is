@@ -46,7 +46,7 @@ public class SwimMove : MonoBehaviour
     void Start()
     {
         transform.position = pos[0].transform.position;
-        dashSpeed = 7f;
+        dashSpeed = 10f;
     }
 
     void Update()
@@ -104,7 +104,7 @@ public class SwimMove : MonoBehaviour
             else if(dolly.m_Position == dolly.m_Path.PathLength)
             {
                 ControlVCam.instance.ControlDollyView();
-                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 180f;
+                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
             }
         }
     }
@@ -178,7 +178,7 @@ public class SwimMove : MonoBehaviour
 
     public void SpeedUP()
     {
-        dashSpeed = dashSpeed + 7f; // default : 3 -> total 6
+        dashSpeed = dashSpeed + 10f; // default : 3 -> total 6
                                 // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
     }
 
@@ -191,7 +191,7 @@ public class SwimMove : MonoBehaviour
         while (speed > 3f)
         {
             float t = (Time.time - startTime) / duration; // 보간 시간 계산
-            speed = Mathf.Lerp(startSpeed, 7f, t);
+            speed = Mathf.Lerp(startSpeed, 10f, t);
             if (isJelly)
             {
                 yield break; // 새해파리를 먹었으면 코루틴을 중단합니다.

@@ -251,18 +251,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3808132531102364815}
+  - component: {fileID: 8405134053443383661}
   - component: {fileID: 4580975493910064689}
   - component: {fileID: 4580975493910064695}
-  - component: {fileID: 4904673351218812022}
   - component: {fileID: 4291155922799687852}
   - component: {fileID: 2255173375986462339}
-  - component: {fileID: 1503791759791341126}
   - component: {fileID: 1021605177089658100}
   - component: {fileID: 204298170497104511}
-  - component: {fileID: 5054539507603478133}
-  - component: {fileID: 5305202978474868266}
   m_Layer: 6
-  m_Name: MultiPlayer
+  m_Name: MirrorPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,6 +284,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &8405134053443383661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580975493910064693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9deec3a1497a84305918047b89d952d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LightMaterial: {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
+  PV: {fileID: 4291155922799687852}
+  JumpForce: 7
+  rotSpeed: 10
+  speed: 11
+  spotLight: {fileID: 1772495615227420081}
+  maskLight: {fileID: 6300313391131558221}
+  lightOn: 0
+  l_pressed: 0
 --- !u!95 &4580975493910064689
 Animator:
   serializedVersion: 4
@@ -321,42 +339,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &4904673351218812022
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580975493910064693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aa37705daa534ed3b40ed31067f6f61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LightMaterials:
-  - {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
-  - {fileID: 2100000, guid: 3dd236c7279ad4da89df5118958a66ef, type: 2}
-  - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
-  - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
-  PV: {fileID: 4291155922799687852}
-  JumpForce: 8
-  rotSpeed: 10
-  speed: 11
-  spotLight: {fileID: 1772495615227420081}
-  maskLight: {fileID: 6300313391131558221}
-  isGround: 0
-  isJump: 0
-  canJump: 0
-  lightOn: 0
-  getRed: 1
-  getGreen: 1
-  getBlue: 1
-  l_pressed: 0
-  r_pressed: 0
-  g_pressed: 0
-  b_pressed: 0
 --- !u!114 &4291155922799687852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,21 +393,6 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!114 &1503791759791341126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580975493910064693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8627817a0b1ad4db18f1747aebf83781, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  P1_ID: 0
-  isReversed: 0
-  myID: 0
 --- !u!114 &1021605177089658100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,31 +425,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5054539507603478133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580975493910064693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bef55987aa5140828bf6796dd7192ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5305202978474868266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4580975493910064693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12fb2920f700943228ed27a76bf54810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  physicMaterial: {fileID: 13400000, guid: 523ebb0f6490947ec8a92bc5a3fc56da, type: 2}
 --- !u!1 &4789121166296683984
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,7 +599,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9177584015240779705}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.032152176, y: 0.011012778, z: 0.03932695}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []

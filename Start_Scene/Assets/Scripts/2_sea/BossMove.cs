@@ -13,7 +13,7 @@ public class BossMove : MonoBehaviour
     bool isDisapear = false;
     //Material[] mat;
 
-    bool isStop;
+    bool isStop, isMileStone2;
 
     private void Awake()
     {
@@ -33,9 +33,10 @@ public class BossMove : MonoBehaviour
     private void Update()
     {
         if (isDisapear) MatOut();
-        if (!isStop)
-            ChaseTarget();
-            //rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
+        
+        if (!isStop && !SwimMove.isEnd) ChaseTarget();
+        else if (!isMileStone2 && SwimMove.isEnd) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 25f);
+        else rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -56,13 +57,13 @@ public class BossMove : MonoBehaviour
 
     void ChaseTarget()
     {
-        if(Vector3.Distance(transform.position, target.position) > 5f)
+        if(Vector3.Distance(transform.position, target.position) > 10f)
         {
-            boss.speed = 3f;
+            boss.speed = 15f;
         }
         else
         {
-            boss.speed = 15f;
+            boss.speed = 5f;
         }
         transform.position = Vector3.MoveTowards(transform.position, target.position, boss.speed * Time.deltaTime);
     }
@@ -110,6 +111,8 @@ public class BossMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("End"))
         {
+            Debug.Log("End");
+            isMileStone2 = true;
             boss.speed = 0f;
         }
     }

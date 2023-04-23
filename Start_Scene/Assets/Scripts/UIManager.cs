@@ -20,37 +20,21 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-            
-
     }
     #endregion Singleton
 
     [SerializeField] Image UsePanel;
-
     Animator animator;
-    TMP_Text tmp;
     public Image Image;            // Image컴포넌트 참조 변수.
 
     void Start()
     {
         Image = GetComponentInChildren<Image>();
-
         animator = GetComponentInChildren<Animator>();
-        tmp = GetComponentInChildren<TMP_Text>();
-        Debug.Log(tmp.name);
     }
-
-    bool talkGround = false, talkJump = false, talkLight = false;
-    int cnt = 0;
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            if (cnt == 0) talkGround = PlayerMove.badak;
-            Control_Subtitle();
-        }
-
         // FadeIn 재생.  
         if (stopIn == false && time <= 1.5f)
         {
@@ -117,23 +101,12 @@ public class UIManager : MonoBehaviour
 
     public void LightSubtitle()
     {
-        RunAnims("isLight", "press L", ref talkLight, ref talkLight);
+        RunAnims("isLight_L");
     }
 
-    void ChangeTalk(string _str)
-    {   // 현재 출력해줄 자막의 텍스트를 바꿔주는 함수
-        tmp.text = _str;
-    }
-
-    public void RunAnims(string runTriggerName, string runTxt, ref bool setTrue, ref bool setFalse)
+    public void RunAnims(string animTriggerName)
     {   // 원하는 애니메이션 실행
-        Debug.Log(runTriggerName);
-        ChangeTalk(runTxt);
-        animator.SetTrigger(runTriggerName);
-        setTrue = true;
-        setFalse = false;
-
-        cnt++;
+        animator.SetTrigger(animTriggerName);
     }
 
     bool CheckAnims(string animsName)
@@ -144,24 +117,5 @@ public class UIManager : MonoBehaviour
             return true;
         }
         else return false;
-    }
-
-    void Control_Subtitle()
-    {
-        if (cnt == 0 && talkGround)
-        {   // 이동 자막 실행
-            RunAnims("isMove", "←  →를 눌러 이동해보자", ref talkJump, ref talkGround);
-        }
-        
-        else if (CheckAnims("wasdMove") && cnt == 1 && talkJump)
-        {   // 점프 자막 실행
-            RunAnims("isJump", "press Space", ref talkLight, ref talkJump);
-        }
-
-        else if (CheckAnims("spaceJump") && cnt == 2 && talkLight)
-        {   // 발광 자막 실행->조건 추가해야함
-            RunAnims("isLight", "press L", ref talkLight, ref talkLight);
-        }
-        
     }
 }
