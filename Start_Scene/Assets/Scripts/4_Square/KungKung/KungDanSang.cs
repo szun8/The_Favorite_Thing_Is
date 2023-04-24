@@ -5,50 +5,59 @@ using Photon.Pun;
 
 public class KungDanSang : MonoBehaviourPunCallbacks
 {
-    public int isKungup;
-    public GameObject Kung;
+    public int isKungup; //1이면  쿵쿵이가 위에 있음 
+
+    public bool isLight;
 
     private PhotonView PV;
-    private bool isKung = false;
+    private bool isPlayer = false;
 
-    RaycastHit monster;
+    RaycastHit player;
 
-    void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
+
+    void Awake()=> PV = GetComponent<PhotonView>();
+
 
     void Update()
     {
-        UpDownLay();
+        UpDownLay(); //플레이어 감지하는 레이를 발사 
 
-        if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 
-        {
-            if (isKung) PV.RPC("KungDie", RpcTarget.AllBuffered);  //플레이어가 위에 있다면 빛내는지 검출하자 
+        if(PhotonNetwork.InRoom) CheckLight();
 
-        }
+
     }
 
     void UpDownLay()
     {
         if (isKungup == 1)
         {
-            Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1f, Color.blue);
-            isKung = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out monster, 1f, LayerMask.GetMask("DownKung"));
+            Debug.DrawRay(transform.position, Vector3.down * 2.5f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position, Vector3.down, out player, 2.5f, LayerMask.GetMask("Player"));
         }
 
         else if (isKungup == 0)
         {
-            Debug.DrawRay(transform.position, Vector3.down * 2f, Color.blue);
-            isKung = Physics.Raycast(transform.position, Vector3.down, out monster, 2f, LayerMask.GetMask("UpKung"));
+            Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1.7f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("Player"));
         }
+
     }
-    [PunRPC]
-    void KungDie()
+
+    void CheckLight()
     {
-        if(monster.collider != null && monster.collider.gameObject == Kung)
+        if (isPlayer && player.collider != null)
         {
-            Kung.GetComponent<Renderer>().material.SetFloat("_SplitValue", Mathf.Lerp(1, 0 , 0.5f));
+            if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().r_pressed )
+            {
+                if(!isLight) PV.RPC("SyncRed", RpcTarget.AllBuffered, true);
+            }
+            else PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
+
         }
     }
+
+
+    [PunRPC]
+    void SyncRed(bool value) => isLight = value;
+
 }

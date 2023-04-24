@@ -24,24 +24,21 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
         //일단 2P 놈이 뒤집힌 채로 시작. 
         if (PV.IsMine && myID == 2001) //귀찮으면 2001로 바꿔서 테스트 해보자 + 대신 스폰 포인트 1, 2 바꿔야함 
         {
-            
+
             PV.RPC("SyncisReversed", RpcTarget.AllBuffered);
             PV.RPC("Sync1pViewID", RpcTarget.AllBuffered, PV.ViewID);
-            transform.rotation= Quaternion.Euler(0, 0, -179f);
-            
+            transform.rotation = Quaternion.Euler(0, 0, -179f);
+
         }
-        
+
     }
     private void Update()
     {
         if (PV.IsMine)
         {
-            if (isReversed)
-                rigid.AddForce(Vector3.up * GravityForce * 2.2f);
-            else
-                rigid.AddForce(Vector3.down * 1.6f);
+            PV.RPC("Gravity", RpcTarget.AllBuffered);
         }
-       
+
 
     }
 
@@ -55,12 +52,16 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void SyncisReversed() => isReversed = !isReversed;
-   
-    
 
-    
+    [PunRPC]
+    void Gravity()
+    {
+        if (isReversed)
+            rigid.AddForce(Vector3.up * GravityForce * 2.2f);
+        else
+            rigid.AddForce(Vector3.down * 1.6f);
+    }
+
+
+
 }
-
-  
-
-

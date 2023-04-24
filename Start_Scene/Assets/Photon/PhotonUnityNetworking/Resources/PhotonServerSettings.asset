@@ -98,6 +98,11 @@ MonoBehaviour:
   - MirrorLightPower
   - SyncMirrorAnimation
   - SyncMirrorLightPressed
+  - Gravity
+  - SyncDie
+  - SyncLight
+  - DieKoong
+  - SyncRed
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

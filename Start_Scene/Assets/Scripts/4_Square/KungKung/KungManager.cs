@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 
 
-public class KungKung : MonoBehaviourPunCallbacks
+public class KungManager : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
 
@@ -13,6 +13,8 @@ public class KungKung : MonoBehaviourPunCallbacks
     //private Animator animator;
 
     public GameObject kung;
+    public GameObject plate;
+
     private bool isDrop = false;
     private bool isPlayerIn = false;
 
@@ -21,18 +23,22 @@ public class KungKung : MonoBehaviourPunCallbacks
     Vector3 startPos;
     Vector3 pos;
 
+    Koong koongScript;
+    KungDanSang plateScript;
+
     private void Awake()
     {
         PV = GetComponent<PhotonView>();
-        //kung = transform.GetChild(0).gameObject;
 
         if (kung != null)
         {
             startPos = kung.transform.position;
             pos = kung.transform.position;
 
-            material = kung.GetComponent<MeshRenderer>().sharedMaterial;       
-            //animator = kung.GetComponent<Animator>();
+            material = kung.GetComponent<MeshRenderer>().sharedMaterial;
+
+            koongScript = kung.GetComponent<Koong>();
+            plateScript = plate.GetComponent<KungDanSang>();
         }
     }
 
@@ -107,9 +113,16 @@ public class KungKung : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void SyncIsDrop(bool value)
+    void SyncIsDrop(bool value) => isDrop = value;
+
+    [PunRPC]
+    void DieKoong()
     {
-        isDrop = value;
+        if(koongScript.dieReady && plateScript.isLight)
+        {
+            material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime));
+        }
     }
+
 
 }

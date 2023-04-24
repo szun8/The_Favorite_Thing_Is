@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5939061389258625589}
   - component: {fileID: 3165450574879080425}
   - component: {fileID: 5453776299128165275}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.01
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 1
+  bridge: {fileID: 981474262}
 --- !u!114 &5453776299128165275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +152,7 @@ GameObject:
   - component: {fileID: 6829553592020918964}
   - component: {fileID: 2096775705333075242}
   - component: {fileID: 2235853494872408440}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.01
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -345,7 +346,7 @@ GameObject:
   - component: {fileID: 4060250879403172442}
   - component: {fileID: 8445358357814689150}
   - component: {fileID: 5927583481471289393}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.003
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1082,7 +1083,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1148,7 +1149,7 @@ GameObject:
   - component: {fileID: 2190295106182949665}
   - component: {fileID: 979545600971725754}
   - component: {fileID: 8344004073579644544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.022
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1632,7 +1633,7 @@ GameObject:
   - component: {fileID: 4711164792619134256}
   - component: {fileID: 436049040788675586}
   - component: {fileID: 2174059673093188441}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.03
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1796,7 +1797,7 @@ GameObject:
   - component: {fileID: 7577909534172776652}
   - component: {fileID: 8805981701528357830}
   - component: {fileID: 3064316530345828946}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.05
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -1896,6 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 1
+  bridge: {fileID: 5581473467054238936}
 --- !u!114 &3064316530345828946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1935,7 @@ GameObject:
   - component: {fileID: 4760935774346978450}
   - component: {fileID: 8086453156717987}
   - component: {fileID: 4956499866986637409}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.01
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -2325,7 +2327,7 @@ GameObject:
   - component: {fileID: 2979369772861618262}
   - component: {fileID: 8640609618421404985}
   - component: {fileID: 7758493071278395452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.02
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -2425,6 +2427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 1
+  bridge: {fileID: 3086947541578186513}
 --- !u!114 &7758493071278395452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2526,7 +2529,7 @@ GameObject:
   - component: {fileID: 3534432893654606854}
   - component: {fileID: 6465639261363091011}
   - component: {fileID: 4276176469016053497}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.03
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -2626,6 +2629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 0
+  bridge: {fileID: 3019937617648436870}
 --- !u!114 &4276176469016053497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2719,6 +2723,7 @@ MonoBehaviour:
   sleep: {fileID: 2100000, guid: b317764dd6f095642be2453a41375970, type: 2}
   wake: {fileID: 2100000, guid: 0bf63ba5e606d4f38bb0e13f712b94f6, type: 2}
   kung: {fileID: 8130261729972442179}
+  plate: {fileID: 6702270044217642644}
   speed: 4
 --- !u!65 &5339600898257349434
 BoxCollider:
@@ -2747,7 +2752,7 @@ GameObject:
   - component: {fileID: 1780620535578452276}
   - component: {fileID: 6179090195229291422}
   - component: {fileID: 8206906353952486417}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.06
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -2847,6 +2852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 0
+  bridge: {fileID: 2118014041987339261}
 --- !u!114 &8206906353952486417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2884,7 +2890,7 @@ GameObject:
   - component: {fileID: 1410583329}
   - component: {fileID: 1410583328}
   - component: {fileID: 4537688911954154732}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.03
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3147,7 +3153,7 @@ GameObject:
   - component: {fileID: 1694162625536250519}
   - component: {fileID: 2895060990147728762}
   - component: {fileID: 4693981304437112313}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.02
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -3358,7 +3364,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3574,7 +3580,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3907,7 +3913,7 @@ GameObject:
   - component: {fileID: 7868087046388242772}
   - component: {fileID: 4809879926347999632}
   - component: {fileID: 4895044407020341668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.03
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -4632,7 +4638,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4668,7 +4674,7 @@ GameObject:
   - component: {fileID: 3105037471083270529}
   - component: {fileID: 4143726846923641828}
   - component: {fileID: 8384908863090300732}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.07
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -4768,6 +4774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 1
+  bridge: {fileID: 2340272471362689969}
 --- !u!114 &8384908863090300732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4854,7 +4861,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5432,7 +5439,7 @@ GameObject:
   - component: {fileID: 881501457823055363}
   - component: {fileID: 3979028595440041330}
   - component: {fileID: 3458305876275303685}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kung_Plate.01
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -5553,7 +5560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isKungup: 1
-  Kung: {fileID: 6059535561304642173}
+  isLight: 0
 --- !u!1 &5304738812678648867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5647,7 +5654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5744,7 +5751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5879,7 +5886,7 @@ GameObject:
   - component: {fileID: 7235753704563955689}
   - component: {fileID: 6760086715263976797}
   - component: {fileID: 2486654943237581784}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.01
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -6301,7 +6308,7 @@ GameObject:
   - component: {fileID: 6976723412669000668}
   - component: {fileID: 2567073708769155068}
   - component: {fileID: 1813019871285460101}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.08
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -6401,6 +6408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 0
+  bridge: {fileID: 3868023457092979305}
 --- !u!114 &1813019871285460101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6732,7 +6740,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1280446133571650962, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
+  - {fileID: 2100000, guid: 9b01a60582d444d3cbdc1c22280114bd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7032,7 +7040,7 @@ GameObject:
   - component: {fileID: 583800853421828644}
   - component: {fileID: 8315482375880989499}
   - component: {fileID: 483177557805243285}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Kung_Plate.02
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -7153,7 +7161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isKungup: 0
-  Kung: {fileID: 8130261729972442179}
+  isLight: 0
 --- !u!1 &6784605338870479506
 GameObject:
   m_ObjectHideFlags: 0
@@ -7347,7 +7355,7 @@ GameObject:
   - component: {fileID: 595390783202228360}
   - component: {fileID: 1034192100652104237}
   - component: {fileID: 6525257166572344818}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.024
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -7692,7 +7700,7 @@ GameObject:
   - component: {fileID: 4768299021965995221}
   - component: {fileID: 1227922149577647761}
   - component: {fileID: 5823163083060469683}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plate.04
   m_TagString: L_Plate
   m_Icon: {fileID: 0}
@@ -7792,6 +7800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   up: 0
+  bridge: {fileID: 8651858712383438421}
 --- !u!114 &5823163083060469683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8650,7 +8659,7 @@ GameObject:
   - component: {fileID: 827363601341526957}
   - component: {fileID: 116414236312479447}
   - component: {fileID: 4794437241703956835}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bridge.04
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -9076,7 +9085,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -470067213634067786, guid: e1f86679ac42fb44ba5c5195086db520, type: 3}
 --- !u!1 &8970620638563503667
@@ -9150,6 +9159,7 @@ MonoBehaviour:
   sleep: {fileID: 2100000, guid: b317764dd6f095642be2453a41375970, type: 2}
   wake: {fileID: 2100000, guid: 0bf63ba5e606d4f38bb0e13f712b94f6, type: 2}
   kung: {fileID: 6059535561304642173}
+  plate: {fileID: 5066054834849292746}
   speed: 4
 --- !u!65 &7620042905899894113
 BoxCollider:
@@ -9239,6 +9249,41 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2182840681830983803}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &514258380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059535561304642173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30cc746f310454a56b2f3b0e8c633cf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dieReady: 0
+--- !u!114 &514258381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6059535561304642173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!4 &6871397713269311687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4690245954850775228, guid: 5f4dfab0b5f4b45afb7f8982ce03a5ae,
