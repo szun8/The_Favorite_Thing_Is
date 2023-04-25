@@ -23,8 +23,6 @@ public class KungManager : MonoBehaviourPunCallbacks
     Vector3 startPos;
     Vector3 pos;
 
-    Koong koongScript;
-    KungDanSang plateScript;
 
     private void Awake()
     {
@@ -36,9 +34,6 @@ public class KungManager : MonoBehaviourPunCallbacks
             pos = kung.transform.position;
 
             material = kung.GetComponent<MeshRenderer>().sharedMaterial;
-
-            koongScript = kung.GetComponent<Koong>();
-            plateScript = plate.GetComponent<KungDanSang>();
         }
     }
 
@@ -46,9 +41,11 @@ public class KungManager : MonoBehaviourPunCallbacks
     {
         if(PhotonNetwork.InRoom) StartCoroutine("KungKungManager");
 
+        if (kung == null) PV.RPC("Die", RpcTarget.AllBuffered);
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //플레이어가 영역 들어오면 떨어진다 
     {
         if (other.CompareTag("Player_mesh"))
         {
@@ -79,7 +76,7 @@ public class KungManager : MonoBehaviourPunCallbacks
             }
             else if (kung.CompareTag("DownKung"))
             {
-                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 5.4f, pos.z), speed * 4f * Time.deltaTime);
+                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, -0.6f, pos.z), speed * 4f * Time.deltaTime);
                 if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
             }
             
@@ -99,13 +96,11 @@ public class KungManager : MonoBehaviourPunCallbacks
     {
         if (value)
         {
-            //animator.SetBool("isWake", value);
             material = wake;
             kung.GetComponent<MeshRenderer>().sharedMaterial = material;
         }
         else
         {
-            //animator.SetBool("isWake", value);
             material = sleep;
             kung.GetComponent<MeshRenderer>().sharedMaterial = material;
         }
@@ -116,13 +111,6 @@ public class KungManager : MonoBehaviourPunCallbacks
     void SyncIsDrop(bool value) => isDrop = value;
 
     [PunRPC]
-    void DieKoong()
-    {
-        if(koongScript.dieReady && plateScript.isLight)
-        {
-            material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime));
-        }
-    }
-
+    void Die() => Destroy(gameObject);
 
 }

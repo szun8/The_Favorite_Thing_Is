@@ -41,6 +41,8 @@ public class KungDanSang : MonoBehaviourPunCallbacks
             isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("Player"));
         }
 
+
+
     }
 
     void CheckLight()
@@ -54,6 +56,11 @@ public class KungDanSang : MonoBehaviourPunCallbacks
             else PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
 
         }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player")) PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
     }
 
 

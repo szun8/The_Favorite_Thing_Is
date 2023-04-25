@@ -103,6 +103,10 @@ MonoBehaviour:
   - SyncLight
   - DieKoong
   - SyncRed
+  - Die
+  - Dissolve
+  - SyncIn
+  - SyncOut
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
