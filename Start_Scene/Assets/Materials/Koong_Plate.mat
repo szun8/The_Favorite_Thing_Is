@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Switch
+  m_Name: Koong_Plate
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _EMISSION
@@ -107,9 +107,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.509434, g: 0.18503025, b: 0.18503025, a: 1}
-    - _Color: {r: 0.509434, g: 0.18503022, b: 0.18503022, a: 1}
-    - _EmissionColor: {r: 0.125, g: 0, b: 0, a: 1}
+    - _BaseColor: {r: 0.8113208, g: 0.18752226, b: 0.18752226, a: 1}
+    - _Color: {r: 0.8113207, g: 0.18752223, b: 0.18752223, a: 1}
+    - _EmissionColor: {r: 3.6886053, g: 0.01931207, b: 0.01931207, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &1520111621676150583

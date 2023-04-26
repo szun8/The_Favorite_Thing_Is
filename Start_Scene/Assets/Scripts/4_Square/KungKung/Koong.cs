@@ -21,7 +21,7 @@ public class Koong : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (kungPlate.isLight && dieReady)
+        if (kungPlate.isRed && dieReady)
         {
             PV.RPC("Dissolve", RpcTarget.AllBuffered);
 
@@ -48,7 +48,7 @@ public class Koong : MonoBehaviourPunCallbacks
     {
         material = GetComponent<MeshRenderer>().sharedMaterial;
 
-        material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime * 2f));
+        material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime * 2.5f));
     }
 
     [PunRPC]

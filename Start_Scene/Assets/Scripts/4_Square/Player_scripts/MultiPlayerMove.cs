@@ -51,8 +51,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     //플레이어가 발광 가로등과 상호작용 해서 능력얻으면 true 
     public bool getRed = false;
-    public bool getGreen = true;
-    public bool getBlue = true;
+    public bool getGreen = false;
+    public bool getBlue = false;
 
     //플레이어의 lrgb 눌려져있는 것 확인
     public bool l_pressed = false;

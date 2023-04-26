@@ -9,6 +9,8 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     public bool isLight;
 
+    public bool isRed = false;
+
     private PhotonView PV;
     private bool isPlayer = false;
 
@@ -65,6 +67,11 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void SyncRed(bool value) => isLight = value;
+    void SyncRed(bool value)
+    {
+        isLight = value;
+
+        if (value) isRed = true;
+    }
 
 }

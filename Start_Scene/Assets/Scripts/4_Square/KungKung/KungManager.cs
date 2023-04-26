@@ -103,17 +103,21 @@ public class KungManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void SyncKung(bool value)
     {
-        if (value)
+        if(kung != null)
         {
-            material = wake;
-            //if (material.GetFloat("_SplitValue") <= 1) material.SetFloat("_SplitValue", 1);
-            kung.GetComponent<MeshRenderer>().sharedMaterial = material;
+            if (value)
+            {
+                material = wake;
+                //if (material.GetFloat("_SplitValue") <= 1) material.SetFloat("_SplitValue", 1);
+                kung.GetComponent<MeshRenderer>().sharedMaterial = material;
+            }
+            else
+            {
+                material = sleep;
+                kung.GetComponent<MeshRenderer>().sharedMaterial = material;
+            }
         }
-        else
-        {
-            material = sleep;
-            kung.GetComponent<MeshRenderer>().sharedMaterial = material;
-        }
+        
         
     }
 
@@ -121,10 +125,10 @@ public class KungManager : MonoBehaviourPunCallbacks
     void SyncIsDrop(bool value) => isDrop = value;
 
     [PunRPC]
-    void Die() => Destroy(gameObject);
+    void Die() => Destroy(gameObject);  //쿵쿵이의 감지 범위 트리거 삭제 
 
     [PunRPC]
-    void SyncMat() => material.SetFloat("_SplitValue", 1);
+    void SyncMat() => material.SetFloat("_SplitValue", 1);  
 
 
 }

@@ -1,29 +1,18 @@
 fileFormatVersion: 2
-guid: ca93d5b3661f23043ae65846fc9e0aa1
+guid: 876dd29d0adae4399a26779c4eb87c48
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: 7176209919637214875
-    second: Action
+      74: -6737206198979150939
+    second: Cube.009|Action
   - first:
-      74: -1035186599630454719
-    second: Icosphere.002|Action
+      74: 330053957497489835
+    second: Cube.009|Action.001
   - first:
-      74: -3968556754162332976
-    second: Icosphere.002|Action.001
-  - first:
-      74: -2152884157656646362
-    second: Icosphere.002|CubeAction
-  - first:
-      74: -6249782482465925434
-    second: Icosphere.002|CubeAction.001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material.004
-    second: {fileID: 2100000, guid: a88c7c76d8b83499785c4c2fe9372cfa, type: 2}
+      74: 9096138434471946935
+    second: Cube.009|charAction
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
