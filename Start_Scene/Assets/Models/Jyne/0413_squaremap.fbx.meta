@@ -15,7 +15,12 @@ ModelImporter:
   - first:
       74: -7582365358066365741
     second: Cube.022|CubeAction.001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: b917259db0578421388003d2b345a51d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

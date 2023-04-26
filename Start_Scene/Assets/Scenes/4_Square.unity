@@ -4771,6 +4771,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 3780673914617563793, guid: bc58004cec2d240f4a19cbb5496b3fff,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b917259db0578421388003d2b345a51d, type: 2}
     - target: {fileID: 4217819528953109384, guid: bc58004cec2d240f4a19cbb5496b3fff,
         type: 3}
       propertyPath: sceneViewId

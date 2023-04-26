@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LightMaterials:
-  - {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
+  - {fileID: 2100000, guid: b917259db0578421388003d2b345a51d, type: 2}
   - {fileID: 2100000, guid: 3dd236c7279ad4da89df5118958a66ef, type: 2}
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
@@ -683,7 +683,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6d0d3ec88a3f047de85dc19ad5e77a67, type: 2}
-  - {fileID: 2100000, guid: d8647a00c7dd345229e844163ab60e2c, type: 2}
+  - {fileID: 2100000, guid: b917259db0578421388003d2b345a51d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
