@@ -8,6 +8,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     PhotonView PV;
     ReverseGravity reverseGravity;
 
+    private GameObject diePos;
 
     void Awake()
     {
@@ -33,6 +34,10 @@ public class WarpSkill : MonoBehaviourPunCallbacks
                 gameObject.transform.position = gameObject.transform.position + new Vector3(0, 4, 0);
                 reverseGravity.photonView.RPC("SyncisReversed", RpcTarget.AllBuffered);
             }
+
+            if (other.CompareTag("Dead")) gameObject.transform.position = diePos.transform.position;
+
+            if (other.CompareTag("SavePoint")) diePos = other.gameObject;
         }
         
     }

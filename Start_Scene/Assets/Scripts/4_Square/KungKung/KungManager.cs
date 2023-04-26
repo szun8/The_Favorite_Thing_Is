@@ -39,9 +39,15 @@ public class KungManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if(PhotonNetwork.InRoom) StartCoroutine("KungKungManager");
+        if(PhotonNetwork.InRoom && kung != null) StartCoroutine("KungKungManager");
 
-        if (kung == null) PV.RPC("Die", RpcTarget.AllBuffered);
+        if (kung == null)
+        {
+            PV.RPC("SyncMat", RpcTarget.AllBuffered);
+
+            if (material.GetFloat("_SplitValue") == 1)
+                PV.RPC("Die", RpcTarget.AllBuffered);
+        }
 
     }
 
@@ -65,31 +71,34 @@ public class KungManager : MonoBehaviourPunCallbacks
 
     IEnumerator KungKungManager()
     {
-        if (isDrop)
+        if(kung != null)
         {
-            kung.transform.position = pos;
-            PV.RPC("SyncKung", RpcTarget.AllBuffered,true);
-            if (kung.CompareTag("UpKung"))
+            if (isDrop)
             {
-                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 0, pos.z), speed * 4f * Time.deltaTime);
-                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+                kung.transform.position = pos;
+                PV.RPC("SyncKung", RpcTarget.AllBuffered, true);
+                if (kung.CompareTag("UpKung"))
+                {
+                    pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 0, pos.z), speed * 4f * Time.deltaTime);
+                    if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+                }
+                else if (kung.CompareTag("DownKung"))
+                {
+                    pos = Vector3.MoveTowards(pos, new Vector3(pos.x, -0.6f, pos.z), speed * 4f * Time.deltaTime);
+                    if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+                }
+
             }
-            else if (kung.CompareTag("DownKung"))
+
+            else
             {
-                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, -0.6f, pos.z), speed * 4f * Time.deltaTime);
-                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+                kung.transform.position = pos;
+                PV.RPC("SyncKung", RpcTarget.AllBuffered, false);
+                pos = Vector3.MoveTowards(pos, startPos, speed * 1.5f * Time.deltaTime);
+                yield return null;
             }
-            
         }
 
-        else
-        {
-            kung.transform.position = pos;
-            PV.RPC("SyncKung", RpcTarget.AllBuffered, false);
-            pos = Vector3.MoveTowards(pos, startPos, speed * 1.5f * Time.deltaTime);
-            yield return null;
-        }
-        
     }
     [PunRPC]
     void SyncKung(bool value)
@@ -97,6 +106,7 @@ public class KungManager : MonoBehaviourPunCallbacks
         if (value)
         {
             material = wake;
+            //if (material.GetFloat("_SplitValue") <= 1) material.SetFloat("_SplitValue", 1);
             kung.GetComponent<MeshRenderer>().sharedMaterial = material;
         }
         else
@@ -112,5 +122,9 @@ public class KungManager : MonoBehaviourPunCallbacks
 
     [PunRPC]
     void Die() => Destroy(gameObject);
+
+    [PunRPC]
+    void SyncMat() => material.SetFloat("_SplitValue", 1);
+
 
 }

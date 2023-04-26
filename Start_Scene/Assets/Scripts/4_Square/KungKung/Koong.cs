@@ -10,7 +10,6 @@ public class Koong : MonoBehaviourPunCallbacks
 
     public KungDanSang kungPlate;
 
-    private float origin;
     Material material;
 
 
@@ -25,26 +24,19 @@ public class Koong : MonoBehaviourPunCallbacks
         if (kungPlate.isLight && dieReady)
         {
             PV.RPC("Dissolve", RpcTarget.AllBuffered);
-            PV.RPC("DieKoong", RpcTarget.AllBuffered);
+
+            if(material.GetFloat("_SplitValue") <= 0.01) PV.RPC("DieKung", RpcTarget.AllBuffered);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Dead"))
-        {
-            dieReady = true;
-            PV.RPC("SyncDie", RpcTarget.AllBuffered, true);
-        }
+        if (other.CompareTag("MonsterDead")) PV.RPC("SyncDie", RpcTarget.AllBuffered, true);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Dead"))
-        {
-            dieReady = false;
-            PV.RPC("SyncDie", RpcTarget.AllBuffered, false);
-        }
+        if (other.CompareTag("MonsterDead")) PV.RPC("SyncDie", RpcTarget.AllBuffered, false);
     }
 
 
@@ -60,19 +52,6 @@ public class Koong : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void DieKoong()
-    {
-        if (material.GetFloat("_SplitValue") <= 0.01)
-        {
-            gameObject.SetActive(false);
-            material.SetFloat("_SplitValue",1);
-            Destroy(gameObject);
-        }
-    }
-
-    
-
-
-    
+    void DieKung() => Destroy(gameObject);    
 
 }

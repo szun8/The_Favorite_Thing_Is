@@ -30,6 +30,7 @@ TagManager:
   - UpKung
   - DownKung
   - SavePoint
+  - MonsterDead
   layers:
   - Default
   - TransparentFX
