@@ -57,15 +57,23 @@ public class videoHandler : MonoBehaviour
         StartCoroutine(FadeOut());
         yield return new WaitUntil(() => isChanged);
         isChanged = false;
+        
         yield return null;
     }
 
     public IEnumerator FadeOut()
     {
+        bool isSea = false;
         while (videoPlayer.targetCameraAlpha > 0.01f)
         {
             //Debug.Log("333");
             videoPlayer.targetCameraAlpha -= 0.05f;
+            if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
+            {
+                isSea = true;
+                GameObject.FindGameObjectWithTag("Sea").GetComponent<Water>().GetWater(GameObject.FindGameObjectWithTag("Player_mesh").GetComponent<Collider>());
+                GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().useGravity = true;
+            }
             yield return new WaitForSeconds(0.1f);
         }
         isChanged = true;

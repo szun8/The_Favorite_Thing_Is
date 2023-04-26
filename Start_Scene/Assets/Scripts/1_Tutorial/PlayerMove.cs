@@ -10,9 +10,9 @@ public class PlayerMove : MonoBehaviour
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
 
-    private bool lightOn = false;
+    public bool lightOn = false;
     public static bool badak = false; //바닥 레이어 감지하는지 
-
+    public static bool isStop = false; // 플레이어 이동제한 -> 타이틀 애니메이션할때
     public bool isGround = false; // 바닥과 닿아있는지 collision 
     public bool isJump = false; //점프 중인지 ~ 
 
@@ -51,6 +51,11 @@ public class PlayerMove : MonoBehaviour
    
     void Update()
     {
+        if (isStop)
+        {
+            animator.SetBool("isWalk", false);
+            return;
+        }
         dir.x = Input.GetAxisRaw("Horizontal");
 
         rigid.AddForce(Vector3.down * 1.8f);//즁력 더 주기 
@@ -91,6 +96,7 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isStop) return;
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
         {
@@ -163,6 +169,4 @@ public class PlayerMove : MonoBehaviour
         }
         if (other.CompareTag("SavePoint")) startPos = other.gameObject;
     }
-    
-    
 }

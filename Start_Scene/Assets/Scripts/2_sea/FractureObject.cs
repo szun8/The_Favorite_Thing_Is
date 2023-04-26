@@ -22,7 +22,7 @@ public class FractureObject : MonoBehaviour
             if(fracturedObject != null)
             {
                 fractObj = Instantiate(fracturedObject) as GameObject;
-                SoundManager.instnace.PlaySE("CaveBroken");
+                SoundManager.instnace.PlaySE("CaveBroken", 0.85f);
                 foreach (Transform t in fractObj.transform)
                 {
                     var rb = t.GetComponent<Rigidbody>();

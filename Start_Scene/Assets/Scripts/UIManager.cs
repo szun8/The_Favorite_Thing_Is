@@ -23,7 +23,6 @@ public class UIManager : MonoBehaviour
     }
     #endregion Singleton
 
-    [SerializeField] Image UsePanel;
     Animator animator;
     public Image Image;            // Image컴포넌트 참조 변수.
 
@@ -97,11 +96,6 @@ public class UIManager : MonoBehaviour
         color.a = Mathf.Lerp(end, start, time);  //FadeIn과는 달리 start, end가 반대다.
                                                  // 계산한 알파 값 다시 설정.  
         Image.color = color;
-    }
-
-    public void LightSubtitle()
-    {
-        RunAnims("isLight_L");
     }
 
     public void RunAnims(string animTriggerName)

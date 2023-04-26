@@ -9,6 +9,8 @@ public class ControlVCam : MonoBehaviour
     CinemachineVirtualCameraBase vBack;
     GameObject sideCam;
     CinemachineVirtualCameraBase vSide;
+    GameObject watchingBossCam;
+    CinemachineVirtualCameraBase vWatchingBoss;
     GameObject bossCam;
     CinemachineVirtualCameraBase vBoss;
     GameObject caveCam;
@@ -38,6 +40,9 @@ public class ControlVCam : MonoBehaviour
         sideCam = GameObject.Find("SideCam");
         vSide = sideCam.GetComponent<CinemachineVirtualCameraBase>();
 
+        watchingBossCam = GameObject.Find("WatchingBossCam");
+        vWatchingBoss = watchingBossCam.GetComponent<CinemachineVirtualCameraBase>();
+
         bossCam = GameObject.Find("BossCam");
         vBoss = bossCam.GetComponent<CinemachineVirtualCameraBase>();
 
@@ -66,11 +71,63 @@ public class ControlVCam : MonoBehaviour
         vSide.Priority = 11;
         vBack.Priority = 10;
     }
-    
+
+    public void SwitchingWatchingBoss()
+    {   // boss가 spawn된 시점에 비춰주는 코드
+        vWatchingBoss.Priority = 11;
+        vSide.Priority = 10;
+        GameObject.Find("player").GetComponent<SwimMove>().enabled = false;
+        GameObject.Find("player").GetComponent<Rigidbody>().useGravity = false;
+        StartCoroutine(LerpCam());
+    }
+
+    public void SwitchingWatchingBossToSide()
+    {
+        vSide.Priority = 11;
+        vWatchingBoss.Priority = 10;
+        
+
+    }
+
     public void SwitchingSideToBoss()
     {   // Side -> BossDolly
         vBoss.Priority = 11;
         vSide.Priority = 10;
+    }
+
+    [SerializeField] Transform bossSpawn, player;
+    IEnumerator LerpCam()
+    {
+        Vector3 originPos = watchingBossCam.transform.position;
+        while (true)
+        {
+            watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, bossSpawn.position.x, Time.deltaTime*2f), originPos.y, originPos.z); ;
+            if(watchingBossCam.transform.position.x < 125)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        
+        while (true)
+        {
+            
+            watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, player.position.x, Time.deltaTime), originPos.y, originPos.z);
+            if (watchingBossCam.transform.position.x < 160)
+            {
+                break;
+            }
+            yield return new WaitForSeconds(0.03f);
+        }
+        SwitchingWatchingBossToSide();
+        yield return new WaitForSeconds(1.5f);
+
+        CinematicBar.instance.HideBars();
+        GameObject.Find("player").GetComponent<Rigidbody>().useGravity = true;
+        GameObject.Find("player").GetComponent<SwimMove>().enabled = true;
+
+        GameObject.Find("boss_0").GetComponent<BossMove>().enabled = true;
+        yield return null;
     }
 
     public void SwitchingBossToCave()

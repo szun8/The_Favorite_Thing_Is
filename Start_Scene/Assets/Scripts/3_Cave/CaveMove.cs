@@ -6,7 +6,7 @@ public class CaveMove : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;
     public Transform[] pos;
-    int curPos = 3;
+    int curPos = 0;
     public float speed, rotSpeed, jumpForce;
 
     public bool lightOn = false;
@@ -92,7 +92,6 @@ public class CaveMove : MonoBehaviour
 
     void Move()
     {
-        
         animator.SetBool("isWalk", true);
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
@@ -105,7 +104,7 @@ public class CaveMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("isWalk", false);
             animator.SetTrigger("isJump");
-            SoundManager.instnace.PlaySE("PlayerJump");
+            SoundManager.instnace.PlaySE("PlayerJump", 0.1f);
         }
     }
 

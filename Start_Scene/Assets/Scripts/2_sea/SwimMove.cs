@@ -12,7 +12,7 @@ public class SwimMove : MonoBehaviour
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
 
-    private bool lightOn = false;
+    private bool lightOn = false, isMile1 = false; // mile1은 보스 생성전 플레이어 Z축 조정을 위한 변수
     
     public static bool isBoss = false;      // 물고기 벽이 무너지면 true하고 보스 setActive시킬 예정
     public static bool isDied = false;      // 플레이어의 죽음여부
@@ -59,7 +59,7 @@ public class SwimMove : MonoBehaviour
             Invoke("NextScene", 1f);
             return;
         }
-        if (isDied && Dead()) return;
+        if (isDied) return;
 
         if (Water.isWater && !isBoss)
         {   // 보스 만나기 전에는 z축이동가능
@@ -67,8 +67,15 @@ public class SwimMove : MonoBehaviour
             dir.z = Input.GetAxisRaw("Horizontal") * -1;
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
         }
+        else if(isBoss && isMile1)
+        {
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, 0f), Time.deltaTime*1.5f);
+        }
         else
+        {
             dir.x = Input.GetAxisRaw("Vertical");
+        }
+            
 
         if (Input.GetKey("l"))
         {
@@ -111,7 +118,7 @@ public class SwimMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if ((isDied && Dead()) || isEnd || isCave) return;
+        if (isDied || isEnd || isCave) return;
 
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
@@ -169,7 +176,7 @@ public class SwimMove : MonoBehaviour
         if (Water.isWater && Input.GetKey("space"))
         {
             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-            SoundManager.instnace.PlaySE("PlayerJump");
+            SoundManager.instnace.PlaySE("PlayerSeaJump", 0.5f);
         }
     }
 
@@ -203,24 +210,16 @@ public class SwimMove : MonoBehaviour
 
     public void SetDeadState()
     {   // 심해에서 보스에 닿아 죽으면 물고기 벽 부딪히게 전으로 돌아감 
-        isDied = true;
         isBoss = false;
+        isMile1 = false;
         UIManager.instnace.stopOut = false;
         Invoke("SetPos", 1.5f);
     }
     void SetPos()
     {   // 죽었을 경우 다시 시작되는 장소 설정
+        ControlVCam.instance.SwitchingSideToBack();
         transform.position = pos[1].transform.position;   // 바꿔야함 리스폰 pos로
-    }
-
-    bool Dead()
-    {
-        if (UIManager.instnace.stopIn && UIManager.instnace.stopOut)
-        {   // 보스에 닿아서 죽었을 때 다시 중간 스폰 자리로 돌아오면
-            isDied = false;
-            return false;
-        }
-        else return true;
+        isDied = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -228,20 +227,32 @@ public class SwimMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {   // 보스와 충돌시
             SetDeadState();
-            GameObject.Find("Disappear_Structure").transform.Find("MileStone 1").gameObject.SetActive(false);
+            GameObject.Find("Disappear_Structure").transform.Find("MileStone 1").gameObject.SetActive(true);
         }
-        if (collision.gameObject.CompareTag("Wall"))
-        {   // 물고기 떼와 충돌(변경예정_0328.ver)
-            isBoss = true;
-            ControlVCam.instance.SwitchingBackToSide();
-            GameObject.Find("MileStone 1").SetActive(false);
-            // 물고기가 촤악 사라지는 무빙 이후 보스 활성화 시키는 것이 좋을듯함 -> 아래줄 invoke 함수화
-            GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
-        }
+    }
+
+    IEnumerator SetBoss()
+    {
+        isBoss = true;
+        isMile1 = true;
+        CinematicBar.instance.ShowBars();
+        ControlVCam.instance.SwitchingBackToSide();
+        GameObject.Find("MileStone 1").SetActive(false);
+        yield return new WaitForSeconds(1.3f);
+
+        GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
+        ControlVCam.instance.SwitchingWatchingBoss();
+        isMile1 = false;
+        yield return new WaitForSeconds(1.3f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Wall"))
+        {   // 물고기 떼와 충돌(변경예정_0328.ver)
+            // 물고기가 촤악 사라지는 무빙 이후 보스 활성화 시키는 것이 좋을듯함 -> 아래줄 invoke 함수화
+            StartCoroutine(SetBoss());
+        }
         if (other.gameObject.CompareTag("End"))
         {
             isEnd = true;

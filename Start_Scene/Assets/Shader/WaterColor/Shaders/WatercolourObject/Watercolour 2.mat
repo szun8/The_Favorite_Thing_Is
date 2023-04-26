@@ -8,7 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Watercolour 2
-  m_Shader: {fileID: -6465566751694194690, guid: bf7b400184610ef4f9be750fd4fc3f94, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: bf7b400184610ef4f9be750fd4fc3f94,
+    type: 3}
   m_ValidKeywords:
   - MAIN_LIGHT_CALCULATE_SHADOWS
   m_InvalidKeywords: []
@@ -90,16 +91,18 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _ScollSpeed: 0.05
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TransparentPower: 1
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_D9F05973: {r: 1, g: 0.9398213, b: 0.5235849, a: 0}
-    - Color_DB04B181: {r: 0.6886792, g: 0.44785583, b: 0.23064259, a: 0}
+    - Color_D9F05973: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 0}
+    - Color_DB04B181: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

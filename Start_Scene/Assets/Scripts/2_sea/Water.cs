@@ -35,20 +35,20 @@ public class Water : MonoBehaviour
             currentBreatheTime += Time.deltaTime;
             if(currentBreatheTime >= breatheTime)
             {   // 물 속에서 숨쉬는 거처럼 일정 시간마다 숨쉬는 소리 재생
-                SoundManager.instnace.PlaySE(sound_WaterBreathe);
+                SoundManager.instnace.PlaySE(sound_WaterBreathe, 0.5f);
                 currentBreatheTime = 0;
             }
             
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.transform.CompareTag("Player_mesh"))
-        {
-            GetWater(other);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.transform.CompareTag("Player_mesh"))
+    //    {
+    //        GetWater(other);
+    //    }
+    //}
 
     private void OnTriggerExit(Collider other)
     {
@@ -58,9 +58,10 @@ public class Water : MonoBehaviour
         }
     }
 
-    private void GetWater(Collider _player)
+    public void GetWater(Collider _player)
     {
-        SoundManager.instnace.PlaySE(sound_WaterIn);
+        SoundManager.instnace.PlaySE(sound_WaterIn, 0.9f);
+        SoundManager.instnace.PlayBGM();
         isWater = true;
         _player.transform.GetComponentInParent<Rigidbody>().drag = waterDrag;
 
@@ -71,7 +72,7 @@ public class Water : MonoBehaviour
     {
         if (isWater)
         {   // 물에 들어가 있을때만 빠져나올수 있기때문에
-            SoundManager.instnace.PlaySE(sound_WaterOut);
+            SoundManager.instnace.PlaySE(sound_WaterOut, 1.0f);
             isWater = false;
             _player.transform.GetComponentInParent<Rigidbody>().drag = originDrag;
 

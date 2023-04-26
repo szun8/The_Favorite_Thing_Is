@@ -16,13 +16,13 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     Material[] PlayerMaterials; //머티리얼 직접 접근 불가로 저장할 공간
     public Material[] LightMaterials;  //L, R, G, B 머티리얼
 
-  
+
 
     Rigidbody rigid;
     Animator animator;
 
     public PhotonView PV;
-    
+
 
     //이동관련 변수 
     private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
@@ -33,13 +33,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     // 플레이어 따라다니는 전등
     public Light spotLight;  //spot light
     public GameObject maskLight; // 발광 구
-    
+
 
     public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     public bool isJump = false; // 바닥 충돌, 발판과 단상
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
 
-    //private bool isMirrorJump = false;
 
     //상호작용 
     //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
@@ -64,13 +63,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     private Material defaultMaterial; //기본 발광 마테리얼
 
+    //default는 ㄹㅇ 기본 발광Mat으로 쓸거고 PlayerMaterials에 mesh 눈이랑 바디 저장해두고 LightsMaterials로 변경해줘서 그걸 mesh에 맥일거임  
 
 
 
     void Awake()
     {
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
-        
+
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
@@ -79,10 +79,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         reverseGravity = GetComponent<ReverseGravity>();
         //wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
 
-        
+
 
         defaultMaterial = LightMaterials[0]; //기본 머티리얼은 흰색 body
-        
+
 
         //플레이어의 eye body 머티리얼 정보 저장 .
         PlayerMaterials = mesh.materials;
@@ -92,7 +92,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Camera.main.GetComponent<CameraMove>().player = gameObject;
             Camera.main.GetComponent<CameraMove>().dist = 20;//18;
             Camera.main.GetComponent<CameraMove>().height = 0.15f; //재인이의 희망은 0.2였다
-            
+
         }
 
     }
@@ -110,28 +110,28 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //밟을 수 있는 놈들과 충돌, 땅레이어를 감지하면 
             if (canJump && isGround) isJump = false;
 
-            if (!isGround) isJump = true; 
-            
-            
+            if (!isGround) isJump = true;
+
+
 
             if (Input.GetKeyDown("space"))
             {
-                if(isJump == false)
+                if (isJump == false)
                 {
                     //isJump = true;
                     PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f , ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
 
                     //제대로 된 중력 
                     else rigid.AddForce(Vector2.up * (JumpForce * 0.8f), ForceMode.Impulse);
-                    
+
                 }
-                
+
             }
-                
-            
+
+
 
 
             if (Input.GetKeyDown("l"))
@@ -182,7 +182,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
 
         }
-        
+
     }
 
     private void FixedUpdate()
@@ -210,11 +210,11 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
             }
 
-            rigid.MovePosition(transform.position + dir/1.3f * Time.deltaTime * speed);
-            
-            
+            rigid.MovePosition(transform.position + dir / 1.3f * Time.deltaTime * speed);
+
+
         }
-        
+
     }
 
 
@@ -275,8 +275,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             gameObject.transform.GetChild(1).gameObject.layer = 9;
             lightOn = true;
             rgb_lightOn = false;
-            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(96f,93f,0,120f));
-            
+            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(96f, 93f, 0, 120f));
+
 
             PV.RPC("LightPower", RpcTarget.AllBuffered);
 
@@ -306,14 +306,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (lightOn) // L 버튼으로 발광 하면 ~ 
         {
             //emission color의 밝기 1.5배 증가 시키기 
-            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color * 1.5f);
+            mesh.materials[1].SetColor("_EmissionColor", mesh.materials[1].GetColor("_EmissionColor") * 1.3f);
             spotLight.intensity = 25f;
             networkManager.playerLightCount++; //waitingWall에서 불킨 인원 수 보내주려고
         }
 
         else        //L,R,G,B 가 다 꺼진 경우에는 기본 밝기 
         {
-            mesh.materials[1].SetColor("_EmissionColor", PlayerMaterials[1].color);
+            mesh.materials[1].SetColor("_EmissionColor", defaultMaterial.GetColor("_EmissionColor"));
             spotLight.intensity = 0;
         }
 
@@ -327,7 +327,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         animator.SetBool("isWalk", false);
         animator.SetTrigger("isJump");
     }
-     
+
 
     //Photon은 Color를 몰라 ,,즉 포톤은 칼라를 직렬화 하지 못해 Vector로 color를 변환하기  
     [PunRPC]
@@ -341,7 +341,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         PlayerMaterials[1] = LightMaterials[matIdx]; //색깔을 배정 
         mesh.materials = PlayerMaterials;         //배정된 색을 불러옴 
 
-        
+
 
         Color RGBcolor = new Color(color.x, color.y, color.z);
         spotLight.color = RGBcolor;
@@ -369,10 +369,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             case 3:
                 b_pressed = value;
                 break;
-                
+
         }
     }
-    
-    
+
+
 
 }

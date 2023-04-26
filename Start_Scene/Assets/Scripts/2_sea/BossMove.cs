@@ -33,19 +33,29 @@ public class BossMove : MonoBehaviour
     private void Update()
     {
         if (isDisapear) MatOut();
-        
-        if (!isStop && !SwimMove.isEnd) ChaseTarget();
-        else if (!isMileStone2 && SwimMove.isEnd) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 25f);
-        else rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
+
+        if (!isStop && !SwimMove.isEnd) ChaseTarget();  // 플레이어가 해파리를 먹는 과정
+        else if (!isMileStone2 && SwimMove.isEnd)  
+        {   // 보스가 아직 milestone에 도달하지 못했는데 플레이어는 dollytrack탑승중이라면,
+            //Debug.Log("else if");
+            rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 30f);
+        }
+        else if(isStop) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 0f);
+        else if(isMileStone2)
+        {
+            //Debug.Log("else");
+            rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Stone"))
         {
+            Debug.Log("BossDied");
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
             isStop = true;
-            boss.speed = 15f;
+            boss.speed = 0f;
             rigid.useGravity = true;
             Invoke("BossDestroy", 3f);
         }

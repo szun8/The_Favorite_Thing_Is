@@ -39,7 +39,12 @@ public class SoundManager : MonoBehaviour
     public Sound[] effectSounds;
     public Sound[] bgmSound;
 
-    public void PlaySE(string _name)
+    private void Start()
+    {
+        if(ScenesManager.instance.SceneNum == 0) PlayBGM();   // 튜토리얼 시작할때
+    }
+
+    public void PlaySE(string _name, float volume)
     {
         for (int i = 0; i < effectSounds.Length; i++)
         {
@@ -51,6 +56,7 @@ public class SoundManager : MonoBehaviour
                     {   // 재생중이지 않은 사운드에 대해서
                         playSoundName[j] = effectSounds[i].name;
                         audioSourceEffects[j].clip = effectSounds[i].clip;
+                        audioSourceEffects[j].volume = volume;
                         audioSourceEffects[j].Play();
                         return;
                     }   // 재생을 시켜주고 함수 종료
@@ -90,7 +96,9 @@ public class SoundManager : MonoBehaviour
     int i;
     public void PlayBGM()
     {
+        
         i = ScenesManager.instance.SceneNum;
+        Debug.Log(audioSourceBGM[i].isPlaying);
         if (!audioSourceBGM[i].isPlaying)
         {   // 재생중이지 않은 사운드에 대해서
             playSoundName[audioSourceEffects.Length] = bgmSound[i].name;
@@ -101,8 +109,32 @@ public class SoundManager : MonoBehaviour
         }   // 재생을 시켜주고 함수 종료
         
     }
-    public void StopBGM()
+    public float animTime = 5.5f;         // Fade 애니메이션 재생 시간 (단위:초). 
+    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.
+    private bool isStop = false;
+
+    private void Update()
     {
+        if (isStop)
+        {
+            time += Time.deltaTime / animTime;
+            audioSourceBGM[i].volume = Mathf.Lerp(audioSourceBGM[i].volume, 0, time);
+        }
+        else if(time != 0)
+        {
+            time = 0;
+        }
+    }
+    public void VolumeOutBGM()
+    {
+        isStop = true;
+        StartCoroutine(StopBGM());
+    }
+
+    IEnumerator StopBGM()
+    {
+        yield return new WaitForSeconds(animTime);
         audioSourceBGM[i].Stop();
+        isStop = false;
     }
 }

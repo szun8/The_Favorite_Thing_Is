@@ -19,7 +19,7 @@ public class DeadStone : MonoBehaviour
 
     public void SettingCinemachine()
     {
-        SoundManager.instnace.PlaySE("CaveCollapse");
+        SoundManager.instnace.PlaySE("CaveCollapse", 0.85f);
         CinematicBar.instance.ShowBars();
         Invoke("DestroyCine", 2f);
     }
