@@ -122,7 +122,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                     PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.4f, ForceMode.Impulse);
 
                     //제대로 된 중력 
                     else rigid.AddForce(Vector2.up * (JumpForce * 0.8f), ForceMode.Impulse);
