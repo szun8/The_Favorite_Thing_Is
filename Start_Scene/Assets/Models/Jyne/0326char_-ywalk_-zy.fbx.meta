@@ -122,7 +122,42 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: 0326char_-ywalk_-zy(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: player_mesh
+      parentName: 0326char_-ywalk_-zy(Clone)
+      position: {x: -0.03215184, y: 0.011012778, z: 0.03932695}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: Armature
+      parentName: 0326char_-ywalk_-zy(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: end
+      parentName: Armature
+      position: {x: -0.00005269587, y: -0.00000061035155, z: -0.000032483338}
+      rotation: {x: 0.10571734, y: 0.7048841, z: 0.6911543, w: 0.1194492}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: mid
+      parentName: end
+      position: {x: -2.3283064e-12, y: 0.0026741638, z: -1.16415315e-11}
+      rotation: {x: -0.016875481, y: 0.3517917, z: 0.0059949197, w: 0.935907}
+      scale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+    - name: head
+      parentName: mid
+      position: {x: -2.3283064e-12, y: 0.0028035396, z: -6.984919e-12}
+      rotation: {x: 0.0016192109, y: 0.08364086, z: 0.005783646, w: 0.9964779}
+      scale: {x: 0.99861836, y: 0.93204236, z: 0.999479}
+    - name: head_end
+      parentName: head
+      position: {x: -0, y: 0.014552977, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
