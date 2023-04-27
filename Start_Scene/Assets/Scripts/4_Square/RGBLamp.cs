@@ -61,8 +61,8 @@ public class RGBLamp : MonoBehaviourPunCallbacks
         if (isShort)
         {
             //위로 광선 쏴서 가로등 빛나도록 하기
-            Debug.DrawRay(transform.position, Vector3.down * 3f, Color.blue);
-            isPlayer = Physics.Raycast(transform.position, Vector3.down, out hit, 3f, LayerMask.GetMask("LightPlayer"));
+            Debug.DrawRay(transform.position, Vector3.down * 4f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position, Vector3.down, out hit, 4f, LayerMask.GetMask("LightPlayer"));
         }
         else
         {
