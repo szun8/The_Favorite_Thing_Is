@@ -1,9 +1,9 @@
 */Library/
 */Temp/
 */Logs/
-*/Build/
+
 */obj/
-*/.vs/
+Start_Scene/Assets/Materials/Sieun/Simple Water Shader/
 *.csproj
 
 # Gradle cache directory
@@ -33,3 +33,5 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+*.json
+*.dwlt

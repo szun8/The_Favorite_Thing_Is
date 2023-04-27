@@ -58,6 +58,11 @@ public class ControlVCam : MonoBehaviour
         }
     }
 
+    public void Anim_isMoveWASD()
+    {
+        UIManager.instnace.RunAnims("isWASD");
+    }
+
     // 현재 진행 중인 캠의 우선순위를 원상복귀시키고 바뀔 캠의 우선순위화
     public void SwitchingSideToBack()
     {   // Side -> Back
