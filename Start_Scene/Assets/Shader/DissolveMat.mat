@@ -57,6 +57,7 @@ Material:
     - _SplitValue: 1
     m_Colors:
     - _Albedo: {r: 0, g: 0, b: 0, a: 1}
+    - _Base_Color: {r: 1, g: 1, b: 1, a: 0}
     - _EdgeColor: {r: 4.6695805, g: 0.28634232, b: 0.28634232, a: 1}
     - _EmissionColor: {r: 4, g: 0.2509804, b: 0.2509804, a: 0}
     - _GlowColor: {r: 4, g: 0.3962264, b: 0.3962264, a: 0}

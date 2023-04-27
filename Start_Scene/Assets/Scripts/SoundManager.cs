@@ -41,7 +41,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        if(ScenesManager.instance.SceneNum == 0) PlayBGM();   // 튜토리얼 시작할때
+        if(ScenesManager.instance != null && ScenesManager.instance.SceneNum == 0) PlayBGM();   // 튜토리얼 시작할때
     }
 
     public void PlaySE(string _name, float volume)

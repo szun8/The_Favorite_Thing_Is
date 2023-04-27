@@ -306,7 +306,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (lightOn) // L 버튼으로 발광 하면 ~ 
         {
             //emission color의 밝기 1.5배 증가 시키기 
-            mesh.materials[1].SetColor("_EmissionColor", mesh.materials[1].GetColor("_EmissionColor") * 1.3f);
+            mesh.materials[1].SetColor("_EmissionColor", mesh.materials[1].GetColor("_EmissionColor") * 1.1f);
             spotLight.intensity = 25f;
             networkManager.playerLightCount++; //waitingWall에서 불킨 인원 수 보내주려고
         }
