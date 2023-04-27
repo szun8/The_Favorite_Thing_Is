@@ -22,6 +22,9 @@ public class RunUI : MonoBehaviourPun
         {
             if(gameObject.name.Contains("L_press"))
                 UIManager.instnace.RunAnims("isL_Square");
+
+            if(gameObject.name == "press R" && other.gameObject.GetComponentInParent<MultiPlayerMove>().getRed)
+                UIManager.instnace.RunAnims("isLight_R");
         }
     }
 }

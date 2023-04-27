@@ -4834,6 +4834,16 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 952501935717640699, guid: bc58004cec2d240f4a19cbb5496b3fff,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 96.111404
+      objectReference: {fileID: 0}
+    - target: {fileID: 952501935717640699, guid: bc58004cec2d240f4a19cbb5496b3fff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.59
+      objectReference: {fileID: 0}
     - target: {fileID: 1590556133261895802, guid: bc58004cec2d240f4a19cbb5496b3fff,
         type: 3}
       propertyPath: sceneViewId
