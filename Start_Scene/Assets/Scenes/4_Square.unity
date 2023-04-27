@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.022868874, g: 0.0223352, b: 0.0227512, a: 1}
+  m_IndirectSpecularColor: {r: 0.022848392, g: 0.022325624, b: 0.022732083, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1556,7 +1556,7 @@ GameObject:
   - component: {fileID: 654581195}
   - component: {fileID: 654581196}
   m_Layer: 0
-  m_Name: L_press to get Red
+  m_Name: Get Red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1727,6 +1727,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   redObj: 0
   greenObj: 0
+--- !u!1001 &805528699
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889920497845174, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_Name
+      value: UIManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4809491251bd4b78910fad904747ae8, type: 3}
 --- !u!1 &874598718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2480,6 +2549,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1061901111}
   - component: {fileID: 1061901112}
+  - component: {fileID: 1061901113}
   m_Layer: 0
   m_Name: 'L_press 2P '
   m_TagString: Untagged
@@ -2515,6 +2585,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1061901113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061901110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4fdda5cf79456e97951084a626b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1167372237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3288,6 +3370,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1579679686}
   - component: {fileID: 1579679687}
+  - component: {fileID: 1579679688}
   m_Layer: 0
   m_Name: press R
   m_TagString: Untagged
@@ -3303,8 +3386,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1579679685}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 113.23, y: 1.42, z: 0}
-  m_LocalScale: {x: 2.965275, y: 1, z: 2.3879}
+  m_LocalPosition: {x: 113.23, y: -1.48, z: 0}
+  m_LocalScale: {x: 4.596176, y: 0.1625, z: 2.3879}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 58404313}
@@ -3323,6 +3406,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1579679688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579679685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4fdda5cf79456e97951084a626b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1608877885
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,6 +3691,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1796070454}
   - component: {fileID: 1796070455}
+  - component: {fileID: 1796070456}
   m_Layer: 0
   m_Name: L_press 1P
   m_TagString: Untagged
@@ -3631,6 +3727,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 2, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1796070456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796070453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4fdda5cf79456e97951084a626b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1903569502
 GameObject:
   m_ObjectHideFlags: 0
