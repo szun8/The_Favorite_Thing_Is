@@ -5,7 +5,12 @@ using UnityEngine;
 public class PortalScene : MonoBehaviour
 {
     [SerializeField] Renderer portalMat;
+    BoxCollider coll;
     bool isConvert = false;
+    private void Start()
+    {
+        coll = GetComponent<BoxCollider>();
+    }
 
     void Update()
     {
@@ -22,7 +27,7 @@ public class PortalScene : MonoBehaviour
             isConvert = true;
             ScenesManager.instance.Scene[0] = true;
             SoundManager.instnace.VolumeOutBGM();
-            Destroy(gameObject);
+            Destroy(coll);
         }
     }
 }
