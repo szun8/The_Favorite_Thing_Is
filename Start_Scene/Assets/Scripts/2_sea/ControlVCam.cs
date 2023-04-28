@@ -102,7 +102,7 @@ public class ControlVCam : MonoBehaviour
         while (true)
         {
             watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, bossSpawn.position.x, Time.deltaTime*2f), originPos.y, originPos.z); ;
-            if(watchingBossCam.transform.position.x < 125)
+            if(watchingBossCam.transform.position.x < (bossSpawn.position.x + 1.5f))
             {
                 break;
             }
