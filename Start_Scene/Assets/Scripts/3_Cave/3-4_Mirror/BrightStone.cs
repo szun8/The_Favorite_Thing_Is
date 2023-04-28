@@ -29,19 +29,20 @@ public class BrightStone : MonoBehaviourPun, IPunObservable
             time += Time.deltaTime / animTime;
             //baseColor = new Color(baseColor_r, baseColor_g, baseColor_b);
             stoneMat.color = Color.Lerp(stoneMat.color, baseColor * 7f, time);
-
-            if (time >= 1f)
-            {
-                Debug.Log("SceneLoad_4");
-                isBright = false;
-                //if (PhotonNetwork.IsMasterClient) PhotonNetwork.LoadLevel("4_Square");
-                
-            }
+            StartCoroutine(Bright());
+           
         }
         else if (PhotonNetwork.CurrentRoom.PlayerCount == 2 && !isInvoke)
         {
             Invoke("InvokeStoneBright", 4f);
         }
+    }
+
+    IEnumerator Bright()
+    {
+        yield return new WaitForSeconds(2f);
+        isBright = false;
+        PhotonNetwork.LoadLevel("4_Square");
     }
 
     private void OnDestroy()

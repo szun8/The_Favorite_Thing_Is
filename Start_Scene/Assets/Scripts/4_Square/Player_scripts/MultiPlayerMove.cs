@@ -122,10 +122,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                     PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
                     //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.4f, ForceMode.Impulse);
+                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * .9f, ForceMode.Impulse);
 
                     //제대로 된 중력 
-                    else rigid.AddForce(Vector2.up * (JumpForce * 0.8f), ForceMode.Impulse);
+                    else rigid.AddForce(Vector2.up * (JumpForce * 0.9f), ForceMode.Impulse);
 
                 }
 
@@ -143,21 +143,21 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //RPC 함수는 최대 인자 2개만 전송가능 Color는 못넘긴다 ~ 벡터로 변환 해줘야 한다 ~ 
             if (Input.GetKeyDown("r") && getRed)
             {
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
+                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
             }
 
 
             if (Input.GetKeyDown("g") && getGreen)
             {
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
+                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));  
             }
 
             if (Input.GetKeyDown("b") && getBlue)
             {
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
                 PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
+                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
             }
 
             if (Input.GetKeyUp("l"))
@@ -271,6 +271,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (l_pressed)
         {
+            PlayerMaterials[1] = LightMaterials[0];
+            mesh.materials = PlayerMaterials;//몸통 흰색으로 교체
+
             spotLight.color = Color.white;
             gameObject.transform.GetChild(1).gameObject.layer = 9;
             lightOn = true;
@@ -305,15 +308,17 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (lightOn) // L 버튼으로 발광 하면 ~ 
         {
-            //emission color의 밝기 1.5배 증가 시키기 
-            mesh.materials[1].SetColor("_EmissionColor", mesh.materials[1].GetColor("_EmissionColor") * 1.1f);
+            //emission color의 밝기
+            
+            mesh.materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f) * 1.8f);
             spotLight.intensity = 25f;
             networkManager.playerLightCount++; //waitingWall에서 불킨 인원 수 보내주려고
         }
 
         else        //L,R,G,B 가 다 꺼진 경우에는 기본 밝기 
         {
-            mesh.materials[1].SetColor("_EmissionColor", defaultMaterial.GetColor("_EmissionColor"));
+            
+            mesh.materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f));
             spotLight.intensity = 0;
         }
 
