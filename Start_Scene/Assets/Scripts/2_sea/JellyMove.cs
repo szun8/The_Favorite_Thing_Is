@@ -20,8 +20,7 @@ public class JellyMove : MonoBehaviour
     {
         if (isColl)
         {
-            MatOut();
-            Invoke("JellyDestroy", 1.3f);
+            Destroy(this.gameObject);
         }
     }
 
