@@ -22,6 +22,7 @@ public class PortalScene : MonoBehaviour
             isConvert = true;
             ScenesManager.instance.Scene[0] = true;
             SoundManager.instnace.VolumeOutBGM();
+            Destroy(gameObject);
         }
     }
 }

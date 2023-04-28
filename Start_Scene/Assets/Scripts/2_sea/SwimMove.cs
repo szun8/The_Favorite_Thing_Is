@@ -73,7 +73,7 @@ public class SwimMove : MonoBehaviour
         }
         else
         {
-            dir.x = Input.GetAxisRaw("Vertical");
+            dir.x = Input.GetAxisRaw("Horizontal");
         }
             
 
@@ -275,5 +275,6 @@ public class SwimMove : MonoBehaviour
     void NextScene()
     {
         ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
+        SoundManager.instnace.VolumeOutBGM();
     }
 }
