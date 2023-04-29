@@ -74,6 +74,7 @@ public class videoHandler : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Sea").GetComponent<Water>().GetWater(GameObject.FindGameObjectWithTag("Player_mesh").GetComponent<Collider>());
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().useGravity = true;
                 UIManager.instnace.RunAnims("isWASD");
+                UIManager.instnace.RunAnims("isJelly");
             }
             yield return new WaitForSeconds(0.1f);
         }
