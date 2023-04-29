@@ -3,7 +3,67 @@ guid: 0ff683116ae074546ab1918112f2e177
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 3786a5dfd455d3648b2023c40799d89d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: 17c40cd2e1ae2464eaa07821968b3bfa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body.001
+    second: {fileID: 2100000, guid: 3d17d37fa2de0db4f861578acaadaabb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cave_M
+    second: {fileID: 2100000, guid: ecc3c29a3999ca84a9209174bc6225f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral1
+    second: {fileID: 2100000, guid: 5d171bd06190eef4a92a4749ac24389b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral2
+    second: {fileID: 2100000, guid: 6bb50b600373d444080c01c9bf1c5135, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral3
+    second: {fileID: 2100000, guid: 4324f2cb0df3edd428f8b3f6f2be15d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coral4
+    second: {fileID: 2100000, guid: 06449f1ae5c02d245b1210563dc55630, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes
+    second: {fileID: 2100000, guid: 50879d8488c2c7a43a3158f140b3522a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes.001
+    second: {fileID: 2100000, guid: 63289772af6fc2c4ba9e2194b620e9a1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: jellyfish
+    second: {fileID: 2100000, guid: 23d04e6ea672f5e428b70e04a76ce8a6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rocks_M
+    second: {fileID: 2100000, guid: 4bd6bba8c5263734da7393690d13e589, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
