@@ -8,7 +8,7 @@ public class SwimMove : MonoBehaviour
     Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
 
     public GameObject[] pos;                // [0] 시작 장소, [1] 재시작 장소, [2] 엔딩 장소
-    public int JumpForce;                   // 점프력
+    public int JumpForce, DownForce;                   // 점프력
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
 
@@ -74,8 +74,7 @@ public class SwimMove : MonoBehaviour
         else
         {
             dir.x = Input.GetAxisRaw("Horizontal");
-        }
-            
+        }   
 
         if (Input.GetKey("l"))
         {
@@ -136,8 +135,10 @@ public class SwimMove : MonoBehaviour
         {
             animator.SetBool("isSwim", false);
         }
-        Jump();
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+
+        Jump();
+        Down();
     }
 
     void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
@@ -177,6 +178,14 @@ public class SwimMove : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             SoundManager.instnace.PlaySE("PlayerSeaJump", 0.5f);
+        }
+    }
+
+    void Down()
+    {
+        if(Water.isWater && Input.GetKey(KeyCode.LeftShift))
+        {
+            rigid.AddForce(Vector2.down * DownForce, ForceMode.Impulse);
         }
     }
 

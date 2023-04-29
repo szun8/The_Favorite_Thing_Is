@@ -115,7 +115,7 @@ public class PlayerMove : MonoBehaviour
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
 
-    void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
+    public void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
     {
         maskLight.SetActive(lightOn);
         ResetLight();

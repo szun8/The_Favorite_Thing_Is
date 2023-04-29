@@ -5,17 +5,16 @@ using Cinemachine;
 
 public class ControlTitleCam : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
     CinemachineVirtualCamera titleCam;
-    public Vector3 followOffset, trackedOffset;
-    Vector3 originFollowOffset, originTrackedOffset;
+    public Vector3 followOffset;
+    Vector3 originFollowOffset;
 
     bool isCam = false, isOrigin;
     void Start()
     {
         titleCam = GetComponent<CinemachineVirtualCamera>();
         originFollowOffset = titleCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
-        originTrackedOffset = titleCam.GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset;
     }
 
     private void Update()
@@ -24,14 +23,13 @@ public class ControlTitleCam : MonoBehaviour
         {
             titleCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
                 = Vector3.Lerp(titleCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, followOffset, Time.deltaTime * 2f);
-            titleCam.GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset
-                = Vector3.Lerp(titleCam.GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset, trackedOffset, Time.deltaTime * 2f);
+            titleCam.transform.rotation = Quaternion.Lerp(titleCam.transform.rotation, Quaternion.Euler(-11, 0, 0), Time.deltaTime * 2f);
         }
         else if (isOrigin)
         {
             titleCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
                 = Vector3.Lerp(titleCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, originFollowOffset, Time.deltaTime * 2f);
-            titleCam.transform.rotation = Quaternion.Lerp(titleCam.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 2f);
+            titleCam.transform.rotation = Quaternion.Lerp(titleCam.transform.rotation, Quaternion.Euler(0, 10, 0), Time.deltaTime * 2f);
         }
     }
 
@@ -43,8 +41,13 @@ public class ControlTitleCam : MonoBehaviour
     IEnumerator ControlTitle()
     {
         PlayerMove.isStop = true;
-        player.rotation = Quaternion.Euler(0, 0, 0);
-        titleCam.LookAt = player.transform;
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
+        if (player.GetComponent<PlayerMove>().lightOn)
+        {
+            Debug.Log("light off");
+            player.GetComponent<PlayerMove>().lightOn = false;
+            player.GetComponent<PlayerMove>().LightHandle();
+        }
         isCam = true;
         yield return new WaitForSeconds(1f);
 
@@ -52,7 +55,6 @@ public class ControlTitleCam : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         isCam = false;
-        titleCam.LookAt = null;
         isOrigin = true;
         yield return new WaitForSeconds(2f);
 
