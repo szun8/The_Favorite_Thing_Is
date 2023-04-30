@@ -64,6 +64,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: ab3f87a9a6fbf46ea927631d637edc0c, type: 2}
+  - {fileID: 2100000, guid: fee4c9a6396c442f196a890f4ffba9ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,5 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  followOffset: {x: 3, y: 3.5, z: 5}
-  originOffset: {x: 0, y: 3, z: 15}
+  followOffset: {x: -7, y: 8, z: 5}
+  originOffset: {x: -3.5, y: 5.5, z: 15}
+  animTime: 5

@@ -6,27 +6,30 @@ using Cinemachine;
 public class DeadStone : MonoBehaviour
 {
     [SerializeField] CinemachineCollisionImpulseSource cinemachineCollision;
+    CaveMove player;
 
-    public void InvokeNextScene()
+    public void SettingDeadCoroutine()
     {
-        Invoke("NextScene", 2f);
+        StartCoroutine(SettingDead());
     }
 
-    void NextScene()
+    IEnumerator SettingDead()
     {
-        ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
-    }
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CaveMove>();
+        if (player.lightOn)
+        {   // 죽는 시점에 플레이어의 발광구가 켜져있다면 끄는 기능
+            player.lightOn = false;
+            player.LightHandle();
+        }
+        player.enabled = false;
 
-    public void SettingCinemachine()
-    {
         SoundManager.instnace.PlaySE("CaveCollapse", 0.85f);
         CinematicBar.instance.ShowBars();
-        Invoke("DestroyCine", 2f);
-    }
+        yield return new WaitForSeconds(2f);
 
-    void DestroyCine()
-    {
         CinematicBar.instance.HideBars();
         Destroy(cinemachineCollision);
+        ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
+        yield return null;
     }
 }

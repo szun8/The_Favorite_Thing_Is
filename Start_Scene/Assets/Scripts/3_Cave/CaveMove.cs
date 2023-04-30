@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class CaveMove : MonoBehaviour
 {
-    Vector3 dir = Vector3.zero;
-    public Transform[] pos;
-    int curPos = 0;
+    Vector3 dir = Vector3.zero;                 // 움직일 방향 입력 변수
+    public GameObject[] pos;                     // 조정당할 위치 배열
+    GameObject savePoint;
     public float speed, rotSpeed, jumpForce;
 
     public bool lightOn = false;
     public static bool badak = false;
     public static bool isStop = false;
     public static bool isDied = false;
-    public static bool isMirror = false;
 
     // 플레이어 따라다니는 전등
-    public Light spotLight;  //spot light
-    public GameObject maskLight; // 발광 구
+    public Light spotLight;         //spot light
+    public GameObject maskLight;    // 발광 구
 
     SkinnedMeshRenderer mesh;
-    Material[] materials; //현재 eyes, body material 
+    Material[] materials;           //현재 eyes, body material 
     Rigidbody rigid;
     public Animator animator;
 
@@ -36,20 +35,15 @@ public class CaveMove : MonoBehaviour
         spotLight.intensity = 0;
         maskLight.SetActive(false);
         materials = mesh.sharedMaterials;
-        transform.position = pos[curPos].position;
+        
+        transform.position = pos[0].transform.position;  // 플레이어 시작위치 초기화
+        savePoint = pos[1];
     }
 
-    // 1. 동굴 내부 2. 거울방
     void Update()
     {
         if (isDied) return;
-        if (isMirror)
-        {
-            rigid.constraints = RigidbodyConstraints.FreezeRotation;
-            dir.x = Input.GetAxisRaw("Horizontal");
-            dir.z = Input.GetAxisRaw("Vertical");
-        }
-        else dir.x = Input.GetAxisRaw("Horizontal");
+        dir.x = Input.GetAxisRaw("Horizontal");
 
         Jump();
         if (Input.GetKey("l"))
@@ -86,8 +80,6 @@ public class CaveMove : MonoBehaviour
             transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
         }
         else animator.SetBool("isWalk", false);
-
-        
     }
 
     void Move()
@@ -133,38 +125,40 @@ public class CaveMove : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (!badak && (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs")))
-        {
+        {   // 점프 가능 상태
             badak = true;
         }
-        //if (collision.gameObject.CompareTag("Dead"))
-        //{
-        //    SetCurStance(4);
-        //}
         if (collision.gameObject.CompareTag("Stone"))
         {
-            if (HiddenPlates.isSafe) return;
             isDied = true;
-            SetCurStance(1);
+
+
+            lightOn = false;    // 죽었을때 L 킨채로 죽으면 다시살아날때 키 안눌러도 활성화된 채로 살아나는 버그로 인해 죽으면 발광 OFF
+            LightHandle();
+
+            StartCoroutine(SetPos());
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Item"))
+        {   // 끝부분 이스터에그 워프기능
+            savePoint = pos[3];
+            StartCoroutine(SetPos());
+        }
+        if (other.CompareTag("SavePoint"))
         {
-            SetCurStance(3);
+            savePoint = other.gameObject;
         }
     }
 
-    void SetCurStance(int i)
-    {
+    IEnumerator SetPos()
+    {   // 죽으면 세이브포인트로 플레이어 이동
         UIManager.instnace.stopOut = false;
-        curPos = i;
-        Invoke("SetPos", 1.5f);
-    }
+        yield return new WaitForSeconds(1.5f);
 
-    void SetPos()
-    {   // 죽었을 경우 다시 시작되는 장소 설정
-        transform.position = pos[curPos].position;
+        transform.position = savePoint.transform.position;
         isDied = false;
     }
 }

@@ -7,7 +7,6 @@ public class HiddenPlates : MonoBehaviour
     [SerializeField] GameObject player;
     MeshCollider coll;
     CaveMove cm;
-    public static bool isSafe = false;
 
     private void Start()
     {
@@ -17,16 +16,14 @@ public class HiddenPlates : MonoBehaviour
 
     void Update()
     {
-        if (cm.lightOn)
+        if (cm.lightOn )
         {
             coll.isTrigger = false;
-            isSafe = true;
         }
             
         else
         {
             coll.isTrigger = true;
-            isSafe = false;
         }
     }
 }

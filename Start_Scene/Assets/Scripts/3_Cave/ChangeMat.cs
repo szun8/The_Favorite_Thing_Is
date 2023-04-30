@@ -32,13 +32,15 @@ public class ChangeMat : MonoBehaviour
     {
         if (Input.GetKeyDown("l")) isL = true;
         if (isL && isChange)
-        {
+        {   // 특정 지점에 닿았고 L 버튼도 켰다면,
             MatIn();
             if (wall.materials[1].color.a >= 0.99)
             {   // 벽화의 색이 일정 수준 다 보이게 되면 원상복귀
                 CinematicBar.instance.HideBars();
-                ct.m_FollowOffset = Vector3.Lerp(ct.m_FollowOffset, originOffset, Time.deltaTime);
-                if(ct.m_FollowOffset.x <= 0.5 && ct.m_FollowOffset.y <= 3.25 && ct.m_FollowOffset.z >= 8.5)
+                ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 15f, Time.deltaTime * 1.5f);
+                sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(0f, 10f, 0), Time.deltaTime * 1.5f);
+
+                if (ct.m_FollowOffset.z >= 14.5)
                 {   // 카메라위치가 제자리로 돌아오면 플레이어 재시동
                     cm.enabled = true;
                     cm.animator.enabled = true;
@@ -61,7 +63,9 @@ public class ChangeMat : MonoBehaviour
 
     void CamOnLerp()
     {
-        ct.m_FollowOffset = Vector3.Lerp(ct.m_FollowOffset, followOffset, Time.deltaTime);
+        ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 5.5f, Time.deltaTime);
+
+        sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-10f, 20f, 0), Time.deltaTime);
         if (cm.lightOn)
         {
             cm.lightOn = false;
@@ -85,7 +89,7 @@ public class ChangeMat : MonoBehaviour
     }
 
     public void ChangeMaterialWall()
-    {
+    {   // 플레이어가 특정 벽화지점에 도착한 후 이동제어 비활성화 -> L 버튼 켜야 화면 조정 시작
         isChange = true;
         CaveMove.isStop = true;
     }

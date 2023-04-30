@@ -44,8 +44,7 @@ public class DropObject : MonoBehaviour
 
     void CreateStone(Vector3 playerPos)
     {
-        Vector3 pos = new Vector3(Random.Range(5f, 7f) + playerPos.x, 35f, playerPos.z);
-        Debug.Log("Pos : "+pos);
+        Vector3 pos = new Vector3(Random.Range(5f, 7f) + playerPos.x+1f, 35f, playerPos.z);
         isDroped = false;
         _stone = Stone[Random.Range(0, 3)];
         _stone = Instantiate(_stone, pos, _stone.transform.rotation);
