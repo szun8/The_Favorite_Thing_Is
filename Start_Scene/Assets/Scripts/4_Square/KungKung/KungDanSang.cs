@@ -29,7 +29,7 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     }
 
-    void UpDownLay()
+    void UpDownLay() //플레이어 감지 레이 발사 
     {
         if (isKungup == 1)
         {
@@ -47,7 +47,7 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     }
 
-    void CheckLight()
+    void CheckLight() //플레이어가 있는경우 r을 눌렀을 때 true
     {
         if (isPlayer && player.collider != null)
         {
