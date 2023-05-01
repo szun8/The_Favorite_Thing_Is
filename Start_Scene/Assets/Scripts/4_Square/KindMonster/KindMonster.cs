@@ -20,7 +20,6 @@ public class KindMonster : MonoBehaviour
         pos = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         MoveTurtle();   

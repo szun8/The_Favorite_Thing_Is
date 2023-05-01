@@ -23,9 +23,9 @@ public class Koong : MonoBehaviourPunCallbacks
     {
         if (kungPlate.isRed && dieReady)
         {
-            PV.RPC("Dissolve", RpcTarget.AllBuffered);
+            PV.RPC("Dissolve", RpcTarget.AllBuffered); //쿵쿵이 빨갛게 타오르기 
 
-            if(material.GetFloat("_SplitValue") <= 0.01) PV.RPC("DieKung", RpcTarget.AllBuffered);
+            if(material.GetFloat("_SplitValue") <= 0.01) PV.RPC("DieKung", RpcTarget.AllBuffered); //다 타오르면 오브젝트 죽이기 
         }
     }
 
@@ -48,7 +48,7 @@ public class Koong : MonoBehaviourPunCallbacks
     {
         material = GetComponent<MeshRenderer>().sharedMaterial;
 
-        material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime * 2.5f));
+        material.SetFloat("_SplitValue", Mathf.Lerp(material.GetFloat("_SplitValue"), 0, Time.deltaTime * 1.5f));
     }
 
     [PunRPC]

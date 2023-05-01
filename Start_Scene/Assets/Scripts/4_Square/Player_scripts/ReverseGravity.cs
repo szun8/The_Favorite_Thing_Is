@@ -34,12 +34,12 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     }
     private void Update()
     {
-        if (PV.IsMine)
-        {
-            PV.RPC("Gravity", RpcTarget.AllBuffered);
-        }
+        //PV.RPC("Gravity");
 
-
+        if (isReversed)
+            rigid.AddForce(Vector3.up * GravityForce * 3f);
+        else
+            rigid.AddForce(Vector3.down * 1.6f);
     }
 
     //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게
@@ -53,14 +53,14 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
     [PunRPC]
     void SyncisReversed() => isReversed = !isReversed;
 
-    [PunRPC]
-    void Gravity()
-    {
-        if (isReversed)
-            rigid.AddForce(Vector3.up * GravityForce * 2.65f);
-        else
-            rigid.AddForce(Vector3.down * 1.6f);
-    }
+    //[PunRPC]
+    //void Gravity()
+    //{
+    //    if (isReversed)
+    //        rigid.AddForce(Vector3.up * GravityForce * 2.65f);
+    //    else
+    //        rigid.AddForce(Vector3.down * 1.6f);
+    //}
 
 
 

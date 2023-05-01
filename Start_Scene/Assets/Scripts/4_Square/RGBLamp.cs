@@ -140,7 +140,7 @@ public class RGBLamp : MonoBehaviourPunCallbacks
    
 
     [PunRPC]
-    void SyncLight() => animator.SetBool("isRed", true);
+    void SyncLight() => animator.SetBool("isOn", true);
    
 
     
