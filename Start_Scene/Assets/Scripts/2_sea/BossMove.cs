@@ -19,7 +19,6 @@ public class BossMove : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody>();
         skin = GetComponentInChildren<SkinnedMeshRenderer>();
-        
     }
 
     private void Start()
@@ -27,7 +26,6 @@ public class BossMove : MonoBehaviour
         boss = GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss;
         respawnSpot = GameObject.Find("BossSpawn").transform;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-        //mat = skin.materials;
     }
 
     private void Update()
@@ -37,15 +35,10 @@ public class BossMove : MonoBehaviour
         if (!isStop && !SwimMove.isEnd) ChaseTarget();  // 플레이어가 해파리를 먹는 과정
         else if (!isMileStone2 && SwimMove.isEnd)  
         {   // 보스가 아직 milestone에 도달하지 못했는데 플레이어는 dollytrack탑승중이라면,
-            //Debug.Log("else if");
             rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 30f);
         }
         else if(isStop) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 0f);
-        else if(isMileStone2)
-        {
-            //Debug.Log("else");
-            rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
-        }
+        else if(isMileStone2) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -59,21 +52,28 @@ public class BossMove : MonoBehaviour
             rigid.useGravity = true;
             Invoke("BossDestroy", 3f);
         }
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && !SwimMove.isEnd)
         {
+            Debug.Log("destroy Jelly");
+            if (!SwimMove.isDied)
+            {   // 죽었을 때 한번씩만 해파리 리스폰!
+                // -> 안하면 보스랑 여러번 충돌나서 여러번 만들어지고 플레이어가 자유롭게 이동가능한 버그 생김
+                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().DestroyJellyFish();
+                SwimMove.isDied = true;
+            }
             Invoke("ResetBoss", 1.5f);
         }
     }
 
     void ChaseTarget()
     {
-        if(Vector3.Distance(transform.position, target.position) > 10f)
+        if(Vector3.Distance(transform.position, target.position) > 20f)
         {
-            boss.speed = 15f;
+            boss.speed = 20f;
         }
         else
         {
-            boss.speed = 5f;
+            boss.speed = 10.5f;
         }
         transform.position = Vector3.MoveTowards(transform.position, target.position, boss.speed * Time.deltaTime);
     }
@@ -82,6 +82,7 @@ public class BossMove : MonoBehaviour
     {
         gameObject.SetActive(false);
         transform.position = respawnSpot.position;
+        GetComponent<BossMove>().enabled = false;   // 움직이는 코드도 없애놔야함
     }
 
     void BossDestroy()
@@ -90,6 +91,7 @@ public class BossMove : MonoBehaviour
         SwimMove.isBoss = false;
         CinematicBar.instance.HideBars();
         GameObject.Find("player").GetComponent<CinemachineDollyCart>().enabled = false;
+        UIManager.instnace.RunAnims("isWASD");  // 보스가 벽에 부딪히고 플레이어 조작키 안내 한번 더
         isDisapear = true;
         Destroy(this.gameObject, 1.25f);
     }
@@ -121,7 +123,6 @@ public class BossMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("End"))
         {
-            Debug.Log("End");
             isMileStone2 = true;
             boss.speed = 0f;
         }

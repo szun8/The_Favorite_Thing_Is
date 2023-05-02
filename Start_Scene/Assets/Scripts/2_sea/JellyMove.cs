@@ -11,10 +11,6 @@ public class JellyMove : MonoBehaviour
     {
         skinMat = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -28,13 +24,7 @@ public class JellyMove : MonoBehaviour
 
     private float start = 1f;           // Mathf.Lerp 메소드의 첫번째 값.  
     private float end = 0f;             // Mathf.Lerp 메소드의 두번째 값.  
-    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.  
-
-    void JellyDestroy()
-    {
-        Destroy(this.gameObject);
-    }
-
+    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.
 
     void MatOut()
     {

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
     private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
-    public GameObject startPos;                // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
+    public GameObject startPos;             // 캐릭터 죽었을시 다시 살아나는 장소(변경가능)
     public int JumpForce;                   // 점프력
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
@@ -17,7 +18,6 @@ public class PlayerMove : MonoBehaviour
     public bool isJump = false; //점프 중인지 ~ 
 
     // 플레이어 따라다니는 전등
-    
     public Light spotLight;  //spot light
     public GameObject maskLight; // 발광 구 
 
@@ -33,7 +33,6 @@ public class PlayerMove : MonoBehaviour
     {
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         spotLight.intensity = 0;
-       
 
         materials = mesh.sharedMaterials;
         // 재인이가 준 에셋 애니메이션 테스트를 위해 위 주석 처리함
@@ -56,11 +55,11 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isWalk", false);
             return;
         }
-        dir.x = Input.GetAxisRaw("Horizontal");
+       dir.x = Input.GetAxisRaw("Horizontal"); //*--- oldest input system ---*
 
-        rigid.AddForce(Vector3.down * 1.8f);//즁력 더 주기 
+        rigid.AddForce(Vector3.down * 1.8f); //즁력 더 주기 
         //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 
-        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
+        //Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.blue);
         //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
         badak = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
 
@@ -78,7 +77,6 @@ public class PlayerMove : MonoBehaviour
                 animator.SetTrigger("isJump");
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             }
-            
         }
 
         if (Input.GetKeyDown("l"))
@@ -91,7 +89,6 @@ public class PlayerMove : MonoBehaviour
             lightOn = false;
             LightHandle();
         }
-
     }
 
     private void FixedUpdate()
@@ -114,6 +111,35 @@ public class PlayerMove : MonoBehaviour
 
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
+
+    //public void OnMove(InputAction.CallbackContext state)
+    //{
+    //    dir = state.ReadValue<Vector2>();
+    //}
+
+    //public void OnJump(InputAction.CallbackContext state)
+    //{
+    //    if (state.performed && isJump == false)
+    //    {
+    //        animator.SetBool("isWalk", false);
+    //        animator.SetTrigger("isJump");
+    //        rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+    //    }
+    //}
+
+    //public void OnLight(InputAction.CallbackContext state)
+    //{
+    //    if (state.performed)
+    //    {   // GetKeyDown
+    //        lightOn = true;
+    //        LightHandle();
+    //    }
+    //    else
+    //    {   // GetKeyUp
+    //        lightOn = false;
+    //        LightHandle();
+    //    }
+    //}
 
     public void LightHandle()  //L 누르면 빛 기본값으로 켜짐 다시 누르면 빛 꺼짐 
     {

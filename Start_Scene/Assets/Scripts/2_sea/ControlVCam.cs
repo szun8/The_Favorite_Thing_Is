@@ -19,6 +19,8 @@ public class ControlVCam : MonoBehaviour
     public Vector3 followOffset, trackedOffset;
     public bool isLerp = false;
 
+    Vector3 originPos; // bossWatchingCam의 원위치
+
     #region Singleton
     static public ControlVCam instance;
     void Awake()
@@ -42,6 +44,7 @@ public class ControlVCam : MonoBehaviour
 
         watchingBossCam = GameObject.Find("WatchingBossCam");
         vWatchingBoss = watchingBossCam.GetComponent<CinemachineVirtualCameraBase>();
+        originPos = watchingBossCam.transform.position;
 
         bossCam = GameObject.Find("BossCam");
         vBoss = bossCam.GetComponent<CinemachineVirtualCameraBase>();
@@ -85,8 +88,6 @@ public class ControlVCam : MonoBehaviour
     {
         vSide.Priority = 11;
         vWatchingBoss.Priority = 10;
-        
-
     }
 
     public void SwitchingSideToBoss()
@@ -96,13 +97,13 @@ public class ControlVCam : MonoBehaviour
     }
 
     [SerializeField] Transform bossSpawn, player;
+
     IEnumerator LerpCam()
     {
-        Vector3 originPos = watchingBossCam.transform.position;
         while (true)
         {
             watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, bossSpawn.position.x, Time.deltaTime*2f), originPos.y, originPos.z); ;
-            if(watchingBossCam.transform.position.x < (bossSpawn.position.x + 1.5f))
+            if(watchingBossCam.transform.position.x < (bossSpawn.position.x + 8f))
             {
                 break;
             }
@@ -111,7 +112,6 @@ public class ControlVCam : MonoBehaviour
         
         while (true)
         {
-            
             watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, player.position.x, Time.deltaTime), originPos.y, originPos.z);
             if (watchingBossCam.transform.position.x < 160)
             {
@@ -127,6 +127,8 @@ public class ControlVCam : MonoBehaviour
         GameObject.Find("player").GetComponent<SwimMove>().enabled = true;
 
         GameObject.Find("boss_0").GetComponent<BossMove>().enabled = true;
+
+        watchingBossCam.transform.position = originPos;
         yield return null;
     }
 

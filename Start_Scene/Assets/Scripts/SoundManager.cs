@@ -61,7 +61,6 @@ public class SoundManager : MonoBehaviour
                         return;
                     }   // 재생을 시켜주고 함수 종료
                 }
-                Debug.Log("사용 가능한 모든 AudioSource가 사용중!");
                 return;
             }
         }

@@ -40,7 +40,6 @@ public class SwimMove : MonoBehaviour
         dolly = GetComponent<CinemachineDollyCart>();
 
         maskLight.SetActive(false);
-        
     }
 
     void Start()
@@ -91,12 +90,9 @@ public class SwimMove : MonoBehaviour
 
         if (Input.GetKeyUp("l"))
         {
-            Debug.Log("KeyL-Up");
+            StopCoroutine(Dash());
             lightOn = false;
             LightHandle();
-            //StopCoroutine(Dash());
-            speed = 7f;
-            dashSpeed = speed;
             isBooster = false;
         }
 
@@ -111,6 +107,11 @@ public class SwimMove : MonoBehaviour
             {
                 ControlVCam.instance.ControlDollyView();
                 GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
+                if (speed != 10 || dashSpeed != 10)
+                {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
+                    speed = 10;
+                    dashSpeed = 10;
+                }
             }
         }
     }
@@ -155,13 +156,11 @@ public class SwimMove : MonoBehaviour
             materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f) * 1.8f);
             spotLight.intensity = 50f;
         }
-
         else
         {
             materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f));
             spotLight.intensity = 0;
         }
-
     }
 
     void Move()
@@ -189,13 +188,16 @@ public class SwimMove : MonoBehaviour
         }
     }
 
-    public float dashSpeed;
+    float dashSpeed;
+    public float maxDash;
     public bool isJelly, isBooster;
 
     public void SpeedUP()
     {
-        dashSpeed = dashSpeed + 10f; // default : 3 -> total 6
-                                // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
+        if (dashSpeed < maxDash)
+        {   // 최대 속도 40:default으로 지정
+            dashSpeed = dashSpeed + 10f; // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
+        }
     }
 
     IEnumerator Dash()
@@ -204,12 +206,14 @@ public class SwimMove : MonoBehaviour
         float duration = 3f;
         float startSpeed = dashSpeed;
 
-        while (speed > 3f)
+        while (speed > 9f)
         {
             float t = (Time.time - startTime) / duration; // 보간 시간 계산
             speed = Mathf.Lerp(startSpeed, 10f, t);
-            if (isJelly)
+            if (isJelly || Input.GetKeyUp("l"))
             {
+                speed = 10;
+                dashSpeed = 10;
                 yield break; // 새해파리를 먹었으면 코루틴을 중단합니다.
             }
             yield return null;
@@ -233,10 +237,12 @@ public class SwimMove : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {   // 보스와 충돌시
+        if (collision.gameObject.CompareTag("Enemy") && !isEnd)
+        {   // 보스와 충돌시 && isEnd가 아니면(죽어도 되는데) isEnd상황이라면 (dollycart를 탑승해서 죽으면 안됨)
             SetDeadState();
             GameObject.Find("Disappear_Structure").transform.Find("MileStone 1").gameObject.SetActive(true);
+            speed = 10f; // 이전에 먹었던 해파리 능력 초기화
+            dashSpeed = 10f;
         }
     }
 
@@ -247,10 +253,13 @@ public class SwimMove : MonoBehaviour
         CinematicBar.instance.ShowBars();
         ControlVCam.instance.SwitchingBackToSide();
         GameObject.Find("MileStone 1").SetActive(false);
+        
         yield return new WaitForSeconds(1.3f);
 
         GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
         ControlVCam.instance.SwitchingWatchingBoss();
+        Debug.Log("SetWatchingBoss");
+
         isMile1 = false;
         yield return new WaitForSeconds(1.3f);
     }
@@ -263,21 +272,21 @@ public class SwimMove : MonoBehaviour
             StartCoroutine(SetBoss());
         }
         if (other.gameObject.CompareTag("End"))
-        {
+        {   // 보스 탈출 : dollycart 탑승
             isEnd = true;
             CinematicBar.instance.ShowBars();   // 블랙바 On
             ControlVCam.instance.SwitchingSideToBoss();
         }
 
         if(other.gameObject.name == "EndPos")
-        {
+        {   // 동굴 입구로 들어가려고 하면 캠 전환
             ControlVCam.instance.SwitchingBossToCave();
         }
 
         if(other.gameObject.name == "CavePos")
-        {
-            Debug.Log("isCave");
+        {   // 씬전환 트리거
             isCave = true;
+            other.gameObject.SetActive(false);  // 한번만 닿으면 해당 오브젝트를 비활성화시켜 중복처리 되는 일이 없도록 합니다
         }
     }
 

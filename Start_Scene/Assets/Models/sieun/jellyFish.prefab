@@ -168,11 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skinMat:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8765070038957378123}
+  - {fileID: 5834632912467459778}
+  isColl: 0
   animTime: 1
-  stopIn: 1
-  stopOut: 1
 --- !u!1 &8472385482903006996
 GameObject:
   m_ObjectHideFlags: 0

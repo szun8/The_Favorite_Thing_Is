@@ -67,7 +67,7 @@ public class SpawnEnemy : MonoBehaviour
         switch (_type)
         {   
             case TypeFish.boss:
-                _gameObject.speed = 50f;
+                _gameObject.speed = 25f;
                 _gameObject.spawnSpot = bossSpawn.position;
                 break;
 
@@ -98,5 +98,29 @@ public class SpawnEnemy : MonoBehaviour
 
         Vector3 respawnPos = originPos + RandomPos;
         return respawnPos;
+    }
+
+    public void DestroyJellyFish()
+    {   // 플레이어 사망 시 기존 해파리 삭제하고 재생성
+        StartCoroutine(DestroyJellyFishCoroutine());
+    }
+
+    IEnumerator DestroyJellyFishCoroutine()
+    {
+        Transform[] jellyParent = rangeJelly.GetComponentsInChildren<Transform>();
+        //Transform[] jellyfish = jellyParent.GetComponentsInChildren<Transform>();
+
+        foreach (var item in jellyParent)
+        {
+            if (item != rangeJelly.transform)
+                Destroy(item.gameObject);
+        }
+        yield return new WaitForSeconds(1.5f);
+        for (int i = 0; i < Jelly.Length; i++)
+        {
+            Debug.Log("jelly_" + i);
+            InstantiateFish(Jelly[i], i, TypeFish.jelly);
+        }
+        yield return null;
     }
 }

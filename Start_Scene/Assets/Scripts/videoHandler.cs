@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.Rendering;
 
 public class videoHandler : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class videoHandler : MonoBehaviour
             if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
             {
                 isSea = true;
+                GameObject.Find("GlobalWaterVolume").GetComponent<Volume>().enabled = true;
                 GameObject.FindGameObjectWithTag("Sea").GetComponent<Water>().GetWater(GameObject.FindGameObjectWithTag("Player_mesh").GetComponent<Collider>());
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().useGravity = true;
                 UIManager.instnace.RunAnims("isWASD");

@@ -13,9 +13,7 @@ public class CollisionJelly : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player_mesh"))
         {
-            Debug.Log("isColl");
             GetComponentInParent<JellyMove>().isColl = true;
-            //JellyMove.isColl = true;
             player.isJelly = true;
             player.SpeedUP();
         }
