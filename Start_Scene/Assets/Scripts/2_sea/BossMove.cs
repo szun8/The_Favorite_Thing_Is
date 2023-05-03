@@ -33,12 +33,41 @@ public class BossMove : MonoBehaviour
         if (isDisapear) MatOut();
 
         if (!isStop && !SwimMove.isEnd) ChaseTarget();  // 플레이어가 해파리를 먹는 과정
-        else if (!isMileStone2 && SwimMove.isEnd)  
+        else if (!isMileStone2 && SwimMove.isEnd)
         {   // 보스가 아직 milestone에 도달하지 못했는데 플레이어는 dollytrack탑승중이라면,
-            rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 30f);
+            Move(30f);
         }
-        else if(isStop) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * 0f);
-        else if(isMileStone2) rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * boss.speed);
+        else if (isStop) Move(0);
+        else if (isMileStone2) Move(boss.speed);
+    }
+
+    void Move(float speed)
+    {
+        // chase -> 30 -> 0 -> 50 -> 0 -> destroy
+        Debug.Log(speed);
+        rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * speed);
+    }
+
+    void ChaseTarget()
+    {
+        if (Vector3.Distance(transform.position, target.position) > 20f)
+        {
+            boss.speed = 20f;
+        }
+        else
+        {
+            boss.speed = 10.5f;
+        }
+        transform.position = Vector3.MoveTowards(transform.position, target.position, boss.speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("End"))
+        {
+            isMileStone2 = true;
+            boss.speed = 0f;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -48,7 +77,6 @@ public class BossMove : MonoBehaviour
             Debug.Log("BossDied");
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
             isStop = true;
-            boss.speed = 0f;
             rigid.useGravity = true;
             Invoke("BossDestroy", 3f);
         }
@@ -63,19 +91,6 @@ public class BossMove : MonoBehaviour
             }
             Invoke("ResetBoss", 1.5f);
         }
-    }
-
-    void ChaseTarget()
-    {
-        if(Vector3.Distance(transform.position, target.position) > 20f)
-        {
-            boss.speed = 20f;
-        }
-        else
-        {
-            boss.speed = 10.5f;
-        }
-        transform.position = Vector3.MoveTowards(transform.position, target.position, boss.speed * Time.deltaTime);
     }
 
     void ResetBoss()
@@ -116,15 +131,6 @@ public class BossMove : MonoBehaviour
             color.a = Mathf.Lerp(start, end, time);
             // 계산한 알파 값 다시 설정.  
             item.color = color;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("End"))
-        {
-            isMileStone2 = true;
-            boss.speed = 0f;
         }
     }
 }

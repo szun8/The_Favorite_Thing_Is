@@ -106,7 +106,8 @@ public class SwimMove : MonoBehaviour
             else if(dolly.m_Position == dolly.m_Path.PathLength)
             {
                 ControlVCam.instance.ControlDollyView();
-                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
+                if(GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed != 50)
+                    GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
                 if (speed != 10 || dashSpeed != 10)
                 {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
                     speed = 10;
