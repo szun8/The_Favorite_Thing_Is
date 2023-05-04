@@ -10,9 +10,11 @@ public class MirrorMove : MonoBehaviourPunCallbacks
     Rigidbody rigid;
     Animator animator;
     SkinnedMeshRenderer mesh;
+    NetworkManager networkManager;
 
     public Material LightMaterial;  //L머티리얼
     public PhotonView PV;
+    public static bool isLoad = false;
 
     // 이동 관련 변수 
     private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
@@ -32,6 +34,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
     }
 
     // Update is called once per frame
@@ -60,6 +63,24 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         }
         //모든 버튼이 안눌려 있어야만 빛이 꺼집니다 . 
         if (!l_pressed) PV.RPC("MirrorLightOff", RpcTarget.AllBuffered);
+
+        if (isLoad)
+        {   // 거울스톤이 밝아지며 씬전환 함수 호출되는 곳
+            SceneLoad();
+            isLoad = false;
+        }
+    }
+
+    public void SceneLoad()
+    {
+        StartCoroutine(SceneLoadCoroutine());
+    }
+
+    IEnumerator SceneLoadCoroutine()
+    {
+        Debug.Log("scene load");
+        yield return new WaitForSeconds(3f);
+        if(PhotonNetwork.IsMasterClient) networkManager.SceneLoad();
     }
 
     void FixedUpdate()
