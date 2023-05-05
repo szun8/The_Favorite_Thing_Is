@@ -38,6 +38,7 @@ public class CaveMove : MonoBehaviour
         
         transform.position = pos[0].transform.position;  // 플레이어 시작위치 초기화
         savePoint = pos[1];
+        SoundManager.instnace.PlayBGM();
     }
 
     void Update()
@@ -132,7 +133,6 @@ public class CaveMove : MonoBehaviour
         {
             isDied = true;
 
-
             lightOn = false;    // 죽었을때 L 킨채로 죽으면 다시살아날때 키 안눌러도 활성화된 채로 살아나는 버그로 인해 죽으면 발광 OFF
             LightHandle();
 
@@ -150,6 +150,11 @@ public class CaveMove : MonoBehaviour
         if (other.CompareTag("SavePoint"))
         {
             savePoint = other.gameObject;
+        }
+
+        if (other.CompareTag("Dead"))
+        {
+            StartCoroutine(SetPos());
         }
     }
 

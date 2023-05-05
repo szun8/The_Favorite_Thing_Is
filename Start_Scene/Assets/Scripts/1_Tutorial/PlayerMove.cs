@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour
 
     public PhysicMaterial physicMaterial; //마찰력 0인 피지컬머티리얼 
     PhysicMaterial defaultMaterial;     //원래 기본 플레이어 머티리얼 = none
+    bool isESC = false; //한번만 누르게 !!!
 
     void Awake()
     {
@@ -47,15 +48,21 @@ public class PlayerMove : MonoBehaviour
         defaultMaterial = GetComponentInChildren<MeshCollider>().material;
     }
 
-   
     void Update()
     {
+        if(!isESC && Input.GetKeyDown(KeyCode.Escape))
+        {
+            isESC = true;
+            ScenesManager.instance.Scene[0] = true;
+            SoundManager.instnace.VolumeOutBGM();
+        }
+
         if (isStop)
         {
             animator.SetBool("isWalk", false);
             return;
         }
-       dir.x = Input.GetAxisRaw("Horizontal"); //*--- oldest input system ---*
+        dir.x = Input.GetAxisRaw("Horizontal"); //*--- oldest input system ---*
 
         rigid.AddForce(Vector3.down * 1.8f); //즁력 더 주기 
         //내 밑으로 광선을 쏴서 바닥 레이어랑 닿으면 점프시키기 

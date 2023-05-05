@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 public class videoHandler : MonoBehaviour
 {
     [SerializeField] VideoClip[] clip;
-    VideoPlayer videoPlayer;
+    public VideoPlayer videoPlayer;
 
     public bool isChanged, isStop;
 

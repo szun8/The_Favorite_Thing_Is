@@ -18,13 +18,13 @@ MonoBehaviour:
     m_Value: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 1}
   center:
     m_OverrideState: 1
-    m_Value: {x: 0.25, y: 0.35}
+    m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.691
+    m_Value: 0.573
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.403
+    m_Value: 0.354
   rounded:
     m_OverrideState: 0
     m_Value: 1
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: GlobalCaveVolume Profile
+  m_Name: GlobalMirrorVolume Profile
   m_EditorClassIdentifier: 
   components:
   - {fileID: -4666438777633001849}

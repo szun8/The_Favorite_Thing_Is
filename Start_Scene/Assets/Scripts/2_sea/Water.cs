@@ -42,14 +42,6 @@ public class Water : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.transform.CompareTag("Player_mesh"))
-    //    {
-    //        GetWater(other);
-    //    }
-    //}
-
     private void OnTriggerExit(Collider other)
     {
         if (other.transform.CompareTag("Player_mesh"))

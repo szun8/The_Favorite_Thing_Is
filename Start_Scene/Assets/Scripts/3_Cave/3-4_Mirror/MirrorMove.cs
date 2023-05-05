@@ -78,9 +78,14 @@ public class MirrorMove : MonoBehaviourPunCallbacks
 
     IEnumerator SceneLoadCoroutine()
     {
-        Debug.Log("scene load");
-        yield return new WaitForSeconds(3f);
-        if(PhotonNetwork.IsMasterClient) networkManager.SceneLoad();
+        yield return new WaitForSeconds(1.5f);
+        UIManager.instnace.stopOut = false;
+        yield return new WaitForSeconds(1.5f);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            networkManager.SceneLoad();
+        }
     }
 
     void FixedUpdate()
@@ -100,7 +105,17 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         {
             PV.RPC("SyncMirrorAnimation", RpcTarget.AllBuffered, "isWalk", false);
         }
-        rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+        if(!StopToWall())
+            rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+    }
+
+    bool StopToWall()
+    {
+        RaycastHit[] hits;
+        Debug.DrawRay(transform.position+Vector3.up, transform.forward * 1, Color.green);
+        hits = Physics.RaycastAll(transform.position+Vector3.up, transform.forward, 1);
+        if (hits.Length > 0) return true;
+        else return false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -152,7 +167,6 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         {
             spotLight.intensity = 0;
         }
-
     }
 
     [PunRPC]

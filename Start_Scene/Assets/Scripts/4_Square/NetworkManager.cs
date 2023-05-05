@@ -41,6 +41,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             Debug.Log("MirrorPlayer Spawn");
             GameObject player = PhotonNetwork.Instantiate("MirrorPlayer", pos, rot, 0);
             player.name = "MirrorPlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1) UIManager.instnace.RunAnims("isWait");  // 1p창에 새로운 빛을 기다리는중입니다 UI
             GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
         else if (SceneManager.GetActiveScene().name == "4_Square")
@@ -53,7 +54,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void SceneLoad()
     {   // 거울룸에서 마스터가 방을 우선 나가고 콜백함수 OnLeftRoom() 호출
         if (SceneManager.GetActiveScene().name == "3-4_Mirror" && PhotonNetwork.InRoom)
-        {   // 한번만 LeaveRoom()이 호출되어야 에러가 안뜬다고 하여 일단 조건문 처리해놓음
+        {   // LeaveRoom()이 한번만 호출되어야 에러가 안뜸 -> 조건문으로 마스터가 방에 있을때만 실행하면 한번만 호출가능
+            // 방에 있다 = 나갈 수 있다 <-> 방에 없다 = 나갈 방이 없다
             Debug.Log("leaveRoom");
             PhotonNetwork.LeaveRoom();
         }
@@ -61,11 +63,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {   // 방에 나왔다면 광장 씬 로드
-        
         if(SceneManager.GetActiveScene().name == "3-4_Mirror")
+        {
             SceneManager.LoadScene("4_Square");
+        }
         //SceneManager.LoadSceneAsync("4_Square");
         //PhotonNetwork.LoadLevel("4_Square");
     }
-
 }

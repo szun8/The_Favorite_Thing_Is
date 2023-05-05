@@ -10,6 +10,7 @@ public class DeadStone : MonoBehaviour
 
     public void SettingDeadCoroutine()
     {
+        CaveMove.isDied = true;
         StartCoroutine(SettingDead());
     }
 
@@ -21,6 +22,7 @@ public class DeadStone : MonoBehaviour
             player.lightOn = false;
             player.LightHandle();
         }
+        
         player.enabled = false;
 
         SoundManager.instnace.PlaySE("CaveCollapse", 0.85f);
@@ -29,6 +31,7 @@ public class DeadStone : MonoBehaviour
 
         CinematicBar.instance.HideBars();
         Destroy(cinemachineCollision);
+        SoundManager.instnace.VolumeOutBGM();
         ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
         yield return null;
     }

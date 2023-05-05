@@ -8,17 +8,11 @@ public class BossMove : MonoBehaviour
     Rigidbody rigid;
     InfoFish boss;
     Transform respawnSpot, target;
-    SkinnedMeshRenderer skin;
-
-    bool isDisapear = false;
-    //Material[] mat;
-
     bool isStop, isMileStone2;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody>();
-        skin = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Start()
@@ -30,8 +24,6 @@ public class BossMove : MonoBehaviour
 
     private void Update()
     {
-        if (isDisapear) MatOut();
-
         if (!isStop && !SwimMove.isEnd) ChaseTarget();  // 플레이어가 해파리를 먹는 과정
         else if (!isMileStone2 && SwimMove.isEnd)
         {   // 보스가 아직 milestone에 도달하지 못했는데 플레이어는 dollytrack탑승중이라면,
@@ -80,7 +72,7 @@ public class BossMove : MonoBehaviour
             rigid.useGravity = true;
             Invoke("BossDestroy", 3f);
         }
-        if (collision.gameObject.CompareTag("Player") && !SwimMove.isEnd)
+        if (!SwimMove.isEnd && collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("destroy Jelly");
             if (!SwimMove.isDied)
@@ -107,30 +99,6 @@ public class BossMove : MonoBehaviour
         CinematicBar.instance.HideBars();
         GameObject.Find("player").GetComponent<CinemachineDollyCart>().enabled = false;
         UIManager.instnace.RunAnims("isWASD");  // 보스가 벽에 부딪히고 플레이어 조작키 안내 한번 더
-        isDisapear = true;
-        Destroy(this.gameObject, 1.25f);
-    }
-
-    public float animTime = 1f;         // Fade 애니메이션 재생 시간 (단위:초).    
-
-    private float start = 1f;           // Mathf.Lerp 메소드의 첫번째 값.  
-    private float end = 0f;             // Mathf.Lerp 메소드의 두번째 값.  
-    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.  
-
-    void MatOut()
-    {
-        // 경과 시간 계산.  
-        // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
-        time += Time.deltaTime / animTime;
-
-        // 컴포넌트의 색상 값 읽어오기.
-        foreach (var item in skin.materials)
-        {
-            Color color = item.color;
-            // 알파 값 계산.  
-            color.a = Mathf.Lerp(start, end, time);
-            // 계산한 알파 값 다시 설정.  
-            item.color = color;
-        }
+        Destroy(this.gameObject, 1f);
     }
 }

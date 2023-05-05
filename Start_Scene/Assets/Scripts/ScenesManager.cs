@@ -46,7 +46,7 @@ public class ScenesManager : MonoBehaviour
         }
         else if (SceneNum == 2)
         {   // 동굴씬으로 가게되면
-            SoundManager.instnace.PlayBGM();
+            //SoundManager.instnace.PlayBGM(); -> 몇번 씹히길래 CaveMove - start에서 해주기,,,
         }
         else if(SceneNum == 3)
         {   // 거울씬으로 가게되면

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  vol: {fileID: 0}
   followOffset: {x: -7, y: 8, z: 5}
   originOffset: {x: -3.5, y: 5.5, z: 15}
   animTime: 5

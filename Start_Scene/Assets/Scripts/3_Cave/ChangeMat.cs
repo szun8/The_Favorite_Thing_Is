@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering;
 
 public class ChangeMat : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class ChangeMat : MonoBehaviour
     CinemachineTransposer ct;
 
     [SerializeField] GameObject player;
+    [SerializeField] Volume vol;
+
+    UnityEngine.Rendering.Universal.Vignette vignette;
     CaveMove cm;
 
     public Vector3 followOffset, originOffset;
     Color wallAlpha;
+    Vector2 centerVignette;
 
     bool isChange = false, isL = false;
     private void Awake()
@@ -26,6 +31,9 @@ public class ChangeMat : MonoBehaviour
         ct = sideCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>();
         cm = player.GetComponent<CaveMove>();
         wallAlpha = wall.materials[1].color;
+
+        vol.profile.TryGet(out vignette);   // volume-Vignette 상태 가져오기
+        centerVignette = new Vector2(0.5f, 0.5f);
     }
 
     private void Update()
@@ -37,10 +45,11 @@ public class ChangeMat : MonoBehaviour
             if (wall.materials[1].color.a >= 0.99)
             {   // 벽화의 색이 일정 수준 다 보이게 되면 원상복귀
                 CinematicBar.instance.HideBars();
-                ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 15f, Time.deltaTime * 1.5f);
-                sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(0f, 10f, 0), Time.deltaTime * 1.5f);
+                ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 14.5f, Time.deltaTime * 1.5f);
+                sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-2f, 2f, 0), Time.deltaTime * 1.5f);
+                vignette.center.Override(Vector2.Lerp(vignette.center.value, new Vector2(0.25f, 0.35f), Time.deltaTime * 1.5f));
 
-                if (ct.m_FollowOffset.z >= 14.5)
+                if (ct.m_FollowOffset.z >= 14)
                 {   // 카메라위치가 제자리로 돌아오면 플레이어 재시동
                     cm.enabled = true;
                     cm.animator.enabled = true;
@@ -64,8 +73,8 @@ public class ChangeMat : MonoBehaviour
     void CamOnLerp()
     {
         ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 5.5f, Time.deltaTime);
-
-        sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-10f, 20f, 0), Time.deltaTime);
+        vignette.center.Override(Vector2.Lerp(vignette.center.value, centerVignette, Time.deltaTime));
+        sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-9f, 8f, 0), Time.deltaTime);
         if (cm.lightOn)
         {
             cm.lightOn = false;
@@ -74,6 +83,11 @@ public class ChangeMat : MonoBehaviour
         cm.animator.enabled = false;
         cm.enabled = false;
     }
+
+    //private void OnDestroy()
+    //{
+    //    vignette.center.Override(originOffset);
+    //}
 
     void MatIn()
     {

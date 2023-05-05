@@ -13,6 +13,7 @@ public class SwimMove : MonoBehaviour
     public float speed;                     // 캐릭터 속도
 
     private bool lightOn = false, isMile1 = false; // mile1은 보스 생성전 플레이어 Z축 조정을 위한 변수
+    bool isESC = false; //한번만 누르게 !!!
     
     public static bool isBoss = false;      // 물고기 벽이 무너지면 true하고 보스 setActive시킬 예정
     public static bool isDied = false;      // 플레이어의 죽음여부
@@ -50,11 +51,18 @@ public class SwimMove : MonoBehaviour
 
     void Update()
     {
-        if(isCave)
+        
+        if (!videoHandler.instance.videoPlayer.isPlaying && !isESC && Input.GetKeyDown(KeyCode.Escape))
+        {
+            NextScene();
+            isESC = true;
+        }
+
+        if (isCave)
         {   // 다음씬으로 넘어갑니...다
             rigid.useGravity = false;
             isCave = false;
-            transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);
+            //transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);
             Invoke("NextScene", 1f);
             return;
         }
@@ -100,8 +108,9 @@ public class SwimMove : MonoBehaviour
         {
             if (!dolly.enabled)
             {
-                transform.position = Vector3.Lerp(transform.position, dolly.m_Path.transform.position, 0.05f);
-                if(transform.position.x >= 399 && transform.position.y >= 39) dolly.enabled = true;
+                //transform.position = Vector3.Lerp(transform.position, dolly.m_Path.transform.position, 0.05f);
+                //if(transform.position.x >= 399 && transform.position.y >= 39)
+                dolly.enabled = true;
             }   
             else if(dolly.m_Position == dolly.m_Path.PathLength)
             {
@@ -293,7 +302,7 @@ public class SwimMove : MonoBehaviour
 
     void NextScene()
     {
-        ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
         SoundManager.instnace.VolumeOutBGM();
+        ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
     }
 }

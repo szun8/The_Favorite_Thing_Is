@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro; //textmeshpro 쓸 때
+using Photon.Pun;
+using Photon.Realtime;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviourPun
 {
     #region Singleton
     static public UIManager instnace;
@@ -25,6 +26,7 @@ public class UIManager : MonoBehaviour
 
     Animator animator;
     public Image Image;            // Image컴포넌트 참조 변수.
+    bool isLoad = false;
 
     void Start()
     {
@@ -51,10 +53,17 @@ public class UIManager : MonoBehaviour
         }
         if (time >= 1.5f && stopOut == false)
         {
-            stopIn = false; //하얗게 전환되고 나서 씬 전환 후 다시 풀거라 넣었다. 그냥 게임 끝낼거면 넣을 필요 없음.
             stopOut = true;
+            if(CaveMove.isDied) isLoad = true;  // 동굴에서 죽으면 거울넘어갈때의 fadeOut(화면 어두워짐)까지 재생완료한 후
+            else stopIn = false;
             time = 0;
             Debug.Log("StopOut");
+        }
+        if (isLoad && PhotonNetwork.InRoom && PhotonNetwork.CurrentRoom.PlayerCount > 0)
+        {   // 포톤 씬 Fade In 동기화 : 방에 참여하였고 입장한 플레이어가 한명이라도 있다면 fadeIn 재생(화면 밝아짐)
+            stopIn = false;
+            isLoad = false;
+            if (CaveMove.isDied) isLoad = false;
         }
     }
 
