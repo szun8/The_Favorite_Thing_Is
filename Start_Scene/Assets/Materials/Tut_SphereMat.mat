@@ -55,7 +55,7 @@ Material:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
     - _Fill: 0
-    - _Fresnel_Power: 9
+    - _Fresnel_Power: 12
     - _Offset: 0
     - _QueueControl: 0
     - _QueueOffset: 0

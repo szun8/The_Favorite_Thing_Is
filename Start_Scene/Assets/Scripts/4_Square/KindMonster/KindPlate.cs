@@ -5,50 +5,75 @@ using Photon.Pun;
 
 public class KindPlate : MonoBehaviourPunCallbacks
 {
+    public int isKind; //1이면 거북이는 위에 있음
 
-    public bool redObj = false;         //is player red? -> yes
-    public bool greenObj = false;       //is player green? -> yes
+    public bool isLight = false;
+
+    public bool isgreen = false;    
 
     PhotonView PV;
-    RaycastHit player;
     bool isPlayer = false;
 
-    void Awake()
-    {
-        PV = GetComponent<PhotonView>();
-    }
+    private bool oneSend = false;
+
+    RaycastHit player;
+
+    void Awake() => PV = GetComponent<PhotonView>();
+
 
     void Update()
     {
-        isPlayer = Physics.Raycast(transform.position, transform.up, out player, 0.5f);
+        UpDownLay(); //플레이어 감지하는 레이를 발사
 
-        if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 
+        if (PhotonNetwork.InRoom) CheckLight();
+        
+    }
+
+    void UpDownLay()
+    {
+        if (isKind == 1)
         {
-            if (isPlayer && player.collider != null) PV.RPC("CheckRG", RpcTarget.AllBuffered);  //플레이어가 위에 있다면 빛내는지 검출하자 
+            Debug.DrawRay(transform.position, Vector3.down * 2.5f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position, Vector3.down, out player, 2.5f, LayerMask.GetMask("Player"));
+        }
+
+        else if (isKind == 0)
+        {
+            Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1.7f, Color.blue);
+            isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("Player"));
+        }
+    }
+
+    void CheckLight() //플레이어가 있는경우 g를 눌렀을 때 true
+    {
+        if (isPlayer && player.collider != null)
+        {
+            if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().g_pressed)
+            {
+                if (!isLight)
+                {
+                    PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
+                    oneSend = true;
+                }
+            }
+            else if(oneSend)
+            {
+                PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+                oneSend = false;
+            }
 
         }
     }
 
-    [PunRPC]
-    void CheckRG() //플레이어 빨강이 눌렸는지에 따른 처리 
+    private void OnCollisionExit(Collision collision)
     {
-        if (player.collider.GetComponentInParent<MultiPlayerMove>().r_pressed)
-        {
-            redObj = true;
-            greenObj = false;
-        }
-        else if (player.collider.GetComponentInParent<MultiPlayerMove>().g_pressed)
-        {
+        if (collision.gameObject.CompareTag("Player")) PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+    }
 
-            redObj = false;
-            greenObj = true;
-
-        }
-        else
-        {
-
-            redObj = false;
-            greenObj = false;
-        }
+    [PunRPC]
+    void SyncGreen(bool value)
+    {
+        isgreen = isLight = value;
+        
     }
 }

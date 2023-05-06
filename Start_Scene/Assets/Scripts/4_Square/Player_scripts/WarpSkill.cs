@@ -23,7 +23,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
             if (other.CompareTag("WarpUp"))
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, -179f);
-                gameObject.transform.position = gameObject.transform.position + new Vector3(0, -4, 0);
+                gameObject.transform.position = other.gameObject.GetComponent<Warp>().outWarp.position;//gameObject.transform.position + new Vector3(0, -4, 0);
                 reverseGravity.photonView.RPC("SyncisReversed", RpcTarget.AllBuffered);
 
             }
@@ -31,7 +31,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
             else if (other.CompareTag("WarpDown"))
             {
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, 1f);
-                gameObject.transform.position = gameObject.transform.position + new Vector3(0, 4, 0);
+                gameObject.transform.position = other.gameObject.GetComponent<Warp>().outWarp.position;
                 reverseGravity.photonView.RPC("SyncisReversed", RpcTarget.AllBuffered);
             }
 

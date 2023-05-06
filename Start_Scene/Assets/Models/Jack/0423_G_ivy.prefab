@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2268806334998818940}
   - component: {fileID: 907854812874980313}
   - component: {fileID: 5102196994608003288}
+  - component: {fileID: 168458844}
   m_Layer: 0
   m_Name: IvyLeaf.012
   m_TagString: Untagged
@@ -61,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: ee6a389bc3fc942aca06e353276dcc88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,6 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &168458844
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 82179215229172347}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0243df75a0c420d953800679add28e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &310324384341180299
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,16 +132,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4915854423742298767}
-  - {fileID: 3965871594714230356}
-  - {fileID: 7954522181417145499}
-  - {fileID: 8244529787888191549}
-  - {fileID: 618691808537289778}
-  - {fileID: 3906568381803306749}
-  - {fileID: 2868634555027633846}
-  - {fileID: 5370823924305503329}
-  - {fileID: 5468552468300538382}
-  - {fileID: 2598008285806571970}
+  - {fileID: 8641693674392028749}
+  - {fileID: 5080245890109626809}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -135,8 +148,10 @@ GameObject:
   - component: {fileID: 3965871594714230356}
   - component: {fileID: 6005897975918629249}
   - component: {fileID: 4433511305599241443}
+  - component: {fileID: 336199788}
+  - component: {fileID: 336199787}
   m_Layer: 0
-  m_Name: IVY_Curve.011
+  m_Name: IVY_Curve.07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,14 +164,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031725608934722029}
-  m_LocalRotation: {x: -0.20416161, y: 0.6769919, z: 0.67699194, w: 0.20416163}
-  m_LocalPosition: {x: -375.41815, y: 10.336859, z: 10.628618}
-  m_LocalScale: {x: 1028.6066, y: 1028.6066, z: 1028.6066}
+  m_LocalRotation: {x: 0.67699194, y: 0.20416163, z: 0.20416161, w: -0.6769919}
+  m_LocalPosition: {x: 43.849823, y: -3.5494099, z: -32.93387}
+  m_LocalScale: {x: 1028.6067, y: 1028.6066, z: 1028.6066}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6518355181312241380}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 1
+  m_Father: {fileID: 5080245890109626809}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6005897975918629249
 MeshFilter:
@@ -208,6 +223,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &336199788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031725608934722029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &336199787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031725608934722029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &1149921601439391515
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +269,7 @@ GameObject:
   - component: {fileID: 7680538499231442022}
   - component: {fileID: 8441814456885749884}
   - component: {fileID: 4737805394503330016}
+  - component: {fileID: 1636379058}
   m_Layer: 0
   m_Name: IvyLeaf.022
   m_TagString: Untagged
@@ -269,7 +320,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -627745694363361292, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: e809c79e837ed494d805f096f45cc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -291,6 +342,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1636379058
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149921601439391515}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9754e9c104cc64141868c1052f27f6c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1305470864257773125
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +373,7 @@ GameObject:
   - component: {fileID: 5140641854341971821}
   - component: {fileID: 8513246724329382356}
   - component: {fileID: 5493614749919272805}
+  - component: {fileID: 172861957}
   m_Layer: 0
   m_Name: IvyLeaf.021
   m_TagString: Untagged
@@ -352,7 +424,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -627745694363361292, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: e809c79e837ed494d805f096f45cc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -374,6 +446,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &172861957
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305470864257773125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9754e9c104cc64141868c1052f27f6c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1804653058441406773
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,8 +477,10 @@ GameObject:
   - component: {fileID: 5468552468300538382}
   - component: {fileID: 6593452462299327965}
   - component: {fileID: 1345781507688001085}
+  - component: {fileID: 1603315067}
+  - component: {fileID: 1603315066}
   m_Layer: 0
-  m_Name: IVY_Curve.025
+  m_Name: IVY_Curve.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,14 +493,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1804653058441406773}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -285.5603, y: 18.863308, z: -21.68287}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -46.008026, y: 4.9770393, z: -0.6223793}
   m_LocalScale: {x: 949.8674, y: 949.8674, z: 949.8674}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2593177623970752114}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 8
+  m_Father: {fileID: 8641693674392028749}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6593452462299327965
 MeshFilter:
@@ -458,6 +552,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1603315067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804653058441406773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1603315066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804653058441406773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &1866412979899287061
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +598,7 @@ GameObject:
   - component: {fileID: 5157110398176521876}
   - component: {fileID: 5630204932038273758}
   - component: {fileID: 3930305917273632259}
+  - component: {fileID: 1321311619}
   m_Layer: 0
   m_Name: IvyLeaf.009
   m_TagString: Untagged
@@ -519,7 +649,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: e809c79e837ed494d805f096f45cc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -541,6 +671,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1321311619
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866412979899287061}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9754e9c104cc64141868c1052f27f6c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1994549364587835643
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +702,7 @@ GameObject:
   - component: {fileID: 2593177623970752114}
   - component: {fileID: 6271405783408641919}
   - component: {fileID: 1211620162859093657}
+  - component: {fileID: 1772471212}
   m_Layer: 0
   m_Name: IvyLeaf.024
   m_TagString: Untagged
@@ -602,7 +753,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: ee6a389bc3fc942aca06e353276dcc88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -624,6 +775,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1772471212
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994549364587835643}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0243df75a0c420d953800679add28e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2593881169208711866
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +807,7 @@ GameObject:
   - component: {fileID: 6354607617708680706}
   - component: {fileID: 7508131278533064301}
   m_Layer: 0
-  m_Name: IVY_Curve.012
+  m_Name: IVY_Curve.04-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,13 +820,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2593881169208711866}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -334.3448, y: 21.933187, z: -22.139208}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.70710677, w: 0}
+  m_LocalPosition: {x: 2.7764587, y: 8.046919, z: -0.16604233}
   m_LocalScale: {x: 847.4906, y: 847.4906, z: 847.4906}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 2
+  m_Father: {fileID: 8641693674392028749}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6354607617708680706
 MeshFilter:
@@ -718,8 +889,10 @@ GameObject:
   - component: {fileID: 8244529787888191549}
   - component: {fileID: 2600882743854374241}
   - component: {fileID: 415766904686050598}
+  - component: {fileID: 1461822988}
+  - component: {fileID: 1461822987}
   m_Layer: 0
-  m_Name: IVY_Curve.013
+  m_Name: IVY_Curve.04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -732,13 +905,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2850378982029842028}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -334.775, y: 18.863308, z: -21.68287}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 3.206665, y: 4.9770393, z: -0.6223793}
   m_LocalScale: {x: 949.8674, y: 949.8674, z: 949.8674}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2268806334998818940}
-  m_Father: {fileID: 1082463488451568945}
+  m_Father: {fileID: 8641693674392028749}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2600882743854374241
@@ -791,6 +964,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1461822988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850378982029842028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1461822987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850378982029842028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &3116717558734584915
 GameObject:
   m_ObjectHideFlags: 0
@@ -802,8 +1010,10 @@ GameObject:
   - component: {fileID: 5370823924305503329}
   - component: {fileID: 7525370194917112526}
   - component: {fileID: 9136429692037546490}
+  - component: {fileID: 1303550113}
+  - component: {fileID: 1303550112}
   m_Layer: 0
-  m_Name: IVY_Curve.023
+  m_Name: IVY_Curve.08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,14 +1026,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3116717558734584915}
-  m_LocalRotation: {x: 0.07378925, y: 0.7106081, z: 0.69929755, w: -0.023965204}
-  m_LocalPosition: {x: -393.32495, y: 35.26323, z: -21.949078}
-  m_LocalScale: {x: 1064.2529, y: 1064.2529, z: 1064.2529}
+  m_LocalRotation: {x: 0.69929755, y: -0.023965204, z: -0.07378925, w: -0.7106081}
+  m_LocalPosition: {x: 61.756622, y: 21.37696, z: -0.35617256}
+  m_LocalScale: {x: 1064.2533, y: 1064.253, z: 1064.2529}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7680538499231442022}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 7
+  m_Father: {fileID: 5080245890109626809}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7525370194917112526
 MeshFilter:
@@ -875,6 +1085,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1303550113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116717558734584915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1303550112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116717558734584915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &3645971215695753277
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,6 +1131,7 @@ GameObject:
   - component: {fileID: 2664971224598455135}
   - component: {fileID: 1518403443254966969}
   - component: {fileID: 5158173279538492178}
+  - component: {fileID: 86470670}
   m_Layer: 0
   m_Name: IvyLeaf.025
   m_TagString: Untagged
@@ -936,7 +1182,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: ee6a389bc3fc942aca06e353276dcc88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -958,6 +1204,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &86470670
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645971215695753277}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0243df75a0c420d953800679add28e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3722802709639872264
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,8 +1235,10 @@ GameObject:
   - component: {fileID: 3906568381803306749}
   - component: {fileID: 3389220912916621550}
   - component: {fileID: 6462532378620787142}
+  - component: {fileID: 569344826}
+  - component: {fileID: 569344825}
   m_Layer: 0
-  m_Name: IVY_Curve.020
+  m_Name: IVY_Curve.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,14 +1251,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3722802709639872264}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -274.59567, y: 9.04008, z: 10.671759}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -56.972656, y: -4.8461885, z: -32.97701}
   m_LocalScale: {x: 997.11523, y: 997.11523, z: 997.11523}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7208700527834581973}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 5
+  m_Father: {fileID: 8641693674392028749}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3389220912916621550
 MeshFilter:
@@ -1042,6 +1310,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &569344826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722802709639872264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &569344825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3722802709639872264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &3970069151105208656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,8 +1356,10 @@ GameObject:
   - component: {fileID: 2598008285806571970}
   - component: {fileID: 9041238448508793506}
   - component: {fileID: 8173201549209052087}
+  - component: {fileID: 453440062}
+  - component: {fileID: 453440061}
   m_Layer: 0
-  m_Name: IVY_Curve.026
+  m_Name: IVY_Curve.03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1067,14 +1372,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3970069151105208656}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -311.5673, y: 6.9481506, z: -21.257215}
-  m_LocalScale: {x: 759.8361, y: 759.8361, z: 759.8361}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: -20.001038, y: -6.938118, z: -1.0480347}
+  m_LocalScale: {x: 759.8361, y: 759.83606, z: 759.83606}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2664971224598455135}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 9
+  m_Father: {fileID: 8641693674392028749}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9041238448508793506
 MeshFilter:
@@ -1126,6 +1431,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &453440062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3970069151105208656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &453440061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3970069151105208656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &4135091137491656046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,8 +1477,10 @@ GameObject:
   - component: {fileID: 4915854423742298767}
   - component: {fileID: 6311627173549270962}
   - component: {fileID: 6690637565261701578}
+  - component: {fileID: 116799304}
+  - component: {fileID: 116799303}
   m_Layer: 0
-  m_Name: IVY_Curve.009
+  m_Name: IVY_Curve.06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1151,14 +1493,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4135091137491656046}
-  m_LocalRotation: {x: -0.70710677, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -352.52448, y: 10.7106905, z: 11.912689}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.70710677, w: 0}
+  m_LocalPosition: {x: 20.956146, y: -3.175578, z: -34.21794}
   m_LocalScale: {x: 814.85455, y: 814.85455, z: 814.85455}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5157110398176521876}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 0
+  m_Father: {fileID: 5080245890109626809}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6311627173549270962
 MeshFilter:
@@ -1210,6 +1552,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &116799304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135091137491656046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &116799303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4135091137491656046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &5029828591085052055
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,8 +1598,10 @@ GameObject:
   - component: {fileID: 2868634555027633846}
   - component: {fileID: 3290452511351633585}
   - component: {fileID: 6080146694411028318}
+  - component: {fileID: 1345062192}
+  - component: {fileID: 1345062191}
   m_Layer: 0
-  m_Name: IVY_Curve.022
+  m_Name: IVY_Curve.09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1235,14 +1614,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029828591085052055}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -406.61288, y: 8.310446, z: -21.567533}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 75.044556, y: -5.575823, z: -0.7377167}
   m_LocalScale: {x: 824.80963, y: 824.80963, z: 824.80963}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5140641854341971821}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 6
+  m_Father: {fileID: 5080245890109626809}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3290452511351633585
 MeshFilter:
@@ -1294,6 +1673,41 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1345062192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029828591085052055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1345062191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029828591085052055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
 --- !u!1 &5241875388836155831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1719,7 @@ GameObject:
   - component: {fileID: 6518355181312241380}
   - component: {fileID: 1231830723470227207}
   - component: {fileID: 4807737870638663806}
+  - component: {fileID: 1300986680}
   m_Layer: 0
   m_Name: IvyLeaf.011
   m_TagString: Untagged
@@ -1355,7 +1770,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -627745694363361292, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: e809c79e837ed494d805f096f45cc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1377,6 +1792,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1300986680
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5241875388836155831}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9754e9c104cc64141868c1052f27f6c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5857816013025253506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1388,6 +1823,7 @@ GameObject:
   - component: {fileID: 8711149603218258318}
   - component: {fileID: 197351725175823793}
   - component: {fileID: 1824717140942504808}
+  - component: {fileID: 1184180399}
   m_Layer: 0
   m_Name: IvyLeaf.013
   m_TagString: Untagged
@@ -1438,7 +1874,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: e809c79e837ed494d805f096f45cc19e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1460,6 +1896,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1184180399
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857816013025253506}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9754e9c104cc64141868c1052f27f6c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6623087818085581458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,6 +1927,7 @@ GameObject:
   - component: {fileID: 7208700527834581973}
   - component: {fileID: 8918505402004228228}
   - component: {fileID: 5930944781594868793}
+  - component: {fileID: 2017493725}
   m_Layer: 0
   m_Name: IvyLeaf.019
   m_TagString: Untagged
@@ -1521,7 +1978,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1142559352587215957, guid: 76d52ca64b2460c4897fc138119d5f51, type: 3}
+  - {fileID: 2100000, guid: ee6a389bc3fc942aca06e353276dcc88, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1543,6 +2000,62 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2017493725
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6623087818085581458}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5a0243df75a0c420d953800679add28e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &8068510973170388808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5080245890109626809}
+  m_Layer: 0
+  m_Name: R_IVY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5080245890109626809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8068510973170388808}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -331.56833, y: 13.886269, z: -22.30525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 618691808537289778}
+  - {fileID: 4915854423742298767}
+  - {fileID: 3965871594714230356}
+  - {fileID: 5370823924305503329}
+  - {fileID: 2868634555027633846}
+  m_Father: {fileID: 1082463488451568945}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8592704359329714348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,8 +2067,10 @@ GameObject:
   - component: {fileID: 618691808537289778}
   - component: {fileID: 2231175084850166704}
   - component: {fileID: 5092477194947224761}
+  - component: {fileID: 1981835284}
+  - component: {fileID: 1981835283}
   m_Layer: 0
-  m_Name: IVY_Curve.014
+  m_Name: IVY_Curve.05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,14 +2083,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8592704359329714348}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -341.2036, y: 35.26323, z: -21.949078}
+  m_LocalRotation: {x: -0, y: 0.7071067, z: 0.7071068, w: 0}
+  m_LocalPosition: {x: 9.635284, y: 21.37696, z: -0.35617256}
   m_LocalScale: {x: 867.5439, y: 867.5439, z: 867.5439}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8711149603218258318}
-  m_Father: {fileID: 1082463488451568945}
-  m_RootOrder: 4
+  m_Father: {fileID: 5080245890109626809}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2231175084850166704
 MeshFilter:
@@ -1627,3 +2142,74 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1981835284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592704359329714348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1981835283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8592704359329714348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd5b792e69da849ebba16897933bcb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GLamp: {fileID: 0}
+--- !u!1 &8980482422176726805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8641693674392028749}
+  m_Layer: 0
+  m_Name: L_IVY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8641693674392028749
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8980482422176726805}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: -331.56833, y: 13.886269, z: -22.30525}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3906568381803306749}
+  - {fileID: 5468552468300538382}
+  - {fileID: 2598008285806571970}
+  - {fileID: 8244529787888191549}
+  - {fileID: 7954522181417145499}
+  m_Father: {fileID: 1082463488451568945}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

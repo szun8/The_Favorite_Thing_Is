@@ -10,7 +10,6 @@ public class KungManager : MonoBehaviourPunCallbacks
 
     private Material material;
     public Material sleep, wake;
-    //private Animator animator;
 
     public GameObject kung;
     public GameObject plate;
@@ -69,7 +68,7 @@ public class KungManager : MonoBehaviourPunCallbacks
         }
     }
 
-    IEnumerator KungKungManager()
+    IEnumerator KungKungManager()   //쿵쿵이 윗세계 아랫세계에 따라서 위아래 와따가따 하게 하기 
     {
         if(kung != null)
         {
@@ -100,6 +99,7 @@ public class KungManager : MonoBehaviourPunCallbacks
         }
 
     }
+    //쿵쿵이의 눈뜨고 잠자게하는거 동기화 
     [PunRPC]
     void SyncKung(bool value)
     {

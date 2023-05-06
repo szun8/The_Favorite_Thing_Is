@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class KindMonster : MonoBehaviour
+public class KindMonster : MonoBehaviourPun
 {
-    public KindPlate kindPlate;
+    PhotonView PV;
 
-    public Transform[] stop;
+    public KindPlate kindPlate; //해당 G 단상 
+    public Transform[] stop;    //거북이가 멈추는 곳
     
     private bool isMove = false;
     private bool front = false;
@@ -29,13 +31,13 @@ public class KindMonster : MonoBehaviour
 
     void Direction()
     {
-        if (kindPlate.redObj)
+        if (!kindPlate.isgreen)
         {
             back = isMove = true;
             front = false;
         }
 
-        else if (kindPlate.greenObj)
+        else if (kindPlate.isgreen)
         {
             front = isMove = true;
             back = false;

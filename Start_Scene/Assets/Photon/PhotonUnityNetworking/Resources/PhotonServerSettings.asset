@@ -110,6 +110,8 @@ MonoBehaviour:
   - DieKung
   - SyncMat
   - TurnOn
+  - Sync
+  - SyncGreen
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

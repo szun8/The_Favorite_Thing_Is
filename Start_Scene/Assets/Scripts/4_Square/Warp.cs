@@ -6,7 +6,7 @@ using Photon.Pun;
 public class Warp : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
-
+    public Transform outWarp;
 
     void Awake() => PV = GetComponent<PhotonView>();
 

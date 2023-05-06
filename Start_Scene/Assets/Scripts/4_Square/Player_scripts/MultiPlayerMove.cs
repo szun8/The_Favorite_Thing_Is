@@ -278,7 +278,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             gameObject.transform.GetChild(1).gameObject.layer = 9;
             lightOn = true;
             rgb_lightOn = false;
-            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(96f, 93f, 0, 120f));
+            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(14.5f, 14.5f, 14.5f, 120f));
 
 
             PV.RPC("LightPower", RpcTarget.AllBuffered);

@@ -9,7 +9,7 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     public bool isLight;
 
-    public bool isRed = false;
+    public bool isRed = false; //isLight일시 이게 true가 되고 쿵쿵이 스크립트에서 조건으로 쓴다
 
     private PhotonView PV;
     private bool isPlayer = false;
