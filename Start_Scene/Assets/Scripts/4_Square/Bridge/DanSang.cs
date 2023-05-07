@@ -12,9 +12,11 @@ public class DanSang : MonoBehaviourPunCallbacks
     public GameObject bridge; //해당 단상과 연결이 되는 발판 
 
 
-    private GameObject Player;
+    private GameObject Player; // 단상에 충돌한 플레이어 
 
-    private bool isOnPlayer = false;
+    private bool isOnPlayer = false; //플레이어가 단상과 닿아 있으면 true
+
+    private bool isL, noL = false; // 계속해서 패킷 보내기 방지 
 
     void Awake()
     {
@@ -26,26 +28,36 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     void Update()
     {
-        if (PhotonNetwork.InRoom ) //플레이어가 방안에 있는지 + 단상에 있는지 
+        if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 + 단상에 있는지 
         {
-            if(Player != null)
+            if(Player != null) //플레이어가 단상에 충돌 ENTER하면 여기로 
             {
-                if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround)
+                //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
+                if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                    && !isL)
                 {
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);  //플레이어가 위에 있다면 빛내는지 검출하자
+                    noL = false;
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                    isL = true;
                 }
 
-                else if(!Player.GetComponent<MultiPlayerMove>().l_pressed)
+                else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
+                {
+                    isL = false;
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                    noL = true;
+                } 
+                    
 
                 isOnPlayer = true;
             }
 
-            else
+            else //플레이어가 단상에 아예 없을 때, 
             {
                 if (isOnPlayer)
                 {
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                    noL = isL = false;
                 }
             }
         }
