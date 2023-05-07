@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class TurtleColor : MonoBehaviourPun
+public class TurtleColor : MonoBehaviourPun //플레이어가 G 백색광 먹으면 스킨이 검정 - 초록 바뀜 
 {
     public Material dark, green;
     public GameObject G_Lamp;

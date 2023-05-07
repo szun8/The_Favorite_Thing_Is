@@ -14,7 +14,7 @@ public class KindPlate : MonoBehaviourPunCallbacks
     PhotonView PV;
     bool isPlayer = false;
 
-    private bool oneSend = false;
+    private bool oneSend = false; //패킷 제한 용도 
 
     RaycastHit player;
 
@@ -46,7 +46,7 @@ public class KindPlate : MonoBehaviourPunCallbacks
 
     void CheckLight() //플레이어가 있는경우 g를 눌렀을 때 true
     {
-        if (isPlayer && player.collider != null)
+        if (isPlayer && player.collider != null) //단상이 플레이어 감지 + 감지된 플레이어 collider 있  
         {
             if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().g_pressed)
             {

@@ -112,6 +112,8 @@ MonoBehaviour:
   - TurnOn
   - Sync
   - SyncGreen
+  - SyncWake
+  - SyncWalk
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
