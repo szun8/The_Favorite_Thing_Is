@@ -13,28 +13,31 @@ public class InfoFish
 enum TypeFish
 {
     jelly,
-    boss
+    boss,
+    seahorse
 }
 
 public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] enemy;
-
+    private GameObject[] seaObj;
     Quaternion[] rotation;
  
     public InfoFish[] Jelly;
+    public InfoFish[] Seahorse;
     public InfoFish Boss;
 
-    public GameObject rangeJelly;  // 해파리가 랜덤 소환될 구역 오브젝트
+    public GameObject rangeJelly;       // 해파리가 랜덤 소환될 구역 오브젝트
+    public GameObject rangeSeahorse;    // 해마가 랜덤 소환될 구역 오브젝트
     public Transform bossSpawn;
-    BoxCollider rangeCollider;
+    BoxCollider rangeJellyCollider, rangeSeahorseCollider;
 
     private void Awake()
     {
-        rotation = new Quaternion[2];
+        rotation = new Quaternion[3];
 
-        rangeCollider = rangeJelly.GetComponent<BoxCollider>();
+        rangeJellyCollider = rangeJelly.GetComponent<BoxCollider>();
+        rangeSeahorseCollider = rangeSeahorse.GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -44,24 +47,24 @@ public class SpawnEnemy : MonoBehaviour
     }
 
     void SetQuaternion()
-    {
-        for (int i = 0; i < rotation.Length; i++)
-            rotation[i] = enemy[i].transform.rotation;
+    {   // 각 바다 객체들의 회전 값 가져오는 함수
+        for (int i = 0; i < rotation.Length; i++)   
+            rotation[i] = seaObj[i].transform.rotation;
     }
 
     void InstantiateFish()
     {
-        //for (int i = 0; i < FishA.Length; i++)
-        //    InstantiateFish(FishA[i], i, TypeFish.enemy);
+        for (int i = 0; i < Seahorse.Length; i++)   // 해마 스폰
+            InstantiateFish(Seahorse[i], i, TypeFish.seahorse);
 
-        for (int i = 0; i < Jelly.Length; i++)
+        for (int i = 0; i < Jelly.Length; i++)      // 해파리 스폰
             InstantiateFish(Jelly[i], i, TypeFish.jelly);
 
-        InstantiateFish(Boss, 0, TypeFish.boss);
+        InstantiateFish(Boss, 0, TypeFish.boss);    // 보스 스폰
     }
 
     void InstantiateFish(InfoFish _gameObject, int i, TypeFish _type)
-    {
+    {   // 입력된 개체를 생성하는 함수
         GameObject clone;
         _gameObject.name = _type + "_" + i;
         switch (_type)
@@ -75,26 +78,49 @@ public class SpawnEnemy : MonoBehaviour
                 _gameObject.speed = 0f;
                 _gameObject.spawnSpot = Return_RandomPos_jelly();
                 break;
+
+            case TypeFish.seahorse:
+                _gameObject.speed = 0f;
+                _gameObject.spawnSpot = Return_RandomPos_seahorse();
+                break;
         }
 
-        clone = Instantiate(enemy[(int)_type], _gameObject.spawnSpot, rotation[(int)_type]);
+        clone = Instantiate(seaObj[(int)_type], _gameObject.spawnSpot, rotation[(int)_type]);
         clone.name = _gameObject.name;
-        if (clone.tag == "Enemy") clone.transform.parent = this.transform;
-        else clone.transform.parent = GameObject.Find("Jelly_RespawnRange").transform;
 
+        // 바다 객체들 하이라키에서 위치할 부모 계층 조정
+        if (clone.tag == "Enemy") clone.transform.parent = this.transform;
+        else if(clone.tag == "Item") clone.transform.parent = GameObject.Find("Jelly_RespawnRange").transform;
+        else clone.transform.parent = GameObject.Find("Seahorse_spawnRange").transform;
+
+        // 보스는 스폰되자마자 비활성화
         if (_type == TypeFish.boss) clone.gameObject.SetActive(false);
+    }
+
+    Vector3 Return_RandomPos_seahorse()
+    {
+        Vector3 originPos = rangeSeahorse.transform.position;
+        float range_Y = rangeSeahorseCollider.bounds.size.y;
+        float range_Z = rangeSeahorseCollider.bounds.size.z;
+
+        range_Y = Random.Range((range_Y / 2) * -1, range_Y / 2);
+        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
+        Vector3 RandomPos = new Vector3(0, (int)range_Y, (int)range_Z);
+
+        Vector3 respawnPos = originPos + RandomPos;
+        return respawnPos;
     }
 
     Vector3 Return_RandomPos_jelly()
     {   // 지정한 특정구역 내에 해파리를 랜덤 소환해주는 함수
         Vector3 originPos = rangeJelly.transform.position;
         // 콜라이더의 사이즈를 가져오는 bound.size 사용
-        float range_X = rangeCollider.bounds.size.x;    // 세로
-        float range_Y = rangeCollider.bounds.size.y;    // 높이
+        float range_X = rangeJellyCollider.bounds.size.x;    // 세로
+        float range_Y = rangeJellyCollider.bounds.size.y;    // 높이
 
         range_X = Random.Range((range_X / 2) * -1, range_X / 2);
         range_Y = Random.Range((range_Y / 2) * -1, range_Y / 2);
-        Vector3 RandomPos = new Vector3((int)range_X, range_Y + rangeCollider.center.y, 0f);
+        Vector3 RandomPos = new Vector3((int)range_X, range_Y + rangeJellyCollider.center.y, 0f);
 
         Vector3 respawnPos = originPos + RandomPos;
         return respawnPos;
@@ -102,20 +128,21 @@ public class SpawnEnemy : MonoBehaviour
 
     public void DestroyJellyFish()
     {   // 플레이어 사망 시 기존 해파리 삭제하고 재생성
+        Debug.Log("destroy Jelly");
         StartCoroutine(DestroyJellyFishCoroutine());
     }
 
     IEnumerator DestroyJellyFishCoroutine()
     {
         Transform[] jellyParent = rangeJelly.GetComponentsInChildren<Transform>();
-        //Transform[] jellyfish = jellyParent.GetComponentsInChildren<Transform>();
+        yield return new WaitForSeconds(1.5f);  // 플레이어가 죽자마자 해파리가 바로 사라져서 1.5초 뒤에 destroy
 
         foreach (var item in jellyParent)
         {
             if (item != rangeJelly.transform)
                 Destroy(item.gameObject);
         }
-        yield return new WaitForSeconds(1.5f);
+
         for (int i = 0; i < Jelly.Length; i++)
         {
             Debug.Log("jelly_" + i);

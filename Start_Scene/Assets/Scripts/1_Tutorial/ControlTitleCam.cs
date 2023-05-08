@@ -43,7 +43,7 @@ public class ControlTitleCam : MonoBehaviour
         PlayerMove.isStop = true;
         player.transform.rotation = Quaternion.Euler(0, 0, 0);
         if (player.GetComponent<PlayerMove>().lightOn)
-        {
+        {   // 타이틀이 뜰때는 발광 비활성화
             Debug.Log("light off");
             player.GetComponent<PlayerMove>().lightOn = false;
             player.GetComponent<PlayerMove>().LightHandle();

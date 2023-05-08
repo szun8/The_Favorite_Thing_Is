@@ -78,8 +78,8 @@ public class BossMove : MonoBehaviour
             if (!SwimMove.isDied)
             {   // 죽었을 때 한번씩만 해파리 리스폰!
                 // -> 안하면 보스랑 여러번 충돌나서 여러번 만들어지고 플레이어가 자유롭게 이동가능한 버그 생김
-                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().DestroyJellyFish();
                 SwimMove.isDied = true;
+                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().DestroyJellyFish();
             }
             Invoke("ResetBoss", 1.5f);
         }

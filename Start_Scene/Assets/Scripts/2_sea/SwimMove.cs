@@ -12,7 +12,7 @@ public class SwimMove : MonoBehaviour
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
 
-    private bool lightOn = false, isMile1 = false; // mile1은 보스 생성전 플레이어 Z축 조정을 위한 변수
+    private bool lightOn = false;
     bool isESC = false; //한번만 누르게 !!!
     
     public static bool isBoss = false;      // 물고기 벽이 무너지면 true하고 보스 setActive시킬 예정
@@ -51,19 +51,15 @@ public class SwimMove : MonoBehaviour
 
     void Update()
     {
-        
         if (!videoHandler.instance.videoPlayer.isPlaying && !isESC && Input.GetKeyDown(KeyCode.Escape))
-        {
+        {   // 비디오가 플레이되고 있지 않고 아직 한번도 esc키가 눌러지지 않았다면 실행
             NextScene();
             isESC = true;
         }
 
         if (isCave)
-        {   // 다음씬으로 넘어갑니...다
-            rigid.useGravity = false;
-            isCave = false;
-            //transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);
-            Invoke("NextScene", 1f);
+        {   // 다음씬으로 넘어가기 위해 플레이어 동굴 안으로 빨려 들어가는 자동 이동
+            transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);
             return;
         }
         if (isDied) return;
@@ -74,16 +70,12 @@ public class SwimMove : MonoBehaviour
             dir.z = Input.GetAxisRaw("Horizontal") * -1;
             dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
         }
-        else if(isBoss && isMile1)
-        {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, 0f), Time.deltaTime*1.5f);
-        }
         else
         {
             dir.x = Input.GetAxisRaw("Horizontal");
         }   
 
-        if (Input.GetKey("l"))
+        if (!isEnd && Input.GetKey("l"))
         {
             lightOn = true;
             LightHandle();
@@ -96,7 +88,7 @@ public class SwimMove : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp("l"))
+        if (!isEnd && Input.GetKeyUp("l"))
         {
             StopCoroutine(Dash());
             lightOn = false;
@@ -104,24 +96,15 @@ public class SwimMove : MonoBehaviour
             isBooster = false;
         }
 
-        if (isEnd)
+        if(isEnd && dolly.m_Position == dolly.m_Path.PathLength)
         {
-            if (!dolly.enabled)
-            {
-                //transform.position = Vector3.Lerp(transform.position, dolly.m_Path.transform.position, 0.05f);
-                //if(transform.position.x >= 399 && transform.position.y >= 39)
-                dolly.enabled = true;
-            }   
-            else if(dolly.m_Position == dolly.m_Path.PathLength)
-            {
-                ControlVCam.instance.ControlDollyView();
-                if(GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed != 50)
-                    GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
-                if (speed != 10 || dashSpeed != 10)
-                {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
-                    speed = 10;
-                    dashSpeed = 10;
-                }
+            ControlVCam.instance.ControlDollyView();
+            if(GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed != 50)
+                GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
+            if (speed != 10 || dashSpeed != 10)
+            {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
+                speed = 10;
+                dashSpeed = 10;
             }
         }
     }
@@ -183,7 +166,7 @@ public class SwimMove : MonoBehaviour
 
     void Jump()
     {
-        if (Water.isWater && Input.GetKey("space"))
+        if (Water.isWater && Input.GetKeyDown("space"))
         {
             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             SoundManager.instnace.PlaySE("PlayerSeaJump", 0.5f);
@@ -234,7 +217,6 @@ public class SwimMove : MonoBehaviour
     public void SetDeadState()
     {   // 심해에서 보스에 닿아 죽으면 물고기 벽 부딪히게 전으로 돌아감 
         isBoss = false;
-        isMile1 = false;
         UIManager.instnace.stopOut = false;
         Invoke("SetPos", 1.5f);
     }
@@ -259,18 +241,17 @@ public class SwimMove : MonoBehaviour
     IEnumerator SetBoss()
     {
         isBoss = true;
-        isMile1 = true;
         CinematicBar.instance.ShowBars();
         ControlVCam.instance.SwitchingBackToSide();
         GameObject.Find("MileStone 1").SetActive(false);
-        
+        dir = Vector3.zero; // player가 계속 side뷰로 바뀌는 도중에도 w, s를 눌러 dir이 변경되는 경우를 대비해 스크립트가 비활성화된 뒤 이동dir을 zero로 초기화
+
         yield return new WaitForSeconds(1.3f);
 
         GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
         ControlVCam.instance.SwitchingWatchingBoss();
         Debug.Log("SetWatchingBoss");
 
-        isMile1 = false;
         yield return new WaitForSeconds(1.3f);
     }
 
@@ -279,11 +260,18 @@ public class SwimMove : MonoBehaviour
         if (other.gameObject.CompareTag("Wall"))
         {   // 물고기 떼와 충돌(변경예정_0328.ver)
             // 물고기가 촤악 사라지는 무빙 이후 보스 활성화 시키는 것이 좋을듯함 -> 아래줄 invoke 함수화
-            StartCoroutine(SetBoss());
+            if(!isBoss) StartCoroutine(SetBoss());
         }
         if (other.gameObject.CompareTag("End"))
         {   // 보스 탈출 : dollycart 탑승
             isEnd = true;
+            dolly.enabled = true;
+            if (lightOn)
+            {   // dolly를 탈때는 발광 비활성화
+                Debug.Log("light off");
+                lightOn = false;
+                LightHandle();
+            }
             CinematicBar.instance.ShowBars();   // 블랙바 On
             ControlVCam.instance.SwitchingSideToBoss();
         }
@@ -294,15 +282,21 @@ public class SwimMove : MonoBehaviour
         }
 
         if(other.gameObject.name == "CavePos")
-        {   // 씬전환 트리거
+        {   // 씬전환 한번!!!만 트리거
+            Debug.Log("trigger cavePos");
+            CinematicBar.instance.ShowBars();
+
             isCave = true;
+            rigid.useGravity = false;
             other.gameObject.SetActive(false);  // 한번만 닿으면 해당 오브젝트를 비활성화시켜 중복처리 되는 일이 없도록 합니다
+            Invoke("NextScene", 1f);
         }
     }
 
     void NextScene()
-    {
+    {   // 다음씬으로 전환하기 위한 함수
         SoundManager.instnace.VolumeOutBGM();
+        if (isCave) CinematicBar.instance.HideBars();
         ScenesManager.instance.Scene[ScenesManager.instance.SceneNum] = true;
     }
 }
