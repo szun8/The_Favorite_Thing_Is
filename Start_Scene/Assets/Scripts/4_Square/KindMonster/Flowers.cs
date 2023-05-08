@@ -7,10 +7,13 @@ public class Flowers : MonoBehaviourPun
 {
     PhotonView PV;
     Animator animator;
-    public KindPlate kindPlate;
+    public KindPlate kindPlate;     //단상이 초록이면 꽃피게할 isgreen 가져오려고
+    public KindMonster kindMonster;
 
     //rpc 한번만 보내주기 위해 
-    private bool isgood, isNo = false;
+    private bool isSendOne, lastSend = false;
+
+    public bool isBloom = false;    //거북이 유인 변수 
     
     void Awake()
     {
@@ -20,18 +23,24 @@ public class Flowers : MonoBehaviourPun
 
     void Update()
     {
-        if (kindPlate.isgreen && !isgood)
+        if (!kindMonster.isArrive)
         {
-            isNo = true;
-            PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-            isgood = true; //isgood을 true해줘서 더이상 G누르고 있어도 패킷 안보냄 
-        }
+            if (kindPlate.isgreen && !isSendOne)
+            {
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isSendOne = true; //isSendOne을 true해줘서 더이상 G누르고 있어도 패킷 안보냄 
+            }
 
-        else if(!kindPlate.isgreen && isNo)
+            else if (!kindPlate.isgreen && isSendOne)
+            {
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                isSendOne = false;
+            }
+        }
+        else if (kindMonster.isArrive && !lastSend) //꽃에 도달하면 꽃은 피어있는 상태로 
         {
-            isgood = false;
-            PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-            isNo = false;  //isNo를 false해줘서 더이상 단상에 G안누르고 서있기만해도 보내는 패킷 제거 
+            PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+            lastSend = true;
         }
     }
 
@@ -39,5 +48,6 @@ public class Flowers : MonoBehaviourPun
     void SyncAnim(bool value)
     {
         animator.SetBool("isBloom", value);
+        isBloom = value;
     }
 }

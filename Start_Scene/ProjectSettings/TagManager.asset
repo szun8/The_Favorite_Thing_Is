@@ -31,6 +31,7 @@ TagManager:
   - DownKung
   - SavePoint
   - MonsterDead
+  - TurtleStop
   layers:
   - Default
   - TransparentFX
