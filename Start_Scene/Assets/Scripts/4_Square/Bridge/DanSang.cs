@@ -14,7 +14,7 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private GameObject Player; // 단상에 충돌한 플레이어 
 
-    private bool isOnPlayer = false; //플레이어가 단상과 닿아 있으면 true
+    private bool isNoLight = false; //플레이어가 단상에 있지만 빛 안키면 true되게 하자 
 
     private bool isL, noL = false; // 계속해서 패킷 보내기 방지 
 
@@ -48,16 +48,15 @@ public class DanSang : MonoBehaviourPunCallbacks
                     noL = true;
                 } 
                     
-
-                isOnPlayer = true;
             }
 
             else //플레이어가 단상에 아예 없을 때, 
             {
-                if (isOnPlayer)
+                if (isNoLight) //플레이어가 처음으로 불켰다 꺼야만 이게 true되서 활성화됨 
                 {
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
                     noL = isL = false;
+                    isNoLight = false;
                 }
             }
         }
@@ -80,15 +79,16 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         animator.SetBool("isLight", value);
 
+        //불 키면 서서히 밝아지면서 collider 생김 
         if (value) bridge.GetComponent<MeshCollider>().isTrigger = false;
 
-        else
+        else //불 끄면 서서히 어두워지고 90퍼 되야 trigger 
         {
             AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
             if (curAnim.IsName("L_Off") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
             {
                 bridge.GetComponent<MeshCollider>().isTrigger = true;
-                isOnPlayer = false;
+                isNoLight = true;
             }
 
         }
