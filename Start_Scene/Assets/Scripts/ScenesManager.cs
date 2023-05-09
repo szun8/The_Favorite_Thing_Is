@@ -50,7 +50,7 @@ public class ScenesManager : MonoBehaviour
         }
         else if(SceneNum == 3)
         {   // 거울씬으로 가게되면
-            // SoundManager.instnace.PlayBGM(); //-> 사운드 ON 기능
+            // SoundManager.instnace.PlayBGM(); // 플레이어 인스턴트 할때 sound 재생
         }
         else if(SceneNum == 4)
         {   // 광장씬으로 가게되면

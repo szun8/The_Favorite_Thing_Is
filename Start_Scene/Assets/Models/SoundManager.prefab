@@ -92,7 +92,7 @@ MonoBehaviour:
   - name: Cave
     clip: {fileID: 8300000, guid: fffd633cc25034fd08c60a2f3a639486, type: 3}
   - name: Mirror
-    clip: {fileID: 0}
+    clip: {fileID: 8300000, guid: e98cd97a11fca4bd199d007838048ed9, type: 3}
   - name: Square
     clip: {fileID: 0}
   animTime: 2

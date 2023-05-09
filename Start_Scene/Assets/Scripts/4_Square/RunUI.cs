@@ -25,6 +25,13 @@ public class RunUI : MonoBehaviourPun
 
             if(gameObject.name == "press R" && other.gameObject.GetComponentInParent<MultiPlayerMove>().getRed)
                 UIManager.instnace.RunAnims("isLight_R");
+
+            if (gameObject.name == "press G1" && other.gameObject.GetComponentInParent<MultiPlayerMove>().getGreen)
+                UIManager.instnace.RunAnims("isLight_G");
+
+            if (gameObject.name == "press G2" && other.gameObject.GetComponentInParent<MultiPlayerMove>().getGreen)
+                UIManager.instnace.RunAnims("isLight_G"); 
+            
         }
     }
 }

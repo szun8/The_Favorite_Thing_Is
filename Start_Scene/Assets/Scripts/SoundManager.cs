@@ -102,7 +102,7 @@ public class SoundManager : MonoBehaviour
         {   // 재생중이지 않은 사운드에 대해서
             playSoundName[audioSourceEffects.Length] = bgmSound[i].name;
             audioSourceBGM[i].clip = bgmSound[i].clip;
-            audioSourceBGM[i].PlayOneShot(bgmSound[i].clip, 0.3f);
+            audioSourceBGM[i].PlayOneShot(bgmSound[i].clip, 0.1f);
             audioSourceBGM[i].loop = true;
             return;
         }   // 재생을 시켜주고 함수 종료

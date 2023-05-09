@@ -9,7 +9,6 @@ public class MirrorMove : MonoBehaviourPunCallbacks
 
     Rigidbody rigid;
     Animator animator;
-    SkinnedMeshRenderer mesh;
     NetworkManager networkManager;
 
     public Material LightMaterial;  //L머티리얼
@@ -31,7 +30,6 @@ public class MirrorMove : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
@@ -80,6 +78,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
     {
         yield return new WaitForSeconds(1.5f);
         UIManager.instnace.stopOut = false;
+        SoundManager.instnace.VolumeOutBGM();   // 거울룸 배경음악 stop
         yield return new WaitForSeconds(1.5f);
 
         if (PhotonNetwork.IsMasterClient)

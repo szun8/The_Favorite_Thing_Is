@@ -25,7 +25,7 @@ public class DeadStone : MonoBehaviour
         
         player.enabled = false;
 
-        SoundManager.instnace.PlaySE("CaveCollapse", 0.85f);
+        SoundManager.instnace.PlaySE("CaveCollapse", 0.75f);
         CinematicBar.instance.ShowBars();
         yield return new WaitForSeconds(2f);
 

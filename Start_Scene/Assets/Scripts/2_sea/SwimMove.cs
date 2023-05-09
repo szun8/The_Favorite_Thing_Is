@@ -225,6 +225,7 @@ public class SwimMove : MonoBehaviour
         ControlVCam.instance.SwitchingSideToBack();
         transform.position = pos[1].transform.position;   // 바꿔야함 리스폰 pos로
         isDied = false;
+        GameObject.Find("Disappear_Structure").transform.Find("MileStone 1").gameObject.SetActive(true);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -232,7 +233,6 @@ public class SwimMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && !isEnd)
         {   // 보스와 충돌시 && isEnd가 아니면(죽어도 되는데) isEnd상황이라면 (dollycart를 탑승해서 죽으면 안됨)
             SetDeadState();
-            GameObject.Find("Disappear_Structure").transform.Find("MileStone 1").gameObject.SetActive(true);
             speed = 10f; // 이전에 먹었던 해파리 능력 초기화
             dashSpeed = 10f;
         }

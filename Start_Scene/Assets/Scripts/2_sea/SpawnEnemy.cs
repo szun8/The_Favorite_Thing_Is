@@ -21,6 +21,7 @@ public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] seaObj;
+    bool isDestroy = false;
     Quaternion[] rotation;
  
     public InfoFish[] Jelly;
@@ -128,8 +129,12 @@ public class SpawnEnemy : MonoBehaviour
 
     public void DestroyJellyFish()
     {   // 플레이어 사망 시 기존 해파리 삭제하고 재생성
-        Debug.Log("destroy Jelly");
-        StartCoroutine(DestroyJellyFishCoroutine());
+        
+        if (!isDestroy)
+        {
+            isDestroy = true;
+            StartCoroutine(DestroyJellyFishCoroutine());
+        }
     }
 
     IEnumerator DestroyJellyFishCoroutine()
@@ -148,6 +153,7 @@ public class SpawnEnemy : MonoBehaviour
             Debug.Log("jelly_" + i);
             InstantiateFish(Jelly[i], i, TypeFish.jelly);
         }
+        isDestroy = false;
         yield return null;
     }
 }
