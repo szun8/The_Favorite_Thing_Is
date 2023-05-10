@@ -12,7 +12,7 @@ public class KindManager : MonoBehaviourPun
     PhotonView PV;
 
     private bool oneWalkSend, lastSend = false; //패킷 제한 용도 anim walk rpc true신호 하나 보냈는지
-    private int p_count = 0;
+    public int p_count = 0;
 
     public bool isWalk = false;  //kindMonster cs에서 움직이게 용도
 
@@ -53,23 +53,30 @@ public class KindManager : MonoBehaviourPun
     //trigger에 진입시 거북이 깨어나기 
     private void OnTriggerEnter(Collider other)
     {
-        p_count++;
-
-        if (!lastSend)
+        if (other.gameObject.CompareTag("Player_mesh"))
         {
-            PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
-            
+            p_count++;
+            if (!lastSend)
+            {
+                PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
+
+            }
         }
+        
+ 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        p_count--;
-
-        if (!lastSend && p_count == 0)
+        if (other.gameObject.CompareTag("Player_mesh"))
         {
-            PV.RPC("SyncWake", RpcTarget.AllBuffered, false);
+            p_count--;
+            if (!lastSend && p_count == 0)
+            {
+                PV.RPC("SyncWake", RpcTarget.AllBuffered, false);
+            }
         }
+  
     }
 
     [PunRPC]

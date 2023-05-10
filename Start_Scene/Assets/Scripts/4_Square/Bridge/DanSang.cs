@@ -5,7 +5,6 @@ using Photon.Pun;
 
 public class DanSang : MonoBehaviourPunCallbacks
 {
-    public int up;
     Animator animator;
     PhotonView PV;
 
@@ -16,12 +15,16 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private bool isNoLight = false; //플레이어가 단상에 있지만 빛 안키면 true되게 하자 
 
-    private bool isL, noL = false; // 계속해서 패킷 보내기 방지 
+    private bool isL, noL = false; // 계속해서 패킷 보내기 방지
+
+    public bool L, R, G= false;
 
     void Awake()
     {
         PV = GetComponent<PhotonView>();
-        animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기 
+        animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기
+
+        CheckPlateColor();
 
     }
 
@@ -32,22 +35,7 @@ public class DanSang : MonoBehaviourPunCallbacks
         {
             if(Player != null) //플레이어가 단상에 충돌 ENTER하면 여기로 
             {
-                //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
-                if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                    && !isL)
-                {
-                    noL = false;
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                    isL = true;
-                }
-
-                else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
-                {
-                    isL = false;
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                    noL = true;
-                } 
-                    
+                CheckLight();
             }
 
             else //플레이어가 단상에 아예 없을 때, 
@@ -73,6 +61,74 @@ public class DanSang : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Player")) Player = null;
     }
 
+    //rgb 단상중 어느 단상인지 
+    void CheckPlateColor()
+    {
+        if (bridge.CompareTag("R_Plate")) R = true;
+
+        else if (bridge.CompareTag("G_Plate")) G = true;
+
+        else L = true;
+
+    }
+
+    //어느 단상인지 확인 후 플레이어가 배출하는 빛 감지 
+    void CheckLight()
+    {
+        if (L)
+        {
+            //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
+            if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                && !isL)
+            {
+                noL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isL = true;
+            }
+
+            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
+            {
+                isL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = true;
+            }
+        }
+        else if (R)
+        {
+            //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
+            if (Player.GetComponent<MultiPlayerMove>().r_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                && !isL)
+            {
+                noL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isL = true;
+            }
+
+            else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && !noL)
+            {
+                isL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = true;
+            }
+        }
+        else if (G)
+        {
+            if (Player.GetComponent<MultiPlayerMove>().g_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                && !isL)
+            {
+                noL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isL = true;
+            }
+
+            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && !noL)
+            {
+                isL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = true;
+            }
+        }
+    }
 
     [PunRPC]
     void SyncAnim(bool value)  //애니메이션 변수 동기화 
@@ -85,7 +141,8 @@ public class DanSang : MonoBehaviourPunCallbacks
         else //불 끄면 서서히 어두워지고 90퍼 되야 trigger 
         {
             AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
-            if (curAnim.IsName("L_Off") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
+            if ((curAnim.IsName("L_Off")|| curAnim.IsName("R_Off")|| curAnim.IsName("G_Off")
+                || curAnim.IsName("B_Off")) && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
             {
                 bridge.GetComponent<MeshCollider>().isTrigger = true;
                 isNoLight = true;
