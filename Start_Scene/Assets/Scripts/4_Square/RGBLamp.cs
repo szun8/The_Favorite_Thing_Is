@@ -13,6 +13,8 @@ public class RGBLamp : MonoBehaviourPunCallbacks
 
     MultiPlayerMove multiPlayerMove;
 
+    public Transform Movehere;//플레이어가 딸깍 되지는 장소 
+
     private RaycastHit hit;  //전구에 검출된 플레이어
 
     public bool isColor = false;  //전구 불 켜져 있는지 여부 - 이 전구 역할 끝 
@@ -22,6 +24,9 @@ public class RGBLamp : MonoBehaviourPunCallbacks
     public bool isShort; //전구 높낮이에 따른 레이 길이 조정 용도
 
     public Light pointLight;
+
+    private Vector3 playerPos;
+    private bool isArrive = false;
 
     void Awake() 
     {
@@ -34,20 +39,30 @@ public class RGBLamp : MonoBehaviourPunCallbacks
     {
         Ray();
 
-        if (!isColor)
+        if (!isColor) //이 백색광이 아직 빛내지 않으면
         {
-            if (hit.collider != null && isPlayer && rigid == null)
+            if (hit.collider != null && isPlayer) //ray로 검출하면 
             {
                 PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetComponentInParent<PhotonView>().ViewID);
 
-                if (CheckGetColor()) PV.RPC("FreezePlayer", RpcTarget.AllBuffered);
+                if (!isArrive && stopPlayer != null) //딸깍 장소 도착 아직 + 플레이어 검출 있으면 
+                {
+                    //플레이어를 이동시켜서 도달하면 isArrive true로  
+                   if (stopPlayer.GetComponent<Transform>().position.y >= Movehere.position.y) PV.RPC("SyncArrive",RpcTarget.AllBuffered);
+                }
+
+                if (CheckGetColor()  && stopPlayer != null) PV.RPC("FreezePlayer", RpcTarget.AllBuffered);
+
             }
+
         }
+
         
+
 
     }
     
-    bool CheckGetColor()    // 그 색을 먹은 플레이어라면 못먹게해 
+    bool CheckGetColor()  // 그 색을 먹은 플레이어라면 못먹게해 
     {
         if ((gameObject.CompareTag("R_item") && !multiPlayerMove.getRed) ||
             (gameObject.CompareTag("G_item") && !multiPlayerMove.getGreen) ||
@@ -80,24 +95,22 @@ public class RGBLamp : MonoBehaviourPunCallbacks
     {
         stopPlayer = PhotonView.Find(viewID).gameObject;
         multiPlayerMove = stopPlayer.GetComponent<MultiPlayerMove>();
+        
     }
 
-    //플레이어 공중 딸깍 동안 멈추게 하기 
+    //플레이어 키입력 못 하게 + 중력 없애 
     [PunRPC]
     void FreezePlayer()
     {
-        if (stopPlayer != null)
-        {
-            //키 입력을 아예 못받게 해버리자
-            stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
+        //키 입력을 아예 못받게 해버리자
+        stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
 
-            //이거 하면 공중부양
-            rigid = stopPlayer.GetComponent<Rigidbody>();
-            rigid.constraints = RigidbodyConstraints.FreezePosition;
+        stopPlayer.GetComponent<Transform>().position = Vector3.Lerp(stopPlayer.GetComponent<Transform>().position, Movehere.position, 0.03f);
+        //이거 하면 공중부양
+        rigid = stopPlayer.GetComponent<Rigidbody>();
+        rigid.constraints = RigidbodyConstraints.FreezePosition;
 
-            StartCoroutine(LampManager());
-
-        }
+        StartCoroutine(LampManager());
     }
 
     IEnumerator LampManager()
@@ -109,6 +122,8 @@ public class RGBLamp : MonoBehaviourPunCallbacks
         PV.RPC("PlayerRGB", RpcTarget.AllBuffered);
     }
 
+    [PunRPC]
+    void SyncArrive() => isArrive = true;
     
 
     //플레이어 딸깍 멈췄다가 다시 움직이게 하기 
@@ -125,16 +140,12 @@ public class RGBLamp : MonoBehaviourPunCallbacks
     [PunRPC]
     void PlayerRGB()
     {
-        if (stopPlayer != null)
-        {
-            //이 가로등이 무슨 색을 갖는 태그 인지
-            if (gameObject.CompareTag("R_item")) stopPlayer.GetComponent<MultiPlayerMove>().getRed = true;
+        //이 가로등이 무슨 색을 갖는 태그 인지
+        if (gameObject.CompareTag("R_item")) stopPlayer.GetComponent<MultiPlayerMove>().getRed = true;
 
-            if (gameObject.CompareTag("G_item")) stopPlayer.GetComponent<MultiPlayerMove>().getGreen = true;
+        if (gameObject.CompareTag("G_item")) stopPlayer.GetComponent<MultiPlayerMove>().getGreen = true;
 
-            if (gameObject.CompareTag("B_item")) stopPlayer.GetComponent<MultiPlayerMove>().getBlue = true;
-
-        }
+        if (gameObject.CompareTag("B_item")) stopPlayer.GetComponent<MultiPlayerMove>().getBlue = true;
     }
 
    

@@ -13,6 +13,8 @@ public class Lamp : MonoBehaviourPunCallbacks
 
     MultiPlayerMove multiPlayerMove;
 
+    public Transform Movehere;
+
     private RaycastHit hit;  //전구에 검출된 플레이어
     private bool isColor = false;  //전구 불 켜져 있는지 여부 
 
@@ -30,7 +32,7 @@ public class Lamp : MonoBehaviourPunCallbacks
         Debug.DrawRay(transform.position, -transform.up * 1.0f, Color.blue);
         isPlayer = Physics.Raycast(transform.position, -transform.up, out hit, 1f, LayerMask.GetMask("LightPlayer"));
 
-
+        //ray가 collider검출 + 빛내는 플레이어를 검출 + 검출되기 전까지 rigidbody가 null 
         if (hit.collider != null && isPlayer && GetComponent<Rigidbody>() == null)
         {
             PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetComponentInParent<PhotonView>().ViewID);
@@ -57,9 +59,15 @@ public class Lamp : MonoBehaviourPunCallbacks
             //키 입력을 아예 못받게 해버리자
             stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
 
+            Vector3 pos = stopPlayer.GetComponent<Transform>().position;
+
             //이거 하면 공중부양
             rigid = stopPlayer.GetComponent<Rigidbody>();
             rigid.constraints = RigidbodyConstraints.FreezePosition;
+
+             
+            pos = Vector3.MoveTowards(pos, Movehere.position, 2.5f * Time.deltaTime);
+            stopPlayer.GetComponent<Transform>().position = pos;
 
             StartCoroutine(LampManager());
         }
