@@ -37,6 +37,7 @@ public class CaveMove : MonoBehaviour
         materials = mesh.sharedMaterials;
         
         transform.position = pos[0].transform.position;  // 플레이어 시작위치 초기화
+        
         savePoint = pos[1];
         SoundManager.instnace.PlayBGM();
     }
@@ -142,7 +143,7 @@ public class CaveMove : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Item"))
+        if (other.gameObject.CompareTag("Item") && lightOn)
         {   // 끝부분 이스터에그 워프기능
             savePoint = pos[3];
             StartCoroutine(SetPos());

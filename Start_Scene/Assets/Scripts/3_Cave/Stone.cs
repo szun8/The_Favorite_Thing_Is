@@ -15,7 +15,8 @@ public class Stone : MonoBehaviour
 
     void Start()
     {
-        rigid.velocity = Vector3.down * Random.Range(50f, 75f);
+        if(transform.parent.name == "DropPathArea_2")
+            rigid.velocity = Vector3.down * Random.Range(50f, 75f);
     }
 
     private void OnTriggerEnter(Collider other)

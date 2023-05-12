@@ -38,13 +38,14 @@ public class ChangeMat : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("l")) isL = true;
+        if (isChange && Input.GetKeyDown("l")) isL = true;
         if (isL && isChange)
         {   // 특정 지점에 닿았고 L 버튼도 켰다면,
             MatIn();
             if (wall.materials[1].color.a >= 0.99)
             {   // 벽화의 색이 일정 수준 다 보이게 되면 원상복귀
                 CinematicBar.instance.HideBars();
+                ct.m_FollowOffset.x = Mathf.Lerp(ct.m_FollowOffset.x, 6, Time.deltaTime * 1.5f);
                 ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 14.5f, Time.deltaTime * 1.5f);
                 sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-2f, 2f, 0), Time.deltaTime * 1.5f);
                 vignette.center.Override(Vector2.Lerp(vignette.center.value, new Vector2(0.25f, 0.35f), Time.deltaTime * 1.5f));
@@ -72,9 +73,10 @@ public class ChangeMat : MonoBehaviour
 
     void CamOnLerp()
     {
+        ct.m_FollowOffset.x = Mathf.Lerp(ct.m_FollowOffset.x, 2.5f, Time.deltaTime * 1.5f);
         ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 5.5f, Time.deltaTime);
         vignette.center.Override(Vector2.Lerp(vignette.center.value, centerVignette, Time.deltaTime));
-        sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-9f, 8f, 0), Time.deltaTime);
+        sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(-9f, 18f, 0), Time.deltaTime);
         if (cm.lightOn)
         {
             cm.lightOn = false;
@@ -83,11 +85,6 @@ public class ChangeMat : MonoBehaviour
         cm.animator.enabled = false;
         cm.enabled = false;
     }
-
-    //private void OnDestroy()
-    //{
-    //    vignette.center.Override(originOffset);
-    //}
 
     void MatIn()
     {
