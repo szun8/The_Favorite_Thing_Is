@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Seahorse : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject player;
+    Vector3 originPos;
+
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+       
     }
+
+    
 }

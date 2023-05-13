@@ -14,7 +14,6 @@ enum TypeFish
 {
     jelly,
     boss,
-    seahorse
 }
 
 public class SpawnEnemy : MonoBehaviour
@@ -25,20 +24,17 @@ public class SpawnEnemy : MonoBehaviour
     Quaternion[] rotation;
  
     public InfoFish[] Jelly;
-    public InfoFish[] Seahorse;
     public InfoFish Boss;
+    public Transform bossSpawn;
 
     public GameObject rangeJelly;       // 해파리가 랜덤 소환될 구역 오브젝트
-    public GameObject rangeSeahorse;    // 해마가 랜덤 소환될 구역 오브젝트
-    public Transform bossSpawn;
-    BoxCollider rangeJellyCollider, rangeSeahorseCollider;
-
+    BoxCollider rangeJellyCollider;
+    
     private void Awake()
     {
-        rotation = new Quaternion[3];
+        rotation = new Quaternion[2];
 
         rangeJellyCollider = rangeJelly.GetComponent<BoxCollider>();
-        rangeSeahorseCollider = rangeSeahorse.GetComponent<BoxCollider>();
     }
 
     private void Start()
@@ -55,9 +51,6 @@ public class SpawnEnemy : MonoBehaviour
 
     void InstantiateFish()
     {
-        for (int i = 0; i < Seahorse.Length; i++)   // 해마 스폰
-            InstantiateFish(Seahorse[i], i, TypeFish.seahorse);
-
         for (int i = 0; i < Jelly.Length; i++)      // 해파리 스폰
             InstantiateFish(Jelly[i], i, TypeFish.jelly);
 
@@ -67,6 +60,7 @@ public class SpawnEnemy : MonoBehaviour
     void InstantiateFish(InfoFish _gameObject, int i, TypeFish _type)
     {   // 입력된 개체를 생성하는 함수
         GameObject clone;
+
         _gameObject.name = _type + "_" + i;
         switch (_type)
         {   
@@ -79,11 +73,6 @@ public class SpawnEnemy : MonoBehaviour
                 _gameObject.speed = 0f;
                 _gameObject.spawnSpot = Return_RandomPos_jelly();
                 break;
-
-            case TypeFish.seahorse:
-                _gameObject.speed = 0f;
-                _gameObject.spawnSpot = Return_RandomPos_seahorse();
-                break;
         }
 
         clone = Instantiate(seaObj[(int)_type], _gameObject.spawnSpot, rotation[(int)_type]);
@@ -92,24 +81,9 @@ public class SpawnEnemy : MonoBehaviour
         // 바다 객체들 하이라키에서 위치할 부모 계층 조정
         if (clone.tag == "Enemy") clone.transform.parent = this.transform;
         else if(clone.tag == "Item") clone.transform.parent = GameObject.Find("Jelly_RespawnRange").transform;
-        else clone.transform.parent = GameObject.Find("Seahorse_spawnRange").transform;
 
         // 보스는 스폰되자마자 비활성화
         if (_type == TypeFish.boss) clone.gameObject.SetActive(false);
-    }
-
-    Vector3 Return_RandomPos_seahorse()
-    {
-        Vector3 originPos = rangeSeahorse.transform.position;
-        float range_Y = rangeSeahorseCollider.bounds.size.y;
-        float range_Z = rangeSeahorseCollider.bounds.size.z;
-
-        range_Y = Random.Range((range_Y / 2) * -1, range_Y / 2);
-        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPos = new Vector3(0, (int)range_Y, (int)range_Z);
-
-        Vector3 respawnPos = originPos + RandomPos;
-        return respawnPos;
     }
 
     Vector3 Return_RandomPos_jelly()

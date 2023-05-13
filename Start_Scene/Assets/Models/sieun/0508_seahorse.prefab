@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7837268210002930753}
   - component: {fileID: 7837268210002930754}
   - component: {fileID: 7837268210002930759}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: 0508_seahorse
   m_TagString: Untagged
   m_Icon: {fileID: 0}

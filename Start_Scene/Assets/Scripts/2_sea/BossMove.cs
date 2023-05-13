@@ -36,7 +36,6 @@ public class BossMove : MonoBehaviour
     void Move(float speed)
     {
         // chase -> 30 -> 0 -> 50 -> 0 -> destroy
-        Debug.Log(speed);
         rigid.MovePosition(transform.position + Vector3.right * Time.deltaTime * speed);
     }
 
