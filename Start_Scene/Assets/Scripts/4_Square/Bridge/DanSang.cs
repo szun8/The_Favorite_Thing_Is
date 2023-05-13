@@ -17,14 +17,14 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private bool isL, noL = false; // 계속해서 패킷 보내기 방지
 
-    public bool L, R, G= false;
+    public bool L, R, G, B = false;
 
     void Awake()
     {
         PV = GetComponent<PhotonView>();
         animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기
 
-        CheckPlateColor();
+        CheckPlateColor(); // 무슨색의 단상인지 LRGB 중 맞게 true 
 
     }
 
@@ -68,6 +68,8 @@ public class DanSang : MonoBehaviourPunCallbacks
 
         else if (bridge.CompareTag("G_Plate")) G = true;
 
+        else if (bridge.CompareTag("B_Plate")) B = true;
+
         else L = true;
 
     }
@@ -75,25 +77,7 @@ public class DanSang : MonoBehaviourPunCallbacks
     //어느 단상인지 확인 후 플레이어가 배출하는 빛 감지 
     void CheckLight()
     {
-        if (L)
-        {
-            //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
-            if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                && !isL)
-            {
-                noL = false;
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                isL = true;
-            }
-
-            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
-            {
-                isL = false;
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = true;
-            }
-        }
-        else if (R)
+        if (R)
         {
             //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
             if (Player.GetComponent<MultiPlayerMove>().r_pressed && Player.GetComponent<MultiPlayerMove>().isGround
@@ -103,7 +87,7 @@ public class DanSang : MonoBehaviourPunCallbacks
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isL = true;
             }
-
+            
             else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && !noL)
             {
                 isL = false;
@@ -122,6 +106,41 @@ public class DanSang : MonoBehaviourPunCallbacks
             }
 
             else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && !noL)
+            {
+                isL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = true;
+            }
+        }
+        else if (B)
+        {
+            if (Player.GetComponent<MultiPlayerMove>().b_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                && !isL)
+            {
+                noL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isL = true;
+            }
+
+            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && !noL)
+            {
+                isL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = true;
+            }
+        }
+        else // L일경우 
+        {
+            //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
+            if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
+                && !isL)
+            {
+                noL = false;
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                isL = true;
+            }
+
+            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);

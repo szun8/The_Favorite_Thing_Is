@@ -22,7 +22,7 @@ public class TurtleColor : MonoBehaviourPun //플레이어가 G 백색광 먹으
 
     void Update()
     {
-        if (!isDone && G_Lamp.GetComponent<RGBLamp>().isColor)
+        if (!isDone && G_Lamp.GetComponent<RGBLamp>().isColor) //불이켜져야 바뀜 
         {
             PV.RPC("SyncMat", RpcTarget.AllBuffered);
             isDone = true;
@@ -30,5 +30,5 @@ public class TurtleColor : MonoBehaviourPun //플레이어가 G 백색광 먹으
     }
 
     [PunRPC]
-    void SyncMat() => mesh.material = green;
+    void SyncMat() => mesh.material = green;//green;
 }

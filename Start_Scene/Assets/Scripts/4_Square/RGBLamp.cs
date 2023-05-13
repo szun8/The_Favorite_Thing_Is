@@ -45,11 +45,11 @@ public class RGBLamp : MonoBehaviourPunCallbacks
             {
                 PV.RPC("SetStopPlayer", RpcTarget.AllBuffered, hit.collider.gameObject.GetComponentInParent<PhotonView>().ViewID);
 
-                if (!isArrive && stopPlayer != null) //딸깍 장소 도착 아직 + 플레이어 검출 있으면 
+                /*if (!isArrive && stopPlayer != null) //딸깍 장소 도착 아직 + 플레이어 검출 있으면 
                 {
                     //플레이어를 이동시켜서 도달하면 isArrive true로  
-                   if (stopPlayer.GetComponent<Transform>().position.y >= Movehere.position.y) PV.RPC("SyncArrive",RpcTarget.AllBuffered);
-                }
+                    if (stopPlayer.GetComponent<Transform>().position.y >= Movehere.position.y) PV.RPC("SyncArrive", RpcTarget.AllBuffered);
+                }*/
 
                 if (CheckGetColor()  && stopPlayer != null) PV.RPC("FreezePlayer", RpcTarget.AllBuffered);
 
@@ -122,8 +122,8 @@ public class RGBLamp : MonoBehaviourPunCallbacks
         PV.RPC("PlayerRGB", RpcTarget.AllBuffered);
     }
 
-    [PunRPC]
-    void SyncArrive() => isArrive = true;
+    //[PunRPC]
+    //void SyncArrive() => isArrive = true;
     
 
     //플레이어 딸깍 멈췄다가 다시 움직이게 하기 
