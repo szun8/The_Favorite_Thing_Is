@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Photon.Pun;
 
 public class MirrorMove : MonoBehaviourPunCallbacks
@@ -39,33 +40,45 @@ public class MirrorMove : MonoBehaviourPunCallbacks
     void Update()
     {
         if (!PV.IsMine) return;
-
-        dir.x = Input.GetAxisRaw("Horizontal");
-        dir.z = Input.GetAxisRaw("Vertical");
-
-        if (isJump && Input.GetKeyDown("space"))
-        {
-            isJump = false;
-            PV.RPC("SyncMirrorJump", RpcTarget.AllBuffered);
-            rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyDown("l"))
-        {
-            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
-            PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
-        }
-        if (Input.GetKeyUp("l"))
-        {
-            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, false);
-        }
         //모든 버튼이 안눌려 있어야만 빛이 꺼집니다 . 
         if (!l_pressed) PV.RPC("MirrorLightOff", RpcTarget.AllBuffered);
 
         if (isLoad)
         {   // 거울스톤이 밝아지며 씬전환 함수 호출되는 곳
+            Debug.Log("SceneLoad to 4");
             SceneLoad();
             isLoad = false;
+        }
+    }
+
+    public void OnMove(InputAction.CallbackContext state)
+    {
+        if (state.performed)
+        {
+            dir = state.ReadValue<Vector3>();
+        }
+    }
+
+    public void OnJump(InputAction.CallbackContext state)
+    {
+        if (state.performed && isJump)
+        {
+            isJump = false;
+            PV.RPC("SyncMirrorJump", RpcTarget.AllBuffered);
+            rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+        }
+    }
+
+    public void OnLight(InputAction.CallbackContext state)
+    {
+        if (state.performed)
+        {
+            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
+            PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
+        }
+        else if (state.canceled)
+        {
+            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, false);
         }
     }
 
@@ -133,8 +146,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
             spotLight.color = Color.white;
             gameObject.transform.GetChild(1).gameObject.layer = 9;
             lightOn = true;
-            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(96f, 93f, 0, 120f));
-
+            maskLight.GetComponent<Renderer>().material.SetColor("_Emission", new Color(20f, 20f, 20f, 120f));
 
             PV.RPC("MirrorLightPower", RpcTarget.AllBuffered);
 

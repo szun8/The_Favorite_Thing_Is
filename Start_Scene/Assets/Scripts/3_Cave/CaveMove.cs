@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CaveMove : MonoBehaviour
 {
@@ -42,25 +43,6 @@ public class CaveMove : MonoBehaviour
         SoundManager.instnace.PlayBGM();
     }
 
-    void Update()
-    {
-        if (isDied) return;
-        dir.x = Input.GetAxisRaw("Horizontal");
-
-        Jump();
-        if (Input.GetKey("l"))
-        {
-            lightOn = true;
-            LightHandle();
-        }
-
-        if (Input.GetKeyUp("l"))
-        {
-            lightOn = false;
-            LightHandle();
-        }
-    }
-
     void FixedUpdate()
     {
         if (isDied) return;
@@ -72,8 +54,8 @@ public class CaveMove : MonoBehaviour
         //키 입력이 들어왔으면 ~
         if (dir != Vector3.zero)
         {
-            Move();
-
+            rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+            animator.SetBool("isWalk", true);
             //바라보는 방향 부호 != 가고자할 방향 부호
             if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
             {
@@ -84,21 +66,38 @@ public class CaveMove : MonoBehaviour
         else animator.SetBool("isWalk", false);
     }
 
-    void Move()
+    public void OnMove(InputAction.CallbackContext state)
     {
-        animator.SetBool("isWalk", true);
-        rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+        if (state.performed)
+        {
+            dir = state.ReadValue<Vector3>();
+        }
     }
 
-    void Jump()
+    public void OnJump(InputAction.CallbackContext state)
     {
-        if (badak && Input.GetKeyDown("space"))
+        if (badak && state.performed)
         {
             badak = false;
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("isWalk", false);
             animator.SetTrigger("isJump");
             SoundManager.instnace.PlaySE("PlayerJump", 0.1f);
+        }
+    }
+
+    public void OnLight(InputAction.CallbackContext state)
+    {
+        if (state.performed)
+        {
+            lightOn = true;
+            LightHandle();
+        }
+
+        else if (state.canceled)
+        {
+            lightOn = false;
+            LightHandle();
         }
     }
 

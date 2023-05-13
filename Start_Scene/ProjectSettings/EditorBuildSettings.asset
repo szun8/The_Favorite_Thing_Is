@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4_Square.unity
     guid: bae207e3dfc6b46c3a191a08dd6b266b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 27911318556ec4ebdb73d49f3021fb29,
+      type: 2}

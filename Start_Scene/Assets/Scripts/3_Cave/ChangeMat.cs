@@ -17,7 +17,6 @@ public class ChangeMat : MonoBehaviour
     CaveMove cm;
 
     public Vector3 followOffset, originOffset;
-    Color wallAlpha;
     Vector2 centerVignette;
 
     bool isChange = false, isL = false;
@@ -30,7 +29,6 @@ public class ChangeMat : MonoBehaviour
     {
         ct = sideCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>();
         cm = player.GetComponent<CaveMove>();
-        wallAlpha = wall.materials[1].color;
 
         vol.profile.TryGet(out vignette);   // volume-Vignette 상태 가져오기
         centerVignette = new Vector2(0.5f, 0.5f);
@@ -38,7 +36,7 @@ public class ChangeMat : MonoBehaviour
 
     private void Update()
     {
-        if (isChange && Input.GetKeyDown("l")) isL = true;
+        if (isChange && player.GetComponent<CaveMove>().lightOn) isL = true;
         if (isL && isChange)
         {   // 특정 지점에 닿았고 L 버튼도 켰다면,
             MatIn();
