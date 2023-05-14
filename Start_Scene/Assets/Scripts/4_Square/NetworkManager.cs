@@ -48,8 +48,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         else if (SceneManager.GetActiveScene().name == "4_Square")
         {
             Debug.Log("SquarePlayer Spawn");
-            //SoundManager.instnace.PlayBGM();  // SceneNum = 4
-
             GameObject player = PhotonNetwork.Instantiate("MultiPlayer", pos, rot, 0);
         }
     }
@@ -70,8 +68,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             ScenesManager.instance.SceneNum = 4;
             SceneManager.LoadScene("4_Square");
+            videoHandler.instance.SetVideo(4);
+            Debug.Log("play video(4) and load Scene(4)");
         }
-        //SceneManager.LoadSceneAsync("4_Square");
-        //PhotonNetwork.LoadLevel("4_Square");
     }
 }

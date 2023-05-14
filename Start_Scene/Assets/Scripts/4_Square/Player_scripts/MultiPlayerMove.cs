@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Photon.Pun;
 using Photon.Realtime;
 
@@ -16,13 +17,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     Material[] PlayerMaterials; //머티리얼 직접 접근 불가로 저장할 공간
     public Material[] LightMaterials;  //L, R, G, B 머티리얼
 
-
-
     Rigidbody rigid;
     Animator animator;
 
     public PhotonView PV;
-
 
     //이동관련 변수 
     private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
@@ -34,11 +32,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public Light spotLight;  //spot light
     public GameObject maskLight; // 발광 구
 
-
     public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     public bool isJump = false; // 바닥 충돌, 발판과 단상
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
-
 
     //상호작용 
     //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
@@ -59,13 +55,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool g_pressed = false;
     public bool b_pressed = false;
 
-
-
     private Material defaultMaterial; //기본 발광 마테리얼
 
     //default는 ㄹㅇ 기본 발광Mat으로 쓸거고 PlayerMaterials에 mesh 눈이랑 바디 저장해두고 LightsMaterials로 변경해줘서 그걸 mesh에 맥일거임  
-
-
 
     void Awake()
     {
@@ -74,15 +66,11 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         rigid = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 
-
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         reverseGravity = GetComponent<ReverseGravity>();
         //wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
 
-
-
         defaultMaterial = LightMaterials[0]; //기본 머티리얼은 흰색 body
-
 
         //플레이어의 eye body 머티리얼 정보 저장 .
         PlayerMaterials = mesh.materials;
@@ -92,17 +80,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Camera.main.GetComponent<CameraMove>().player = gameObject;
             Camera.main.GetComponent<CameraMove>().dist = 20;//18;
             Camera.main.GetComponent<CameraMove>().height = 0.15f; //재인이의 희망은 0.2였다
-
         }
-
     }
-
 
     void Update()
     {
         if (PV.IsMine)
         {
-            dir.x = Input.GetAxisRaw("Horizontal");
+            // dir.x = Input.GetAxisRaw("Horizontal"); // old input system
 
             //플레이어 중력에 따른 레이 검출
             PlayerLay();
@@ -112,77 +97,66 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
             if (!isGround) isJump = true;
 
+            //if (Input.GetKeyDown("space"))
+            //{
+            //    if (isJump == false)
+            //    {
+            //        //isJump = true;
+            //        PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
+            //        //뒤집힌 중력인 경우 
+            //        if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
 
-            if (Input.GetKeyDown("space"))
-            {
-                if (isJump == false)
-                {
-                    //isJump = true;
-                    PV.RPC("SyncJump", RpcTarget.AllBuffered);
+            //        //제대로 된 중력 
+            //        else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);
+            //    }
+            //}
 
-                    //뒤집힌 중력인 경우 
-                    if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
-
-                    //제대로 된 중력 
-                    else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);
-
-                }
-
-            }
-
-
-
-
-            if (Input.GetKeyDown("l"))
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
-                PV.RPC("LightOn", RpcTarget.AllBuffered);
-            }
+            //if (Input.GetKeyDown("l"))
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
+            //    PV.RPC("LightOn", RpcTarget.AllBuffered);
+            //}
 
             //RPC 함수는 최대 인자 2개만 전송가능 Color는 못넘긴다 ~ 벡터로 변환 해줘야 한다 ~ 
-            if (Input.GetKeyDown("r") && getRed)
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
-            }
+            //if (Input.GetKeyDown("r") && getRed)
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
+            //    PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
+            //}
 
+            //if (Input.GetKeyDown("g") && getGreen)
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
+            //    PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));  
+            //}
 
-            if (Input.GetKeyDown("g") && getGreen)
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));  
-            }
+            //if (Input.GetKeyDown("b") && getBlue)
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
+            //    PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
+            //}
 
-            if (Input.GetKeyDown("b") && getBlue)
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
-                PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
-            }
-
-            if (Input.GetKeyUp("l"))
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, false);
-            }
-            if (Input.GetKeyUp("r"))
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, false);
-            }
-            if (Input.GetKeyUp("g"))
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, false);
-            }
-            if (Input.GetKeyUp("b"))
-            {
-                PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, false);
-            }
+            //if (Input.GetKeyUp("l"))
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, false);
+            //}
+            //if (Input.GetKeyUp("r"))
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, false);
+            //}
+            //if (Input.GetKeyUp("g"))
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, false);
+            //}
+            //if (Input.GetKeyUp("b"))
+            //{
+            //    PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, false);
+            //}
 
             //모든 버튼이 안눌려 있어야만 빛이 꺼집니다 . 
             if (!r_pressed && !g_pressed && !b_pressed && !l_pressed) PV.RPC("LightOff", RpcTarget.AllBuffered);
-
-
         }
-
     }
 
     private void FixedUpdate()
@@ -209,15 +183,92 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             {
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
             }
-
             rigid.MovePosition(transform.position + dir / 1.3f * Time.deltaTime * speed);
-
-
         }
-
     }
 
+    public void OnMove(InputAction.CallbackContext state)
+    {   // 누른 키에 대한 value를 dir에 저장
+        if(PV.IsMine)
+            dir = state.ReadValue<Vector3>();
+    }
 
+    public void OnJump(InputAction.CallbackContext state)
+    {
+        if (!PV.IsMine) return;
+
+        if (state.performed && isJump == false)
+        {   
+            //isJump = true;
+            PV.RPC("SyncJump", RpcTarget.AllBuffered);
+
+            //뒤집힌 중력인 경우 
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
+
+            //제대로 된 중력 
+            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);
+        }
+    }
+
+    public void OnLight(InputAction.CallbackContext state)
+    {
+        if (!PV.IsMine) return;
+
+        if (state.performed)
+        {   // get key down
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
+            PV.RPC("LightOn", RpcTarget.AllBuffered);
+        }
+        else if (state.canceled)
+        {   // get key up
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, false);
+        }
+    }
+
+    public void OnRed(InputAction.CallbackContext state)
+    {
+        if (!PV.IsMine) return;
+
+        if (state.performed && getRed)
+        {   
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
+            PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
+        }
+        else if (state.canceled)
+        {
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, false);
+        }
+    }
+
+    public void OnGreen(InputAction.CallbackContext state)
+    {
+        if (!PV.IsMine) return;
+
+        if (state.performed && getGreen)
+        {
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
+            PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));
+        }
+        else if (state.canceled)
+        {
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, false);
+        }
+    }
+
+    public void OnBlue(InputAction.CallbackContext state)
+    {
+        if (!PV.IsMine) return;
+
+        if (state.performed && getBlue)
+        {
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
+            PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
+        }
+        else if (state.canceled)
+        {
+            PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, false);
+        }
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -246,7 +297,6 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             Debug.DrawRay(transform.position + new Vector3(0, 0.5f, 0), Vector2.down * 0.7f, Color.blue);
             //1:쏘는 위치 2:쏘는 방향 3:해당 레이어 
             isGround = Physics.Raycast(transform.position + new Vector3(0, 0.5f, 0), Vector2.down, 0.7f, LayerMask.GetMask("Ground"));
-
 
             //isItem = Physics.Raycast(transform.position, transform.forward, out RGBitem, 1.1f, LayerMask.GetMask("Item") );
             //내 앞으로 광선을 쏴서 물체를 검출해보자 

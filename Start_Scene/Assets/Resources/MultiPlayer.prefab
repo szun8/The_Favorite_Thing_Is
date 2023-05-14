@@ -254,6 +254,7 @@ GameObject:
   - component: {fileID: 4580975493910064689}
   - component: {fileID: 4580975493910064695}
   - component: {fileID: 4904673351218812022}
+  - component: {fileID: 4523043859200609309}
   - component: {fileID: 4291155922799687852}
   - component: {fileID: 2255173375986462339}
   - component: {fileID: 1503791759791341126}
@@ -357,6 +358,133 @@ MonoBehaviour:
   r_pressed: 0
   g_pressed: 0
   b_pressed: 0
+--- !u!114 &4523043859200609309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580975493910064693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 0fa8b6fd4f1f5487c8f6cf3a598324d4,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6686dbd7-5efc-49c8-a226-a2683f5d2d52
+    m_ActionName: Player/Move[/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 78016aa2-6824-40b1-8cc2-3c4692adcf6a
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnLight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 94b5befc-e5f8-465b-a730-868ea58a36c4
+    m_ActionName: Player/Light[/Keyboard/l]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnRed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4568838e-2ac4-403b-939d-6ea82aab212b
+    m_ActionName: Player/Red[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnGreen
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 99f49513-adc3-4e6d-9bbb-28308b02c61d
+    m_ActionName: Player/Green[/Keyboard/g]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4904673351218812022}
+        m_TargetAssemblyTypeName: MultiPlayerMove, Assembly-CSharp
+        m_MethodName: OnBlue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b8902141-65eb-48e9-bc5f-8639347be8d4
+    m_ActionName: Player/Blue[/Keyboard/b]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &4291155922799687852
 MonoBehaviour:
   m_ObjectHideFlags: 0
