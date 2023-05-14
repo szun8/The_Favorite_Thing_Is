@@ -1,0 +1,211 @@
+fileFormatVersion: 2
+guid: 0be03ee14a6777045992752c43a5bf72
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      74: 5147829422327712643
+    second: Cube.037|Action
+  - first:
+      74: 4399012462815922379
+    second: Cube.037|cloudAction
+  - first:
+      74: -1342730374000582511
+    second: Cube.037|cloudAction.001
+  - first:
+      74: -6112970217435475304
+    second: Cube.037|cloudAction.002
+  - first:
+      74: -2419769056976980371
+    second: Cube.037|cloudAction.003
+  - first:
+      74: 6462876743512613033
+    second: Cube.037|cloudAction.004
+  - first:
+      74: -285167589225585870
+    second: Cube.037|cloudAction.005
+  - first:
+      74: -6645746910836095180
+    second: ConcreteColumn|Action
+  - first:
+      74: -840893406774099711
+    second: ConcreteColumn|cloudAction
+  - first:
+      74: -2177366927068461618
+    second: ConcreteColumn|cloudAction.001
+  - first:
+      74: -5236659762615254695
+    second: ConcreteColumn|cloudAction.002
+  - first:
+      74: 182297316420088171
+    second: ConcreteColumn|cloudAction.003
+  - first:
+      74: 1725173622487613277
+    second: ConcreteColumn|cloudAction.004
+  - first:
+      74: -2084152134325235058
+    second: ConcreteColumn|cloudAction.005
+  - first:
+      74: 1513200404512537615
+    second: ConcreteColumn.001|Action
+  - first:
+      74: -9098552082178021949
+    second: ConcreteColumn.001|cloudAction
+  - first:
+      74: -2830628083845961413
+    second: ConcreteColumn.001|cloudAction.001
+  - first:
+      74: -6951049634826760688
+    second: ConcreteColumn.001|cloudAction.002
+  - first:
+      74: 3896433327324612671
+    second: ConcreteColumn.001|cloudAction.003
+  - first:
+      74: 6519667127011161030
+    second: ConcreteColumn.001|cloudAction.004
+  - first:
+      74: 2679069837492691089
+    second: ConcreteColumn.001|cloudAction.005
+  - first:
+      74: 4483491912799886329
+    second: ConcreteColumn.002|Action
+  - first:
+      74: -3993057692096123168
+    second: ConcreteColumn.002|cloudAction
+  - first:
+      74: -5611087159644174709
+    second: ConcreteColumn.002|cloudAction.001
+  - first:
+      74: -1335263167469113140
+    second: ConcreteColumn.002|cloudAction.002
+  - first:
+      74: 8476555314824248909
+    second: ConcreteColumn.002|cloudAction.003
+  - first:
+      74: -2884051084030704184
+    second: ConcreteColumn.002|cloudAction.004
+  - first:
+      74: -6287588905241704069
+    second: ConcreteColumn.002|cloudAction.005
+  - first:
+      74: 975595959448855472
+    second: ConcreteColumn.003|Action
+  - first:
+      74: -2728621948675307134
+    second: ConcreteColumn.003|cloudAction
+  - first:
+      74: 2240151424268954208
+    second: ConcreteColumn.003|cloudAction.001
+  - first:
+      74: 1627891567926091006
+    second: ConcreteColumn.003|cloudAction.002
+  - first:
+      74: -8766412286651791979
+    second: ConcreteColumn.003|cloudAction.003
+  - first:
+      74: -5369977578975511726
+    second: ConcreteColumn.003|cloudAction.004
+  - first:
+      74: -5582147911697784128
+    second: ConcreteColumn.003|cloudAction.005
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
