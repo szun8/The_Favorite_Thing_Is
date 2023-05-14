@@ -121,7 +121,6 @@ public class SwimMove : MonoBehaviour
         rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
 
         if(isDown) rigid.AddForce(Vector2.down * DownForce, ForceMode.Impulse);
-
     }
 
     public void OnMove(InputAction.CallbackContext state)
@@ -150,6 +149,7 @@ public class SwimMove : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext state)
     {
+        if (isDied) return;
         if (Water.isWater && state.performed)
         {
             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
@@ -159,7 +159,9 @@ public class SwimMove : MonoBehaviour
 
     bool isDown = false;
     public void OnDown(InputAction.CallbackContext state)
-    { 
+    {
+        if (isDied) return;
+
         if (Water.isWater && state.performed)
         {   // get key
             Debug.Log("down performed");
@@ -175,16 +177,15 @@ public class SwimMove : MonoBehaviour
     bool isLight = false;
     public void OnLight(InputAction.CallbackContext state)
     {
+        if (isDied) return;
+
         if (!isEnd && state.performed )
         {   // getKey
-            Debug.Log("light performed");
             isLight = true;
         }
 
         if (!isEnd && state.canceled)
         {   // get keyUp
-            Debug.Log("light cancled");
-
             isLight = false;
             StopCoroutine(Dash());
             lightOn = false;

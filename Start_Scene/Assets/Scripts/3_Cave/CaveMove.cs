@@ -76,6 +76,8 @@ public class CaveMove : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext state)
     {
+        if (isStop || isDied) return;
+
         if (badak && state.performed)
         {
             badak = false;
@@ -88,6 +90,8 @@ public class CaveMove : MonoBehaviour
 
     public void OnLight(InputAction.CallbackContext state)
     {
+        if (isStop || isDied) return;
+
         if (state.performed)
         {
             lightOn = true;

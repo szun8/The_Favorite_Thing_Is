@@ -92,6 +92,8 @@ public class PlayerMove : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext state)
     {
+        if (isStop) return;
+
         if (state.performed && isJump == false)
         {
             animator.SetBool("isWalk", false);
@@ -102,6 +104,8 @@ public class PlayerMove : MonoBehaviour
 
     public void OnLight(InputAction.CallbackContext state)
     {
+        if (isStop) return;
+
         if (state.performed)
         {   // GetKeyDown
             lightOn = true;

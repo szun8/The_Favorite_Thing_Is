@@ -67,6 +67,7 @@ public class BossMove : MonoBehaviour
         {
             Debug.Log("BossDied");
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
+            GameObject.Find("MileStone 2").GetComponent<BoxCollider>().isTrigger = false;
             isStop = true;
             rigid.useGravity = true;
             Invoke("BossDestroy", 3f);

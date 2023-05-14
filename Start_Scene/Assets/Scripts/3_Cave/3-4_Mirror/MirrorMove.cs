@@ -112,17 +112,21 @@ public class MirrorMove : MonoBehaviourPunCallbacks
                 transform.Rotate(0, 1, 0);
             }
             transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
+
+            if (!StopToWall())
+            {
+                rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
+                PV.RPC("SyncMirrorAnimation", RpcTarget.AllBuffered, "isWalk", true);
+            }
         }
         else
         {
             PV.RPC("SyncMirrorAnimation", RpcTarget.AllBuffered, "isWalk", false);
         }
-        if(!StopToWall())
-            rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
     }
 
     bool StopToWall()
-    {
+    {   // 벽 뚫는 버그 막아버리기!
         RaycastHit[] hits;
         Debug.DrawRay(transform.position+Vector3.up, transform.forward * 1, Color.green);
         hits = Physics.RaycastAll(transform.position+Vector3.up, transform.forward, 1);
