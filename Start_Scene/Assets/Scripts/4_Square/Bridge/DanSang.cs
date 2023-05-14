@@ -8,8 +8,10 @@ public class DanSang : MonoBehaviourPunCallbacks
     Animator animator;
     PhotonView PV;
 
+    public bool plateLight = false; //이 단상에서 플레이어가 빛내니? 
+    public bool isLastBridge = false; //B-2구역인지 아닌지 
     public GameObject bridge; //해당 단상과 연결이 되는 발판 
-
+    
 
     private GameObject Player; // 단상에 충돌한 플레이어 
 
@@ -24,7 +26,9 @@ public class DanSang : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
         animator = GetComponentInChildren<Animator>();      //자식(발판)의 애니메이터 가져오기
 
-        CheckPlateColor(); // 무슨색의 단상인지 LRGB 중 맞게 true 
+        CheckPlateColor(); // 무슨색의 단상인지 LRGB 중 맞게 true
+
+        if (isLastBridge) animator.SetBool("isFast", true);
 
     }
 
@@ -38,14 +42,12 @@ public class DanSang : MonoBehaviourPunCallbacks
                 CheckLight();
             }
 
-            else //플레이어가 단상에 아예 없을 때, 
+            //플레이어가 단상에 아예 없을 때,
+            else if (isNoLight)  //플레이어가 처음으로 불켰다 꺼야만 이게 true되서 활성화됨 
             {
-                if (isNoLight) //플레이어가 처음으로 불켰다 꺼야만 이게 true되서 활성화됨 
-                {
-                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                    noL = isL = false;
-                    isNoLight = false;
-                }
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                noL = isL = false;
+                isNoLight = false;
             }
         }
     }
@@ -122,7 +124,7 @@ public class DanSang : MonoBehaviourPunCallbacks
                 isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && !noL)
+            else if (!Player.GetComponent<MultiPlayerMove>().b_pressed && !noL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
@@ -153,20 +155,35 @@ public class DanSang : MonoBehaviourPunCallbacks
     void SyncAnim(bool value)  //애니메이션 변수 동기화 
     {
         animator.SetBool("isLight", value);
+        plateLight = value;
 
-        //불 키면 서서히 밝아지면서 collider 생김 
-        if (value) bridge.GetComponent<MeshCollider>().isTrigger = false;
-
-        else //불 끄면 서서히 어두워지고 90퍼 되야 trigger 
+        if (!isLastBridge) //일반적인 단상들 
         {
-            AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
-            if ((curAnim.IsName("L_Off")|| curAnim.IsName("R_Off")|| curAnim.IsName("G_Off")
-                || curAnim.IsName("B_Off")) && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
+            //불 키면 서서히 밝아지면서 collider 생김 
+            if (value) bridge.GetComponent<MeshCollider>().isTrigger = false;
+
+            else //불 끄면 서서히 어두워지고 90퍼 되야 trigger 
+            {
+                AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
+                if ((curAnim.IsName("L_Off") || curAnim.IsName("R_Off") || curAnim.IsName("G_Off")
+                    || curAnim.IsName("B_Off")) && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
+                {
+                    bridge.GetComponent<MeshCollider>().isTrigger = true;
+                    isNoLight = true;
+                }
+
+            }
+        }
+
+        else if (isLastBridge) //B-2구역 단상들 
+        {
+            if (value) bridge.GetComponent<MeshCollider>().isTrigger = false;
+
+            else
             {
                 bridge.GetComponent<MeshCollider>().isTrigger = true;
                 isNoLight = true;
             }
-
         }
 
     }
