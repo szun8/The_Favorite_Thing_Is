@@ -35,7 +35,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 1
+  m_Speed: 1.25
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -80502179259515918}
@@ -50,7 +50,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4781951162920444690, guid: a564ca1a16aab4913924930e4f7e9d6e,
+  m_Motion: {fileID: 4781951162920444690, guid: 770b38f2b2abdd447b3766a9620d1295,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -99,11 +99,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.000000023841844
+  m_TransitionDuration: 0.20086765
   m_TransitionOffset: 0
-  m_ExitTime: 0.02041005
+  m_ExitTime: 0.020410044
   m_HasExitTime: 0
-  m_HasFixedDuration: 0
+  m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -348,7 +348,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature|walk_in_place
-  m_Speed: 1.75
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2188668071681389800}
@@ -361,7 +361,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8931021306010072772, guid: b8a16ab061bd16340ab8711f675b5acd,
+  m_Motion: {fileID: 8931021306010072772, guid: ef4023c6e1444bf48a4882646d916064,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
