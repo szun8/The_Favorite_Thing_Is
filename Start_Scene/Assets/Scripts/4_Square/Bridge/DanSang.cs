@@ -17,7 +17,7 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private bool isNoLight = false; //플레이어가 단상에 있지만 빛 안키면 true되게 하자 
 
-    private bool isL, noL = false; // 계속해서 패킷 보내기 방지
+    private bool isL = false; // 계속해서 패킷 보내기 방지
 
     public bool L, R, G, B = false;
 
@@ -46,7 +46,7 @@ public class DanSang : MonoBehaviourPunCallbacks
             else if (isNoLight)  //플레이어가 처음으로 불켰다 꺼야만 이게 true되서 활성화됨 
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = isL = false;
+                isL = false;
                 isNoLight = false;
             }
         }
@@ -60,7 +60,16 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) Player = null;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player = null;
+
+            if (!isNoLight) // 플레이어가 빛을 안끈 상태로 단상 탈출시 안꺼지는 문제 해결
+            {
+                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+            }
+              
+        }
     }
 
     //rgb 단상중 어느 단상인지 
@@ -85,16 +94,15 @@ public class DanSang : MonoBehaviourPunCallbacks
             if (Player.GetComponent<MultiPlayerMove>().r_pressed && Player.GetComponent<MultiPlayerMove>().isGround
                 && !isL)
             {
-                noL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isL = true;
             }
-            
-            else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && !noL)
+
+            //플레이어가 l 떼면 
+            else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && isL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = true;
             }
         }
         else if (G)
@@ -102,16 +110,14 @@ public class DanSang : MonoBehaviourPunCallbacks
             if (Player.GetComponent<MultiPlayerMove>().g_pressed && Player.GetComponent<MultiPlayerMove>().isGround
                 && !isL)
             {
-                noL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && !noL)
+            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && isL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = true;
             }
         }
         else if (B)
@@ -119,16 +125,16 @@ public class DanSang : MonoBehaviourPunCallbacks
             if (Player.GetComponent<MultiPlayerMove>().b_pressed && Player.GetComponent<MultiPlayerMove>().isGround
                 && !isL)
             {
-                noL = false;
+
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().b_pressed && !noL)
+            else if (!Player.GetComponent<MultiPlayerMove>().b_pressed && isL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = true;
+
             }
         }
         else // L일경우 
@@ -137,16 +143,16 @@ public class DanSang : MonoBehaviourPunCallbacks
             if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
                 && !isL)
             {
-                noL = false;
+                //noL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && !noL)
+            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && isL)
             {
                 isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                noL = true;
+                //noL = true;
             }
         }
     }
