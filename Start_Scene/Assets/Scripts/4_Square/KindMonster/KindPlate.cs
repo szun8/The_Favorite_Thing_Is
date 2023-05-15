@@ -63,6 +63,11 @@ public class KindPlate : MonoBehaviourPunCallbacks
             }
 
         }
+        else if (oneSend) //플레이어가 G를 누른상태서 L을 누르면 oneSend가 
+        {
+            PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+            oneSend = false;
+        }
     }
 
     private void OnCollisionExit(Collision collision)

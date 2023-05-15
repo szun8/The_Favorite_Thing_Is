@@ -16,6 +16,7 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     RaycastHit player;
 
+    private bool isSendOne = false; //패킷 반복 수 줄이기 
 
     void Awake()=> PV = GetComponent<PhotonView>();
 
@@ -51,18 +52,26 @@ public class KungDanSang : MonoBehaviourPunCallbacks
     {
         if (isPlayer && player.collider != null)
         {
-            if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().r_pressed )
+            if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().r_pressed)
             {
-                if(!isLight) PV.RPC("SyncRed", RpcTarget.AllBuffered, true);
+                if (!isLight)
+                {
+                    PV.RPC("SyncRed", RpcTarget.AllBuffered, true);
+                    isSendOne = true;
+                }
+
             }
-            else PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
+            /*else if (isSendOne)
+            {
+                PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
+            }*/
 
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player")) PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
+        if(collision.gameObject.CompareTag("Player") && isSendOne) PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
     }
 
 
