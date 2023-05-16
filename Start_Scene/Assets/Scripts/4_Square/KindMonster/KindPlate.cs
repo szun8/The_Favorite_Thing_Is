@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+//using Photon.Pun;
 
-public class KindPlate : MonoBehaviourPunCallbacks
+public class KindPlate : MonoBehaviour
 {
     public int isKind; //1이면 거북이는 위에 있음
 
@@ -11,21 +11,22 @@ public class KindPlate : MonoBehaviourPunCallbacks
 
     public bool isgreen = false;    
 
-    PhotonView PV;
+    //PhotonView PV;
     bool isPlayer = false;
 
     private bool oneSend = false; //패킷 제한 용도 
 
     RaycastHit player;
 
-    void Awake() => PV = GetComponent<PhotonView>();
+    //void Awake() => PV = GetComponent<PhotonView>();
 
 
     void Update()
     {
         UpDownLay(); //플레이어 감지하는 레이를 발사
 
-        if (PhotonNetwork.InRoom) CheckLight();
+        CheckLight();
+        //if (PhotonNetwork.InRoom) CheckLight();
         
     }
 
@@ -52,33 +53,36 @@ public class KindPlate : MonoBehaviourPunCallbacks
             {
                 if (!isLight)
                 {
-                    PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
+                    isgreen = isLight = true;
+                    //PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
                     oneSend = true;
                 }
             }
             else if(oneSend)
             {
-                PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+                isgreen = isLight = false;
+                //PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
                 oneSend = false;
             }
 
         }
         else if (oneSend) //플레이어가 G를 누른상태서 L을 누르면 oneSend가 
         {
-            PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+            isgreen = isLight = false;
+            //PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
             oneSend = false;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+        if (collision.gameObject.CompareTag("Player")) isgreen = isLight = false;//PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
     }
 
-    [PunRPC]
+    /*[PunRPC]
     void SyncGreen(bool value)
     {
         isgreen = isLight = value;
         
-    }
+    }*/
 }

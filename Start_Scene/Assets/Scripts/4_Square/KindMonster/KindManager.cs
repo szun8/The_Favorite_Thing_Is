@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+//using Photon.Pun;
 
-public class KindManager : MonoBehaviourPun
+public class KindManager : MonoBehaviour
 {
     public Animator animator;   //거북이 녀석의 animator
     public KindPlate kindPlate;
     public KindMonster kindMonster;
 
-    PhotonView PV;
+    //PhotonView PV;
 
     private bool oneWalkSend, lastSend = false; //패킷 제한 용도 anim walk rpc true신호 하나 보냈는지
     public int p_count = 0;
@@ -20,7 +20,7 @@ public class KindManager : MonoBehaviourPun
 
     void Awake()
     {
-        PV = GetComponent<PhotonView>();
+        //PV = GetComponent<PhotonView>();
     }
 
     void Update()
@@ -30,22 +30,29 @@ public class KindManager : MonoBehaviourPun
             //플레이어가 초록빛 내면 + 아직 Rpc로 신호 안보냈으면 
             if (kindPlate.isgreen && !oneWalkSend)
             {
-                PV.RPC("SyncWalk", RpcTarget.AllBuffered, true);
+                animator.SetBool("isWalk", true);
+                isWalk = true;
+                //PV.RPC("SyncWalk", RpcTarget.AllBuffered, true);
                 oneWalkSend = true;
             }
 
             //플레이어가 초록빛 안내면 + rpc로 한번 walk 줬었으면 
             else if (!kindPlate.isgreen && oneWalkSend)
             {
-                PV.RPC("SyncWalk", RpcTarget.AllBuffered, false);
+                animator.SetBool("isWalk", false);
+                isWalk = false;
+                //PV.RPC("SyncWalk", RpcTarget.AllBuffered, false);
                 oneWalkSend = false;
             }
         }
 
         else if (kindMonster.isArrive && !lastSend)
         {
-            PV.RPC("SyncWalk", RpcTarget.AllBuffered, false);
-            PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
+            //PV.RPC("SyncWalk", RpcTarget.AllBuffered, false);
+            //PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
+            animator.SetBool("isWalk", false);
+            isWalk = false;
+            animator.SetBool("isWake", true);
             lastSend = true;
         }
     }
@@ -58,7 +65,8 @@ public class KindManager : MonoBehaviourPun
             p_count++;
             if (!lastSend)
             {
-                PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
+                animator.SetBool("isWake", true);
+                //PV.RPC("SyncWake", RpcTarget.AllBuffered, true);
 
             }
         }
@@ -73,13 +81,14 @@ public class KindManager : MonoBehaviourPun
             p_count--;
             if (!lastSend && p_count == 0)
             {
-                PV.RPC("SyncWake", RpcTarget.AllBuffered, false);
+                animator.SetBool("isWake", false);
+                //PV.RPC("SyncWake", RpcTarget.AllBuffered, false);
             }
         }
   
     }
 
-    [PunRPC]
+    /*[PunRPC]
     void SyncWake(bool value) => animator.SetBool("isWake", value);
 
     [PunRPC]
@@ -87,7 +96,7 @@ public class KindManager : MonoBehaviourPun
     {
         animator.SetBool("isWalk", value);
         isWalk = value;
-    }
+    }*/
 
 
 

@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+//using Photon.Pun;
 
-public class Flowers : MonoBehaviourPun
+public class Flowers : MonoBehaviour
 {
-    PhotonView PV;
+    //PhotonView PV;
     Animator animator;
     public KindPlate kindPlate;     //단상이 초록이면 꽃피게할 isgreen 가져오려고
     public KindMonster kindMonster;
@@ -17,7 +17,7 @@ public class Flowers : MonoBehaviourPun
     
     void Awake()
     {
-        PV = GetComponent<PhotonView>();
+        //PV = GetComponent<PhotonView>();
         animator = GetComponent<Animator>();
     }
 
@@ -27,27 +27,33 @@ public class Flowers : MonoBehaviourPun
         {
             if (kindPlate.isgreen && !isSendOne)
             {
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+                animator.SetBool("isBloom", true);
+                isBloom = true;
+                //PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isSendOne = true; //isSendOne을 true해줘서 더이상 G누르고 있어도 패킷 안보냄 
             }
 
             else if (!kindPlate.isgreen && isSendOne)
             {
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                animator.SetBool("isBloom", false);
+                isBloom = false;
+                //PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
                 isSendOne = false;
             }
         }
         else if (kindMonster.isArrive && !lastSend) //꽃에 도달하면 꽃은 피어있는 상태로 
         {
-            PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
+            animator.SetBool("isBloom", true);
+            isBloom = true;
+            //PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
             lastSend = true;
         }
     }
 
-    [PunRPC]
+    /*[PunRPC]
     void SyncAnim(bool value)
     {
         animator.SetBool("isBloom", value);
         isBloom = value;
-    }
+    }*/
 }

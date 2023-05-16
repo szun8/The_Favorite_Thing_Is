@@ -25,8 +25,6 @@ public class RGBLamp : MonoBehaviourPunCallbacks
 
     public Light pointLight;
 
-    private Vector3 playerPos;
-    private bool isArrive = false;
 
     void Awake() 
     {
