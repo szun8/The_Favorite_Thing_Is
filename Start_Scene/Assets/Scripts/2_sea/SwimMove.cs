@@ -47,7 +47,7 @@ public class SwimMove : MonoBehaviour
     void Start()
     {
         transform.position = pos[0].transform.position;
-        dashSpeed = 10f;
+        dashSpeed = 15f;
     }
 
     void Update()
@@ -92,10 +92,10 @@ public class SwimMove : MonoBehaviour
             ControlVCam.instance.ControlDollyView();
             if(GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed != 50)
                 GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
-            if (speed != 10 || dashSpeed != 10)
+            if (speed != 10 || dashSpeed != 15)
             {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
                 speed = 10;
-                dashSpeed = 10;
+                dashSpeed = 15;
             }
         }
     }
@@ -224,7 +224,7 @@ public class SwimMove : MonoBehaviour
     {
         if (dashSpeed < maxDash)
         {   // 최대 속도 40:default으로 지정
-            dashSpeed = dashSpeed + 10f; // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
+            dashSpeed = dashSpeed + 15f; // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
         }
     }
 
@@ -241,7 +241,7 @@ public class SwimMove : MonoBehaviour
             if (isJelly || !isLight)
             {
                 speed = 10;
-                dashSpeed = 10;
+                dashSpeed = 15;
                 yield break; // 새해파리를 먹었으면 코루틴을 중단합니다.
             }
             yield return null;
@@ -270,7 +270,7 @@ public class SwimMove : MonoBehaviour
         {   // 보스와 충돌시 && isEnd가 아니면(죽어도 되는데) isEnd상황이라면 (dollycart를 탑승해서 죽으면 안됨)
             SetDeadState();
             speed = 10f; // 이전에 먹었던 해파리 능력 초기화
-            dashSpeed = 10f;
+            dashSpeed = 15f;
         }
     }
 
