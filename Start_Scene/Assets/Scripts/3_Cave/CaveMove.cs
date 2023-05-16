@@ -90,7 +90,7 @@ public class CaveMove : MonoBehaviour
 
     public void OnLight(InputAction.CallbackContext state)
     {
-        if (isStop || isDied) return;
+        if (isDied) return;
 
         if (state.performed)
         {

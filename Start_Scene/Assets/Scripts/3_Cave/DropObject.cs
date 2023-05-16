@@ -34,7 +34,7 @@ public class DropObject : MonoBehaviour
     {
         while (isCreate)
         {
-            if ((_stone == null) || (curPlayer_pos.x > _stone.transform.position.x + 1.5f && isDroped))
+            if ((_stone == null) || (curPlayer_pos.x > _stone.transform.position.x + 1.25f && isDroped))
             {
                 CreateStone(curPlayer_pos);
             } 

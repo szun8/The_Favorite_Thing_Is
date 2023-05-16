@@ -59,7 +59,7 @@
                 {
                     "name": "Left",
                     "id": "b9ad9fb4-663e-410a-91ba-eadbacf1f818",
-                    "path": "<XInputController>/dpad/left",
+                    "path": "<XInputController>/leftStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
@@ -81,7 +81,7 @@
                 {
                     "name": "Right",
                     "id": "28d02392-17c1-452e-a086-83ece16d99ef",
-                    "path": "<XInputController>/dpad/right",
+                    "path": "<XInputController>/leftStick/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",

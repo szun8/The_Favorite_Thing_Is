@@ -81,7 +81,6 @@ public class InitFunc : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("focus");
             sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime*4f);
             vSide.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
                 Vector3.Lerp(vSide.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, new Vector3(4.5f, 2f, 4f), Time.deltaTime*5f);

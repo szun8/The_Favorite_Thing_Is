@@ -43,12 +43,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             player.name = "MirrorPlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
             SoundManager.instnace.PlayBGM();    // SceneNum = 3
             if (PhotonNetwork.CurrentRoom.PlayerCount == 1) UIManager.instnace.RunAnims("isWait");  // 1p창에 새로운 빛을 기다리는중입니다 UI
-            GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerCam(PhotonNetwork.CurrentRoom.PlayerCount);
+            GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerMirrorCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
         else if (SceneManager.GetActiveScene().name == "4_Square")
         {
             Debug.Log("SquarePlayer Spawn");
             GameObject player = PhotonNetwork.Instantiate("MultiPlayer", pos, rot, 0);
+            player.name = "MirrorPlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
+            GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerSquareCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
     }
 
