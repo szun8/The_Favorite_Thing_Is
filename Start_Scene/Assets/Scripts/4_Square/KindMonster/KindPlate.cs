@@ -18,7 +18,7 @@ public class KindPlate : MonoBehaviourPun
 
     RaycastHit player;
 
-    //void Awake() => PV = GetComponent<PhotonView>();
+    void Awake() => PV = GetComponent<PhotonView>();
 
 
     void Update()
