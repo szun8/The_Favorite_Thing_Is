@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using Photon.Pun;
+using Photon.Pun;
 
-public class KindPlate : MonoBehaviour
+public class KindPlate : MonoBehaviourPun
 {
     public int isKind; //1이면 거북이는 위에 있음
 
@@ -11,7 +11,7 @@ public class KindPlate : MonoBehaviour
 
     public bool isgreen = false;    
 
-    //PhotonView PV;
+    PhotonView PV;
     bool isPlayer = false;
 
     private bool oneSend = false; //패킷 제한 용도 
@@ -26,7 +26,7 @@ public class KindPlate : MonoBehaviour
         UpDownLay(); //플레이어 감지하는 레이를 발사
 
         CheckLight();
-        //if (PhotonNetwork.InRoom) CheckLight();
+        if (PhotonNetwork.InRoom) CheckLight();
         
     }
 
@@ -54,14 +54,14 @@ public class KindPlate : MonoBehaviour
                 if (!isLight)
                 {
                     isgreen = isLight = true;
-                    //PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
+                    PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
                     oneSend = true;
                 }
             }
             else if(oneSend)
             {
                 isgreen = isLight = false;
-                //PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+                PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
                 oneSend = false;
             }
 
@@ -69,20 +69,20 @@ public class KindPlate : MonoBehaviour
         else if (oneSend) //플레이어가 G를 누른상태서 L을 누르면 oneSend가 
         {
             isgreen = isLight = false;
-            //PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+            PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
             oneSend = false;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) isgreen = isLight = false;//PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+        if (collision.gameObject.CompareTag("Player")) PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
     }
 
-    /*[PunRPC]
+    [PunRPC]
     void SyncGreen(bool value)
     {
         isgreen = isLight = value;
         
-    }*/
+    }
 }

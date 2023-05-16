@@ -7,6 +7,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
     ReverseGravity reverseGravity;
+    Transform playerZ;
 
     private GameObject diePos;
 
@@ -14,6 +15,13 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         reverseGravity = GetComponent<ReverseGravity>();
+        playerZ = GetComponent<Transform>();
+    }
+
+    private void Update()
+    {
+        if (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5)
+            playerZ.position = new Vector3(playerZ.position.x, playerZ.position.y, 0);
     }
 
     private void OnTriggerEnter(Collider other)
