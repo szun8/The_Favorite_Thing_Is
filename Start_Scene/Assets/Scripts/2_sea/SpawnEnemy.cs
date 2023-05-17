@@ -118,8 +118,8 @@ public class SpawnEnemy : MonoBehaviour
 
         foreach (var item in jellyParent)
         {
-            if (item != rangeJelly.transform)
-                Destroy(item.gameObject);
+            if (item == rangeJelly.transform) continue;
+            Destroy(item.gameObject);
         }
 
         for (int i = 0; i < Jelly.Length; i++)

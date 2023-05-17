@@ -40,8 +40,6 @@ public class videoHandler : MonoBehaviour
 
     public void SetVideo(int SceneNum)
     {
-        Debug.Log("clipSet : "+SceneNum);
-        
         videoPlayer.clip = SceneNum switch
         {
             // 오프닝
@@ -79,7 +77,16 @@ public class videoHandler : MonoBehaviour
         while (videoPlayer.targetCameraAlpha > 0.01f)
         {
             videoPlayer.targetCameraAlpha -= 0.05f;
-            if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
+            if(videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 0)
+            {   // 튜토리얼에서 비디오가 끝나갈때쯔,,,음
+                SoundManager.instnace.PlayBGM();
+                GameObject.Find("Global Volume").GetComponent<Volume>().enabled = true;
+                if (videoPlayer.targetCameraAlpha < 0.2f)
+                {
+                    PlayerMove.isStart = true;
+                }
+            }
+            else if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
             {   // 심해에서 비디오가 끝나갈때쯔,,,음
                 isSea = true;
                 SoundManager.instnace.PlayBGM();

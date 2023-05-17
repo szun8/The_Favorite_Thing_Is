@@ -24,14 +24,14 @@ public class UIManager : MonoBehaviourPun
     }
     #endregion Singleton
 
-    Animator animator;
+    [SerializeField] Animator animator;
     public Image Image;            // Image컴포넌트 참조 변수.
     bool isLoad = false;
 
     void Start()
     {
         Image = GetComponentInChildren<Image>();
-        animator = GetComponentInChildren<Animator>();
+        //animator = GetComponentInChildren<Animator>();
     }
 
     void Update()

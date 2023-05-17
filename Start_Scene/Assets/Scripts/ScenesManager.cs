@@ -37,12 +37,12 @@ public class ScenesManager : MonoBehaviour
 
     void SceneLoad()
     {
-        SceneManager.LoadSceneAsync(SceneNum + 1);
+        SceneManager.LoadSceneAsync(SceneNum+2);
         SceneNum++;
         if (SceneNum == 1)
         {   // 심해씬으로 가게되면 
             PlayVideo();  // 비디오 바로 송출
-            // SoundManager.instnace.PlayBGM(); //-> 사운드 ON 기능
+            // SoundManager.instnace.PlayBGM(); //-> 사운드 기능 swimMove start에서 해주기
         }
         else if (SceneNum == 2)
         {   // 동굴씬으로 가게되면
@@ -62,6 +62,11 @@ public class ScenesManager : MonoBehaviour
     void PlayVideo()
     {   // 각 씬 넘버에 맞는 비디오 지정되어있음 -> 필요없는 부분은 null할건데 만약 중간에 null안되면 black.mp4채워넣을것
         videoHandler.instance.SetVideo(SceneNum);
+    }
+
+    public void InitScene()
+    {
+
     }
     
 }

@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     public float speed;                     // 캐릭터 속도
 
     public bool lightOn = false;
+    public static bool isStart = false; // 튜토 완전 첫 시작을 위한 시작 변수
     public static bool badak = false;   // 바닥 레이어 감지하는지 
     public static bool isStop = false;  // 플레이어 이동제한 -> 타이틀 애니메이션할때
     public bool isGround = false;       // 바닥과 닿아있는지 collision 
@@ -29,6 +30,7 @@ public class PlayerMove : MonoBehaviour
     public PhysicMaterial physicMaterial;   // 마찰력 0인 피지컬머티리얼 
     PhysicMaterial defaultMaterial;         // 원래 기본 플레이어 머티리얼 = none
     bool isESC = false;                     // 씬 전환 기능 여러번 눌러도 한번만 인식되게 !!
+    bool isPlay = false;    // 완전 시작을 위한 변수
 
     void Awake()
     {
@@ -44,6 +46,15 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        if (isStart)
+        {   // 처음 시작 시 화면이 완전히 밝아지고 나서 중력 및 이동 가능
+            rigid.useGravity = true;
+            gameObject.GetComponent<PlayerMove>().enabled = true;
+            isStart = false;
+            isPlay = true;
+        }
+        if (!isPlay) return;
+
         if (!isESC && Input.GetKeyDown(KeyCode.Escape))
         {
             isESC = true;
@@ -56,7 +67,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isWalk", false);
             return;
         }
-        rigid.AddForce(Vector3.down * 1.8f); // 즁력 더 주기 
+        if(rigid.useGravity) rigid.AddForce(Vector3.down * 1.8f); // 즁력 더 주기 
         badak = Physics.Raycast(transform.position, Vector2.down, 0.5f, LayerMask.GetMask("Ground"));
 
         if (isGround && badak) isJump = false; // 바닥에 닿아있으면 점프중이 아님

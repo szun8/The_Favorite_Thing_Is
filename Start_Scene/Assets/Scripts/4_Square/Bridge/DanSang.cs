@@ -13,7 +13,7 @@ public class DanSang : MonoBehaviourPunCallbacks
     public GameObject bridge; //해당 단상과 연결이 되는 발판 
 
     public int playerCnt = 0; // 발판을 밟고 있는 플레이어 수
-    
+
 
     private GameObject Player; // 단상에 충돌한 플레이어 
 
@@ -41,7 +41,7 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.InRoom) //플레이어가 방안에 있는지 + 단상에 있는지 
         {
-            if(Player != null) //플레이어가 단상에 충돌 ENTER하면 여기로 
+            if (Player != null) //플레이어가 단상에 충돌 ENTER하면 여기로 
             {
                 CheckLight();
             }
@@ -62,10 +62,10 @@ public class DanSang : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Player"))
         {
             playerCnt++;
-            
-            if(playerCnt == 1)  Player = collision.gameObject;
-            else if(playerCnt == 2) P2 = collision.gameObject;
-     
+
+            if (playerCnt == 1) Player = collision.gameObject;
+            else if (playerCnt == 2) P2 = collision.gameObject;
+
         }
     }
 
@@ -75,7 +75,7 @@ public class DanSang : MonoBehaviourPunCallbacks
         {
             playerCnt--;
 
-            if(P2 == null) //1인용 단상 경우 
+            if (P2 == null) //1인용 단상 경우 
             {
                 Player = null;
 
@@ -84,14 +84,18 @@ public class DanSang : MonoBehaviourPunCallbacks
                     PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
                 }
             }
-            
-            else if(P2 != null) //1 2p 중 1p가 나간 경우 2p를 1p로 해줘야함 
+
+            else if (P2 != null) //1 2p 중 1p가 나간 경우 2p를 1p로 해줘야함 
             {
-               if(collision.gameObject == Player) PV.RPC("SyncCnt",RpcTarget.AllBuffered);
-   
-               else if(collision.gameObject == P2) P2 = null;
+                if (collision.gameObject == Player)
+                {
+                    Player = P2;
+                    P2 = null;
+                }
+
+                else if (collision.gameObject == P2) P2 = null;
             }
-             
+
         }
     }
 
@@ -156,7 +160,7 @@ public class DanSang : MonoBehaviourPunCallbacks
         {
             //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
             if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-            && !animator.GetBool("isLight") )
+            && !animator.GetBool("isLight"))
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
             }
@@ -205,12 +209,5 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     }
 
-   [PunRPC]
-   void SyncCnt()
-   {
-        Player = P2;
-        P2 = null;
-
-   }
 
 }

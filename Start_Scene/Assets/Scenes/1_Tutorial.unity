@@ -179,6 +179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 33623218}
+  - component: {fileID: 33623219}
   m_Layer: 0
   m_Name: JaMak Place
   m_TagString: Untagged
@@ -205,6 +206,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &33623219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33623217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1faf592bea8146e7b6a465907e57a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &116562819
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,9 +448,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1468487569}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: RunAnims
+        - m_Target: {fileID: 33623219}
+          m_TargetAssemblyTypeName: SubtitleControl, Assembly-CSharp
+          m_MethodName: RunSubtitleUI
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -535,7 +548,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: -183.2, y: 30.55, z: 4.5}
+  m_LocalPosition: {x: -183.2, y: 30.38, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1025,9 +1038,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1468487569}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: RunAnims
+        - m_Target: {fileID: 33623219}
+          m_TargetAssemblyTypeName: SubtitleControl, Assembly-CSharp
+          m_MethodName: RunSubtitleUI
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1220,6 +1233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 257835444, guid: c4809491251bd4b78910fad904747ae8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
         type: 3}
       propertyPath: m_RootOrder
@@ -1478,18 +1495,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1468487569 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5357889920497845173, guid: c4809491251bd4b78910fad904747ae8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1289276036}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d60e30f5fd5c4acda3629571b12696c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1515161906
 GameObject:
   m_ObjectHideFlags: 3
@@ -1673,7 +1678,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595651786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.82, y: 1.3, z: -182.32556}
+  m_LocalPosition: {x: -9.73, y: 0.81, z: -182.32556}
   m_LocalScale: {x: 6.871339, y: 1, z: 4.2156}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1691,7 +1696,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.3, z: 2}
+  m_Size: {x: 1, y: 0.5, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1595651789
 MonoBehaviour:
@@ -1721,9 +1726,9 @@ MonoBehaviour:
     m_Event:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1468487569}
-          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-          m_MethodName: RunAnims
+        - m_Target: {fileID: 33623219}
+          m_TargetAssemblyTypeName: SubtitleControl, Assembly-CSharp
+          m_MethodName: RunSubtitleUI
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1806,7 +1811,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620906414}
   m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: -183.2, y: 30.55, z: 4.5}
+  m_LocalPosition: {x: -183.2, y: 30.38, z: 4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2035,7 +2040,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738608900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -3425,7 +3430,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -3531,7 +3536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2813570739737353460}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -186.2, y: 27.55, z: 19.5}
+  m_LocalPosition: {x: -186.2, y: 27.38, z: 19.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3616,46 +3621,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 94b5befc-e5f8-465b-a730-868ea58a36c4
     m_ActionName: Player/Light[/Keyboard/l]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 62078e5e-49b6-4d94-a2f5-fa6787b1a7f4
-    m_ActionName: UI/Navigate[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/rightStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/rightStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/leftStick/right,/DualShock4GamepadHID/rightStick/right,/DualShock4GamepadHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7d98ff73-1ebb-44a7-b3f2-2be965911fe7
-    m_ActionName: UI/Submit[/DualShock4GamepadHID/buttonSouth,/Keyboard/enter]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 9300ad77-1da8-4b00-922a-331a846dd6d3
-    m_ActionName: UI/Cancel[/DualShock4GamepadHID/buttonEast,/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: fe2d7ff1-9cb2-48a2-a676-136cc61da42f
-    m_ActionName: UI/Point
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5d7bf03d-475a-41e8-9649-19418d626f78
-    m_ActionName: UI/Click
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: a39ff2f3-b389-4389-a185-1f709dcd0a4b
-    m_ActionName: UI/ScrollWheel
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: d35c1150-829e-4714-ad5a-d4120f4ed307
-    m_ActionName: UI/MiddleClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 7694e0ed-3b2d-42d4-9bfe-52a7c9ba94d8
-    m_ActionName: UI/RightClick
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 1cec4d57-2f17-466f-8339-1eb20c825fb6
-    m_ActionName: UI/TrackedDevicePosition
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 29bc59e1-7e95-4176-8cc9-8aef94c12f40
-    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

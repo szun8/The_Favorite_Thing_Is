@@ -19,28 +19,4 @@ public class JellyMove : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    public float animTime = 1f;         // Fade 애니메이션 재생 시간 (단위:초).    
-
-    private float start = 1f;           // Mathf.Lerp 메소드의 첫번째 값.  
-    private float end = 0f;             // Mathf.Lerp 메소드의 두번째 값.  
-    private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.
-
-    void MatOut()
-    {
-        // 경과 시간 계산.  
-        // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
-        time += Time.deltaTime / animTime;
-
-        // 컴포넌트의 색상 값 읽어오기.
-        foreach (var item in skinMat)
-        {
-            Color color = item.material.color;
-            // 알파 값 계산.  
-            color.a = Mathf.Lerp(start, end, time);
-            // 계산한 알파 값 다시 설정.  
-            item.material.color = color;
-            // Debug.Log(time);
-        }
-    }
 }

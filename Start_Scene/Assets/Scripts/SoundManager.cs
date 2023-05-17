@@ -39,11 +39,6 @@ public class SoundManager : MonoBehaviour
     public Sound[] effectSounds;
     public Sound[] bgmSound;
 
-    private void Start()
-    {
-        if(ScenesManager.instance != null && ScenesManager.instance.SceneNum == 0) PlayBGM();   // 튜토리얼 시작할때
-    }
-
     public void PlaySE(string _name, float volume)
     {
         for (int i = 0; i < effectSounds.Length; i++)
@@ -88,16 +83,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // 0 : tutorial
-    // 1 : Sea
-    // 2 : Cave
-    // 3 : Square
-    int i;
+    // 0 : Opening
+    // 1 : tutorial
+    // 2 : Sea
+    // 3 : Cave
+    // 4 : Mirror
+    // 5 : Square
+    int i, realSceneNum;
     public void PlayBGM()
-    {
-        
+    {   // 1. 튜토리얼부터 브금 시작
         i = ScenesManager.instance.SceneNum;
-        Debug.Log(audioSourceBGM[i].isPlaying);
+        
+        //i = realSceneNum - 1;
+        Debug.Log(i);
         if (!audioSourceBGM[i].isPlaying)
         {   // 재생중이지 않은 사운드에 대해서
             playSoundName[audioSourceEffects.Length] = bgmSound[i].name;

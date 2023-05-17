@@ -60,7 +60,6 @@ public class SwimMove : MonoBehaviour
 
         if (isSeahorse && lightOn && !isBoss)
         {   // 해마 발광 영역에 플레이어가 들어왔고 거기서 L키를 누르면 사이드뷰로 전환한다
-            Debug.Log("wall ok");
             StartCoroutine(SetBoss());
             isSeahorse = false;
             lightOn = false;
