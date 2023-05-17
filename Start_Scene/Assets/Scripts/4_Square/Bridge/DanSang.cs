@@ -17,9 +17,11 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private GameObject Player; // 단상에 충돌한 플레이어 
 
+    private GameObject P2;
+
     private bool isNoLight = false; //플레이어가 단상에 있지만 빛 안키면 true되게 하자 
 
-    private bool isL = false; // 계속해서 패킷 보내기 방지
+    //private bool isL = false; // 계속해서 패킷 보내기 방지
 
     public bool L, R, G, B = false;
 
@@ -48,7 +50,7 @@ public class DanSang : MonoBehaviourPunCallbacks
             else if (isNoLight)  //플레이어가 처음으로 불켰다 꺼야만 이게 true되서 활성화됨 
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                isL = false;
+                //isL = false;
                 isNoLight = false;
             }
         }
@@ -59,8 +61,11 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player = collision.gameObject;
             playerCnt++;
+            
+            if(playerCnt == 1)  Player = collision.gameObject;
+            else if(playerCnt == 2) P2 = collision.gameObject;
+     
         }
     }
 
@@ -68,15 +73,25 @@ public class DanSang : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Player = null;
-
             playerCnt--;
 
-            if (!isNoLight) // 플레이어가 빛을 안끈 상태로 단상 탈출시 안꺼지는 문제 해결
+            if(P2 == null) //1인용 단상 경우 
             {
-                PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                Player = null;
+
+                if (!isNoLight) // 플레이어가 빛을 안끈 상태로 단상 탈출시 안꺼지는 문제 해결
+                {
+                    PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
+                }
             }
-              
+            
+            else if(P2 != null) //1 2p 중 1p가 나간 경우 2p를 1p로 해줘야함 
+            {
+               if(collision.gameObject == Player) PV.RPC("SyncCnt",RpcTarget.AllBuffered);
+   
+               else if(collision.gameObject == P2) P2 = null;
+            }
+             
         }
     }
 
@@ -100,67 +115,55 @@ public class DanSang : MonoBehaviourPunCallbacks
         {
             //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
             if (Player.GetComponent<MultiPlayerMove>().r_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                && !isL)
+                && !animator.GetBool("isLight"))
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                isL = true;
             }
 
             //플레이어가 l 떼면 
-            else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && isL)
+            else if (!Player.GetComponent<MultiPlayerMove>().r_pressed && animator.GetBool("isLight"))
             {
-                isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
             }
         }
         else if (G)
         {
             if (Player.GetComponent<MultiPlayerMove>().g_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                && !isL)
+                && !animator.GetBool("isLight"))
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && isL)
+            else if (!Player.GetComponent<MultiPlayerMove>().g_pressed && animator.GetBool("isLight"))
             {
-                isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
             }
         }
         else if (B)
         {
             if (Player.GetComponent<MultiPlayerMove>().b_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                && !isL)
+                && !animator.GetBool("isLight"))
             {
-
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().b_pressed && isL)
+            else if (!Player.GetComponent<MultiPlayerMove>().b_pressed && animator.GetBool("isLight"))
             {
-                isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-
             }
         }
         else // L일경우 
         {
             //플레이어가 l눌러야하고 + 충돌뿐 아니라 밟고 있어야 함 
             if (Player.GetComponent<MultiPlayerMove>().l_pressed && Player.GetComponent<MultiPlayerMove>().isGround
-                && !isL)
+            && !animator.GetBool("isLight") )
             {
-                //noL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
-                isL = true;
             }
 
-            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && isL)
+            else if (!Player.GetComponent<MultiPlayerMove>().l_pressed && animator.GetBool("isLight"))
             {
-                isL = false;
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
-                //noL = true;
             }
         }
     }
@@ -202,6 +205,12 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     }
 
+   [PunRPC]
+   void SyncCnt()
+   {
+        Player = P2;
+        P2 = null;
 
+   }
 
 }
