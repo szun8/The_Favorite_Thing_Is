@@ -37,12 +37,13 @@ public class ReverseGravity : MonoBehaviourPunCallbacks
         //PV.RPC("Gravity");
 
         if (isReversed)
-            rigid.AddForce(Vector3.up * GravityForce * 3f);
+            rigid.AddForce(Vector3.up * GravityForce/1.2f);
+            //rigid.AddForce(Vector3.up * GravityForce * 3f); //MAC 용
         else
             rigid.AddForce(Vector3.down * 1.6f);
     }
 
-    //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게
+    //1p의 뷰 아이디를 저장하고 networkManager에게 주어서 2P도 사용 할 수 있게 2p의 뷰아이디는 네트워크 매니저의 P1.ID에 저장되있다~~~! 
     [PunRPC]
     void Sync1pViewID(int viewID)
     {

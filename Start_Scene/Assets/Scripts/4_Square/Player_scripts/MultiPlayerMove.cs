@@ -10,7 +10,6 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     //불러올 스크립트 
     NetworkManager networkManager;
     ReverseGravity reverseGravity;
-    WaitingWall wall;   //벽에 플레이어 collision 수를 넘기기 위해서 불러옴
 
     //컴포넌트 
     SkinnedMeshRenderer mesh;
@@ -68,7 +67,6 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         networkManager = GameObject.Find("NetworkManager").GetComponent<NetworkManager>();
         reverseGravity = GetComponent<ReverseGravity>();
-        //wall = GameObject.Find("WaitWall").GetComponent<WaitingWall>();
 
         defaultMaterial = LightMaterials[0]; //기본 머티리얼은 흰색 body
 
@@ -203,10 +201,10 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse);
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용
 
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);
+            else rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);//MAC용
         }
     }
 
@@ -271,19 +269,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     }
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name == "WaitWall") wall.collisionCount++;
-
+    {   //땅, 단상들 충돌과 + layer 땅을 인지해야 점프 가능 
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
             collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = true;
-
-
-
     }
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.name == "WaitWall") wall.collisionCount--;
-
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
             collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = false;
     }

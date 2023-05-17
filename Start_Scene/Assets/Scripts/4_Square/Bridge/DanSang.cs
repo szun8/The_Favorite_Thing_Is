@@ -11,6 +11,8 @@ public class DanSang : MonoBehaviourPunCallbacks
     public bool plateLight = false; //이 단상에서 플레이어가 빛내니? 
     public bool isLastBridge = false; //B-2구역인지 아닌지 
     public GameObject bridge; //해당 단상과 연결이 되는 발판 
+
+    public int playerCnt = 0; // 발판을 밟고 있는 플레이어 수
     
 
     private GameObject Player; // 단상에 충돌한 플레이어 
@@ -55,7 +57,11 @@ public class DanSang : MonoBehaviourPunCallbacks
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) Player = collision.gameObject;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Player = collision.gameObject;
+            playerCnt++;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
@@ -63,6 +69,8 @@ public class DanSang : MonoBehaviourPunCallbacks
         if (collision.gameObject.CompareTag("Player"))
         {
             Player = null;
+
+            playerCnt--;
 
             if (!isNoLight) // 플레이어가 빛을 안끈 상태로 단상 탈출시 안꺼지는 문제 해결
             {
