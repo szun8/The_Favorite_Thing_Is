@@ -11,6 +11,7 @@ public class CaveMove : MonoBehaviour
     public float speed, rotSpeed, jumpForce;
 
     public bool lightOn = false;
+    public bool isJump = false;         // 점프 중인지 ~ 
     public static bool badak = false;
     public static bool isStop = false;
     public static bool isDied = false;
@@ -51,11 +52,14 @@ public class CaveMove : MonoBehaviour
             animator.SetBool("isWalk", false);
             return;
         }
-        //키 입력이 들어왔으면 ~
+
         if (dir != Vector3.zero)
-        {
+        {   //키 입력이 들어왔으면 ~
             rigid.MovePosition(transform.position + dir * Time.deltaTime * speed);
-            animator.SetBool("isWalk", true);
+
+            if (!isJump) animator.SetBool("isWalk", true);
+            else if (isJump) animator.SetBool("isWalk", false);
+
             //바라보는 방향 부호 != 가고자할 방향 부호
             if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z))
             {
@@ -79,8 +83,9 @@ public class CaveMove : MonoBehaviour
         if (isStop || isDied) return;
 
         if (badak && state.performed)
-        {
+        {   // 바닥과 닿아있으면 점프 가능
             badak = false;
+            isJump = true;
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("isWalk", false);
             animator.SetTrigger("isJump");
@@ -131,7 +136,8 @@ public class CaveMove : MonoBehaviour
     {
         if (!badak && (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Stairs")))
         {   // 점프 가능 상태
-            badak = true;
+            badak = true;       // 바닥에 닿았고
+            isJump = false;     // 점프중이 아님	
         }
         if (collision.gameObject.CompareTag("Stone"))
         {

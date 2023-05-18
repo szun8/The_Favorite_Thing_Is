@@ -57,7 +57,6 @@ public class videoHandler : MonoBehaviour
     void CheckOver(VideoPlayer vp)
     {   // 영상 종료 후 실행기능 정의
         //videoPlayer.Stop();
-        Debug.Log("isStop : " + isStop);
         isStop = true;
         StartCoroutine(Fade());
     }
