@@ -350,10 +350,11 @@ MonoBehaviour:
   isGround: 0
   isJump: 0
   canJump: 0
+  isOnTurtle: 0
   lightOn: 0
-  getRed: 1
-  getGreen: 1
-  getBlue: 1
+  getRed: 0
+  getGreen: 0
+  getBlue: 0
   l_pressed: 0
   r_pressed: 0
   g_pressed: 0

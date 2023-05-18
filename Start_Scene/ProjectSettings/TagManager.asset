@@ -32,6 +32,9 @@ TagManager:
   - SavePoint
   - MonsterDead
   - TurtleStop
+  - Plate
+  - Ice
+  - Turtle
   layers:
   - Default
   - TransparentFX

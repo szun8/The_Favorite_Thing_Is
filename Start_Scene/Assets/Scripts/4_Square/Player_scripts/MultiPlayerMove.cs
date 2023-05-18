@@ -34,7 +34,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     public bool isJump = false; // 바닥 충돌, 발판과 단상
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
-
+    public bool isOnTurtle = false;
     //상호작용 
     //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
     //private bool isItem = false;
@@ -90,10 +90,21 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //플레이어 중력에 따른 레이 검출
             PlayerLay();
 
-            //밟을 수 있는 놈들과 충돌, 땅레이어를 감지하면 
-            if (canJump && isGround) isJump = false;
+            //거북이랑 안닿아 있으
+            if (!isOnTurtle)
+            {
+                //밟을 수 있는 놈들과 충돌, 땅레이어를 감지하면
+                if (canJump && isGround) isJump = false;
 
-            if (!isGround) isJump = true;
+                if (!isGround) isJump = true;
+            }
+
+            else if (isOnTurtle)
+            {
+                canJump = true;
+                isJump = false;
+            }
+            
 
             //if (Input.GetKeyDown("space"))
             //{
@@ -201,10 +212,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
 
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용
-
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 //rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse);//MAC용
+            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용 rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window
         }
     }
 
@@ -271,12 +281,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     private void OnCollisionEnter(Collision collision)
     {   //땅, 단상들 충돌과 + layer 땅을 인지해야 점프 가능 
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
-            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = true;
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate") || collision.gameObject.CompareTag("Plate")) canJump = true;
+        else if (collision.gameObject.CompareTag("Turtle")) isOnTurtle = true;
     }
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
-            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate")) canJump = false;
+            collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate") || collision.gameObject.CompareTag("Plate")) canJump = false;
+        else if (collision.gameObject.CompareTag("Turtle")) isOnTurtle = false;
     }
 
     void PlayerLay()
