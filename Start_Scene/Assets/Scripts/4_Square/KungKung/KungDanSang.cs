@@ -9,8 +9,6 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
     public bool isLight;
 
-    public bool isRed = false; //isLight일시 이게 true가 되고 쿵쿵이 스크립트에서 조건으로 쓴다
-
     private PhotonView PV;
     private bool isPlayer = false;
 
@@ -61,11 +59,17 @@ public class KungDanSang : MonoBehaviourPunCallbacks
                 }
 
             }
-            /*else if (isSendOne)
+            else if (isSendOne) //켰다 끄고 단상위 있을때
             {
                 PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
-            }*/
+                isSendOne = false;
+            }
 
+        }
+        else if (isSendOne)
+        {
+            PV.RPC("SyncRed", RpcTarget.AllBuffered, false);
+            isSendOne = false;
         }
     }
 
@@ -76,11 +80,6 @@ public class KungDanSang : MonoBehaviourPunCallbacks
 
 
     [PunRPC]
-    void SyncRed(bool value)
-    {
-        isLight = value;
-
-        if (value) isRed = true;
-    }
+    void SyncRed(bool value) => isLight = value;
 
 }

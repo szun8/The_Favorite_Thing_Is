@@ -15,8 +15,6 @@ public class IceMelting : MonoBehaviourPun
 
     RaycastHit player;
 
-    
-
     private bool isSendOne = false; //패킷 반복 수 줄이기 
 
     void Awake()=> PV = GetComponent<PhotonView>();
@@ -43,9 +41,6 @@ public class IceMelting : MonoBehaviourPun
             Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1.7f, Color.blue);
             isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("Player"));
         }
-
-
-
     }
     void CheckLight() //플레이어가 있는경우 r을 눌렀을 때 true
     {
@@ -53,16 +48,26 @@ public class IceMelting : MonoBehaviourPun
         {
             if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().r_pressed)
             {
-                if (!isLight)
+                if (!isLight) //단상에서 R을 한번도 안킨 상태에서 키면 
                 {
                     PV.RPC("SyncMelt", RpcTarget.AllBuffered, true);
                     isSendOne = true;
                 }
-
+            }
+            else if (isSendOne) //단상에서 한번 켰다가 끈상태에서 단상 레이 위에 있을 때
+            {
+                PV.RPC("SyncMelt", RpcTarget.AllBuffered, false);
+                isSendOne = false;
             }
         }
-    }
 
+        else if (isSendOne) //최초로 켰다가 레이에서 벗어나면 false 
+        {
+            PV.RPC("SyncMelt", RpcTarget.AllBuffered, false);
+            isSendOne = false;
+        }
+    }
+    
     private void OnCollisionExit(Collision collision)
     {
         //isSendOne을 주는 이유는 안키고 밟았다가 그냥 Exit하면 패킷 안발사 하려고 
@@ -77,9 +82,10 @@ public class IceMelting : MonoBehaviourPun
         animator.SetBool("isMelt", value);
 
         AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
-        if (curAnim.IsName("IceMelt") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 R_Off이고, 90%이상 완료된 경우 
+        if (curAnim.IsName("IceMelt") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 ~~이고, 90%이상 완료된 경우 
         {
-            GetComponentInChildren<BoxCollider>().isTrigger = true;
+            BoxCollider boxCollider = animator.gameObject.GetComponentInChildren<BoxCollider>();
+            boxCollider.isTrigger = true;
         }
     }
 

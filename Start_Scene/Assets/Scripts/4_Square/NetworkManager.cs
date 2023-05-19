@@ -9,7 +9,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
     private Transform[] spawnPoints;
-    public int playerLightCount = 0;
 
     public int p1_id = 0;
 

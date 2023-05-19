@@ -28,14 +28,14 @@ public class KindManager : MonoBehaviourPun
         if (!kindMonster.isArrive)
         {
             //플레이어가 초록빛 내면 + 아직 Rpc로 신호 안보냈으면 
-            if (kindPlate.isgreen && !oneWalkSend)
+            if (kindPlate.isLight && !oneWalkSend)
             {
                 PV.RPC("SyncWalk", RpcTarget.AllBuffered, true);
                 oneWalkSend = true;
             }
 
             //플레이어가 초록빛 안내면 + rpc로 한번 walk 줬었으면 
-            else if (!kindPlate.isgreen && oneWalkSend)
+            else if (!kindPlate.isLight && oneWalkSend)
             {
                 PV.RPC("SyncWalk", RpcTarget.AllBuffered, false);
                 oneWalkSend = false;

@@ -34,7 +34,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool isGround = false; //플레이어 밑 Ground레이어 있음 true + 벽에 닿았을 때 바로 내려오게 할건데, 바닥과 닿아있을 때는 힘 안가해지게 하려고 public 
     public bool isJump = false; // 바닥 충돌, 발판과 단상
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
-    public bool isOnTurtle = false;
+    public bool isOnTurtle = false; //거북이랑 닿아있으면 점프가 가능
     //상호작용 
     //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
     //private bool isItem = false;
@@ -365,7 +365,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             
             mesh.materials[1].SetColor("_EmissionColor", new Color(0.8f, 0.85f, 0.9f) * 1.8f);
             spotLight.intensity = 25f;
-            networkManager.playerLightCount++; //waitingWall에서 불킨 인원 수 보내주려고
+            //networkManager.playerLightCount++; //waitingWall에서 불킨 인원 수 보내주려고
         }
 
         else        //L,R,G,B 가 다 꺼진 경우에는 기본 밝기 

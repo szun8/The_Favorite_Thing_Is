@@ -25,13 +25,13 @@ public class Flowers : MonoBehaviourPun
     {
         if (!kindMonster.isArrive)
         {
-            if (kindPlate.isgreen && !isSendOne)
+            if (kindPlate.isLight && !isSendOne)
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, true);
                 isSendOne = true; //isSendOne을 true해줘서 더이상 G누르고 있어도 패킷 안보냄 
             }
 
-            else if (!kindPlate.isgreen && isSendOne)
+            else if (!kindPlate.isLight && isSendOne)
             {
                 PV.RPC("SyncAnim", RpcTarget.AllBuffered, false);
                 isSendOne = false;

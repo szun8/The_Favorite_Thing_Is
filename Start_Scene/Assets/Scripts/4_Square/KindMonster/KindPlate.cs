@@ -7,9 +7,7 @@ public class KindPlate : MonoBehaviourPun
 {
     public int isKind; //1이면 거북이는 위에 있음
 
-    public bool isLight = false;
-
-    public bool isgreen = false;    
+    public bool isLight = false;  
 
     PhotonView PV;
     bool isPlayer = false;
@@ -53,14 +51,12 @@ public class KindPlate : MonoBehaviourPun
             {
                 if (!isLight)
                 {
-                    isgreen = isLight = true;
                     PV.RPC("SyncGreen", RpcTarget.AllBuffered, true);
                     oneSend = true;
                 }
             }
             else if(oneSend)
             {
-                isgreen = isLight = false;
                 PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
                 oneSend = false;
             }
@@ -68,7 +64,6 @@ public class KindPlate : MonoBehaviourPun
         }
         else if (oneSend) //플레이어가 G를 누른상태서 L을 누르면 oneSend가 
         {
-            isgreen = isLight = false;
             PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
             oneSend = false;
         }
@@ -76,13 +71,9 @@ public class KindPlate : MonoBehaviourPun
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player")) PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
+        if (collision.gameObject.CompareTag("Player") && oneSend) PV.RPC("SyncGreen", RpcTarget.AllBuffered, false);
     }
 
     [PunRPC]
-    void SyncGreen(bool value)
-    {
-        isgreen = isLight = value;
-        
-    }
+    void SyncGreen(bool value) => isLight = value;
 }

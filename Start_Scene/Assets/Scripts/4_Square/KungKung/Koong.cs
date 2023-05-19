@@ -21,7 +21,7 @@ public class Koong : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (kungPlate.isRed && dieReady)
+        if (kungPlate.isLight && dieReady)
         {
             PV.RPC("Dissolve", RpcTarget.AllBuffered); //쿵쿵이 빨갛게 타오르기 
 

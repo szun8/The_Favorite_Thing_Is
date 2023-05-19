@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -59,4 +59,4 @@ public class WaitingWall : MonoBehaviourPunCallbacks
     {
         caveTalkManager.isOpen = false;
     }
-}
+}*/

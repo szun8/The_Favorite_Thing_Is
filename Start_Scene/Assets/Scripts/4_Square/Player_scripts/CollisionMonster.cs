@@ -21,7 +21,7 @@ public class CollisionMonster : MonoBehaviour
     {
         //착몬을 그라운드 태그로 두자 !!!
         //땅 (돌)에 붙으면 안되니 ground 도 해주지만 밟고 있을때는 아닌걸로 위해서 
-        if (collision.gameObject.CompareTag("UpKung") || collision.gameObject.CompareTag("DownKung") || collision.gameObject.CompareTag("Ice")  || (collision.gameObject.CompareTag("Ground") && !PlayerMove.isGround) )
+        if (collision.gameObject.CompareTag("UpKung") || collision.gameObject.CompareTag("DownKung") || collision.gameObject.CompareTag("Ice")  || (collision.gameObject.CompareTag("Ground") && !PlayerMove.isGround) || collision.gameObject.CompareTag("Turtle"))
         {
             gameObject.GetComponentInChildren<MeshCollider>().material = physicMaterial;
 
@@ -32,7 +32,7 @@ public class CollisionMonster : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("UpKung") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DownKung") || collision.gameObject.CompareTag("Ice"))
+        if (collision.gameObject.CompareTag("UpKung") || collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("DownKung") || collision.gameObject.CompareTag("Ice") || collision.gameObject.CompareTag("Turtle"))
         {
             gameObject.GetComponentInChildren<MeshCollider>().material = defaultMaterial;
         }
