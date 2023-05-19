@@ -6,6 +6,8 @@ using Photon.Pun;
 public class IceMelting : MonoBehaviourPun
 {
     public Animator animator;
+    //public BoxCollider boxCollider;
+
     public int isPlateup; //1이면 얼음 이 위에 있음 
 
     public bool isLight = false; //플레이어가 불키면 이게 true가 되고 쿵쿵이 스크립트에서 조건으로 쓴다 
@@ -81,12 +83,12 @@ public class IceMelting : MonoBehaviourPun
         isLight = value;
         animator.SetBool("isMelt", value);
 
-        AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
+        /*AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
         if (curAnim.IsName("IceMelt") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 ~~이고, 90%이상 완료된 경우 
-        {
+        {  
             BoxCollider boxCollider = animator.gameObject.GetComponentInChildren<BoxCollider>();
             boxCollider.isTrigger = true;
-        }
+        }*/
     }
 
 }

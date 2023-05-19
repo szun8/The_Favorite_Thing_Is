@@ -90,6 +90,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             //플레이어 중력에 따른 레이 검출
             PlayerLay();
 
+            
             //거북이랑 안닿아 있으
             if (!isOnTurtle)
             {
@@ -208,13 +209,17 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed && isJump == false)
         {   
-            //isJump = true;
+            isJump = true;
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
-
+            PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
+                
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 //rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  //rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 //
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용 rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window
+            else rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용 
+                
+            
+            
         }
     }
 
@@ -288,7 +293,11 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||
             collision.gameObject.CompareTag("G_Plate") || collision.gameObject.CompareTag("B_Plate") || collision.gameObject.CompareTag("Plate")) canJump = false;
-        else if (collision.gameObject.CompareTag("Turtle")) isOnTurtle = false;
+        else if (collision.gameObject.CompareTag("Turtle")) 
+        {
+            isOnTurtle = false;
+            canJump = false;
+        }
     }
 
     void PlayerLay()
@@ -382,7 +391,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     [PunRPC]
     void SyncJump()
     {
-        animator.SetBool("isWalk", false);
+        //animator.SetBool("isWalk", false);
         animator.SetTrigger("isJump");
     }
 

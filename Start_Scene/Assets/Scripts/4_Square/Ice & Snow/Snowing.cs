@@ -30,10 +30,7 @@ public class Snowing : MonoBehaviourPun
 
         if (PhotonNetwork.InRoom)
         {
-            if(isPlayer && player.collider != null)
-            {
-                CheckLight();
-            }
+            CheckLight();
         }
     }
 
@@ -55,21 +52,32 @@ public class Snowing : MonoBehaviourPun
 
     void CheckLight() //플레이어가 있는경우 B을 눌렀을 때 true
     {
-        if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().b_pressed)
+        if (isPlayer && player.collider != null)
         {
-            if (!isLight)
+            if (player.collider.gameObject.GetComponentInParent<MultiPlayerMove>().b_pressed)
             {
-                PV.RPC("SyncBlue", RpcTarget.AllBuffered, true);
-                PV.RPC("SyncSnow", RpcTarget.AllBuffered, true);
-                isSendOne = true;
+                if (!isLight) //단상을 최초로 킨 경우
+                {   
+                    PV.RPC("SyncBlue", RpcTarget.AllBuffered, true);
+                    PV.RPC("SyncSnow", RpcTarget.AllBuffered, true);
+                    isSendOne = true;
+                }
+            } 
+            else if(isSendOne) //켰다가 레이 위에서 꺼져있을때
+            {
+                PV.RPC("SyncBlue", RpcTarget.AllBuffered, false);
+                PV.RPC("SyncSnow", RpcTarget.AllBuffered, false);
+                isSendOne = false;
             }
+            
         }
-        else if (isSendOne)
+        else if (isSendOne) //단상 레이 아예 나가버린 경우 
         {
             PV.RPC("SyncBlue", RpcTarget.AllBuffered, false);
             PV.RPC("SyncSnow", RpcTarget.AllBuffered, false);
             isSendOne = false;
         }
+
     }
 
 
@@ -79,6 +87,7 @@ public class Snowing : MonoBehaviourPun
         {
             PV.RPC("SyncBlue", RpcTarget.AllBuffered, false);
             PV.RPC("SyncSnow", RpcTarget.AllBuffered, false);
+            isSendOne = false;
         }
     }
 

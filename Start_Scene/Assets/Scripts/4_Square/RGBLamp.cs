@@ -100,6 +100,7 @@ public class RGBLamp : MonoBehaviourPunCallbacks
     [PunRPC]
     void FreezePlayer()
     {
+        stopPlayer.GetComponent<Animator>().SetBool("isWalk", false);
         //키 입력을 아예 못받게 해버리자
         stopPlayer.GetComponent<MultiPlayerMove>().enabled = false;
 
