@@ -79,7 +79,6 @@ public class SoundManager : MonoBehaviour
                 audioSourceEffects[i].Stop();
                 break;
             }
-            
         }
     }
 
@@ -93,9 +92,6 @@ public class SoundManager : MonoBehaviour
     public void PlayBGM()
     {   // 1. 튜토리얼부터 브금 시작
         i = ScenesManager.instance.SceneNum;
-        
-        //i = realSceneNum - 1;
-        Debug.Log(i);
         if (!audioSourceBGM[i].isPlaying)
         {   // 재생중이지 않은 사운드에 대해서
             playSoundName[audioSourceEffects.Length] = bgmSound[i].name;

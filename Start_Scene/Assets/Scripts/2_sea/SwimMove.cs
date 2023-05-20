@@ -14,7 +14,7 @@ public class SwimMove : MonoBehaviour
     public float speed;                     // 캐릭터 속도
 
     public bool lightOn = false;
-    bool isESC = false;                     //한번만 누르게 !!!
+    bool isESC = false;                     // 한번만 누르게 !!!
     bool isSeahorse = false;                // 해마가 위치한 곳에서 L키 눌렀는지 여부
     public static bool isBoss = false;      // 물고기 벽이 무너지면 true하고 보스 setActive시킬 예정
     public static bool isDied = false;      // 플레이어의 죽음여부
@@ -47,7 +47,7 @@ public class SwimMove : MonoBehaviour
     void Start()
     {
         transform.position = pos[0].transform.position;
-        dashSpeed = 15f;
+        dashSpeed = 10f;
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class SwimMove : MonoBehaviour
             isESC = true;
         }
 
-        if (isSeahorse && lightOn && !isBoss)
+        if (isSeahorse && !isBoss)
         {   // 해마 발광 영역에 플레이어가 들어왔고 거기서 L키를 누르면 사이드뷰로 전환한다
             StartCoroutine(SetBoss());
             isSeahorse = false;
@@ -71,7 +71,15 @@ public class SwimMove : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, new Vector3(500f, 35f, 7f), Time.deltaTime * 0.5f);
             return;
         }
-        if (isDied) return;
+        if (isDied)
+        {
+            if (lightOn)
+            {   // 죽을때 빛을 켜놓고 죽으면 다시 스폰되고 발광버튼을 안누르고 있어도 발광중인 버그존재로 인해 발광 자체 꺼주기~
+                lightOn = false;
+                LightHandle();
+            }
+            return;
+        }
 
         if (isLight)
         {
@@ -91,10 +99,10 @@ public class SwimMove : MonoBehaviour
             ControlVCam.instance.ControlDollyView();
             if(GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed != 50)
                 GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss.speed = 50f;
-            if (speed != 10 || dashSpeed != 15)
+            if (speed != 10 || dashSpeed != 10)
             {   // 이거 안해놓으면 추적한 다음에 남은 속도로 인해 플레이어 이동시 우주로 날라가는 ,,,버그
                 speed = 10;
-                dashSpeed = 15;
+                dashSpeed = 10;
             }
         }
     }
@@ -132,10 +140,6 @@ public class SwimMove : MonoBehaviour
                 float z = dir.z;
                 dir.z = (dir.x * -1);
                 dir.x = z;
-                // -->Old Input System
-                //dir.x = Input.GetAxisRaw("Vertical");
-                //dir.z = Input.GetAxisRaw("Horizontal") * -1;
-                //dir.Normalize(); //대각선 빨라지는거 방지위한 정규화
             }
             else
             {
@@ -176,7 +180,16 @@ public class SwimMove : MonoBehaviour
     bool isLight = false;
     public void OnLight(InputAction.CallbackContext state)
     {
-        if (isDied) return;
+        if (isDied)
+        {   // 죽었을때 발광 키를 누르고 있다가 떼면 발광 해제
+            if (state.canceled)
+            {
+                isLight = false;
+                lightOn = false;
+                LightHandle();
+            }
+            return;
+        }
 
         if (!isEnd && state.performed )
         {   // getKey
@@ -186,7 +199,6 @@ public class SwimMove : MonoBehaviour
         if (!isEnd && state.canceled)
         {   // get keyUp
             isLight = false;
-            StopCoroutine(Dash());
             lightOn = false;
             LightHandle();
 
@@ -222,29 +234,30 @@ public class SwimMove : MonoBehaviour
     public void SpeedUP()
     {
         if (dashSpeed < maxDash)
-        {   // 최대 속도 40:default으로 지정
-            dashSpeed = dashSpeed + 15f; // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
+        {   // 중복으로 먹어도 계속 20을 유지
+            dashSpeed = 30f; // 아직 l버튼을 안눌렀으니 일단 증가변수만 저장
         }
     }
 
     IEnumerator Dash()
     {
-        float startTime = Time.time;
-        float duration = 3f;
-        float startSpeed = dashSpeed;
-
-        while (speed > 9f)
+        if (!lightOn) yield break;
+        speed = dashSpeed;
+        while (speed > 10.5f)
         {
-            float t = (Time.time - startTime) / duration; // 보간 시간 계산
-            speed = Mathf.Lerp(startSpeed, 10f, t);
-            if (isJelly || !isLight)
+            speed = Mathf.Lerp(speed, 10f, Time.deltaTime*0.75f);
+            if (isJelly && lightOn)
             {
-                speed = 10;
-                dashSpeed = 15;
-                yield break; // 새해파리를 먹었으면 코루틴을 중단합니다.
+                speed = 30;
+            }
+            else if (!lightOn)
+            {
+                break;
             }
             yield return null;
         }
+        dashSpeed = 10f;
+        speed = 10f;
         isBooster = false;
     }
 
@@ -269,7 +282,7 @@ public class SwimMove : MonoBehaviour
         {   // 보스와 충돌시 && isEnd가 아니면(죽어도 되는데) isEnd상황이라면 (dollycart를 탑승해서 죽으면 안됨)
             SetDeadState();
             speed = 10f; // 이전에 먹었던 해파리 능력 초기화
-            dashSpeed = 15f;
+            dashSpeed = 10f;
         }
     }
 
@@ -295,10 +308,9 @@ public class SwimMove : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {   // 해마 가운데서 l버튼을 누르면
-            Debug.Log("Wall-true");
             isSeahorse = true;
         }
-        if (other.gameObject.CompareTag("End"))
+        if (other.gameObject.CompareTag("End") && !isDied)
         {   // 보스 탈출 : dollycart 탑승
             isEnd = true;
             dolly.enabled = true;
@@ -327,15 +339,6 @@ public class SwimMove : MonoBehaviour
             rigid.useGravity = false;
             other.gameObject.SetActive(false);  // 한번만 닿으면 해당 오브젝트를 비활성화시켜 중복처리 되는 일이 없도록 합니다
             Invoke("NextScene", 1f);
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("Wall"))
-        {   // 해마 가운데서 l버튼을 누르면
-            Debug.Log("Wall-false");
-            isSeahorse = false;
         }
     }
 

@@ -41,13 +41,13 @@ public class BossMove : MonoBehaviour
 
     void ChaseTarget()
     {
-        if (Vector3.Distance(transform.position, target.position) > 20f)
+        if (Vector3.Distance(transform.position, target.position) > 25f)
         {
-            boss.speed = 20f;
+            boss.speed = 25f;
         }
         else
         {
-            boss.speed = 10.5f;
+            boss.speed = 11.5f;
         }
         transform.position = Vector3.MoveTowards(transform.position, target.position, boss.speed * Time.deltaTime);
     }

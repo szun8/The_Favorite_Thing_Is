@@ -50,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         {   // 처음 시작 시 화면이 완전히 밝아지고 나서 중력 및 이동 가능
             rigid.useGravity = true;
             gameObject.GetComponent<PlayerMove>().enabled = true;
+            UIManager.instnace.RunAnims("isMove");
             isStart = false;
             isPlay = true;
         }
@@ -98,12 +99,13 @@ public class PlayerMove : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext state)
     {
+        if (!rigid.useGravity) return;
         dir = state.ReadValue<Vector3>();
     }
 
     public void OnJump(InputAction.CallbackContext state)
     {
-        if (isStop) return;
+        if (isStop || !rigid.useGravity) return;
 
         if (state.performed && isJump == false)
         {
@@ -115,7 +117,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnLight(InputAction.CallbackContext state)
     {
-        if (isStop) return;
+        if (isStop || !rigid.useGravity) return;
 
         if (state.performed)
         {   // GetKeyDown

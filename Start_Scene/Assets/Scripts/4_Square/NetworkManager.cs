@@ -48,7 +48,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("SquarePlayer Spawn");
             GameObject player = PhotonNetwork.Instantiate("MultiPlayer", pos, rot, 0);
-            player.name = "MirrorPlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
+            player.name = "SquarePlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
             GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerSquareCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
     }

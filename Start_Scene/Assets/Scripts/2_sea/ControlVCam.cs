@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 public class ControlVCam : MonoBehaviour
 {
@@ -73,6 +74,7 @@ public class ControlVCam : MonoBehaviour
     public void SwitchingBackToSide()
     {   // Back -> Side
         player.GetComponent<SwimMove>().enabled = false;        // 플레이어 이동스크립트 비활성화
+        player.GetComponent<PlayerInput>().enabled = false;     // 아예 키 인풋 비활성화
         player.GetComponent<Rigidbody>().useGravity = false;    // 플레이어 중력 비활성화로 가라앉는 것 막음
 
         vSide.Priority = 11;
@@ -130,6 +132,7 @@ public class ControlVCam : MonoBehaviour
 
         CinematicBar.instance.HideBars();
         player.GetComponent<Rigidbody>().useGravity = true;
+        player.GetComponent<PlayerInput>().enabled = true;
         player.GetComponent<SwimMove>().enabled = true;
 
         GameObject.Find("boss_0").GetComponent<BossMove>().enabled = true;

@@ -115,11 +115,10 @@ public class SpawnEnemy : MonoBehaviour
     {
         Transform[] jellyParent = rangeJelly.GetComponentsInChildren<Transform>();
         yield return new WaitForSeconds(1.5f);  // 플레이어가 죽자마자 해파리가 바로 사라져서 1.5초 뒤에 destroy
-
         foreach (var item in jellyParent)
         {
             if (item == rangeJelly.transform) continue;
-            Destroy(item.gameObject);
+            if (item != null) Destroy(item.gameObject);
         }
 
         for (int i = 0; i < Jelly.Length; i++)
