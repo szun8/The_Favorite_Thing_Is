@@ -44,10 +44,10 @@ public class ChangeMat : MonoBehaviour
             {   // 벽화의 색이 일정 수준 다 보이게 되면 원상복귀
                 CinematicBar.instance.HideBars();
                 ct.m_FollowOffset.x = Mathf.Lerp(ct.m_FollowOffset.x, 8, Time.deltaTime * 1.5f);
-                ct.m_FollowOffset.y = Mathf.Lerp(ct.m_FollowOffset.y, 4, Time.deltaTime * 1.5f);
+                ct.m_FollowOffset.y = Mathf.Lerp(ct.m_FollowOffset.y, 2.5f, Time.deltaTime * 1.5f);
                 ct.m_FollowOffset.z = Mathf.Lerp(ct.m_FollowOffset.z, 5, Time.deltaTime * 1.5f);
                 sideCam.transform.rotation = Quaternion.Lerp(sideCam.transform.rotation, Quaternion.Euler(0f, 4f, 0), Time.deltaTime * 1.5f);
-                vignette.center.Override(Vector2.Lerp(vignette.center.value, new Vector2(0.5f, 0.35f), Time.deltaTime * 1.5f));
+                vignette.center.Override(Vector2.Lerp(vignette.center.value, new Vector2(0.5f, 0.5f), Time.deltaTime * 1.5f));
 
                 if (ct.m_FollowOffset.x >= 7.5f)
                 {   // 카메라위치가 제자리로 돌아오면 플레이어 재시동

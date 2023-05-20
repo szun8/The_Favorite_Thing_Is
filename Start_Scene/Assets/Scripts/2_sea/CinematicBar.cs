@@ -4,7 +4,7 @@ using UnityEngine;
 public class CinematicBar : MonoBehaviour
 {
     public static CinematicBar instance { get; private set; }
-    [SerializeField] GameObject blackBars;
+    public GameObject blackBars;
     [SerializeField] Animator blackBarsAnim;
 
     private void Awake()

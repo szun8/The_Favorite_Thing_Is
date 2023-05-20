@@ -25,7 +25,7 @@ public class InitFunc : MonoBehaviour
     {
         while (true)
         {   // 두번째 발판 지역을 비춰주는 시작 캠 (오른쪽 이동)
-            thornCam.transform.position = Vector3.Slerp(thornCam.transform.position, endPos.position, Time.deltaTime*1.5f);
+            thornCam.transform.position = Vector3.Slerp(thornCam.transform.position, endPos.position, Time.deltaTime*1.25f);
             if (thornCam.transform.position.x >= 360)
             {
                 break;

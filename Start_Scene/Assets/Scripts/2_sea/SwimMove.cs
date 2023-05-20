@@ -167,12 +167,10 @@ public class SwimMove : MonoBehaviour
 
         if (Water.isWater && state.performed)
         {   // get key
-            Debug.Log("down performed");
             isDown = true;
         }
         else if(Water.isWater && state.canceled)
         {
-            Debug.Log("down cancled");
             isDown = false;
         }
     }
@@ -288,6 +286,10 @@ public class SwimMove : MonoBehaviour
 
     IEnumerator SetBoss()
     {
+        UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", false);    // 사이드뷰로 전환될때는 안내 창 끄기
+        UIManager.instnace.RunAnims("isSeaMoveInfoOff");
+        yield return new WaitForSeconds(0.3f);
+
         isBoss = true;
         CinematicBar.instance.ShowBars();
         ControlVCam.instance.SwitchingBackToSide();

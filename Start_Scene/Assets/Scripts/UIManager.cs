@@ -112,6 +112,11 @@ public class UIManager : MonoBehaviourPun
         animator.SetTrigger(animTriggerName);
     }
 
+    public void RunAnimsBool(string animTriggerName, bool active)
+    {   // 심해 전용 애니메이션 함수
+        animator.SetBool(animTriggerName, active);
+    }
+
     bool CheckAnims(string animsName)
     {   // 현재 실행 중인 애니메이션이 끝났는지 확인해주는 함수
         AnimatorStateInfo curAnims = animator.GetCurrentAnimatorStateInfo(0);

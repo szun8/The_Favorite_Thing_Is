@@ -26621,6 +26621,7 @@ MonoBehaviour:
   rotSpeed: 5
   jumpForce: 10
   lightOn: 0
+  isJump: 0
   spotLight: {fileID: 471149588469533126}
   maskLight: {fileID: 5296166044658144570}
   animator: {fileID: 0}

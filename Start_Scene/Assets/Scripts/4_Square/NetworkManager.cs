@@ -45,7 +45,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerMirrorCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
         else if (SceneManager.GetActiveScene().name == "4_Square")
-        {
+        {            
             Debug.Log("SquarePlayer Spawn");
             GameObject player = PhotonNetwork.Instantiate("MultiPlayer", pos, rot, 0);
             player.name = "SquarePlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
@@ -67,6 +67,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {   // 방에 나왔다면 광장 씬 로드
         if(SceneManager.GetActiveScene().name == "3-4_Mirror")
         {
+            if (CinematicBar.instance.blackBars.activeSelf) CinematicBar.instance.HideBars();    // 거울에서 블랙바가 꺼지는 코드가 씹히는 경우가 존재해서 광장 스폰될때 바로 꺼줘버리자
             ScenesManager.instance.SceneNum = 4;
             SceneManager.LoadScene("4_Square");
             videoHandler.instance.SetVideo(4);

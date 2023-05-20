@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class videoHandler : MonoBehaviour
 {
@@ -76,14 +77,19 @@ public class videoHandler : MonoBehaviour
         while (videoPlayer.targetCameraAlpha > 0.01f)
         {
             videoPlayer.targetCameraAlpha -= 0.05f;
-            if(videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 0)
+
+            if (videoPlayer.targetCameraAlpha > 0.1f && SceneManager.GetActiveScene().name == "0_Opening")
             {   // 튜토리얼에서 비디오가 끝나갈때쯔,,,음
+                UIManager.instnace.stopOut = false;
+
+                yield return new WaitForSeconds(2f);
+                SceneManager.LoadSceneAsync(1);
+                videoPlayer.targetCameraAlpha = 0f;
                 SoundManager.instnace.PlayBGM();
-                GameObject.Find("Global Volume").GetComponent<Volume>().enabled = true;
-                if (videoPlayer.targetCameraAlpha < 0.2f)
-                {
-                    PlayerMove.isStart = true;
-                }
+
+                yield return new WaitForSeconds(1.5f);
+                PlayerMove.isStart = true;
+                break;
             }
             else if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
             {   // 심해에서 비디오가 끝나갈때쯔,,,음
@@ -94,6 +100,7 @@ public class videoHandler : MonoBehaviour
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().useGravity = true;
                 UIManager.instnace.RunAnims("isWASD");
                 UIManager.instnace.RunAnims("isJelly");
+                UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", true);
             }
             else if(ScenesManager.instance.SceneNum == 4)
             {   // 광장에서 비디오가 끝나갈때...쯔음
