@@ -287,7 +287,6 @@ public class SwimMove : MonoBehaviour
     IEnumerator SetBoss()
     {
         UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", false);    // 사이드뷰로 전환될때는 안내 창 끄기
-        UIManager.instnace.RunAnims("isSeaMoveInfoOff");
         yield return new WaitForSeconds(0.3f);
 
         isBoss = true;
@@ -296,12 +295,12 @@ public class SwimMove : MonoBehaviour
         GameObject.Find("MileStone 1").SetActive(false);
         
         dir = Vector3.zero; // player가 계속 side뷰로 바뀌는 도중에도 w, s를 눌러 dir이 변경되는 경우를 대비해 스크립트가 비활성화된 뒤 이동dir을 zero로 초기화
-
         yield return new WaitForSeconds(1.3f);
 
         GameObject.Find("SpawnManager").transform.Find("boss_0").gameObject.SetActive(true);
         ControlVCam.instance.SwitchingWatchingBoss();
         Debug.Log("SetWatchingBoss");
+        
 
         yield return new WaitForSeconds(1.3f);
     }
