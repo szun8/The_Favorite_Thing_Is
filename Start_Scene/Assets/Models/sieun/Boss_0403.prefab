@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7704220234912631466}
   - component: {fileID: 8724212188476530543}
   - component: {fileID: 7704220234912631467}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: down_jaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7350484695161484309}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ Transform:
   - {fileID: 1041824577670197304}
   m_Father: {fileID: 628484398258639714}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -32.509823, y: 5.6585755, z: 88.69956}
 --- !u!1 &395098378151515659
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6086415860686415077}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.005_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4490466028430293892}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -203,7 +203,7 @@ Transform:
   - {fileID: 2109155252325034778}
   m_Father: {fileID: 7341321798956226475}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3.725, y: -2.17, z: 0.059}
+  m_LocalEulerAnglesHint: {x: 43.6327, y: -2.1101186, z: 0.080697216}
 --- !u!1 &786668773617284593
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 628484398258639714}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Armature.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ Transform:
   - {fileID: 3326005504718125969}
   m_Father: {fileID: 5298311908136985464}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
 --- !u!1 &1660281427043056423
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5978709385237808643}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.007_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5546091197927341199}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,7 +300,7 @@ Transform:
   - {fileID: 5978709385237808643}
   m_Father: {fileID: 3326005504718125969}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75.16173, y: 5.9037857, z: 7.6343994}
 --- !u!1 &3003253883085332635
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,7 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3326005504718125969}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -332,7 +332,7 @@ Transform:
   - {fileID: 5546091197927341199}
   m_Father: {fileID: 628484398258639714}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.5272341, y: -61.656227, z: 90.36592}
 --- !u!1 &3291187589582218169
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7341321798956226475}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ Transform:
   - {fileID: 4490466028430293892}
   m_Father: {fileID: 628484398258639714}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45.614296, y: 91.12002, z: 1.6229664}
 --- !u!1 &4813418052169923010
 GameObject:
   m_ObjectHideFlags: 0
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 5298311908136985462}
   - component: {fileID: 5298311908136985463}
   - component: {fileID: 6389329343599017468}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Boss_0403
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 910021437862107126}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2109155252325034778}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -511,7 +511,7 @@ Transform:
   - {fileID: 910021437862107126}
   m_Father: {fileID: 4490466028430293892}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -1.471, y: 0.155, z: -0.016}
+  m_LocalEulerAnglesHint: {x: 25.306164, y: 0.13832064, z: -0.014137774}
 --- !u!1 &6593129740261305747
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1041824577670197304}
-  m_Layer: 16
+  m_Layer: 19
   m_Name: Bone.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -543,4 +543,4 @@ Transform:
   - {fileID: 6086415860686415077}
   m_Father: {fileID: 7350484695161484309}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.068943, y: -58.00326, z: -19.284342}

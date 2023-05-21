@@ -14,7 +14,7 @@ public class Stone : MonoBehaviour
     }
 
     void Start()
-    {
+    {  
         if(transform.parent.name == "DropPathArea_2")
             rigid.velocity = Vector3.down * Random.Range(60f, 75f);
     }
@@ -32,5 +32,10 @@ public class Stone : MonoBehaviour
                 DropObject.isDroped = true;
             }
         }
+    }
+
+    public void PlayFallingSound()
+    {
+        SoundManager.instnace.PlaySE("RockFall", 1f);
     }
 }

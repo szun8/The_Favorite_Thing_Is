@@ -192,6 +192,7 @@ public class SwimMove : MonoBehaviour
 
         if (!isEnd && state.performed )
         {   // getKey
+            SoundManager.instnace.PlaySE("Light", 0.5f);
             isLight = true;
         }
 

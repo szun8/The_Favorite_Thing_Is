@@ -52,7 +52,6 @@ public class Water : MonoBehaviour
 
     public void GetWater(Collider _player)
     {
-        SoundManager.instnace.PlaySE(sound_WaterIn, 0.9f);
         SoundManager.instnace.PlayBGM();
         isWater = true;
         _player.transform.GetComponentInParent<Rigidbody>().drag = waterDrag;
@@ -64,7 +63,6 @@ public class Water : MonoBehaviour
     {
         if (isWater)
         {   // 물에 들어가 있을때만 빠져나올수 있기때문에
-            SoundManager.instnace.PlaySE(sound_WaterOut, 1.0f);
             isWater = false;
             _player.transform.GetComponentInParent<Rigidbody>().drag = originDrag;
 

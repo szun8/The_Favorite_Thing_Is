@@ -112,7 +112,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("isWalk", false);
             animator.SetTrigger("isJump");
             rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-            SoundManager.instnace.PlaySE("PlayerJump", 0.5f);
+            SoundManager.instnace.PlaySE("PlayerJump", 0.35f);
         }
     }
 
@@ -122,6 +122,7 @@ public class PlayerMove : MonoBehaviour
 
         if (state.performed)
         {   // GetKeyDown
+            SoundManager.instnace.PlaySE("Light", 0.55f);
             lightOn = true;
             LightHandle();
         }

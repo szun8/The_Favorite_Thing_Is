@@ -15,6 +15,7 @@ public class PortalScene : MonoBehaviour
         if (other.CompareTag("Player_mesh"))
         {
             ScenesManager.instance.Scene[0] = true;
+            SoundManager.instnace.PlaySE("Portal", 0.5f);
             SoundManager.instnace.VolumeOutBGM();
             Destroy(coll);
         }
