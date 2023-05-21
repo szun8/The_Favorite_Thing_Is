@@ -3,7 +3,67 @@ guid: 8d04a7ce4b05b0d4fb1b03ad1ac03275
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: B
+    second: {fileID: 2100000, guid: d644cd7da20e1425782a37d588cfbedc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: C
+    second: {fileID: 2100000, guid: df3307da429eb475e846e6ef3f435842, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dark_G
+    second: {fileID: 2100000, guid: 914db7386893a4399b8cf74ca405119d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_M
+    second: {fileID: 2100000, guid: 9bd2572f5fc0f4fc78b5373acd2d29c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: G
+    second: {fileID: 2100000, guid: 8afddbc2736dc463cafe14c02622c43f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Light_Y
+    second: {fileID: 2100000, guid: 4c801366572d84d83869ad9db609fd85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M
+    second: {fileID: 2100000, guid: 8465feae9edc24868a514f9bfad138c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mid_Y
+    second: {fileID: 2100000, guid: de5456db25a534fda8bf7ae7b6e85063, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: R
+    second: {fileID: 2100000, guid: 4ed6df1901b254edd9ba503db7884241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Y
+    second: {fileID: 2100000, guid: bc79046ce0fc049f3b0dfc20ead7ee1f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body.002
+    second: {fileID: 2100000, guid: 179d75229f63d4b90b99ae164c6020e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frameM
+    second: {fileID: 2100000, guid: 6011c9f83acce4d36916c3fed6f3ec09, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
