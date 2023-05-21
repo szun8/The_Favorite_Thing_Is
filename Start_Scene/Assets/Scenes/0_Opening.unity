@@ -457,6 +457,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2640561537004689685, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3061857757359004155, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 220
+      objectReference: {fileID: 0}
+    - target: {fileID: 5357889919982356555, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5357889920497845172, guid: c4809491251bd4b78910fad904747ae8,
         type: 3}
       propertyPath: m_RootOrder
@@ -516,6 +531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UIManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5559837215098310278, guid: c4809491251bd4b78910fad904747ae8,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 220
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4809491251bd4b78910fad904747ae8, type: 3}

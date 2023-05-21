@@ -55,6 +55,7 @@ public class SwimMove : MonoBehaviour
         if (!videoHandler.instance.videoPlayer.isPlaying && !isESC && Input.GetKeyDown(KeyCode.Escape))
         {   // 비디오가 플레이되고 있지 않고 아직 한번도 esc키가 눌러지지 않았다면 실행
             NextScene();
+            UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", false);    // 이동 안내 창 끄기
             isESC = true;
         }
 
