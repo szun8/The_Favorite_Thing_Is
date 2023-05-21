@@ -109,9 +109,9 @@ public class ControlVCam : MonoBehaviour
         while (true)
         {
             watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, bossSpawn.position.x, Time.deltaTime*2f), originPos.y, originPos.z); ;
-            if(watchingBossCam.transform.position.x < (bossSpawn.position.x + 3f))
+            if(watchingBossCam.transform.position.x < (bossSpawn.position.x + 5f))
             {
-                yield return new WaitForSeconds(0.75f);
+                yield return new WaitForSeconds(0.5f);
                 break;
             }
             yield return new WaitForSeconds(0.03f);
