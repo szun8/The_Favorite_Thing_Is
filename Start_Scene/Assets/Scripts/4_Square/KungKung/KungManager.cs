@@ -70,9 +70,7 @@ public class KungManager : MonoBehaviourPunCallbacks
 
     IEnumerator KungKungManager()   //쿵쿵이 윗세계 아랫세계에 따라서 위아래 와따가따 하게 하기 
     {
-        if(kung != null)
-        {
-            if (isDrop)
+        if (isDrop)
             {
                 kung.transform.position = pos;
                 PV.RPC("SyncKung", RpcTarget.AllBuffered, true);
@@ -89,14 +87,13 @@ public class KungManager : MonoBehaviourPunCallbacks
 
             }
 
-            else
-            {
-                kung.transform.position = pos;
-                PV.RPC("SyncKung", RpcTarget.AllBuffered, false);
-                pos = Vector3.MoveTowards(pos, startPos, speed * 1.5f * Time.deltaTime);
-                yield return null;
-            }
-        }
+        else
+        {
+            kung.transform.position = pos;
+            PV.RPC("SyncKung", RpcTarget.AllBuffered, false);
+            pos = Vector3.MoveTowards(pos, startPos, speed * 1.5f * Time.deltaTime);
+            yield return null;
+        } 
 
     }
     //쿵쿵이의 눈뜨고 잠자게하는거 동기화 
