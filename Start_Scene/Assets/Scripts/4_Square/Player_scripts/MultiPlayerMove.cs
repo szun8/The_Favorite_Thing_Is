@@ -22,7 +22,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public PhotonView PV;
 
     //이동관련 변수 
-    private Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향
+    public Vector3 dir = Vector3.zero;     // 캐릭터가 나아갈, 바라볼 방향, staineGlass cs때매 public
     public int JumpForce;                   // 점프력
     public float rotSpeed;                  // 방향키 반대이동시 몸의 회전 속도 
     public float speed;                     // 캐릭터 속도
@@ -35,9 +35,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool isJump = false; // 바닥 충돌, 발판과 단상
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
     public bool isOnTurtle = false; //거북이랑 닿아있으면 점프가 가능
-    //상호작용 
-    //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
-    //private bool isItem = false;
+
+    public bool z_free = false; //시은이용 >< 
 
     //빛 관련 변수
     public bool lightOn = false;
@@ -179,16 +178,20 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                 if (!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
                 else if (isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
 
+                
                 //바라보는 방향 부호 != 가고자할 방향 부호
-                if (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))
+                if (!z_free && Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) ||
+                 (z_free && (Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) || Mathf.Sign(transform.forward.z) != Mathf.Sign(dir.z)) ))
                 {
                     transform.Rotate(0, 1, 0);
                 }
+
                 if (!reverseGravity.isReversed)   //플레이어가 1P면 
                     transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
                 else    //2P이면 
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);
             }
+
             else
             {
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
@@ -199,8 +202,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     public void OnMove(InputAction.CallbackContext state)
     {   // 누른 키에 대한 value를 dir에 저장
-        if(PV.IsMine)
+        if (PV.IsMine)
+        {
             dir = state.ReadValue<Vector3>();
+            if (!z_free) dir.z = 0f;
+        }
+            
     }
 
     public void OnJump(InputAction.CallbackContext state)
@@ -214,12 +221,12 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
                 
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  //rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 //
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 // rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  // //
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용 
-                
-            
-            
+            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  // rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window //  
+
+
+
         }
     }
 
