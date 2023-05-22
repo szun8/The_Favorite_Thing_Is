@@ -37,6 +37,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool isOnTurtle = false; //거북이랑 닿아있으면 점프가 가능
 
     public bool z_free = false; //시은이용 >< 
+    //상호작용 
+    //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
+    //private bool isItem = false;
 
     //빛 관련 변수
     public bool lightOn = false;
@@ -205,9 +208,15 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             dir = state.ReadValue<Vector3>();
-            if (!z_free) dir.z = 0f;
-        }
             
+            if (!z_free) dir.z = 0f;
+            else// 스테인글라스일 경우
+            {   // 상하좌우 키 제대로 맞게 이동축 서로 swap -> 이 작업안해주면 오른쪽 누르면 막 다른쪽으로 가버립니다
+                float z = dir.z;
+                dir.z = (dir.x * -1);
+                dir.x = z;
+            }
+        } 
     }
 
     public void OnJump(InputAction.CallbackContext state)

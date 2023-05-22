@@ -342,6 +342,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 44a23145d1d5941afae9890ae60512a3, type: 2}
   - {fileID: 2100000, guid: 9c0d5394360bb4cb6ab3272d22572c35, type: 2}
   PV: {fileID: 4291155922799687852}
+  dir: {x: 0, y: 0, z: 0}
   JumpForce: 8
   rotSpeed: 10
   speed: 11
@@ -353,7 +354,7 @@ MonoBehaviour:
   isOnTurtle: 0
   z_free: 0
   lightOn: 0
-  getRed: 1
+  getRed: 0
   getGreen: 0
   getBlue: 0
   l_pressed: 0
