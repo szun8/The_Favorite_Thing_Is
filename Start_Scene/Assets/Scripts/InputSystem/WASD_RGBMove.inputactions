@@ -1,5 +1,5 @@
 {
-    "name": "AD_RGBMove",
+    "name": "WASD_RGBMove",
     "maps": [
         {
             "name": "Player",
@@ -62,7 +62,7 @@
             ],
             "bindings": [
                 {
-                    "name": "AD",
+                    "name": "WASD",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
                     "path": "3DVector",
                     "interactions": "",
@@ -109,6 +109,50 @@
                     "name": "Right",
                     "id": "28d02392-17c1-452e-a086-83ece16d99ef",
                     "path": "<XInputController>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "022056ba-2abb-4918-a8ee-74ccc320b743",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "forward",
+                    "id": "042ecc41-dc68-43ac-b0f3-93961e8501df",
+                    "path": "<XInputController>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "cbef42be-40f6-424e-bf14-9a08370cb5d1",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "backward",
+                    "id": "7a2b7adb-5ca8-4241-9763-9145aa71b2bd",
+                    "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse;Gamepad",
