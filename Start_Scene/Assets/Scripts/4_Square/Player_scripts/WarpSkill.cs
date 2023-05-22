@@ -8,6 +8,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     PhotonView PV;
     ReverseGravity reverseGravity;
     Transform playerZ;
+    Rigidbody rigid;
 
     private GameObject diePos;
 
@@ -16,12 +17,23 @@ public class WarpSkill : MonoBehaviourPunCallbacks
         PV = GetComponent<PhotonView>();
         reverseGravity = GetComponent<ReverseGravity>();
         playerZ = GetComponent<Transform>();
+        rigid = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5)
+        if (!gameObject.GetComponent<MultiPlayerMove>().z_free && (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5))
+        {
             playerZ.position = new Vector3(playerZ.position.x, playerZ.position.y, 0);
+            Debug.Log(gameObject.GetComponent<MultiPlayerMove>().z_free);
+        }
+
+        //freeze Z가 되어 있으면 == 1이다~ 
+        else if (gameObject.GetComponent<MultiPlayerMove>().z_free && (rigid.constraints & RigidbodyConstraints.FreezePositionZ) !=0)
+        {
+            rigid.constraints &= ~RigidbodyConstraints.FreezePositionZ;
+        }
+            
     }
 
     private void OnTriggerEnter(Collider other)

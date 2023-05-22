@@ -10,7 +10,7 @@ public class Snowing2 : MonoBehaviourPun
     PhotonView PV;
 
     public bool isLight = false; //이 단상에서 플레이어가 빛내니?
-    public int playerCnt =0;
+    public int playerCnt = 0;
 
     GameObject Player;
     GameObject P2;
@@ -31,7 +31,6 @@ public class Snowing2 : MonoBehaviourPun
         { 
             CheckLight(); //플레이어가 단상 레이에 검출 될때 키고 안키고
         }
-        
     }
 
     void Ray()
