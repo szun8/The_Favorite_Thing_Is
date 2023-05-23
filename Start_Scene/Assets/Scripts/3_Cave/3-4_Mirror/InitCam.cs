@@ -7,9 +7,11 @@ using Cinemachine;
 
 public class InitCam : MonoBehaviourPun
 {
+    PhotonView PV;
     CinemachineVirtualCamera vBack; // 이건 거울 back, 광장 side
     CinemachineVirtualCamera vSquareBack; // 이건 광장 back 
     GameObject player;
+    [SerializeField] YellowBridge yellowPlate_1;
     bool InCam = false, OutCam = false;     // 거북이 변수
     bool blueCam = false, redCam = false;   // B-2구역 변수
     bool StainCam = false;
@@ -18,6 +20,7 @@ public class InitCam : MonoBehaviourPun
 
     private void Start()
     {
+        PV = GetComponent<PhotonView>();
         vBack = GetComponent<CinemachineVirtualCamera>();
     }
 
@@ -53,29 +56,31 @@ public class InitCam : MonoBehaviourPun
             }
         }
 
-        else if (blueCam)
+        else if (blueCam && !yellowPlate_1.isDone)
         {   // B-2 구역 파란 단상
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, 18f, Time.deltaTime * 1.5f);
 
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -25f, Time.deltaTime * 1.5f);
-            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.75f)
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.5f)
             {
+                Debug.Log("blueCam off");
                 blueCam = false;
             }
         }
 
-        else if (redCam)
+        else if (redCam && !yellowPlate_1.isDone)
         {   // B-2 구역 빨간 단상
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, -18f, Time.deltaTime * 1.5f);
 
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -25f, Time.deltaTime * 1.5f);
-            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.75f)
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.5f)
             {
                 redCam = false;
+                Debug.Log("redCam off");
             }
         }
 
@@ -139,7 +144,7 @@ public class InitCam : MonoBehaviourPun
             Debug.Log(gameObject.name);
             GetPhotonViewID();  
             if (other.gameObject.GetComponentInParent<PhotonView>().ViewID == player.GetPhotonView().ViewID)
-            {
+            {   // 자기 캠에 한해서만 적용하자
                 if (gameObject.name.Contains("TurtleCamTrigger"))
                 {
                     InCam = true;
@@ -147,12 +152,10 @@ public class InitCam : MonoBehaviourPun
                 else if (gameObject.name == "B-2-RedTrigger")
                 {
                     redCam = true;
-                    Debug.Log("redCam On");
                 }
                 else if (gameObject.name == "B-2-BlueTrigger")
                 {
                     blueCam = true;
-                    Debug.Log("blueCam On");
                 }
                 else if(gameObject.name == "BackCamTrigger")
                 {   // 스테인글라스 계단 밟으면 백 뷰로 전환
@@ -160,23 +163,13 @@ public class InitCam : MonoBehaviourPun
 
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
+                    //player.GetComponent<MultiPlayerMove>().z_free = true; // 상하좌우 이동 가능하게 설정해야하는데 여기서 무튼 동기화 필요 도와줘~~~~요 흑흑
                     Debug.Log("BackCam On");
                 }
                 else if(gameObject.name == "StainedGlassTrigger")
                 {   // 스테인글라스에 더 가깝게 줌인
                     StainCam = true;
                     Debug.Log("StainedGlassTrigger");
-                }
-            }
-            else if(gameObject.name == "B-2-RedTrigger")
-            {
-                if (coll_1p == null) coll_1p = other.transform.parent.gameObject;
-                else if(other.transform.parent.gameObject != coll_1p)
-                {
-                    if(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -20.5)
-                    {
-                        OutCam = true;
-                    }
                 }
             }
         }
@@ -188,10 +181,13 @@ public class InitCam : MonoBehaviourPun
         {
             GetPhotonViewID(); 
             if (other.gameObject.GetComponentInParent<PhotonView>().ViewID == player.GetPhotonView().ViewID)
-            {
+            {   // 자기 캠에 한해서만 적용하자
                 if (gameObject.name.Contains("TurtleCamTrigger") || gameObject.name.Contains("B-2-"))
                 {   // 2P가 파란 단상에서 빠져 나와서 앞으로 전진할 경우 다시 
                     OutCam = true;
+                    InCam = false;
+                    redCam = false;
+                    blueCam = false;
                 }
             }
         }

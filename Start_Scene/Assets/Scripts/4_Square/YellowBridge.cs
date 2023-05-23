@@ -12,7 +12,7 @@ public class YellowBridge : MonoBehaviourPun
     public DanSang red;
     public DanSang green;
 
-    private bool isDone; //rpc 함수 한번만 하게 하려고 
+    public bool isDone; //rpc 함수 한번만 하게 하려고 
 
     
     void Awake()
