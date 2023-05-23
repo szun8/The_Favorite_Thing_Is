@@ -9,7 +9,7 @@ public class Cloud : MonoBehaviour
 
     Animator animator;
 
-    private bool isDone = false;
+    public bool isDone = false;
 
     void Awake()
     {

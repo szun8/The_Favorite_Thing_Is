@@ -7,12 +7,12 @@ using Cinemachine;
 
 public class InitCam : MonoBehaviourPun
 {
-    PhotonView PV;
     CinemachineVirtualCamera vBack; // 이건 거울 back, 광장 side
     CinemachineVirtualCamera vSquareBack; // 이건 광장 back 
     GameObject player;
     [SerializeField] YellowBridge yellowPlate_1;
     bool InCam = false, OutCam = false;     // 거북이 변수
+    bool isYellow = false;
     public bool blueCam = false, redCam = false;   // B-2구역 변수
     public bool isBack = false; // 백캠 변환 여부 변수
     bool StainCam = false;
@@ -22,7 +22,6 @@ public class InitCam : MonoBehaviourPun
 
     private void Start()
     {
-        PV = GetComponent<PhotonView>();
         vBack = GetComponent<CinemachineVirtualCamera>();
     }
 
@@ -39,6 +38,12 @@ public class InitCam : MonoBehaviourPun
             Debug.Log("PlayerName : " + player.name);
             if (player.name.Contains("1")) cntPlayer = 1;
             else cntPlayer = 2;
+        }
+
+        if (gameObject.name == "B-2-RedTrigger" && !isYellow && yellowPlate_1.isDone)
+        {
+            OutCam = true;
+            isYellow = true;
         }
 
         if (isBack)
@@ -210,13 +215,19 @@ public class InitCam : MonoBehaviourPun
                             vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
                         }
                     }
+                    UIManager.instnace.RunAnims("isWASD");
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
                     Debug.Log("BackCam On");
                 }
+                else if(gameObject.name == "NoPassTrigger")
+                {   // 스테인글라스 내부로 들어왔다면 다시 밖으로 못가게 막자
+                    GameObject.Find("BackCamTrigger").GetComponent<BoxCollider>().isTrigger = false;
+                }
                 else if(gameObject.name == "StainedGlassTrigger")
                 {   // 스테인글라스에 더 가깝게 줌인
                     StainCam = true;
+                    UIManager.instnace.RunAnimsBool("isStainGlassY", true);     // 스테인 글라스에 도착하면 UI ON
                     Debug.Log("StainedGlassTrigger");
                 }
             }

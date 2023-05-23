@@ -33,20 +33,27 @@ public class BG_Glass : MonoBehaviour
     {
         if (!staineGlass.stopBG)
         {
-            if(changeMat[value].color.r >= 0.9f)
-            {
-                changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(168, 168, 168, 1), Time.deltaTime* 0.6f); 
-            }
+            Color fadeColor = Materials[value].color;
 
-            else if(changeMat[value].color.r <= 168/255f)
-            {
-                changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(255, 255, 255, 1), Time.deltaTime* 0.6f); 
-            }
+            fadeColor.r = Mathf.PingPong(Time.time*0.5f, 1) + 0.65f;
+            fadeColor.g = fadeColor.r;
+            fadeColor.b = fadeColor.r;
 
-            Materials = changeMat;
+            Materials[value].color = fadeColor;
+
+            //if (changeMat[value].color.r >= 0.9f)
+            //{
+            //    changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(168, 168, 168, 1), Time.deltaTime* 0.6f); 
+            //}
+
+            //else if(changeMat[value].color.r <= 168/255f)
+            //{
+            //    changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(255, 255, 255, 1), Time.deltaTime* 0.6f); 
+            //}
+
+            //Materials = changeMat;
         }
     }
-
 
     bool CheckLight(int m)
     {

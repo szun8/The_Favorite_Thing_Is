@@ -12,7 +12,7 @@ public class Ivy : MonoBehaviourPun
     Animator animator;  //나뭇가지 자식 빛나는 잎들한테 animator가 있음 
     PhotonView PV;
 
-    private bool isDone = false;
+    public bool isDone = false;
 
     void Awake()
     {

@@ -37,7 +37,8 @@ public class StaineGlass : MonoBehaviourPun
             //if (Materials[4].color.a == 1 && Materials[9].color.a == 1) light_state=1;
 
             if(SyncState(4) && SyncState(9)) 
-            {
+            {   // 첫번째 L을 밝히는 작업이 끝나고 나서 실행되는 조건문
+                UIManager.instnace.RunAnimsBool("isStainGlassY", false);   // 재인이의 요청사항 : 처음 L누르고 나서 UI 변경
                 light_state = 1;
                 stopBG = false;
             }
@@ -78,7 +79,7 @@ public class StaineGlass : MonoBehaviourPun
 
     bool SyncState(int m)
     {
-        if(Materials[m].color.a  >= 0.9f) return true;
+        if(Materials[m].color.a  >= 0.65f) return true;
         else return false;
     }
 }
