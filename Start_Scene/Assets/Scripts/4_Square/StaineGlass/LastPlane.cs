@@ -7,9 +7,10 @@ public class LastPlane : MonoBehaviourPun
 {
     PhotonView PV;
     MultiPlayerMove playerMove;
+    Animator animator;
 
     GameObject Player; //단상에 충돌한 플레이어 
-    private bool isStop = false; //단상에 중앙에 닿으면 true가 되서 움직임 제한 변수
+    public bool isStop = false; //단상에 중앙에 닿으면 true가 되서 움직임 제한 변수
 
     //ray 검출용 
     private bool isPlayer_L, isPlayer = false;
@@ -20,7 +21,7 @@ public class LastPlane : MonoBehaviourPun
 
     public Transform center;
 
-    private int recent_L = -1; //마지막으로 누른 버튼 확인
+    public int recent_L = -1; //마지막으로 누른 버튼 확인
 
     private bool isIn = false;
 
@@ -80,6 +81,7 @@ public class LastPlane : MonoBehaviourPun
         {
             Player = collision.gameObject;
             playerMove = Player.GetComponent<MultiPlayerMove>();
+            animator = Player.GetComponent<Animator>();
             isIn = true;
         }
     }
@@ -90,9 +92,9 @@ public class LastPlane : MonoBehaviourPun
         {
             if (Player == collision.gameObject)
             {
-                playerMove.isGlass = false;
-                Player = null;
-                playerMove = null;
+                //playerMove.isGlass = false;
+                //Player = null;
+                //playerMove = null;
                 isIn = false;
             }
         }
@@ -109,19 +111,22 @@ public class LastPlane : MonoBehaviourPun
     [PunRPC]
     void Stop()
     {
+        //1. 플레이어 wasd dir 입력 막아버려  z_free 는 true인 상태 
         playerMove.isGlass = true;
-        Player.GetComponent<Animator>().SetBool("isWalk", false); 
+        //2. 멈춰랏 !  // 애니메이션 멈추기
+        animator.SetBool("isWalk", false); 
+        animator.speed = 0f;
 
-        Player.GetComponent<Transform>().position = Vector3.Lerp(Player.GetComponent<Transform>().position,
-            center.position, 0.03f);
-
+        //2. 움직임 제한 
         rigid = Player.GetComponent<Rigidbody>();
         rigid.constraints = RigidbodyConstraints.FreezeAll;//Position
-
-        Player.GetComponent<MultiPlayerMove>().dir = new Vector3(1, 0, 0);
+        //3. 글라스 바라보게 하고 위치 스르륵 가게
+        playerMove.dir = new Vector3(1, 0, 0);
+        Player.GetComponent<Transform>().position = Vector3.Lerp(Player.GetComponent<Transform>().position,
+        center.position, 0.05f);
         
-
-        if (Player.GetComponent<Transform>().position == center.position) isStop = true;
+        //4. 어느정도 스르륵 되면 stop 성공
+        if (Vector3.Distance(Player.transform.position, center.position) < 0.001f) isStop = true;
 
     }
 

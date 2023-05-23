@@ -25,21 +25,17 @@ public class StaineGlass : MonoBehaviourPun
     
     void Update()
     {
-        if(light_state ==0 && p1.isLight[0] && p2.isLight[0]) //L
-        {
-            changeMat[4].color = Color.Lerp(changeMat[4].color,
-                new Color(changeMat[4].color.r, changeMat[4].color.g, changeMat[4].color.b, 1), Time.deltaTime);
-
-            changeMat[9].color = Color.Lerp(changeMat[9].color,
-                new Color(changeMat[9].color.r, changeMat[9].color.g, changeMat[9].color.b, 1), Time.deltaTime);
-
+        if(light_state ==0 && (p1.isLight[0] || p2.isLight[0])) //L
+        {   
+            ChangeColor(4); //default_M
+            ChangeColor(9); //Light_Y
+            
             Materials = changeMat;
-
             if (Materials[4].color.a == 1 && Materials[9].color.a == 1) light_state++;
 
         }
 
-        else if (light_state ==1 && p1.isLight[1] && p2.isLight[1]) //R
+        else if (light_state ==1 && (p1.isLight[1] || p2.isLight[1])) //R
         {
 
         }
@@ -63,5 +59,11 @@ public class StaineGlass : MonoBehaviourPun
         {
 
         }
+    }
+
+    void ChangeColor(int value)
+    {
+        changeMat[value].color = Color.Lerp(changeMat[value].color,
+                new Color(changeMat[value].color.r, changeMat[value].color.g, changeMat[value].color.b, 1), Time.deltaTime* 0.99f);  
     }
 }
