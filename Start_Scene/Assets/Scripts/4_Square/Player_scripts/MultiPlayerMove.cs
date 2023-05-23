@@ -36,7 +36,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     public bool canJump = false;// 발판과 단상에서 점프 가능하게 하기 
     public bool isOnTurtle = false; //거북이랑 닿아있으면 점프가 가능
 
-    public bool z_free = false; //시은이용 >< 
+    //스테인 글라쓰 변수 ? 
+    public bool z_free = false; //wasd 이동이가능+ Z축벗어나도 z=0위치로 워프 안돠게 함
+    public bool isGlass = false; //true면 단상에 서서 z_free false해놔도 z = 0 안되지게 하기위함  (last_plane에 닿으면 true가 된다 )
     //상호작용 
     //private RaycastHit RGBitem;   //일단 남겨두자 플레이어가 바라보는 아이,, 뭐 ,,,, 
     //private bool isItem = false;
@@ -207,14 +209,17 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {   // 누른 키에 대한 value를 dir에 저장
         if (PV.IsMine)
         {
-            dir = state.ReadValue<Vector3>();
-            
-            if (!z_free) dir.z = 0f;
-            else// 스테인글라스일 경우
-            {   // 상하좌우 키 제대로 맞게 이동축 서로 swap -> 이 작업안해주면 오른쪽 누르면 막 다른쪽으로 가버립니다
-                float z = dir.z;
-                dir.z = (dir.x * -1);
-                dir.x = z;
+            if (!isGlass)
+            {
+                dir = state.ReadValue<Vector3>();
+
+                if (!z_free) dir.z = 0f;
+                else// 스테인글라스일 경우
+                {   // 상하좌우 키 제대로 맞게 이동축 서로 swap -> 이 작업안해주면 오른쪽 누르면 막 다른쪽으로 가버립니다
+                    float z = dir.z;
+                    dir.z = (dir.x * -1);
+                    dir.x = z;
+                }
             }
         } 
     }
@@ -223,7 +228,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
     {
         if (!PV.IsMine) return;
 
-        if (state.performed && isJump == false)
+        if (state.performed && isJump == false && !isGlass)
         {   
             isJump = true;
             PV.RPC("SyncJump", RpcTarget.AllBuffered);

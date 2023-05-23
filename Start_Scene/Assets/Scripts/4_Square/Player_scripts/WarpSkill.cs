@@ -6,6 +6,7 @@ using Photon.Pun;
 public class WarpSkill : MonoBehaviourPunCallbacks
 {
     PhotonView PV;
+    MultiPlayerMove playerMove;
     ReverseGravity reverseGravity;
     Transform playerZ;
     Rigidbody rigid;
@@ -16,22 +17,24 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     {
         PV = GetComponent<PhotonView>();
         reverseGravity = GetComponent<ReverseGravity>();
+        playerMove = GetComponent<MultiPlayerMove>();
         playerZ = GetComponent<Transform>();
         rigid = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        if (!gameObject.GetComponent<MultiPlayerMove>().z_free && (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5))
+        //글라쓰 단상 씬이 아니고, 플레이어가 wasd 움직일수 없고, Z축이 벗어나게 되면 Z축 0으로 맞추기 
+        if (!playerMove.isGlass && !gameObject.GetComponent<MultiPlayerMove>().z_free && (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5))
         {
             playerZ.position = new Vector3(playerZ.position.x, playerZ.position.y, 0);
             Debug.Log(gameObject.GetComponent<MultiPlayerMove>().z_free);
         }
 
-        //freeze Z가 되어 있으면 == 1이다~ 
+        //freeze Z가 되어 있으면 == 1이다~  
         else if (gameObject.GetComponent<MultiPlayerMove>().z_free && (rigid.constraints & RigidbodyConstraints.FreezePositionZ) !=0)
         {
-            rigid.constraints &= ~RigidbodyConstraints.FreezePositionZ;
+            rigid.constraints &= ~RigidbodyConstraints.FreezePositionZ; // z 안얼려 있으면 얼려라 ~ 
         }
             
     }

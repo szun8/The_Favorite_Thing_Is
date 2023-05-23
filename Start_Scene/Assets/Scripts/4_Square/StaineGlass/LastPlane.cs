@@ -8,15 +8,24 @@ public class LastPlane : MonoBehaviourPun
     PhotonView PV;
     MultiPlayerMove playerMove;
 
+    GameObject Player; //단상에 충돌한 플레이어 
     private bool isStop = false; //단상에 중앙에 닿으면 true가 되서 움직임 제한 변수
 
     //ray 검출용 
-    private bool isPlayer = false;
+    private bool isPlayer_L, isPlayer = false;
+    RaycastHit player_L;
     RaycastHit player;
 
     public bool[] isLight; // L, R, G, B
 
-    private int recent_L = -1; //마지막으로 누른 버튼 확인 
+    public Transform center;
+
+    private int recent_L = -1; //마지막으로 누른 버튼 확인
+
+    private bool isIn = false;
+
+    private Rigidbody rigid;
+   
 
     void Awake() => PV = GetComponent<PhotonView>();
 
@@ -25,11 +34,23 @@ public class LastPlane : MonoBehaviourPun
     {
         Ray();
 
-        if (!isStop && isPlayer && player.collider != null) PV.RPC("Stop", RpcTarget.AllBuffered);
-
-        if (isStop)
+        if (!isStop && Player != null)
         {
-            if(playerMove.l_pressed && recent_L != 0)
+            if (isPlayer && player.collider != null)
+            {
+                if (player.collider.transform.parent.gameObject == Player)
+                    PV.RPC("Stop", RpcTarget.AllBuffered);
+            }
+            else if (isPlayer_L && player_L.collider != null)
+            {
+                if(player_L.collider.transform.parent.gameObject == Player)
+                    PV.RPC("Stop", RpcTarget.AllBuffered);
+            }  
+        }
+
+        else if (isStop)
+        {
+            if (playerMove.l_pressed && recent_L != 0)
             {
                 PV.RPC("SyncLight", RpcTarget.AllBuffered, 0);
             }
@@ -49,21 +70,59 @@ public class LastPlane : MonoBehaviourPun
                 PV.RPC("SyncLight", RpcTarget.AllBuffered, 3);
             }
         }
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //플레이어가 한번도 안 닿은 단상일때 , 닿으면 다른놈 못들어오게
+        if(collision.gameObject.CompareTag("Player") && !isIn)
+        {
+            Player = collision.gameObject;
+            playerMove = Player.GetComponent<MultiPlayerMove>();
+            isIn = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player") && isIn)
+        {
+            if (Player == collision.gameObject)
+            {
+                playerMove.isGlass = false;
+                Player = null;
+                playerMove = null;
+                isIn = false;
+            }
+        }
     }
 
     void Ray()
     {
         Debug.DrawRay(transform.position + new Vector3(0, 1f, 0), Vector3.up * 1.7f, Color.blue);
+        isPlayer_L = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player_L, 1.7f, LayerMask.GetMask("LightPlayer"));
         isPlayer = Physics.Raycast(transform.position + new Vector3(0, 1f, 0), Vector3.up, out player, 1.7f, LayerMask.GetMask("Player"));
     }
 
+   
     [PunRPC]
     void Stop()
     {
-        isStop = true;
-        playerMove = player.collider.gameObject.GetComponentInParent<MultiPlayerMove>();
-        playerMove.dir = new Vector3(1, 0, 0);
-        player.collider.transform.parent.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        playerMove.isGlass = true;
+        Player.GetComponent<Animator>().SetBool("isWalk", false); 
+
+        Player.GetComponent<Transform>().position = Vector3.Lerp(Player.GetComponent<Transform>().position,
+            center.position, 0.03f);
+
+        rigid = Player.GetComponent<Rigidbody>();
+        rigid.constraints = RigidbodyConstraints.FreezeAll;//Position
+
+        Player.GetComponent<MultiPlayerMove>().dir = new Vector3(1, 0, 0);
+        
+
+        if (Player.GetComponent<Transform>().position == center.position) isStop = true;
+
     }
 
 

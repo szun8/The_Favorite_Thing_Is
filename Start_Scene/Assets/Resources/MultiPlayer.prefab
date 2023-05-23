@@ -353,6 +353,7 @@ MonoBehaviour:
   canJump: 0
   isOnTurtle: 0
   z_free: 0
+  isGlass: 0
   lightOn: 0
   getRed: 0
   getGreen: 0
