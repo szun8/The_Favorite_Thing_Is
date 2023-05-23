@@ -304,6 +304,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.name == "BackCamTrigger")
+        {
+            z_free = true;
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {   //땅, 단상들 충돌과 + layer 땅을 인지해야 점프 가능 
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("L_Plate") || collision.gameObject.CompareTag("R_Plate") ||

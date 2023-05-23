@@ -13,8 +13,10 @@ public class InitCam : MonoBehaviourPun
     GameObject player;
     [SerializeField] YellowBridge yellowPlate_1;
     bool InCam = false, OutCam = false;     // 거북이 변수
-    bool blueCam = false, redCam = false;   // B-2구역 변수
+    public bool blueCam = false, redCam = false;   // B-2구역 변수
+    public bool isBack = false; // 백캠 변환 여부 변수
     bool StainCam = false;
+    int cntPlayer;
     Vector3 statinCamPos = new(795, 20, 0);
     Quaternion stainCamRot = Quaternion.Euler(-10f, 90, 0);
 
@@ -31,6 +33,20 @@ public class InitCam : MonoBehaviourPun
         {
             vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
             vSquareBack.Follow = player.transform;
+        }
+        if(cntPlayer == 0 && player != null)
+        {   // 구분을 위한 플레이어 번호가 아직 초기화가 안됐다면 초기화 해주는 작업
+            Debug.Log("PlayerName : " + player.name);
+            if (player.name.Contains("1")) cntPlayer = 1;
+            else cntPlayer = 2;
+        }
+
+        if (isBack)
+        {   // 스테인글라스 계단 밟으면 백 뷰로 전환
+            if (vSquareBack == null) vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
+            vSquareBack.Priority = 11;
+            vBack.Priority = 10;
+            Debug.Log("BackCam On");
         }
 
         if (InCam)
@@ -58,8 +74,18 @@ public class InitCam : MonoBehaviourPun
 
         else if (blueCam && !yellowPlate_1.isDone)
         {   // B-2 구역 파란 단상
-            vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
-            Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, 18f, Time.deltaTime * 1.5f);
+            if(cntPlayer == 2)
+            {   // 2p인 경우
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
+            Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, -18f, Time.deltaTime * 1.5f);
+
+            }
+            else
+            {   // 1p인 경우
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
+           Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, 18f, Time.deltaTime * 1.5f);
+
+            }
 
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -25f, Time.deltaTime * 1.5f);
@@ -72,9 +98,17 @@ public class InitCam : MonoBehaviourPun
 
         else if (redCam && !yellowPlate_1.isDone)
         {   // B-2 구역 빨간 단상
-            vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
+            if (cntPlayer == 2)
+            {   // 2p인 경우
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
+            Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, 18f, Time.deltaTime * 1.5f);
+            }
+            else
+            {   // 1p인 경우
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, -18f, Time.deltaTime * 1.5f);
-
+            }
+            
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -25f, Time.deltaTime * 1.5f);
             if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.5f)
@@ -87,7 +121,7 @@ public class InitCam : MonoBehaviourPun
         else if (StainCam)
         {
             vSquareBack.Follow = null;
-
+            
             vSquareBack.transform.position = Vector3.Lerp(vSquareBack.transform.position, statinCamPos, Time.deltaTime * 1.5f);
             vSquareBack.transform.rotation = Quaternion.Lerp(vSquareBack.transform.rotation, stainCamRot, Time.deltaTime * 1.5f);
             if(vSquareBack.transform.position.x > 794.75)
@@ -117,13 +151,19 @@ public class InitCam : MonoBehaviourPun
     {   // 광장에서의 플레이어 개별 시네머신 설정
         if (playerCnt == 1)
         {
+            cntPlayer = playerCnt;
             player = GameObject.Find("SquarePlayer_1");
             vBack.Follow = player.transform;
+            Debug.Log("player.name : " + player.name);
+            Debug.Log("PlayerCnt : " + cntPlayer);
         }
         else if (playerCnt == 2)
         {
+            cntPlayer = playerCnt;
             player = GameObject.Find("SquarePlayer_2");
             vBack.Follow = player.transform;
+            Debug.Log("player.name : " + player.name);
+            Debug.Log("PlayerCnt : " + cntPlayer);
         }
     }
 
@@ -136,7 +176,6 @@ public class InitCam : MonoBehaviourPun
         }
     }
 
-    GameObject coll_1p;
     private void OnTriggerEnter(Collider other)
     {   // 거북이 트리거존에 닿았을 때
         if (other.CompareTag("Player_mesh"))
@@ -157,13 +196,22 @@ public class InitCam : MonoBehaviourPun
                 {
                     blueCam = true;
                 }
-                else if(gameObject.name == "BackCamTrigger")
+                else if (gameObject.name == "BackCamTrigger")
                 {   // 스테인글라스 계단 밟으면 백 뷰로 전환
-                    if(vSquareBack == null) vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
-
+                    if (vSquareBack == null) vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
+                    if (cntPlayer == 0 && player != null)
+                    {
+                        Debug.Log("PlayerNameBack : " + player.name);
+                        if (player.name.Contains("1")) cntPlayer = 1;
+                        else
+                        {   // 2p 캠 x랑 y 반대로 되는거 수정함
+                            cntPlayer = 2;
+                            vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x = 13f;
+                            vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
+                        }
+                    }
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
-                    //player.GetComponent<MultiPlayerMove>().z_free = true; // 상하좌우 이동 가능하게 설정해야하는데 여기서 무튼 동기화 필요 도와줘~~~~요 흑흑
                     Debug.Log("BackCam On");
                 }
                 else if(gameObject.name == "StainedGlassTrigger")
