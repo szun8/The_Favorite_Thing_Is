@@ -15,6 +15,8 @@ public class StaineGlass : MonoBehaviourPun
 
     public int light_state = 0; // L-> 0 L눌렀으면 1  Rgbcmyk 총 8단계
 
+    public bool stopBG = false;
+
     void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -31,8 +33,15 @@ public class StaineGlass : MonoBehaviourPun
             ChangeColor(9); //Light_Y
             
             Materials = changeMat;
-            if (Materials[4].color.a == 1 && Materials[9].color.a == 1) light_state++;
+            stopBG = true;
+            //if (Materials[4].color.a == 1 && Materials[9].color.a == 1) light_state=1;
 
+            if(SyncState(4) && SyncState(9)) 
+            {
+                light_state = 1;
+                stopBG = false;
+            }
+            
         }
 
         else if (light_state ==1 && (p1.isLight[1] || p2.isLight[1])) //R
@@ -64,6 +73,12 @@ public class StaineGlass : MonoBehaviourPun
     void ChangeColor(int value)
     {
         changeMat[value].color = Color.Lerp(changeMat[value].color,
-                new Color(changeMat[value].color.r, changeMat[value].color.g, changeMat[value].color.b, 1), Time.deltaTime* 0.99f);  
+                new Color(changeMat[value].color.r, changeMat[value].color.g, changeMat[value].color.b, 1), Time.deltaTime* 0.3f);  
+    }
+
+    bool SyncState(int m)
+    {
+        if(Materials[m].color.a  >= 0.9f) return true;
+        else return false;
     }
 }
