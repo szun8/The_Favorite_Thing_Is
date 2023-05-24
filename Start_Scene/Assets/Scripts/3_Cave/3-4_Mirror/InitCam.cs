@@ -41,7 +41,6 @@ public class InitCam : MonoBehaviourPun
         }
         if(cntPlayer == 0 && player != null)
         {   // 구분을 위한 플레이어 번호가 아직 초기화가 안됐다면 초기화 해주는 작업
-            Debug.Log("PlayerName : " + player.name);
             if (player.name.Contains("1")) cntPlayer = 1;
             else cntPlayer = 2;
         }
@@ -210,21 +209,23 @@ public class InitCam : MonoBehaviourPun
                 else if (gameObject.name == "BackCamTrigger")
                 {   // 스테인글라스 계단 밟으면 백 뷰로 전환
                     if (vSquareBack == null) vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
+
                     if (cntPlayer == 0 && player != null)
                     {
                         Debug.Log("PlayerNameBack : " + player.name);
                         if (player.name.Contains("1")) cntPlayer = 1;
-                        else
-                        {   // 2p 캠 x랑 y 반대로 되는거 수정함
-                            cntPlayer = 2;
-                            vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x = 13f;
-                            vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
-                        }
+                        else cntPlayer = 2;
                     }
+
+                    if(cntPlayer == 2)
+                    {   // 2p 캠 x랑 y 반대로 되는거 수정함
+                        vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x = 13f;
+                        vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
+                    }
+
                     UIManager.instnace.RunAnims("isWASD");
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
-                    Debug.Log("BackCam On");
                 }
                 else if(gameObject.name == "NoPassTrigger")
                 {   // 스테인글라스 내부로 들어왔다면 다시 밖으로 못가게 막자
