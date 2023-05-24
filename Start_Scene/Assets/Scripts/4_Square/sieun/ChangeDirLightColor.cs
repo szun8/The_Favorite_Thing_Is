@@ -21,6 +21,9 @@ public class ChangeDirLightColor : MonoBehaviour
     [SerializeField] YellowBridge _bridge;
     bool isYellow = false;
 
+    [SerializeField] Light L1;
+    [SerializeField] Light L2;
+
     // Update is called once per frame
     void Update()
     {
@@ -45,7 +48,9 @@ public class ChangeDirLightColor : MonoBehaviour
         else if (!isYellow && _bridge.isDone)
         {
             RenderSettings.skybox.SetColor("_Tint", Color.Lerp(RenderSettings.skybox.GetColor("_Tint"), originColor, Time.deltaTime));
-            if (RenderSettings.skybox.GetColor("_Tint") == originColor) isYellow = true;
+            L1.intensity = Mathf.Lerp(L1.intensity, 0, Time.deltaTime * 0.9f);
+            L2.intensity = Mathf.Lerp(L2.intensity, 0, Time.deltaTime * 0.9f);
+            if (RenderSettings.skybox.GetColor("_Tint") == originColor && L1.intensity <= 0.01) isYellow = true;
         }
     }
 
