@@ -12,9 +12,7 @@ public class WarpSkill : MonoBehaviourPunCallbacks
     Rigidbody rigid;
 
     private GameObject diePos;
-
-    private bool isSendOne = false;
-
+    
     void Awake()
     {
         PV = GetComponent<PhotonView>();

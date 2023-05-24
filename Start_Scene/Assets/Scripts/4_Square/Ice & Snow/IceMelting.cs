@@ -6,7 +6,6 @@ using Photon.Pun;
 public class IceMelting : MonoBehaviourPun
 {
     public Animator animator;
-    //public BoxCollider boxCollider;
 
     public int isPlateup; //1이면 얼음 이 위에 있음 
 
@@ -26,7 +25,7 @@ public class IceMelting : MonoBehaviourPun
     {
         UpDownLay(); //플레이어 감지하는 레이를 발사 
 
-        if (PhotonNetwork.InRoom) CheckLight();
+        if (PhotonNetwork.InRoom && !isLight) CheckLight();
 
     }
 
@@ -73,7 +72,7 @@ public class IceMelting : MonoBehaviourPun
     private void OnCollisionExit(Collision collision)
     {
         //isSendOne을 주는 이유는 안키고 밟았다가 그냥 Exit하면 패킷 안발사 하려고 
-        if (collision.gameObject.CompareTag("Player") && isSendOne) PV.RPC("SyncMelt", RpcTarget.AllBuffered, false);
+        if (collision.gameObject.CompareTag("Player") && isSendOne && !isLight) PV.RPC("SyncMelt", RpcTarget.AllBuffered, false);
     }
 
 
@@ -82,13 +81,7 @@ public class IceMelting : MonoBehaviourPun
     {
         isLight = value;
         animator.SetBool("isMelt", value);
-
-        /*AnimatorStateInfo curAnim = animator.GetCurrentAnimatorStateInfo(0); //현재 진행중인 애니메이션 상태 가져옴 
-        if (curAnim.IsName("IceMelt") && curAnim.normalizedTime >= 0.9f)//애니메이션 이름이 ~~이고, 90%이상 완료된 경우 
-        {  
-            BoxCollider boxCollider = animator.gameObject.GetComponentInChildren<BoxCollider>();
-            boxCollider.isTrigger = true;
-        }*/
+ 
     }
 
 }
