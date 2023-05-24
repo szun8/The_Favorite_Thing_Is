@@ -113,20 +113,27 @@ public class LastPlane : MonoBehaviourPun
     {
         //1. 플레이어 wasd dir 입력 막아버려  z_free 는 true인 상태 
         playerMove.isGlass = true;
-        //2. 멈춰랏 !  // 애니메이션 멈추기
-        animator.SetBool("isWalk", false); 
-        animator.speed = 0f;
 
+        Player.dir = Vector3.Lerp(Player.dir, new Vector3(1, 0, 0), 0.8f);
+        //transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
+        //2. 멈춰랏 !  // 애니메이션 멈추기
+        PV.RPC("SyncAnim", RpcTarget.AllBuffered, false); //animator.SetBool("isWalk", false); 
+        
         //2. 움직임 제한 
         rigid = Player.GetComponent<Rigidbody>();
         rigid.constraints = RigidbodyConstraints.FreezeAll;//Position
+
+        //if(!animator.GetBool("isWalk")) animator.speed = 1f;
+
         //3. 글라스 바라보게 하고 위치 스르륵 가게
-        playerMove.dir = new Vector3(1, 0, 0);
+        
         Player.GetComponent<Transform>().position = Vector3.Lerp(Player.GetComponent<Transform>().position,
         center.position, 0.05f);
         
         //4. 어느정도 스르륵 되면 stop 성공
         if (Vector3.Distance(Player.transform.position, center.position) < 0.001f) isStop = true;
+        
+        
 
     }
 
@@ -149,4 +156,18 @@ public class LastPlane : MonoBehaviourPun
         }
     }
     
+    [PunRPC]
+    void SyncAnim(bool value) 
+    {
+        AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
+
+        if(currentState.IsName("Idle") == false)
+        {
+            animator.SetBool("isWalk", false);
+            animator.Play("Idle");
+        }
+        
+        
+    } 
+
 }

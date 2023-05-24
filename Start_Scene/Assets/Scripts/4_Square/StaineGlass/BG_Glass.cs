@@ -7,15 +7,12 @@ public class BG_Glass : MonoBehaviour
     public StaineGlass staineGlass;
 
     private Material[] Materials;
-    private Material[] changeMat;
+
 
     private float speed = 0.5f;
 
-    void Awake()
-    {
-        Materials = GetComponent<MeshRenderer>().materials;
-        changeMat = Materials;
-    }
+    void Awake() =>  Materials = GetComponent<MeshRenderer>().materials;
+
 
     void Update()
     {
@@ -35,23 +32,12 @@ public class BG_Glass : MonoBehaviour
         {
             Color fadeColor = Materials[value].color;
 
-            fadeColor.r = Mathf.PingPong(Time.time*0.5f, 1) + 0.65f;
+            fadeColor.r = Mathf.PingPong(Time.time*0.5f, 0.8f) + 0.35f;
             fadeColor.g = fadeColor.r;
             fadeColor.b = fadeColor.r;
 
             Materials[value].color = fadeColor;
 
-            //if (changeMat[value].color.r >= 0.9f)
-            //{
-            //    changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(168, 168, 168, 1), Time.deltaTime* 0.6f); 
-            //}
-
-            //else if(changeMat[value].color.r <= 168/255f)
-            //{
-            //    changeMat[value].color = Color.Lerp(changeMat[value].color, new Color(255, 255, 255, 1), Time.deltaTime* 0.6f); 
-            //}
-
-            //Materials = changeMat;
         }
     }
 
