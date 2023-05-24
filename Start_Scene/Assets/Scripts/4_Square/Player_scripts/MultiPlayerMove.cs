@@ -178,11 +178,14 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (PV.IsMine)
         {
             //키 입력이 들어왔으면 ~
-            if (dir != Vector3.zero && !isGlass) //공중에서 계속 걷기 애니메이션 이쓔 
+            if (dir != Vector3.zero) //공중에서 계속 걷기 애니메이션 이쓔 
             {
-                if (!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
-                else if (isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
-
+                if (!isGlass)
+                {
+                    if (!isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", true);
+                    else if (isJump) PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
+                }
+                
                 
                 //바라보는 방향 부호 != 가고자할 방향 부호
                 if (!z_free && Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x) ||
@@ -197,6 +200,17 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
                     transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir, Vector3.down), Time.deltaTime * rotSpeed);
             }
 
+            /*else if(isGlass)
+            {
+                Debug.Log("Mathf.Sign(transform.forward.x) : " + Mathf.Sign(transform.forward.x));
+                Debug.Log("Mathf.Sign(dir.x) : " + Mathf.Sign(dir.x));
+
+                if(Mathf.Sign(transform.forward.x) != Mathf.Sign(dir.x))
+                {
+                    transform.Rotate(1, 0, 0);
+                    transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * rotSpeed);
+                }
+            }*/
             else
             {
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
@@ -235,9 +249,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
                 
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  // //rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 // 
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 // rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  //
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  //  
+            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  //  rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // 
 
 
 

@@ -27,14 +27,13 @@ public class StaineGlass : MonoBehaviourPun
     
     void Update()
     {
-        if(light_state ==0 && (p1.isLight[0] || p2.isLight[0])) //L
+        if(light_state ==0 && p1.isLight[0] && p2.isLight[0]) //L
         {   
             ChangeColor(4); //default_M
             ChangeColor(9); //Light_Y
             
             Materials = changeMat;
             stopBG = true;
-            //if (Materials[4].color.a == 1 && Materials[9].color.a == 1) light_state=1;
 
             if(SyncState(4) && SyncState(9)) 
             {   // 첫번째 L을 밝히는 작업이 끝나고 나서 실행되는 조건문
@@ -45,29 +44,85 @@ public class StaineGlass : MonoBehaviourPun
             
         }
 
-        else if (light_state ==1 && (p1.isLight[1] || p2.isLight[1])) //R
+        else if (light_state ==1 && p1.isLight[1] && p2.isLight[1]) //R
         {
+            ChangeColor(6); //r
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(6))
+            {
+                light_state = 2;
+                stopBG = false;
+            }
         }
         else if (light_state == 2 && p1.isLight[2] && p2.isLight[2]) //G
         {
+            ChangeColor(1); //g
+            ChangeColor(0); //dark_g
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(1) && SyncState(0))
+            {
+                light_state = 3;
+                stopBG = false;
+            }
         }
         else if (light_state == 3 && p1.isLight[3] && p2.isLight[3]) //B
         {
+            ChangeColor(3); //b
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(3))
+            {
+                light_state = 4;
+                stopBG = false;
+            }
         }
         else if (light_state == 4 && ((p1.isLight[2] && p2.isLight[3]) || (p1.isLight[3] && p2.isLight[2]) ) ) //C
         {
+            ChangeColor(2); //c
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(2))
+            {
+                light_state = 5;
+                stopBG = false;
+            }
         }
         else if (light_state == 5 && ((p1.isLight[1] && p2.isLight[3]) || (p1.isLight[3] && p2.isLight[1]))) //M
         {
+            ChangeColor(7); //m
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(7))
+            {
+                light_state = 6;
+                stopBG = false;
+            }
         }
         else if (light_state == 6 && ((p1.isLight[1] && p2.isLight[2]) || (p1.isLight[2] && p2.isLight[1]))) //Y
         {
+            ChangeColor(5); //y
+            ChangeColor(8); //mid_y
 
+            Materials = changeMat;
+            stopBG = true;
+
+            if (SyncState(5) && SyncState(8))
+            {
+                light_state = 7;
+                stopBG = false;
+            }
         }
     }
 
