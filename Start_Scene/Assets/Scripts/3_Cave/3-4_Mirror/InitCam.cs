@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class InitCam : MonoBehaviourPun
 {
@@ -28,6 +29,11 @@ public class InitCam : MonoBehaviourPun
     private void Update()
     {
         if (vBack == null) vBack = GameObject.Find("PlayerCam").GetComponent<CinemachineVirtualCamera>();
+        if (SceneManager.GetActiveScene().name == "3-4_Mirror")
+        {
+            return;
+        }
+
         if (vSquareBack == null && player != null)
         {
             vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
