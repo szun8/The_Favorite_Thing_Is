@@ -30,7 +30,6 @@ public class WarpSkill : MonoBehaviourPunCallbacks
         if (!playerMove.isGlass && !gameObject.GetComponent<MultiPlayerMove>().z_free && (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5))
         {
             playerZ.position = new Vector3(playerZ.position.x, playerZ.position.y, 0);
-            //Debug.Log(gameObject.GetComponent<MultiPlayerMove>().z_free);
         }
 
         //단상 밟기 + 다 얼려있지 않으면 얼려라 
