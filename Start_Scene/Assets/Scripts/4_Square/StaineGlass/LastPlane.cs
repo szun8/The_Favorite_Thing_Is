@@ -28,6 +28,8 @@ public class LastPlane : MonoBehaviourPun
     private bool isIn = false;
 
     private Rigidbody rigid;
+
+    private bool isSendOne = false;
    
 
     void Awake() => PV = GetComponent<PhotonView>();
@@ -37,8 +39,9 @@ public class LastPlane : MonoBehaviourPun
     {
         Ray();
 
-        if (!isStop && Player != null)
+        if (!isStop && PC != null)
         {
+            PV.RPC("SyncPC", RpcTarget.AllBuffered);
             if (isPlayer && player.collider != null)
             {
                 if (player.collider.transform.parent.gameObject == Player)
@@ -72,6 +75,11 @@ public class LastPlane : MonoBehaviourPun
             {
                 PV.RPC("SyncLight", RpcTarget.AllBuffered, 3);
             }
+
+            else if(!playerMove.l_pressed && !playerMove.r_pressed && !playerMove.g_pressed && !playerMove.b_pressed && !isSendOne)
+            {
+
+            }
         }
         
     }
@@ -82,7 +90,7 @@ public class LastPlane : MonoBehaviourPun
         if(collision.gameObject.CompareTag("Player") && !isIn)
         {
             PC = collision.gameObject;
-            PV.RPC("SyncPC", RpcTarget.AllBuffered);
+            //PV.RPC("SyncPC", RpcTarget.AllBuffered);
             isIn = true;
         }
     }
@@ -152,6 +160,16 @@ public class LastPlane : MonoBehaviourPun
             }
         }
     }
+
+    [PunRPC]
+    void SyncNoL()
+    {
+        for(int i = 0; i < isLight.Length; i++)
+        {
+            isLight[i] = false;
+        }
+        isSendOne = true;
+    } 
     
     [PunRPC]
     void SyncAnim(bool value) 
@@ -170,8 +188,9 @@ public class LastPlane : MonoBehaviourPun
     {
         if (PC != null)
         {
-            playerMove = PC.GetComponent<MultiPlayerMove>();
-            animator = PC.GetComponent<Animator>();
+            Player = PC;
+            playerMove = Player.GetComponent<MultiPlayerMove>();
+            animator = Player.GetComponent<Animator>();
         }
     }
 
