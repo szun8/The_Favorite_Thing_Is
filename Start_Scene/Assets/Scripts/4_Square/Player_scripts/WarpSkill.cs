@@ -13,6 +13,8 @@ public class WarpSkill : MonoBehaviourPunCallbacks
 
     private GameObject diePos;
 
+    private bool isSendOne = false;
+
     void Awake()
     {
         PV = GetComponent<PhotonView>();
@@ -28,13 +30,19 @@ public class WarpSkill : MonoBehaviourPunCallbacks
         if (!playerMove.isGlass && !gameObject.GetComponent<MultiPlayerMove>().z_free && (playerZ.position.z <= -0.5 || playerZ.position.z >= 0.5))
         {
             playerZ.position = new Vector3(playerZ.position.x, playerZ.position.y, 0);
-            Debug.Log(gameObject.GetComponent<MultiPlayerMove>().z_free);
+            //Debug.Log(gameObject.GetComponent<MultiPlayerMove>().z_free);
         }
 
-        //freeze Z가 되어 있으면 == 1이다~  
+        //단상 밟기 + 다 얼려있지 않으면 얼려라 
+        else if (playerMove.isGlass && (rigid.constraints & RigidbodyConstraints.FreezeAll) != 0)
+        {
+            rigid.constraints = RigidbodyConstraints.FreezeAll;
+        }
+
+        //z_free + freeze Z 되어 있으면 z축 제한 자유롭게 
         else if (gameObject.GetComponent<MultiPlayerMove>().z_free && (rigid.constraints & RigidbodyConstraints.FreezePositionZ) !=0)
         {
-            rigid.constraints &= ~RigidbodyConstraints.FreezePositionZ; // z 안얼려 있으면 얼려라 ~ 
+            rigid.constraints &= ~RigidbodyConstraints.FreezePositionZ; // 자유로운 z~ 
         }
             
     }

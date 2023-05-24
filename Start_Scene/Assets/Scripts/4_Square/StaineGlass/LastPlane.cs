@@ -9,7 +9,7 @@ public class LastPlane : MonoBehaviourPun
     MultiPlayerMove playerMove;
     Animator animator;
 
-    GameObject PC; //단상에 충돌한 플레이어
+    //GameObject PC; //단상에 충돌한 플레이어
 
     GameObject Player;
     public bool isStop = false; //단상에 중앙에 닿으면 true가 되서 움직임 제한 변수
@@ -39,18 +39,26 @@ public class LastPlane : MonoBehaviourPun
     {
         Ray();
 
-        if (!isStop && PC != null)
+
+        if (!isStop && Player != null)
         {
-            PV.RPC("SyncPC", RpcTarget.AllBuffered);
             if (isPlayer && player.collider != null)
             {
                 if (player.collider.transform.parent.gameObject == Player)
+                {
                     PV.RPC("Stop", RpcTarget.AllBuffered);
+                    
+                }
+                    
             }
             else if (isPlayer_L && player_L.collider != null)
             {
                 if(player_L.collider.transform.parent.gameObject == Player)
+                {
                     PV.RPC("Stop", RpcTarget.AllBuffered);
+                    PV.RPC("SyncStop", RpcTarget.AllBuffered);
+                }
+                    
             }  
         }
 
@@ -76,21 +84,26 @@ public class LastPlane : MonoBehaviourPun
                 PV.RPC("SyncLight", RpcTarget.AllBuffered, 3);
             }
 
-            else if(!playerMove.l_pressed && !playerMove.r_pressed && !playerMove.g_pressed && !playerMove.b_pressed && !isSendOne)
+            if(!playerMove.l_pressed && !playerMove.r_pressed && !playerMove.g_pressed && !playerMove.b_pressed && !isSendOne)
             {
-
+                PV.RPC("SyncNoL", RpcTarget.AllBuffered);
             }
         }
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+   private void OnCollisionEnter(Collision collision)
+   {
         //플레이어가 한번도 안 닿은 단상일때 , 닿으면 다른놈 못들어오게
         if(collision.gameObject.CompareTag("Player") && !isIn)
         {
-            PC = collision.gameObject;
-            //PV.RPC("SyncPC", RpcTarget.AllBuffered);
+            PhotonView playerView = collision.gameObject.GetComponent<PhotonView>();
+
+            if(playerView != null)
+            {
+                PV.RPC("SyncPC", RpcTarget.AllBuffered, playerView.ViewID);
+            }
+                
             isIn = true;
         }
     }
@@ -99,7 +112,7 @@ public class LastPlane : MonoBehaviourPun
     {
         if(collision.gameObject.CompareTag("Player") && isIn)
         {
-            if (PC == collision.gameObject)
+            if (Player == collision.gameObject)
             {
                 isIn = false;
             }
@@ -123,29 +136,34 @@ public class LastPlane : MonoBehaviourPun
         playerMove.dir = new Vector3(1, 0, 0);
 
         //2. 멈춰랏 !  // 애니메이션 멈추기
-        PV.RPC("SyncAnim", RpcTarget.AllBuffered, false); //animator.SetBool("isWalk", false); 
-        
+        //PV.RPC("SyncAnim", RpcTarget.AllBuffered, false); //
+        animator.SetBool("isWalk", false);
         //2. 움직임 제한 
-        rigid = Player.GetComponent<Rigidbody>();
-        rigid.constraints = RigidbodyConstraints.FreezeAll;//Position
+        //rigid = Player.GetComponent<Rigidbody>();
+        //rigid.constraints = RigidbodyConstraints.FreezeAll;//Position
 
         //3. 글라스 바라보게 하고 위치 스르륵 가게
-        
+
         Player.GetComponent<Transform>().position = Vector3.Lerp(Player.GetComponent<Transform>().position,
         center.position, 0.05f);
 
+        
         //4. 어느정도 스르륵 되면 stop 성공
         if (Vector3.Distance(Player.transform.position, center.position) < 0.001f)
         {
             playerMove.dir = Vector3.zero;
             isStop = true;
+            //PV.RPC("SyncStop", RpcTarget.AllBuffered);
         } 
 
     }
+    [PunRPC]
+    void SyncStop() => isStop = true;
 
     [PunRPC]
     void SyncLight(int value)
     {
+        isSendOne = false;
         recent_L = value;
 
         for (int i = 0; i < isLight.Length; i++)
@@ -169,9 +187,10 @@ public class LastPlane : MonoBehaviourPun
             isLight[i] = false;
         }
         isSendOne = true;
+        recent_L = -1;
     } 
     
-    [PunRPC]
+    /*[PunRPC]
     void SyncAnim(bool value) 
     {
         AnimatorStateInfo currentState = animator.GetCurrentAnimatorStateInfo(0);
@@ -181,17 +200,19 @@ public class LastPlane : MonoBehaviourPun
             animator.SetBool("isWalk", false);
             animator.Play("Idle");
         }    
-    }
+    }*/
 
     [PunRPC]
-    void SyncPC()
+    void SyncPC(int id)
     {
-        if (PC != null)
+        Player = PhotonNetwork.GetPhotonView(id).gameObject;
+        playerMove = Player.GetComponent<MultiPlayerMove>();
+        animator = Player.GetComponent<Animator>();
+        /*if (PC != null)
         {
-            Player = PC;
             playerMove = Player.GetComponent<MultiPlayerMove>();
             animator = Player.GetComponent<Animator>();
-        }
+        }*/
     }
 
 }
