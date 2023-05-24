@@ -27,7 +27,7 @@ public class StaineGlass : MonoBehaviourPun
     
     void Update()
     {
-        if(light_state ==0 && p1.isLight[0] && p2.isLight[0]) //L
+        if(light_state == 0 && p1.isLight[0] && p2.isLight[0]) //L
         {   
             ChangeColor(4); //default_M
             ChangeColor(9); //Light_Y

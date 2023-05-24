@@ -9,7 +9,9 @@ public class LastPlane : MonoBehaviourPun
     MultiPlayerMove playerMove;
     Animator animator;
 
-    GameObject Player; //단상에 충돌한 플레이어 
+    GameObject PC; //단상에 충돌한 플레이어
+
+    GameObject Player;
     public bool isStop = false; //단상에 중앙에 닿으면 true가 되서 움직임 제한 변수
 
     //ray 검출용 
@@ -79,9 +81,8 @@ public class LastPlane : MonoBehaviourPun
         //플레이어가 한번도 안 닿은 단상일때 , 닿으면 다른놈 못들어오게
         if(collision.gameObject.CompareTag("Player") && !isIn)
         {
-            Player = collision.gameObject;
-            playerMove = Player.GetComponent<MultiPlayerMove>();
-            animator = Player.GetComponent<Animator>();
+            PC = collision.gameObject;
+            PV.RPC("SyncPC", RpcTarget.AllBuffered);
             isIn = true;
         }
     }
@@ -90,11 +91,8 @@ public class LastPlane : MonoBehaviourPun
     {
         if(collision.gameObject.CompareTag("Player") && isIn)
         {
-            if (Player == collision.gameObject)
+            if (PC == collision.gameObject)
             {
-                //playerMove.isGlass = false;
-                //Player = null;
-                //playerMove = null;
                 isIn = false;
             }
         }
@@ -164,9 +162,17 @@ public class LastPlane : MonoBehaviourPun
         {
             animator.SetBool("isWalk", false);
             animator.Play("Idle");
+        }    
+    }
+
+    [PunRPC]
+    void SyncPC()
+    {
+        if (PC != null)
+        {
+            playerMove = PC.GetComponent<MultiPlayerMove>();
+            animator = PC.GetComponent<Animator>();
         }
-        
-        
-    } 
+    }
 
 }
