@@ -71,21 +71,20 @@ public class KungManager : MonoBehaviourPunCallbacks
     IEnumerator KungKungManager()   //쿵쿵이 윗세계 아랫세계에 따라서 위아래 와따가따 하게 하기 
     {
         if (isDrop)
+        {
+            kung.transform.position = pos;
+            PV.RPC("SyncKung", RpcTarget.AllBuffered, true);
+            if (kung.CompareTag("UpKung"))
             {
-                kung.transform.position = pos;
-                PV.RPC("SyncKung", RpcTarget.AllBuffered, true);
-                if (kung.CompareTag("UpKung"))
-                {
-                    pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 0, pos.z), speed * 4f * Time.deltaTime);
-                    if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
-                }
-                else if (kung.CompareTag("DownKung"))
-                {
-                    pos = Vector3.MoveTowards(pos, new Vector3(pos.x, -0.6f, pos.z), speed * 4f * Time.deltaTime);
-                    if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
-                }
-
+                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, 0, pos.z), speed * 4f * Time.deltaTime);
+                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
             }
+            else if (kung.CompareTag("DownKung"))
+            {
+                pos = Vector3.MoveTowards(pos, new Vector3(pos.x, -0.6f, pos.z), speed * 4f * Time.deltaTime);
+                if (!isPlayerIn) PV.RPC("SyncIsDrop", RpcTarget.AllBuffered, false);
+            }
+        }
 
         else
         {
@@ -119,7 +118,11 @@ public class KungManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    void SyncIsDrop(bool value) => isDrop = value;
+    void SyncIsDrop(bool value)
+    {
+        if(value) SoundManager.instnace.PlaySE("KungKung", 0.5f);   // 쿵쿵이가 내려올때만 사운드 On
+        isDrop = value;
+    }
 
     [PunRPC]
     void Die() => Destroy(gameObject);  //쿵쿵이의 감지 범위 트리거 삭제 

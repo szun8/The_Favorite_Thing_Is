@@ -88,7 +88,7 @@ public class SoundManager : MonoBehaviour
     // 3 : Cave
     // 4 : Mirror
     // 5 : Square
-    int i, realSceneNum;
+    int i = -1, realSceneNum;
     public void PlayBGM(int sceneNum)
     {   // 1. 튜토리얼부터 브금 시작
         i = sceneNum;
@@ -118,6 +118,11 @@ public class SoundManager : MonoBehaviour
         else if(time != 0)
         {
             time = 0;
+        }
+
+        if (i != -1 && audioSourceBGM[i].loop && !audioSourceBGM[i].isPlaying)
+        {   // 루프 true인데 안돌아서 ^^;
+            PlayBGM(i);
         }
     }
     public void VolumeOutBGM()

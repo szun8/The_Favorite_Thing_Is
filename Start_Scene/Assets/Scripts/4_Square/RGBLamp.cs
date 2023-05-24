@@ -142,19 +142,19 @@ public class RGBLamp : MonoBehaviourPunCallbacks
         //이 가로등이 무슨 색을 갖는 태그 인지
         if (gameObject.CompareTag("R_item"))
         {
-            SoundManager.instnace.PlaySE("R_zone", 0.5f);
+            SoundManager.instnace.PlaySE("R_zone", 0.25f);
             stopPlayer.GetComponent<MultiPlayerMove>().getRed = true;
         }
 
         if (gameObject.CompareTag("G_item"))
         {
-            SoundManager.instnace.PlaySE("G_zone", 0.5f);
+            SoundManager.instnace.PlaySE("G_zone", 0.25f);
             stopPlayer.GetComponent<MultiPlayerMove>().getGreen = true;
         }
 
         if (gameObject.CompareTag("B_item"))
         {
-            SoundManager.instnace.PlaySE("B_zone", 0.5f);
+            SoundManager.instnace.PlaySE("B_zone", 0.25f);
             stopPlayer.GetComponent<MultiPlayerMove>().getBlue = true;
         }
     }

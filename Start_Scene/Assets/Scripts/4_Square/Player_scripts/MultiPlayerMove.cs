@@ -245,7 +245,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed && isJump == false && !isGlass)
         {
-            SoundManager.instnace.PlaySE("PlayerJump", 0.5f);
+            SoundManager.instnace.PlaySE("PlayerJump", 0.25f);
 
             isJump = true;
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
@@ -264,7 +264,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed)
         {   // get key down
-            SoundManager.instnace.PlaySE("Light", 0.5f);
+            PlayLightSound();
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
             PV.RPC("LightOn", RpcTarget.AllBuffered);
         }
@@ -279,7 +279,8 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (!PV.IsMine) return;
 
         if (state.performed && getRed)
-        {   
+        {
+            PlayLightSound();
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 1, true);
             PV.RPC("RGB_ON", RpcTarget.AllBuffered, 1, new Vector3(1, 0, 0));
         }
@@ -295,6 +296,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed && getGreen)
         {
+            PlayLightSound();
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 2, true);
             PV.RPC("RGB_ON", RpcTarget.AllBuffered, 2, new Vector3(0, 1, 0));
         }
@@ -310,6 +312,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed && getBlue)
         {
+            PlayLightSound();
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, true);
             PV.RPC("RGB_ON", RpcTarget.AllBuffered, 3, new Vector3(0, 0, 1));
         }
@@ -317,6 +320,11 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         {
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 3, false);
         }
+    }
+
+    void PlayLightSound()
+    {
+        SoundManager.instnace.PlaySE("Light", 0.25f);
     }
 
     private void OnTriggerEnter(Collider other)

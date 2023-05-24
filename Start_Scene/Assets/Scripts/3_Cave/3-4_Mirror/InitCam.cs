@@ -12,7 +12,20 @@ public class InitCam : MonoBehaviourPun
     CinemachineVirtualCamera vSquareBack; // 이건 광장 back 
     GameObject player;
     [SerializeField] YellowBridge yellowPlate_1;
+
     bool InCam = false, OutCam = false;     // 거북이 변수
+    Vector3 outPos = new Vector3(0, 0, 20);
+    Quaternion outRot = Quaternion.Euler(0, 0, 0);
+
+    bool stair_1_1 = false, stair_1_2 = false; // 첫번쨰 계단 변수
+    Vector3 stairPos_1_1 = new Vector3(15, -6, -35);
+    Vector3 stairPos_1_2 = new Vector3(-15, 10, -35);
+    Quaternion stairRot_1 = Quaternion.Euler(-5, 0, 0);
+
+    bool stair_2_1 = false, stair_2_2 = false; // 두번쨰 계단 변수
+    Vector3 stairPos_2_1 = new Vector3(18, 7.5f, -25);
+    Vector3 stairPos_2_2 = new Vector3(-18, -7.5f, -25);
+
     bool isYellow = false;
     public bool blueCam = false, redCam = false;   // B-2구역 변수
     public bool isBack = false; // 백캠 변환 여부 변수
@@ -73,12 +86,107 @@ public class InitCam : MonoBehaviourPun
         {   // 트리거 존에서 퇴장
             vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x =
             Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x, 0f, Time.deltaTime * 1.5f);
+            vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y =
+            Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y, 0f, Time.deltaTime * 1.5f);
 
-            vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
-            Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -20f, Time.deltaTime * 1.5f);
-            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z > -20.5f)
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -20.25f)
+            {
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z =
+                Mathf.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z, -20f, Time.deltaTime * 1.5f);
+            }
+            
+            vBack.transform.rotation = Quaternion.Lerp(vBack.transform.rotation, outRot, Time.deltaTime * 1.5f);
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z > -20.25f && vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x < 0.5f)
             {
                 OutCam = false;
+            }
+        }
+
+        else if (stair_1_1)
+        {
+            if (cntPlayer == 2)
+            {
+                stairPos_1_1.x = -15f;
+                stairPos_1_1.y = 6f;
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_1_1, Time.deltaTime * 1.5f);
+
+            }
+            else
+            {
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_1_1, Time.deltaTime * 1.5f);
+
+            }
+
+            vBack.transform.rotation = Quaternion.Lerp(vBack.transform.rotation, stairRot_1, Time.deltaTime * 1.5f);
+            
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -34.5f)
+            {
+                stair_1_1 = false;
+            }
+        }
+        else if (stair_1_2)
+        {
+            if (cntPlayer == 2)
+            {
+                stairPos_1_2.x = 15f;
+                stairPos_1_2.y = -10f;
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_1_2, Time.deltaTime * 1.5f);
+
+            }
+            else
+            {
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_1_2, Time.deltaTime * 1.5f);
+
+            }
+            vBack.transform.rotation = Quaternion.Lerp(vBack.transform.rotation, stairRot_1, Time.deltaTime * 1.5f);
+
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -34.5f)
+            {
+                stair_1_2 = false;
+            }
+        }
+        else if (stair_2_1)
+        {
+            if (cntPlayer == 2)
+            {
+                stairPos_2_1.x = -18f;
+                stairPos_2_1.y = -7.5f;
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_2_1, Time.deltaTime * 1.5f);
+            }
+            else
+            {
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+           = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_2_1, Time.deltaTime * 1.5f);
+            }
+
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.5f)
+            {
+                stair_2_1 = false;
+            }
+        }
+        else if (stair_2_2)
+        {
+            if (cntPlayer == 2)
+            {
+                stairPos_2_2.x = 18f;
+                stairPos_2_2.y = 7.5f;
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+            = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_2_2, Time.deltaTime * 1.5f);
+            }
+            else
+            {
+                vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset
+           = Vector3.Lerp(vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, stairPos_2_2, Time.deltaTime * 1.5f);
+            }
+
+            if (vBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.z < -24.5f)
+            {
+                stair_2_2 = false;
             }
         }
 
@@ -198,6 +306,22 @@ public class InitCam : MonoBehaviourPun
                 {
                     InCam = true;
                 }
+                else if (gameObject.name== "SnowStairCamTrigger.01-1")
+                {
+                    stair_1_1 = true;
+                }
+                else if (gameObject.name == "SnowStairCamTrigger.01-2")
+                {
+                    stair_1_2 = true;
+                }
+                else if (gameObject.name == "SnowStairCamTrigger.02-1")
+                {
+                    stair_2_1 = true;
+                }
+                else if (gameObject.name == "SnowStairCamTrigger.02-2")
+                {
+                    stair_2_2 = true;
+                }
                 else if (gameObject.name == "B-2-RedTrigger")
                 {
                     redCam = true;
@@ -248,9 +372,13 @@ public class InitCam : MonoBehaviourPun
             GetPhotonViewID(); 
             if (other.gameObject.GetComponentInParent<PhotonView>().ViewID == player.GetPhotonView().ViewID)
             {   // 자기 캠에 한해서만 적용하자
-                if (gameObject.name.Contains("TurtleCamTrigger") || gameObject.name.Contains("B-2-"))
+                if (gameObject.name.Contains("TurtleCamTrigger") || gameObject.name.Contains("SnowStairCamTrigger") || gameObject.name.Contains("B-2-"))
                 {   // 2P가 파란 단상에서 빠져 나와서 앞으로 전진할 경우 다시 
                     OutCam = true;
+                    stair_1_1 = false;
+                    stair_1_2 = false;
+                    stair_2_1 = false;
+                    stair_2_2 = false;
                     InCam = false;
                     redCam = false;
                     blueCam = false;
