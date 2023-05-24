@@ -34,7 +34,7 @@ public class DropObject : MonoBehaviour
     {
         while (isCreate)
         {
-            if ((_stone == null) || (curPlayer_pos.x > _stone.transform.position.x + 1f && isDroped))
+            if ((_stone == null) || (curPlayer_pos.x > _stone.transform.position.x+2 && isDroped))
             {
                 CreateStone(curPlayer_pos);
             } 
@@ -44,7 +44,7 @@ public class DropObject : MonoBehaviour
 
     void CreateStone(Vector3 playerPos)
     {
-        Vector3 pos = new Vector3(Random.Range(5f, 7f) + playerPos.x+1f, 35f, playerPos.z);
+        Vector3 pos = new Vector3(Random.Range(3f, 5f) + playerPos.x, 35f, playerPos.z);
         isDroped = false;
         _stone = Stone[Random.Range(0, 3)];
         _stone = Instantiate(_stone, pos, _stone.transform.rotation);

@@ -36,7 +36,11 @@ public class ChangeMat : MonoBehaviour
 
     private void Update()
     {
-        if (isChange && player.GetComponent<CaveMove>().lightOn) isL = true;
+        if (!isL && isChange && player.GetComponent<CaveMove>().lightOn)
+        {
+            isL = true;
+            SoundManager.instnace.PlaySE("Light", 0.5f);
+        }
         if (isL && isChange)
         {   // 특정 지점에 닿았고 L 버튼도 켰다면,
             MatIn();

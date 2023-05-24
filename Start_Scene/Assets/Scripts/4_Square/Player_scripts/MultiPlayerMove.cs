@@ -215,6 +215,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             {
                 PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
             }
+
             rigid.MovePosition(transform.position + dir / 1.3f * Time.deltaTime * speed);
         }
     }
@@ -243,7 +244,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         if (!PV.IsMine) return;
 
         if (state.performed && isJump == false && !isGlass)
-        {   
+        {
+            SoundManager.instnace.PlaySE("PlayerJump", 0.5f);
+
             isJump = true;
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
             PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
@@ -252,9 +255,6 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 // rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  //
             //제대로 된 중력 
             else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  //  rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // 
-
-
-
         }
     }
 
@@ -264,6 +264,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed)
         {   // get key down
+            SoundManager.instnace.PlaySE("Light", 0.5f);
             PV.RPC("SyncLightPressed", RpcTarget.AllBuffered, 0, true);
             PV.RPC("LightOn", RpcTarget.AllBuffered);
         }

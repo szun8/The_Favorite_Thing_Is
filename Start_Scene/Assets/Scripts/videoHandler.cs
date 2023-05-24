@@ -105,7 +105,12 @@ public class videoHandler : MonoBehaviour
             else if(videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 4)
             {   // 광장에서 비디오가 끝나갈때...쯔음
                 SoundManager.instnace.PlayBGM(4);
-                Debug.Log("video Out and BGM On");
+                GameObject.Find("Global Volume").GetComponent<Volume>().enabled = true;
+                GameObject[] player = GameObject.FindGameObjectsWithTag("Player");
+                foreach (var item in player)
+                {
+                    item.GetComponent<MultiPlayerMove>().enabled = true;
+                }
             }
             yield return new WaitForSeconds(0.1f);
         }

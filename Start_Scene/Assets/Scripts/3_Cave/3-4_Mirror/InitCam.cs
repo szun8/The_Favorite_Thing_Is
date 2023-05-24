@@ -209,7 +209,8 @@ public class InitCam : MonoBehaviourPun
                 else if (gameObject.name == "BackCamTrigger")
                 {   // 스테인글라스 계단 밟으면 백 뷰로 전환
                     if (vSquareBack == null) vSquareBack = GameObject.Find("StainedGlassCam").GetComponent<CinemachineVirtualCamera>();
-
+                    SoundManager.instnace.VolumeOutSquareBGM();
+                    
                     if (cntPlayer == 0 && player != null)
                     {
                         Debug.Log("PlayerNameBack : " + player.name);
@@ -222,7 +223,6 @@ public class InitCam : MonoBehaviourPun
                         vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.x = 13f;
                         vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
                     }
-
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
                 }
@@ -235,7 +235,7 @@ public class InitCam : MonoBehaviourPun
                 {   // 스테인글라스에 더 가깝게 줌인
                     StainCam = true;
                     UIManager.instnace.RunAnimsBool("isStainGlassY", true);     // 스테인 글라스에 도착하면 UI ON
-                    Debug.Log("StainedGlassTrigger");
+                    GameObject.Find("NoPassTrigger").GetComponent<BoxCollider>().isTrigger = false; // nopass 벽 막아버리기
                 }
             }
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChangeDirLightColor : MonoBehaviour
 {
-    [SerializeField] Color originColor;
+    Color originColor;
 
     [SerializeField] Fire _fire;
     [SerializeField] Color fireColor;
@@ -19,12 +19,16 @@ public class ChangeDirLightColor : MonoBehaviour
     bool isBlue = false;
 
     [SerializeField] YellowBridge _bridge;
+    [SerializeField] Color darkColor;
     bool isYellow = false;
 
     [SerializeField] Light L1;
     [SerializeField] Light L2;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        originColor = RenderSettings.skybox.GetColor("_Tint");
+    }
     void Update()
     {
         if (!isRed && _fire.isDone)
@@ -46,8 +50,8 @@ public class ChangeDirLightColor : MonoBehaviour
         }
 
         else if (!isYellow && _bridge.isDone)
-        {
-            RenderSettings.skybox.SetColor("_Tint", Color.Lerp(RenderSettings.skybox.GetColor("_Tint"), originColor, Time.deltaTime));
+        {   // 스테인 글라스 가면 더 어둡게(빛이랑 스카이박스)
+            RenderSettings.skybox.SetColor("_Tint", Color.Lerp(RenderSettings.skybox.GetColor("_Tint"), darkColor, Time.deltaTime));
             L1.intensity = Mathf.Lerp(L1.intensity, 0, Time.deltaTime * 0.9f);
             L2.intensity = Mathf.Lerp(L2.intensity, 0, Time.deltaTime * 0.9f);
             if (RenderSettings.skybox.GetColor("_Tint") == originColor && L1.intensity <= 0.01) isYellow = true;

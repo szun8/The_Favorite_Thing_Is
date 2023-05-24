@@ -99,7 +99,7 @@ public class CaveMove : MonoBehaviour
 
         if (state.performed)
         {
-            SoundManager.instnace.PlaySE("Light", 0.5f);
+            if(!isStop) SoundManager.instnace.PlaySE("Light", 0.5f);
             lightOn = true;
             LightHandle();
         }

@@ -126,10 +126,24 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(StopBGM());
     }
 
+    public void VolumeOutSquareBGM()
+    {
+        isStop = true;
+        StartCoroutine(StopSquareBGM());
+    }
+
     IEnumerator StopBGM()
     {
         yield return new WaitForSeconds(animTime);
         audioSourceBGM[i].Stop();
+        isStop = false;
+    }
+
+    IEnumerator StopSquareBGM()
+    {
+        yield return new WaitForSeconds(animTime);
+        audioSourceBGM[i].Stop();
+        PlayBGM(5); // 스테인글라스 브금 시작
         isStop = false;
     }
 }

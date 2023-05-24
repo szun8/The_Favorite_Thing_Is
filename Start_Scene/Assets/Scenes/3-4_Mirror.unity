@@ -1313,6 +1313,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3934d09d83d584044ae3b4a2456f0ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  yellowPlate_1: {fileID: 0}
+  blueCam: 0
+  redCam: 0
+  isBack: 0
 --- !u!1 &1353785510
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,7 +4902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9612540adf19041bba6fb2637c21e918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLightCount: 0
   p1_id: 0
 --- !u!4 &5968553919919523547
 Transform:

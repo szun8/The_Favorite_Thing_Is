@@ -66,6 +66,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
             if (state.performed && isJump)
             {
                 isJump = false;
+                SoundManager.instnace.PlaySE("PlayerJump", 0.5f);
                 PV.RPC("SyncMirrorJump", RpcTarget.AllBuffered);
                 rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
             }
@@ -78,6 +79,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         {
             if (state.performed)
             {
+                SoundManager.instnace.PlaySE("Light", 0.5f);
                 PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
                 PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
             }
@@ -86,7 +88,6 @@ public class MirrorMove : MonoBehaviourPunCallbacks
                 PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, false);
             }
         }
-        
     }
 
     public void SceneLoad()
