@@ -61,25 +61,32 @@ public class MirrorMove : MonoBehaviourPunCallbacks
 
     public void OnJump(InputAction.CallbackContext state)
     {
-        if (state.performed && isJump)
+        if (PV.IsMine)
         {
-            isJump = false;
-            PV.RPC("SyncMirrorJump", RpcTarget.AllBuffered);
-            rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
-        }
+            if (state.performed && isJump)
+            {
+                isJump = false;
+                PV.RPC("SyncMirrorJump", RpcTarget.AllBuffered);
+                rigid.AddForce(Vector2.up * JumpForce, ForceMode.Impulse);
+            }
+        } 
     }
 
     public void OnLight(InputAction.CallbackContext state)
     {
-        if (state.performed)
+        if (PV.IsMine)
         {
-            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
-            PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
+            if (state.performed)
+            {
+                PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
+                PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
+            }
+            else if (state.canceled)
+            {
+                PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, false);
+            }
         }
-        else if (state.canceled)
-        {
-            PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, false);
-        }
+        
     }
 
     public void SceneLoad()

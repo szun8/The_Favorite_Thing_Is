@@ -85,7 +85,7 @@ public class videoHandler : MonoBehaviour
                 yield return new WaitForSeconds(2f);
                 SceneManager.LoadSceneAsync(1);
                 videoPlayer.targetCameraAlpha = 0f;
-                SoundManager.instnace.PlayBGM();
+                SoundManager.instnace.PlayBGM(0);
 
                 yield return new WaitForSeconds(1.5f);
                 PlayerMove.isStart = true;
@@ -94,7 +94,7 @@ public class videoHandler : MonoBehaviour
             else if(!isSea && videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 1)
             {   // 심해에서 비디오가 끝나갈때쯔,,,음
                 isSea = true;
-                SoundManager.instnace.PlayBGM();
+                SoundManager.instnace.PlayBGM(1);
                 GameObject.Find("GlobalWaterVolume").GetComponent<Volume>().enabled = true;
                 GameObject.FindGameObjectWithTag("Sea").GetComponent<Water>().GetWater(GameObject.FindGameObjectWithTag("Player_mesh").GetComponent<Collider>());
                 GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().useGravity = true;
@@ -102,9 +102,9 @@ public class videoHandler : MonoBehaviour
                 UIManager.instnace.RunAnims("isJelly");
                 UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", true);
             }
-            else if(ScenesManager.instance.SceneNum == 4)
+            else if(videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 4)
             {   // 광장에서 비디오가 끝나갈때...쯔음
-                //SoundManager.instnace.PlayBGM();
+                SoundManager.instnace.PlayBGM(4);
                 Debug.Log("video Out and BGM On");
             }
             yield return new WaitForSeconds(0.1f);

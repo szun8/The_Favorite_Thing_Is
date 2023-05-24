@@ -52,7 +52,6 @@ public class Water : MonoBehaviour
 
     public void GetWater(Collider _player)
     {
-        SoundManager.instnace.PlayBGM();
         isWater = true;
         _player.transform.GetComponentInParent<Rigidbody>().drag = waterDrag;
 

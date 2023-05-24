@@ -41,7 +41,7 @@ public class CaveMove : MonoBehaviour
         transform.position = pos[0].transform.position;  // 플레이어 시작위치 초기화
         
         savePoint = pos[1];
-        SoundManager.instnace.PlayBGM();
+        SoundManager.instnace.PlayBGM(2);
     }
 
     void FixedUpdate()

@@ -40,7 +40,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             Debug.Log("MirrorPlayer Spawn");
             GameObject player = PhotonNetwork.Instantiate("MirrorPlayer", pos, rot, 0);
             player.name = "MirrorPlayer_" + PhotonNetwork.CurrentRoom.PlayerCount;
-            SoundManager.instnace.PlayBGM();    // SceneNum = 3
+            SoundManager.instnace.PlayBGM(3);    // SceneNum = 3
             if (PhotonNetwork.CurrentRoom.PlayerCount == 1) UIManager.instnace.RunAnims("isWait");  // 1p창에 새로운 빛을 기다리는중입니다 UI
             GameObject.Find("PlayerCam").GetComponent<InitCam>().SetPlayerMirrorCam(PhotonNetwork.CurrentRoom.PlayerCount);
         }
