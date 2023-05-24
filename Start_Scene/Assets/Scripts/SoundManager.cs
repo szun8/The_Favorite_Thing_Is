@@ -89,9 +89,11 @@ public class SoundManager : MonoBehaviour
     // 4 : Mirror
     // 5 : Square
     int i, realSceneNum;
-    public void PlayBGM()
+    public void PlayBGM(int sceneNum)
     {   // 1. 튜토리얼부터 브금 시작
-        i = ScenesManager.instance.SceneNum;
+        i = sceneNum;
+
+        //i = ScenesManager.instance.SceneNum;
         if (!audioSourceBGM[i].isPlaying)
         {   // 재생중이지 않은 사운드에 대해서
             playSoundName[audioSourceEffects.Length] = bgmSound[i].name;

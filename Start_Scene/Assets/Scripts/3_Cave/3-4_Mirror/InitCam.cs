@@ -223,12 +223,12 @@ public class InitCam : MonoBehaviourPun
                         vSquareBack.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset.y = -4f;
                     }
 
-                    UIManager.instnace.RunAnims("isWASD");
                     vSquareBack.Priority = 11;
                     vBack.Priority = 10;
                 }
                 else if(gameObject.name == "NoPassTrigger")
                 {   // 스테인글라스 내부로 들어왔다면 다시 밖으로 못가게 막자
+                    UIManager.instnace.RunAnims("isWASD");
                     GameObject.Find("BackCamTrigger").GetComponent<BoxCollider>().isTrigger = false;
                 }
                 else if(gameObject.name == "StainedGlassTrigger")

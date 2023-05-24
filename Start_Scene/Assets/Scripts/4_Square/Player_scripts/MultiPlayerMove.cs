@@ -320,7 +320,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "BackCamTrigger")
+        if(other.gameObject.name == "NoPassTrigger")
         {
             z_free = true;
         }
