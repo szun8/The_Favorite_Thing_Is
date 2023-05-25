@@ -106,11 +106,6 @@ public class videoHandler : MonoBehaviour
                 UIManager.instnace.RunAnims("isJelly");
                 UIManager.instnace.RunAnimsBool("isSeaMoveInfoOn", true);
             }
-            else if (videoPlayer.targetCameraAlpha > 0.1f && playingVideoNum == 3)
-            {   // 엔딩 비디오가 끝나갈때 쯔음
-
-
-            }
             else if(videoPlayer.targetCameraAlpha > 0.1f && ScenesManager.instance.SceneNum == 4)
             {   // 광장에서 비디오가 끝나갈때...쯔음
                 SoundManager.instnace.PlayBGM(4);

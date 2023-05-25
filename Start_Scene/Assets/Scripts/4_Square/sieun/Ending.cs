@@ -34,7 +34,7 @@ public class Ending : MonoBehaviour
         }
     }
 
-    bool isShining = false;
+    public bool isShining = false;
     IEnumerator StartEnding()
     {
         UIManager.instnace.RunAnimsBool("isStainGlass", true);  // 현재 나와있는 UI 끄기
