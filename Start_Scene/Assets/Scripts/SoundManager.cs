@@ -88,7 +88,7 @@ public class SoundManager : MonoBehaviour
     // 3 : Cave
     // 4 : Mirror
     // 5 : Square
-    int i = -1, realSceneNum;
+    int i = -1;
     public void PlayBGM(int sceneNum)
     {   // 1. 튜토리얼부터 브금 시작
         i = sceneNum;
@@ -147,6 +147,7 @@ public class SoundManager : MonoBehaviour
     IEnumerator StopSquareBGM()
     {
         yield return new WaitForSeconds(animTime);
+        if (i == -1) i = 4;
         audioSourceBGM[i].Stop();
         PlayBGM(5); // 스테인글라스 브금 시작
         isStop = false;

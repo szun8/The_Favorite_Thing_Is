@@ -15,6 +15,7 @@ public class StartToTuto : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        SoundManager.instnace.PlayBGM(0);
     }
 
     public void OnStart(InputAction.CallbackContext state)

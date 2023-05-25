@@ -1808,6 +1808,7 @@ GameObject:
   - component: {fileID: 8156308546607439304}
   - component: {fileID: 1344868559047861079}
   - component: {fileID: 4814604243092870659}
+  - component: {fileID: 32145065}
   m_Layer: 5
   m_Name: FadeScreen
   m_TagString: Untagged
@@ -1873,6 +1874,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &32145065
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4513280108865432618}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11e9f20634bd240db8da87e32f7581c7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4609367453328681731
 GameObject:
   m_ObjectHideFlags: 0
