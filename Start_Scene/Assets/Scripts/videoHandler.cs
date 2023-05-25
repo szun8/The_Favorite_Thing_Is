@@ -62,6 +62,7 @@ public class videoHandler : MonoBehaviour
     {   // 영상 종료 후 실행기능 정의
         //videoPlayer.Stop();
         isStop = true;
+        if (playingVideoNum == 3) return;
         StartCoroutine(Fade());
     }
 

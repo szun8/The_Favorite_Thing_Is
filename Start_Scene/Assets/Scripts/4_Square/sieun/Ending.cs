@@ -29,7 +29,7 @@ public class Ending : MonoBehaviour
         }
         if (isShining)
         {
-            RenderSettings.skybox.SetFloat("_Exposure", Mathf.Lerp(RenderSettings.skybox.GetFloat("_Exposure"), 2.6f, Time.deltaTime*0.5f));
+            RenderSettings.skybox.SetFloat("_Exposure", Mathf.Lerp(RenderSettings.skybox.GetFloat("_Exposure"), 2.6f, Time.deltaTime*0.3f));
             if (RenderSettings.skybox.GetFloat("_Exposure") > 2.55f) isShining = false;
         }
     }
@@ -55,12 +55,12 @@ public class Ending : MonoBehaviour
         endAnim.enabled = false;
         UIManager.instnace.stopOut = false;
         yield return new WaitForSeconds(2f);
-
-        //videoHandler.instance.SetVideo(3);  // 엔딩 영상 시작
+        videoHandler.instance.SetVideo(3);  // 엔딩 영상 시작
     }
 
     private void OnDestroy()
     {
+        RenderSettings.skybox.SetFloat("_Exposure", 0.5f);
         RenderSettings.skybox = originSkybox;
     }
 }
