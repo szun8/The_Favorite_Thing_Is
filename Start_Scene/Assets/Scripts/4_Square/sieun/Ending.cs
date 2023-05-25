@@ -62,5 +62,7 @@ public class Ending : MonoBehaviour
     {
         RenderSettings.skybox.SetFloat("_Exposure", 0.5f);
         RenderSettings.skybox = originSkybox;
+        RenderSettings.skybox.SetFloat("_Exposure", 1f);
+
     }
 }
