@@ -110,7 +110,7 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        if (isStop)
+        if (isStop && i!=-1)
         {
             time += Time.deltaTime / animTime;
             audioSourceBGM[i].volume = Mathf.Lerp(audioSourceBGM[i].volume, 0, time);

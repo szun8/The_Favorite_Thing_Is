@@ -14,7 +14,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        Screen.SetResolution(1920, 1080, false);
+        Screen.SetResolution(1920, 1080, true);
         if (!PhotonNetwork.IsConnected) PhotonNetwork.ConnectUsingSettings();
         // 이미 연결되어있다면 재연결 X
         PV = GetComponent<PhotonView>();
