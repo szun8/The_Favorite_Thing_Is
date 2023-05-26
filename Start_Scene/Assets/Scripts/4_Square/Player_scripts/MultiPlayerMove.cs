@@ -252,9 +252,9 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
             PV.RPC("SyncAnimation", RpcTarget.AllBuffered, "isWalk", false);
                 
             //뒤집힌 중력인 경우 
-            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 // rigid.AddForce(Vector2.down * JumpForce * 1.6f, ForceMode.Impulse);//window  //
+            if (reverseGravity.isReversed) rigid.AddForce(Vector2.down * JumpForce, ForceMode.Impulse);//window  //rigid.AddForce(Vector2.down * JumpForce * 1.2f, ForceMode.Impulse); //MAC용 //
             //제대로 된 중력 
-            else rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  //  rigid.AddForce(Vector2.up * (JumpForce) * 1.2f, ForceMode.Impulse);//window // 
+            else rigid.AddForce(Vector2.up * (JumpForce) * 1.1f, ForceMode.Impulse);//window // rigid.AddForce(Vector2.up * (JumpForce), ForceMode.Impulse); ////MAC용용  // 
         }
     }
 
