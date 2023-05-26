@@ -5,7 +5,8 @@ using UnityEngine;
 public class KindMonster : MonoBehaviour
 {
     public Flowers flower;          //꽃의 isBloom 가져오기 위함 
-    public KindManager kindManager; //isWalk bool 값 가져와서 이동하게 하려고 
+    public KindManager kindManager; //isWalk bool 값 가져와서 이동하게 하려고
+    [SerializeField] BoxCollider wall;
 
     public bool isArrive = false; //꽃 앞 콜라이더에 다다르면 true 
 
@@ -33,7 +34,11 @@ public class KindMonster : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("TurtleStop")) isArrive = true;
+        if (other.CompareTag("TurtleStop"))
+        {
+            wall.isTrigger = true;
+            isArrive = true;
+        }
     }
 
 
