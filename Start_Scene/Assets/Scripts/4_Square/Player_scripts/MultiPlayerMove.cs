@@ -220,6 +220,13 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
         }
     }
 
+    private void OnDestroy()
+    {
+        getRed = false;
+        getGreen = false;
+        getBlue = false;
+    }
+
     public void OnMove(InputAction.CallbackContext state)
     {   // 누른 키에 대한 value를 dir에 저장
         if (PV.IsMine)
