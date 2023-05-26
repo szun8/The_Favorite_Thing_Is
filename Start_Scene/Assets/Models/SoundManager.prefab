@@ -79,7 +79,7 @@ MonoBehaviour:
   - name: PlayerJump
     clip: {fileID: 8300000, guid: 9cf36dcd55d574fee856b3bb25d9873f, type: 3}
   - name: CaveBroken
-    clip: {fileID: 8300000, guid: d80bc70bb68364d0bbc4e384b918ff23, type: 3}
+    clip: {fileID: 8300000, guid: 079a0a25f20fb4330930fe9ddb2de3b9, type: 3}
   - name: CaveCollapse
     clip: {fileID: 8300000, guid: 8e6dbbf84ddb04bc58baee9c1e02c784, type: 3}
   - name: PlayerSeaJump
@@ -95,24 +95,24 @@ MonoBehaviour:
   - name: G_zone
     clip: {fileID: 8300000, guid: f738342c51d09493e9fe167670fde604, type: 3}
   - name: B_zone
-    clip: {fileID: 8300000, guid: 4dfd0827bc248483eb0915f180e1808e, type: 3}
+    clip: {fileID: 8300000, guid: fb64c7269192b4d27ab10ff5408a7cd5, type: 3}
   - name: RockFall
     clip: {fileID: 8300000, guid: a0e5329f48ffc493e8e91f3a4d2d845e, type: 3}
   bgmSound:
   - name: Tutorial
-    clip: {fileID: 8300000, guid: 431cb60cd91ff4ff7a65077cfab5e6db, type: 3}
+    clip: {fileID: 8300000, guid: b7d05ef775b574459bc01adfa3effafd, type: 3}
   - name: Sea
-    clip: {fileID: 8300000, guid: c8ca1edd27dc1494abfe31efb04992e0, type: 3}
+    clip: {fileID: 8300000, guid: a990f10ad47b244eebe82089696dab0c, type: 3}
   - name: Cave
-    clip: {fileID: 8300000, guid: 73b66b737c29f4adb9e0e31423be3e42, type: 3}
+    clip: {fileID: 8300000, guid: 73d440754730a47daaada2ba31c0a2b8, type: 3}
   - name: Mirror
-    clip: {fileID: 8300000, guid: dc05eeb7c182a4151972babf7aed3160, type: 3}
+    clip: {fileID: 8300000, guid: 800f2b756e5864c4fba891796086cc89, type: 3}
   - name: Square
-    clip: {fileID: 8300000, guid: ad4959034e8974db59c7e18dbe9f6113, type: 3}
+    clip: {fileID: 8300000, guid: 2e418989406e947eaa10c297fffcf4d3, type: 3}
   - name: StainedGlass
-    clip: {fileID: 8300000, guid: 2e6de59df1b064745be9aa8f93531222, type: 3}
+    clip: {fileID: 8300000, guid: 5525f9cd92df94815883f7430d25bdda, type: 3}
   - name: Ending
-    clip: {fileID: 8300000, guid: 11a4e06b8dbc642c1bf70fab3492aff7, type: 3}
+    clip: {fileID: 8300000, guid: 936f3809ca94a49a0b990b488006b9b9, type: 3}
   animTime: 2
 --- !u!82 &8946144602791816413
 AudioSource:

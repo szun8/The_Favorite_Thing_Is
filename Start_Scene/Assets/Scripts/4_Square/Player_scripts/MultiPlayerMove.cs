@@ -252,7 +252,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
         if (state.performed && isJump == false && !isGlass)
         {
-            SoundManager.instnace.PlaySE("PlayerJump", 0.25f);
+            SoundManager.instnace.PlaySE("PlayerJump", 0.3f);
 
             isJump = true;
             PV.RPC("SyncJump", RpcTarget.AllBuffered);
@@ -331,7 +331,7 @@ public class MultiPlayerMove : MonoBehaviourPunCallbacks
 
     void PlayLightSound()
     {
-        SoundManager.instnace.PlaySE("Light", 0.25f);
+        SoundManager.instnace.PlaySE("Light", 1f);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -16,6 +16,7 @@ public class StartToTuto : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         SoundManager.instnace.PlayBGM(0);
+        Screen.SetResolution(1920, 1080, true);
     }
 
     public void OnStart(InputAction.CallbackContext state)

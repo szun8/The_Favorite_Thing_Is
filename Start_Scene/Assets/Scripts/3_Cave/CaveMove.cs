@@ -89,7 +89,7 @@ public class CaveMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
             animator.SetBool("isWalk", false);
             animator.SetTrigger("isJump");
-            SoundManager.instnace.PlaySE("PlayerJump", 0.5f);
+            SoundManager.instnace.PlaySE("PlayerJump", 0.35f);
         }
     }
 
@@ -99,7 +99,7 @@ public class CaveMove : MonoBehaviour
 
         if (state.performed)
         {
-            if(!isStop) SoundManager.instnace.PlaySE("Light", 0.5f);
+            if(!isStop) SoundManager.instnace.PlaySE("Light", 1f);
             lightOn = true;
             LightHandle();
         }

@@ -79,7 +79,7 @@ public class MirrorMove : MonoBehaviourPunCallbacks
         {
             if (state.performed)
             {
-                SoundManager.instnace.PlaySE("Light", 0.5f);
+                SoundManager.instnace.PlaySE("Light", 1f);
                 PV.RPC("SyncMirrorLightPressed", RpcTarget.AllBuffered, 0, true);
                 PV.RPC("MirrorLightOn", RpcTarget.AllBuffered);
             }

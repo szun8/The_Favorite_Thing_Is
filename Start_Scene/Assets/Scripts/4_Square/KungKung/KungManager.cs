@@ -120,7 +120,7 @@ public class KungManager : MonoBehaviourPunCallbacks
     [PunRPC]
     void SyncIsDrop(bool value)
     {
-        if(value) SoundManager.instnace.PlaySE("KungKung", 0.5f);   // 쿵쿵이가 내려올때만 사운드 On
+        if(value) SoundManager.instnace.PlaySE("KungKung", 0.75f);   // 쿵쿵이가 내려올때만 사운드 On
         isDrop = value;
     }
 

@@ -152,5 +152,12 @@ public class ControlVCam : MonoBehaviour
     {
         bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = followOffset;
         bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset = trackedOffset;
+        StartCoroutine(ResetLookAtBoss());
+    }
+
+    IEnumerator ResetLookAtBoss()
+    {
+        yield return new WaitForSeconds(1f);
+        vBoss.LookAt = null;
     }
 }
