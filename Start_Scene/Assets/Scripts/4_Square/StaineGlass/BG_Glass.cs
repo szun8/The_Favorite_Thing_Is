@@ -5,7 +5,7 @@ using UnityEngine;
 public class BG_Glass : MonoBehaviour
 {
     public StaineGlass staineGlass;
-    public float emission; //default = 0.35f
+
     private Material[] Materials;
 
 
@@ -50,7 +50,7 @@ public class BG_Glass : MonoBehaviour
         {
             Color fadeColor = Materials[value].color;
 
-            fadeColor.r = Mathf.PingPong(Time.time* speed, 0.95f) + emission;
+            fadeColor.r = Mathf.PingPong(Time.time* speed, 0.8f) + 0.35f;
             fadeColor.g = fadeColor.r;
             fadeColor.b = fadeColor.r;
 
