@@ -1,13 +1,15 @@
 ![TeamImage](resource/team.jpeg)
+# 🌕 <b>Moon Child   </b>
 
-# 🌕 Moon Child   
-👋🏻 2023 글로벌미디어학부 졸업전시 팀[제일 좋아하는 것은]의 <MoonChild> 개발 레포입니다   
-
+## 👋🏻 2023 글로벌미디어학부 졸업전시 팀[제일 좋아하는 것은]의 <MoonChild> 개발 레포입니다      
 
 ✵ [졸업전시회_제안서](resource/%EC%A1%B8%EC%97%85%EC%A0%84%EC%8B%9C%ED%9A%8C_%EC%A0%9C%EC%95%88%EC%84%9C_%ED%8C%80_%EC%A0%9C%EC%A2%8B%EC%9D%80.pdf졸업전시회_제안서_팀_제좋은.png)   
 ✵ [졸업전시회_중간피드백](resource/%EC%A0%9C%EC%9D%BC%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%EA%B2%83%EC%9D%80_%ED%94%BC%EB%93%9C%EB%B0%B1%ED%96%89%EC%82%AC_%EC%9E%90%EB%A3%8C.pdf)   
-✵ [졸업전시회_기획발표](resource/%EA%B8%B0%ED%9A%8D%EB%B0%9C%ED%91%9C_%EC%A0%9C%EC%A2%8B%EC%9D%80_%EC%B5%9C%EC%A2%85.pdf)
+✵ [졸업전시회_기획발표](resource/%EA%B8%B0%ED%9A%8D%EB%B0%9C%ED%91%9C_%EC%A0%9C%EC%A2%8B%EC%9D%80_%EC%B5%9C%EC%A2%85.pdf)   
+✵ [졸업전시회_회고발표](resource/%EC%A0%9C%EC%A2%8B%EC%9D%80%20%ED%9A%8C%EA%B3%A0%EB%B0%9C%ED%91%9C.pdf)
 
+### 🎥 <b>Game Trailer</b>
+[![Trailer](resource/trailerBG.png)](https://www.instagram.com/p/CsvisnQt6o2/)
 
 ### 🌈 <b>작품주제</b> |  프리즘 속 여정을 표현한 2인 협력 스토리텔링 게임    
 `#영화같은` `#게임` `#프리즘` `#인터랙티브` `#경험` `#스토리텔링`
@@ -29,4 +31,4 @@
 
 ---
 
-###### *© 2023. 제일 좋아하는 것은 All rights reserved.*
+##### *© 2023. 제일 좋아하는 것은 All rights reserved.*
