@@ -1,7 +1,7 @@
 ![TeamImage](resource/team.jpeg)
 # 🌕 <b>Moon Child   </b>
 
-## 👋🏻 2023 글로벌미디어학부 졸업전시 팀[제일 좋아하는 것은]의 <MoonChild> 개발 레포입니다      
+### 👋🏻 2023 글로벌미디어학부 졸업전시 팀[제일 좋아하는 것은]의 <MoonChild> 개발 레포입니다      
 
 ✵ [졸업전시회_제안서](resource/%EC%A1%B8%EC%97%85%EC%A0%84%EC%8B%9C%ED%9A%8C_%EC%A0%9C%EC%95%88%EC%84%9C_%ED%8C%80_%EC%A0%9C%EC%A2%8B%EC%9D%80.pdf졸업전시회_제안서_팀_제좋은.png)   
 ✵ [졸업전시회_중간피드백](resource/%EC%A0%9C%EC%9D%BC%EC%A2%8B%EC%95%84%ED%95%98%EB%8A%94%EA%B2%83%EC%9D%80_%ED%94%BC%EB%93%9C%EB%B0%B1%ED%96%89%EC%82%AC_%EC%9E%90%EB%A3%8C.pdf)   
