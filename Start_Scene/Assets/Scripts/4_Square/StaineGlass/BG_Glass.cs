@@ -46,7 +46,7 @@ public class BG_Glass : MonoBehaviour
 
     void ChangeColor(int value)
     {
-        if (!staineGlass.stopBG)
+        if (!staineGlass.stopBG) //색 투명도 0 = 플레이어가 색 아직 안채우면 
         {
             Color fadeColor = Materials[value].color;
 
@@ -56,6 +56,12 @@ public class BG_Glass : MonoBehaviour
 
             Materials[value].color = fadeColor;
 
+        }
+        else if(staineGlass.stopBG) // 색 조금이라도 채우면 
+        {
+            Color fadeColor = new Color(0.66f, 0.66f, 0.66f, 0.7f);
+
+            Materials[value].color = fadeColor;
         }
     }
 
