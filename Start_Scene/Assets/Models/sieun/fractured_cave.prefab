@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3461081643125827564}
   - component: {fileID: 7777601071224336150}
   - component: {fileID: 9162170019919023336}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,8 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,7 +128,7 @@ GameObject:
   - component: {fileID: 6880222842159369980}
   - component: {fileID: 5657770583984353542}
   - component: {fileID: 3571333701407572866}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.109
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,8 +178,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -245,7 +243,7 @@ GameObject:
   - component: {fileID: 2594934262071360761}
   - component: {fileID: 6387466745134400221}
   - component: {fileID: 153515386767257644}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.084
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,8 +293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -361,7 +358,7 @@ GameObject:
   - component: {fileID: 1338896085455653055}
   - component: {fileID: 557710720057583507}
   - component: {fileID: 4188187404181137065}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,8 +408,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -473,6 +469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234095124545780357}
+  - component: {fileID: 1962001518528903622}
   m_Layer: 0
   m_Name: fractured_cave
   m_TagString: Untagged
@@ -563,6 +560,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 191.3, y: 0, z: 180}
+--- !u!114 &1962001518528903622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609249194544455743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e54cae09ebb4e31bfde78d191631c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockMat: {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
 --- !u!1 &879764649546986466
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +586,7 @@ GameObject:
   - component: {fileID: 2946442678064602110}
   - component: {fileID: 8744542303205785972}
   - component: {fileID: 6937677427521235000}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.106
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,8 +636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -692,7 +701,7 @@ GameObject:
   - component: {fileID: 827901605985593549}
   - component: {fileID: 5162101789965620581}
   - component: {fileID: 1224421061293189181}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,8 +751,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -808,7 +816,7 @@ GameObject:
   - component: {fileID: 4165897998904812187}
   - component: {fileID: 6644663461917887930}
   - component: {fileID: 3848404030136234297}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -858,8 +866,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -924,7 +931,7 @@ GameObject:
   - component: {fileID: 7188343115114024665}
   - component: {fileID: 7188343115114024664}
   - component: {fileID: 4169949841872948118}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,8 +981,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1040,7 +1046,7 @@ GameObject:
   - component: {fileID: 5453726263871737006}
   - component: {fileID: 5453726263871737005}
   - component: {fileID: 910482149011613978}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.054
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,8 +1096,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1156,7 +1161,7 @@ GameObject:
   - component: {fileID: 7160418376918537245}
   - component: {fileID: 7160418376918537244}
   - component: {fileID: 2594622648931348339}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.056
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1206,8 +1211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1272,7 +1276,7 @@ GameObject:
   - component: {fileID: 1175987898768748561}
   - component: {fileID: 1175987898768748560}
   - component: {fileID: 2019899632331580889}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.064
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,8 +1326,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1388,7 +1391,7 @@ GameObject:
   - component: {fileID: 6299837637356929261}
   - component: {fileID: 6299837637356929260}
   - component: {fileID: 1106962050546299489}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,8 +1441,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1504,7 +1506,7 @@ GameObject:
   - component: {fileID: 1418047187809548114}
   - component: {fileID: 7024731225925742805}
   - component: {fileID: 5396489439887849524}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.099
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,8 +1556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1620,7 +1621,7 @@ GameObject:
   - component: {fileID: 2420553514116967874}
   - component: {fileID: 5531540315072170196}
   - component: {fileID: 2470330803230626492}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1670,8 +1671,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 1691910244799553307}
   - component: {fileID: 7751840967795883015}
   - component: {fileID: 4430681013887994090}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1786,8 +1786,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1852,7 +1851,7 @@ GameObject:
   - component: {fileID: 9108961549659300098}
   - component: {fileID: 9108961549659300097}
   - component: {fileID: 5945195909970687002}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1902,8 +1901,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1968,7 +1966,7 @@ GameObject:
   - component: {fileID: 5909787455185334923}
   - component: {fileID: 5909787455185334922}
   - component: {fileID: 661540914703899831}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.074
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2018,8 +2016,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2084,7 +2081,7 @@ GameObject:
   - component: {fileID: 7965183609554863363}
   - component: {fileID: 4748341841918652817}
   - component: {fileID: 7993756612346632614}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2134,8 +2131,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2200,7 +2196,7 @@ GameObject:
   - component: {fileID: 3319988781046351178}
   - component: {fileID: 9168714901681908002}
   - component: {fileID: 4184697947274133239}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2250,8 +2246,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2316,7 +2311,7 @@ GameObject:
   - component: {fileID: 2817314979385871194}
   - component: {fileID: 6759747163369411592}
   - component: {fileID: 3589302066246427896}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.063
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2366,8 +2361,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2432,7 +2426,7 @@ GameObject:
   - component: {fileID: 8582322979613769806}
   - component: {fileID: 5929446651678498942}
   - component: {fileID: 6985931349466743004}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2482,8 +2476,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2548,7 +2541,7 @@ GameObject:
   - component: {fileID: 5864982538977860740}
   - component: {fileID: 5864982538977860747}
   - component: {fileID: 8406580869616320754}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.093
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2598,8 +2591,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2664,7 +2656,7 @@ GameObject:
   - component: {fileID: 5096217953980712564}
   - component: {fileID: 5096217953980712571}
   - component: {fileID: 989788154433798684}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2714,8 +2706,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2780,7 +2771,7 @@ GameObject:
   - component: {fileID: 500454904926805404}
   - component: {fileID: 500454904926804579}
   - component: {fileID: 6126055858847093995}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.076
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2830,8 +2821,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2896,7 +2886,7 @@ GameObject:
   - component: {fileID: 1551583310688314943}
   - component: {fileID: 6135209731783665855}
   - component: {fileID: 7760010530289497767}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.078
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2946,8 +2936,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3012,7 +3001,7 @@ GameObject:
   - component: {fileID: 1924688967632459680}
   - component: {fileID: 4758026236717451831}
   - component: {fileID: 5419837036908446736}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3062,8 +3051,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3128,7 +3116,7 @@ GameObject:
   - component: {fileID: 7470996793723325717}
   - component: {fileID: 4993184500325206782}
   - component: {fileID: 8916524164798581520}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.046
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3178,8 +3166,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3244,7 +3231,7 @@ GameObject:
   - component: {fileID: 2549169642045667600}
   - component: {fileID: 5528802937190482171}
   - component: {fileID: 6772648064502206524}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3294,8 +3281,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3360,7 +3346,7 @@ GameObject:
   - component: {fileID: 5170406724734910609}
   - component: {fileID: 5170406724734910608}
   - component: {fileID: 7324692623385103635}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3410,8 +3396,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3476,7 +3461,7 @@ GameObject:
   - component: {fileID: 2851877435916364866}
   - component: {fileID: 4644304392450881238}
   - component: {fileID: 9140715874804040783}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3526,8 +3511,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3592,7 +3576,7 @@ GameObject:
   - component: {fileID: 2922459099263594146}
   - component: {fileID: 4752623735857181073}
   - component: {fileID: 1849301358900117261}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3642,8 +3626,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3708,7 +3691,7 @@ GameObject:
   - component: {fileID: 7802632234546367375}
   - component: {fileID: 4804037688910852205}
   - component: {fileID: 3165895000642689134}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.081
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3758,8 +3741,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3824,7 +3806,7 @@ GameObject:
   - component: {fileID: 5887716065520851464}
   - component: {fileID: 4934082488390739450}
   - component: {fileID: 2100900212415719970}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3874,8 +3856,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3940,7 +3921,7 @@ GameObject:
   - component: {fileID: 1829049784143968570}
   - component: {fileID: 5124228356903092208}
   - component: {fileID: 8859313405069418471}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.058
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3990,8 +3971,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4056,7 +4036,7 @@ GameObject:
   - component: {fileID: 4587606740994653607}
   - component: {fileID: 5203731829887610219}
   - component: {fileID: 4950252113217580035}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.059
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4106,8 +4086,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4172,7 +4151,7 @@ GameObject:
   - component: {fileID: 5110403999673630167}
   - component: {fileID: 5110403999673630166}
   - component: {fileID: 8353916795279471861}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.070
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4222,8 +4201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4288,7 +4266,7 @@ GameObject:
   - component: {fileID: 2982062602063633143}
   - component: {fileID: 5292118697326220847}
   - component: {fileID: 2576045704306082074}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.047
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4338,8 +4316,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4404,7 +4381,7 @@ GameObject:
   - component: {fileID: 3195909015544546259}
   - component: {fileID: 5319891596853158275}
   - component: {fileID: 2340840066462237420}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4454,8 +4431,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4520,7 +4496,7 @@ GameObject:
   - component: {fileID: 4982416531026249401}
   - component: {fileID: 4982416531026249400}
   - component: {fileID: 2340492758994408304}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.105
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4570,8 +4546,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4636,7 +4611,7 @@ GameObject:
   - component: {fileID: 6044690060648540837}
   - component: {fileID: 5770122447742336494}
   - component: {fileID: 4949374131060775241}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.068
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4686,8 +4661,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4752,7 +4726,7 @@ GameObject:
   - component: {fileID: 181549286712886781}
   - component: {fileID: 5826259444245844517}
   - component: {fileID: 1305349008441105045}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4802,8 +4776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4868,7 +4841,7 @@ GameObject:
   - component: {fileID: 5769397891839896520}
   - component: {fileID: 5838135741561532519}
   - component: {fileID: 7162650171527846552}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,8 +4891,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4984,7 +4956,7 @@ GameObject:
   - component: {fileID: 3360963543128935061}
   - component: {fileID: 5895830504906755822}
   - component: {fileID: 565947962069243755}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.079
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5034,8 +5006,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5100,7 +5071,7 @@ GameObject:
   - component: {fileID: 3937074576063409850}
   - component: {fileID: 4652626203517747454}
   - component: {fileID: 8017294281108414759}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.082
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5150,8 +5121,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5216,7 +5186,7 @@ GameObject:
   - component: {fileID: 4634659472446770606}
   - component: {fileID: 4634659472446770605}
   - component: {fileID: 3382859645007383865}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5266,8 +5236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5332,7 +5301,7 @@ GameObject:
   - component: {fileID: 2216728758127904227}
   - component: {fileID: 6380704940547098610}
   - component: {fileID: 1255239647087683392}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.107
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5382,8 +5351,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5448,7 +5416,7 @@ GameObject:
   - component: {fileID: 1653050982062644586}
   - component: {fileID: 6649026490046660996}
   - component: {fileID: 8010160797409849814}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.032
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5498,8 +5466,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5564,7 +5531,7 @@ GameObject:
   - component: {fileID: 6536578444761930026}
   - component: {fileID: 6702365572041765064}
   - component: {fileID: 5515028271001517043}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.065
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5614,8 +5581,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5680,7 +5646,7 @@ GameObject:
   - component: {fileID: 1050937497622713310}
   - component: {fileID: 6976735122529671246}
   - component: {fileID: 7318889788047542422}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.075
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5730,8 +5696,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5796,7 +5761,7 @@ GameObject:
   - component: {fileID: 5006672717251370717}
   - component: {fileID: 5006672717251370716}
   - component: {fileID: 7298328261012124399}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.095
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5846,8 +5811,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5912,7 +5876,7 @@ GameObject:
   - component: {fileID: 4353878981509745795}
   - component: {fileID: 7306763278056703474}
   - component: {fileID: 32534362537538547}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.073
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5962,8 +5926,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6028,7 +5991,7 @@ GameObject:
   - component: {fileID: 3555294121037177525}
   - component: {fileID: 7095284114578931695}
   - component: {fileID: 3079785180480639258}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.062
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6078,8 +6041,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6144,7 +6106,7 @@ GameObject:
   - component: {fileID: 1573345195566053852}
   - component: {fileID: 7154450234382019188}
   - component: {fileID: 8025005629511790630}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.072
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6194,8 +6156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6260,7 +6221,7 @@ GameObject:
   - component: {fileID: 7932439524463589462}
   - component: {fileID: 7479212012930612182}
   - component: {fileID: 204144978535367776}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.089
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6310,8 +6271,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6376,7 +6336,7 @@ GameObject:
   - component: {fileID: 901885395464583539}
   - component: {fileID: 4955969947128240832}
   - component: {fileID: 134162002273357972}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6426,8 +6386,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6492,7 +6451,7 @@ GameObject:
   - component: {fileID: 3107245094050063742}
   - component: {fileID: 7914700372979647536}
   - component: {fileID: 8018117236173648148}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.040
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6542,8 +6501,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6608,7 +6566,7 @@ GameObject:
   - component: {fileID: 6410656703623061557}
   - component: {fileID: 5849683875062892995}
   - component: {fileID: 8258195962820088164}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6658,8 +6616,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6724,7 +6681,7 @@ GameObject:
   - component: {fileID: 4902222509084005969}
   - component: {fileID: 4902222509084005968}
   - component: {fileID: 5052203845672178582}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.067
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6774,8 +6731,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6840,7 +6796,7 @@ GameObject:
   - component: {fileID: 1843176852249271713}
   - component: {fileID: 7464449994659542671}
   - component: {fileID: 1596988330207159851}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6890,8 +6846,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6956,7 +6911,7 @@ GameObject:
   - component: {fileID: 4160039608467165409}
   - component: {fileID: 6578523693313932698}
   - component: {fileID: 3500653863681510403}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.069
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7006,8 +6961,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7072,7 +7026,7 @@ GameObject:
   - component: {fileID: 3794813042357354673}
   - component: {fileID: 8560885281520788743}
   - component: {fileID: 5059273166580339626}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7122,8 +7076,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7188,7 +7141,7 @@ GameObject:
   - component: {fileID: 1373509054253092440}
   - component: {fileID: 4716547364705375737}
   - component: {fileID: 4166305756936035015}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.086
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7238,8 +7191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7304,7 +7256,7 @@ GameObject:
   - component: {fileID: 9178751673987394132}
   - component: {fileID: 7755338898287212018}
   - component: {fileID: 5073516110603233830}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.077
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7354,8 +7306,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7420,7 +7371,7 @@ GameObject:
   - component: {fileID: 2589881321841622965}
   - component: {fileID: 5658428332107874546}
   - component: {fileID: 7646752800176775591}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.052
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7470,8 +7421,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7536,7 +7486,7 @@ GameObject:
   - component: {fileID: 8895644738458969583}
   - component: {fileID: 5710851010311080094}
   - component: {fileID: 2509194128299077925}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7586,8 +7536,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7652,7 +7601,7 @@ GameObject:
   - component: {fileID: 3245802138075875937}
   - component: {fileID: 7785872171874492659}
   - component: {fileID: 672342507638452196}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7702,8 +7651,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7768,7 +7716,7 @@ GameObject:
   - component: {fileID: 7918048042760736019}
   - component: {fileID: 7918048042760736018}
   - component: {fileID: 4484337746641961614}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.098
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7818,8 +7766,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7884,7 +7831,7 @@ GameObject:
   - component: {fileID: 2798069364890589704}
   - component: {fileID: 9217248225129308007}
   - component: {fileID: 2600949715988608687}
-  m_Layer: 0
+  m_Layer: 19
   m_Name: cave_door.002_cell.108
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7934,8 +7881,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fd6e39d8665343bfa9b265f11a65753, type: 2}
-  - {fileID: 2100000, guid: 6623221c9daee4906b5a98a7f34fcceb, type: 2}
+  - {fileID: 2100000, guid: 24098eb7a48864f63a43b3ccae1a8446, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -91,7 +91,7 @@ public class ControlVCam : MonoBehaviour
     }
 
     public void SwitchingWatchingBossToSide()
-    {
+    {   // 추격전 시작
         vSide.Priority = 11;
         vWatchingBoss.Priority = 10;
     }
@@ -105,7 +105,7 @@ public class ControlVCam : MonoBehaviour
     [SerializeField] Transform bossSpawn, seahorse;
 
     IEnumerator LerpCam()
-    {
+    {   // 보스 비추는 캠
         while (true)
         {
             watchingBossCam.transform.position = new Vector3(Mathf.Lerp(watchingBossCam.transform.position.x, bossSpawn.position.x, Time.deltaTime*2f), originPos.y, originPos.z); ;
@@ -150,8 +150,8 @@ public class ControlVCam : MonoBehaviour
 
     public void ControlDollyView()
     {
-        bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = followOffset;
-        bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset = trackedOffset;
+        //bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = followOffset;
+        //bossCam.GetComponent<CinemachineVirtualCamera>().GetCinemachineComponent<CinemachineComposer>().m_TrackedObjectOffset = trackedOffset;
         StartCoroutine(ResetLookAtBoss());
     }
 
@@ -159,5 +159,6 @@ public class ControlVCam : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         vBoss.LookAt = null;
+        //bossCam.transform.rotation = Quaternion.Euler(4, 95, 0);
     }
 }

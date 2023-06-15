@@ -8,6 +8,9 @@ public class BossMove : MonoBehaviour
     Rigidbody rigid;
     InfoFish boss;
     Transform respawnSpot, target;
+    SkinnedMeshRenderer mesh;
+    Material[] mat;
+    Animator anim;
     bool isStop, isMileStone2;
 
     private void Awake()
@@ -17,6 +20,9 @@ public class BossMove : MonoBehaviour
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
+        mesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        mat = mesh.materials;
         boss = GameObject.Find("SpawnManager").GetComponent<SpawnEnemy>().Boss;
         respawnSpot = GameObject.Find("BossSpawn").transform;
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -65,12 +71,13 @@ public class BossMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Stone"))
         {
-            Debug.Log("BossDied");
             GameObject.Find("whole_cave").GetComponent<FractureObject>().Explode();
             GameObject.Find("MileStone 2").GetComponent<BoxCollider>().isTrigger = false;
+            rigid.constraints = RigidbodyConstraints.None;
+            Destroy(anim);  // 헤엄치는 애니메이션 죽으면 없애기
             isStop = true;
             rigid.useGravity = true;
-            Invoke("BossDestroy", 3f);
+            StartCoroutine(FadeInBoss());   // boss죽었을때 fade in(스르륵 사라지기)
         }
         if (!SwimMove.isEnd && collision.gameObject.CompareTag("Player"))
         {
@@ -98,6 +105,48 @@ public class BossMove : MonoBehaviour
         CinematicBar.instance.HideBars();
         GameObject.Find("player").GetComponent<CinemachineDollyCart>().enabled = false;
         UIManager.instnace.RunAnims("isWASD");  // 보스가 벽에 부딪히고 플레이어 조작키 안내 한번 더
-        Destroy(this.gameObject, 1f);
+        Destroy(this.gameObject);
+    }
+    IEnumerator FadeInBoss()
+    {
+        yield return new WaitForSeconds(2f);
+        
+        Color teeth = mat[0].color;
+        Color body = mat[1].color;
+        Color light = mat[2].color;
+        float time = Time.deltaTime;
+        Color lightEmission = mat[2].GetColor("_EmissionColor");
+        mat[2].SetColor("_EmissionColor", lightEmission * 0f);
+        while (true)
+        {
+            teeth.a = Mathf.Lerp(teeth.a, 0, time);
+            mat[0].color = teeth;
+
+            body.a = Mathf.Lerp(body.a, 0, time);
+            mat[1].color = body;
+
+            light.a = Mathf.Lerp(light.a, 0, time);
+            mat[2].SetColor("_EmissionColor", lightEmission * 0f);
+            mat[2].color = light;
+
+            if (mat[1].color.a < 0.05f) break;
+            yield return new WaitForSeconds(0.01f);
+        }
+        Invoke("BossDestroy", 1f);
+        yield return null;
+    }
+    private void OnDestroy()
+    {
+        Color teeth = mat[0].color;
+        Color body = mat[1].color;
+        Color light = mat[2].color;
+
+        teeth.a = 1f;
+        body.a = 1f;
+        light.a = 1f;
+
+        mat[0].color = teeth;
+        mat[1].color = body;
+        mat[2].color = light;
     }
 }
