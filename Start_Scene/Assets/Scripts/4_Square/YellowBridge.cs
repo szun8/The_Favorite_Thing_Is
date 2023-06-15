@@ -7,7 +7,7 @@ public class YellowBridge : MonoBehaviourPun
 {
     PhotonView PV;
     Animator animator;
-    MeshCollider meshCollider;
+    //MeshCollider meshCollider;
 
     public DanSang red;
     public DanSang green;
@@ -19,7 +19,7 @@ public class YellowBridge : MonoBehaviourPun
     {
         PV = GetComponent<PhotonView>();
         animator = GetComponent<Animator>();
-        meshCollider = GetComponent<MeshCollider>();
+        //meshCollider = GetComponent<MeshCollider>();
     }
 
     
@@ -28,7 +28,7 @@ public class YellowBridge : MonoBehaviourPun
         if(!isDone && red.plateLight && green.plateLight)
         {
             PV.RPC("SyncAnim", RpcTarget.AllBuffered);
-            meshCollider.isTrigger = false;
+            //meshCollider.isTrigger = false;
             isDone = true;
         }
     }

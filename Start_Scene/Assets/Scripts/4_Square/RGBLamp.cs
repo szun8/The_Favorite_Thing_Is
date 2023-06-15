@@ -154,7 +154,7 @@ public class RGBLamp : MonoBehaviourPunCallbacks
 
         if (gameObject.CompareTag("B_item"))
         {
-            SoundManager.instnace.PlaySE("B_zone", 0.25f);
+            SoundManager.instnace.PlaySE("B_zone", 0.1f);
             stopPlayer.GetComponent<MultiPlayerMove>().getBlue = true;
         }
     }
